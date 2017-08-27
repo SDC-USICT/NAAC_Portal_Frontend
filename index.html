@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title>NAAC Portal | GGSIPU</title>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-route.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.10/ngStorage.min.js"></script>
+ <script src="app/app.js"></script>
+ <script src="app/controllers/main.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>
+	<script src="app/config.js"></script>
+	<link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900" rel="stylesheet">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	
+</head>
+<body ng-app="cmaps">
+ <main>
+ <header>
+    <nav>
+        <div class="nav-wrapper">
+            <img class="left logo-img" height="100" style="position: relative !important;z-index: 10;" src="app/resources/images/logomain.png" >
+
+            <span href="/" class="brand-logo center main-title">GURU GOBIND SINGH INDRAPRASTHA UNIVERSITY</span>
+        </div>
+    </nav>
+
+    <nav>
+        <div class="nav-wrapper sub-nav">
+            <span href="#" class="brand-logo center sub-title">NAAC PORTAL</span>
+        </div>
+    </nav>
+</header>
+
+		<div ng-view=""></div>
+ </main>
+<footer class="page-footer">
+    <div class="footer-copyright">
+        <div class="container center">
+
+            <p class="footer-disclaimer center">
+                The NAAC Portal, Designed and Developed
+                by the Software Development Cell, University School of Information, Communication &amp; Technology (USICT).
+              Suggestions/Discrepancies (if any) mail at :- rahul@ipu.ac.in</p>
+
+        </div>
+    </div>
+</footer>
+</body>
+</html>

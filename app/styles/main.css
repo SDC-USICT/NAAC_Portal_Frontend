@@ -1,0 +1,46 @@
+.emailid-content {
+display: flex;
+padding-left: 2em;
+padding-right: 2em;
+}
+input[type=text]:not(.browser-default) {
+margin: 0.5em 0 0.5em 0;
+
+}
+.send {
+font-size: 2.5em;
+margin-top: 0.3em;
+color: #00bcd4;
+}
+.fa-check-circle:hover {
+color:  #006064;
+cursor: pointer;
+}
+.icon-background1 {
+color: #ffc0ff;
+}
+.material-icons {
+line-height: 3;
+margin-left: 1em;
+}
+.main{
+display: flex;
+height: 100vh;
+margin:0;
+}
+div {
+flex: 1;
+}
+.heading {
+font-size: 16em;
+font-family: Lato;
+}
+.desc {
+font-size: 1.7em;
+font-weight: 700;
+text-indent: 0.5em;
+}
+.emailid {
+margin-left: 15em;
+margin-right: 15em;
+}

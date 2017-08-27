@@ -1,0 +1,147 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: Lato;
+}
+
+html {
+  font-family: Lato;
+}
+
+h1 {
+  font-size: 5em;
+}
+
+h2 {
+  font-size: 3em;
+}
+
+h3 {
+  font-size: 2em;
+}
+
+h4 {
+  font-size: 1.6em;
+}
+
+h5 {
+  font-size: 1.5em;
+}
+
+h6 {
+  font-size: 1em;
+}
+
+.fine {
+  font-weight: 100;
+}
+
+.tiny {
+  font-size: 0.8em;
+}
+
+.tiny-label {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-align: center;
+  font-weight: 500;
+  opacity: 0.2;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.lowercase {
+  text-transform: lowercase;
+}
+
+.title {
+  font-family: -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+  font-size: 14em;
+  font-weight: 100;
+  text-align: center;
+}
+
+.logo {
+  height: 15em;
+  margin-top: 4em;
+}
+
+@media only screen and (min-width: 993px) {
+  .container {
+    width: 80%;
+  }
+}
+
+footer {
+text-align: center;
+background-color: #1A237E !important;
+bottom: 0px;
+width: 100%;
+}
+
+footer.page-footer {
+margin-top: 0px !important;
+padding-top: 0px !important;
+}
+
+.footer-disclaimer {
+line-height: 2em !important;
+font-family: Lato;
+font-weight: 500;
+font-size: 12px;
+text-transform: uppercase;
+letter-spacing: 0.1em;
+}
+
+.logo-img {
+    float: left !important;
+    margin-top: 0.7em;
+    margin-left: 2em;
+}
+
+nav .brand-logo {
+    position: absolute;
+    color: #fff;
+    display: inline-block;
+    font-size: 2.1rem;
+    padding: 0;
+    white-space: nowrap;
+}
+
+.main-title {
+    font-family: Lato !important;
+    font-size: 1em !important;
+    font-weight: bolder;
+    letter-spacing: 0.5em;
+}
+
+.sub-nav {
+    background-color: #283593 !important;
+}
+
+.sub-title {
+    font-family: Lato !important;
+    font-weight: 500;
+    font-size: 1.5em !important;
+    letter-spacing: 0.3em;
+}
+
+nav {
+    text-align: center;
+    background-color: #1A237E !important;
+}
+
+  body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }
