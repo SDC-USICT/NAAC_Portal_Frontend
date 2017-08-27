@@ -1,7 +1,6 @@
-angular.module('cmaps', ['ngRoute', 'ngStorage'])
+angular.module('employee', ['ngRoute', 'ngStorage', 'ngResource'])
 .config(['$routeProvider', '$locationProvider',
 	function ($routeProvider, $locationProvider) {
-    $locationProvider.html5Mode(true);
 	$routeProvider.
    when('/', {
     templateUrl: 'app/views/main.html',
@@ -21,4 +20,6 @@ angular.module('cmaps', ['ngRoute', 'ngStorage'])
    otherwise({
     redirectTo: '/'
    });
+   $locationProvider.html5Mode(false).hashPrefix('');
+
 }])

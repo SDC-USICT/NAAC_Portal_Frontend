@@ -3,13 +3,21 @@
 <head>
 
 	<title>NAAC Portal | GGSIPU</title>
+ <base href="/">  
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-resource.min.js"></script>
+
+
  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-route.min.js"></script>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.10/ngStorage.min.js"></script>
  <script src="app/app.js"></script>
  <script src="app/controllers/main.js"></script>
+  <script src="app/controllers/login.js"></script>
+ <script src="app/controllers/selection.js"></script>
+
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>
 	<script src="app/config.js"></script>
 	<link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
@@ -20,7 +28,7 @@
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	
 </head>
-<body ng-app="cmaps">
+<body ng-app="employee">
  <main>
  <header>
     <nav>
