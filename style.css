@@ -145,3 +145,10 @@ nav {
   main {
     flex: 1 0 auto;
   }
+  .no-margins {
+    margin: 0 !important;
+  }
+
+  .no-borders {
+    border: 0 !important;
+  }

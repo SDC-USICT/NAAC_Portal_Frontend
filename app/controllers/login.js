@@ -1,16 +1,21 @@
 angular.module('employee')
-	.controller('LoginCtrl', ["$scope", "$http" , "$rootScope", "$sessionStorage",
-		function ($scope, $http, $rootScope, $sessionStorage) {
+	.controller('LoginCtrl', ["$scope", "$http" , "$rootScope", "$sessionStorage", "$location",
+		function ($scope, $http, $rootScope, $sessionStorage, $location) {
 			
-			req = {
-				'empid' : $scope.id,
-				'password' : $scope.pwd
-			}
+		
 
 			$scope.submit = function () {
-				$http.post(BACKEND+'/login', req)
+				req = {
+				'empid' : $scope.empid,
+				'password' : $scope.password
+			}
+			console.log(req);
+				$http.post(BACKEND+'/api/login', JSON.stringify(req))
 				.then(function (res) {
 					console.log(res.data);
+					if (res.data.success != undefined) {
+						$location.path('/dashboard');
+					}
 				})
 			}
 		

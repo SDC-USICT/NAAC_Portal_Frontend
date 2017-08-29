@@ -1,0 +1,30 @@
+<div id="test2" class="info container">
+    <div class="card">
+        <div class="row no-margins">
+            <div style="padding:0 0;" class="col m3">
+                <div class="table-title">INFORMATION</div>
+
+            </div>
+            <div class="col m9">
+                <div class="right">
+                    <button type="submit" style="margin-top: 0.4em" class="btn waves-effect waves-light no-borders">
+                        SAVE
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="row border-top">
+            <div class="col m3">
+                <ul class="flexed">
+                    <li ng-repeat="info in attributes">
+                        <div ng-click="setSelected(info.val)" ng-class="{'grey-text':!isSelected(info)}" class="time">{{ info.key }}</div>
+                    </li>
+                </ul>
+            </div>
+            <div class="col m9">
+                {{ selected }}
+            </div>
+        </div>
+    </div>
+</div>

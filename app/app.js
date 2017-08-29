@@ -17,9 +17,11 @@ angular.module('employee', ['ngRoute', 'ngStorage', 'ngResource'])
     controller: 'LoginCtrl',
     controllerAs: 'con'
    }).
-   otherwise({
-    redirectTo: '/'
-   });
+   when('/dashboard', {
+    templateUrl: 'app/views/dashboard.html',
+    controller: 'DashboardCtrl',
+    controllerAs: 'dash'
+   })
    $locationProvider.html5Mode(false).hashPrefix('');
 
 }])
