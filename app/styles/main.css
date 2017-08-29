@@ -44,3 +44,88 @@ text-indent: 0.5em;
 margin-left: 15em;
 margin-right: 15em;
 }
+
+
+
+//Login Box settings
+
+#login-page {
+   width: 500px;
+}
+
+.card {
+     position: absolute;
+     left: 50%;
+     top: 50%;
+     -moz-transform: translate(-50%, -50%)
+     -webkit-transform: translate(-50%, -50%)
+     -ms-transform: translate(-50%, -50%)
+     -o-transform: translate(-50%, -50%)
+     transform: translate(-50%, -50%);
+}
+
+
+
+
+//Selector settings
+
+@import 'https://fonts.googleapis.com/css?family=Dosis:300,400,500,700';
+
+body {
+    background: #303F9F;
+    font-family: "Dosis", sans-serif;
+}
+
+// custom dropdown
+.dropdown {
+    position: relative;
+    width: 200px;
+    background: white;
+    display: block;
+    margin: 200px auto;
+    .selected {
+        display: block;
+        padding: 1rem;
+        cursor: pointer;
+        transition: all .2s ease-in-out;
+        i {
+            position: absolute;
+            right: 0.5rem;
+        }
+        &:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24) !important;
+        }
+    }
+    .dropdown-list {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        max-height: 0;
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        background: white;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24) !important;
+        opacity: 0;
+        visibility: hidden;
+        overflow: hidden;
+        transform: translateY(0%);
+        transition: all 0.3s cubic-bezier(.17,.67,0,1);
+        li {
+            padding: 1rem;
+            display: block;
+            cursor: pointer;
+            transition: all 200ms ease;
+            &:hover, &.active {
+                background: rgba(#3F51B5, 0.1);
+            }
+        }
+        &.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0%);
+            max-height: 260px;
+            overflow: auto;
+        }
+    }
+}

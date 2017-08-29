@@ -1,0 +1,40 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+
+<div class="dropdown">
+    <p class="selected"><span>Choose your option</span> <i class="material-icons">keyboard_arrow_down</i></p>
+    <ul class="dropdown-list">
+        <li>option 1</li>
+        <li>option 2</li>
+        <li>option 3</li>
+        <li>option 4</li>
+        <li>option 5</li>
+        <li>option 6</li>
+        <li>option 7</li>
+        <li>option 8</li>
+        <li>option 9</li>
+    </ul>
+</div>
+
+<script type="javascript/text">
+var selected = $('.selected');
+var dropdown = $('.dropdown-list');
+var optionList = $('.dropdown-list li');
+
+selected.click(function() {
+  dropdown.toggleClass('active');
+
+  if(dropdown.hasClass('active')) {
+      optionList.click(function() {
+
+          if(optionList.hasClass('active')) {
+              $(this).siblings().removeClass('active');
+          } else {
+              $(this).addClass('active');
+          }
+          dropdown.removeClass('active');
+          selected.children('span').html($(this).html());
+      })
+  }
+})
+</script>
