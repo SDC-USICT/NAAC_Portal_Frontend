@@ -1,40 +1,27 @@
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
+<div class="container">
+       <div class="row">
+         <div class="col-md-6 col-md-offset-3 drop-down-main">
+           <!-- Dropdown Trigger --><center>
+           <div class="input-field">
+             <select>
+               <option value="" disabled selected>Choose School</option>
+               <option value="1">University School of Info &amp; Communication Technology</option>
+               <option value="2">University School of Law and Legal Studies</option>
+               <option value="3">University School of Management Studies</option>
+                <option value="4">University School of Education</option>
+                <option value="5">University School of BioTechnology</option>
+                <option value="6">University School of Chemical Technology</option>
+                <option value="7">University School of Environment Management</option>
+              <option value="8">University School of Mass Communication</option>
+                <option value="9">University School of Basic and Applied Sciences</option>
+                <option value="10">University School of Architecture and Planning</option>
+              <option value="11">University School of Humanities and Social Sciences</option>
+             </select>
 
-<div class="dropdown">
-    <p class="selected"><span>Choose your option</span> <i class="material-icons">keyboard_arrow_down</i></p>
-    <ul class="dropdown-list">
-        <li>option 1</li>
-        <li>option 2</li>
-        <li>option 3</li>
-        <li>option 4</li>
-        <li>option 5</li>
-        <li>option 6</li>
-        <li>option 7</li>
-        <li>option 8</li>
-        <li>option 9</li>
-    </ul>
-</div>
+           </div>
+         </div>
 
-<script type="javascript/text">
-var selected = $('.selected');
-var dropdown = $('.dropdown-list');
-var optionList = $('.dropdown-list li');
 
-selected.click(function() {
-  dropdown.toggleClass('active');
 
-  if(dropdown.hasClass('active')) {
-      optionList.click(function() {
-
-          if(optionList.hasClass('active')) {
-              $(this).siblings().removeClass('active');
-          } else {
-              $(this).addClass('active');
-          }
-          dropdown.removeClass('active');
-          selected.children('span').html($(this).html());
-      })
-  }
-})
-</script>
+       </div>
+     </div>
