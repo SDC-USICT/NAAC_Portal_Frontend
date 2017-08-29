@@ -12,7 +12,14 @@ angular.module('employee')
 				  	})
 				  });
 				});
- 
+ 	
+			var Columns = $resource(BACKEND + '/api/columns');
+			 Columns.get().$promise.then(function(data) {
+			 	  console.log('here')
+       console.log(data.toJSON());
+   });
+
+
     $scope.get_status = function () {
         return $scope.save_status;
     }
