@@ -12,7 +12,7 @@ angular.module('employee')
 				  	})
 				  });
 				});
- 
+
     $scope.get_status = function () {
         return $scope.save_status;
     }
@@ -24,5 +24,5 @@ angular.module('employee')
         $scope.selected = value;
         console.log($scope.va)
     }
-			
+
 		}]);

@@ -63,17 +63,3 @@ margin-right: 15em;
      -o-transform: translate(-50%, -50%)
      transform: translate(-50%, -50%);
 }
-
-
-
-
-//Selector settings
-
-@import 'https://fonts.googleapis.com/css?family=Dosis:300,400,500,700';
-
-body {
-    background: #303F9F;
-    font-family: "Dosis", sans-serif;
-}
-
-// custom dropdown
