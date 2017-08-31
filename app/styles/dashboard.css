@@ -87,6 +87,16 @@
     background: crimson;
     border-radius: 100%;
 }
+.info ul.flexed .yellow-time:before {
+    content: "";
+    position: absolute;
+    left: 0.5em;
+    width: 1em;
+    height: 1em;
+    background: yellow !important;
+    border-radius: 100%;
+}
+
 .info .row {
     margin-left: 0;
     margin-right: 0;
@@ -154,4 +164,10 @@
 }
 .info .btn:focus, .info .btn-large:focus, .info .btn-floating:focus {
     background-color: lightgray;
+}
+button {
+  background: #1a237e
+}
+.select-wrapper .select-dropdown {
+  margin-top: 1em !important;
 }

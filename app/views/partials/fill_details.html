@@ -7,7 +7,7 @@
             </div>
             <div class="col m9">
                 <div class="right">
-                    <button type="submit" style="margin-top: 0.4em" class="btn waves-effect waves-light no-borders">
+                    <button type="submit" style="margin-top: 0.4em; background-color: #1a237e" class="btn waves-effect waves-light no-borders">
                         SAVE
                     </button>
                 </div>
@@ -18,13 +18,44 @@
             <div class="col m3">
                 <ul class="flexed">
                     <li ng-repeat="info in attributes">
-                        <div ng-click="setSelected(info.val)" ng-class="{'grey-text':!isSelected(info)}" class="time">{{ info.key }}</div>
+                        <div ng-click="setSelected(info.val)" class="time" ng-class="{'grey-text':!isSelected(info)}" ng-class="{'yellow-time':isSelected(info)">{{ splitAtCaps(info.key) }}</div>
                     </li>
                 </ul>
             </div>
             <div class="col m9">
-                {{ selected }}
+            <br>
+            <div class="input-field col s12">
+										    <select style="margin-top: 1em">
+										      <option value="" disabled selected>Choose your option</option>
+										      <option value="2013">2013</option>
+										      <option value="2014">2014</option>
+										      <option value="2015">2015</option>
+										      <option value="2016">2016</option>
+										      <option value="2017">2017</option>
+										    </select>
+										    <label>Select Year<br></label>
+
+										  </div>
+
+            	<table>
+            		<tbody>
+
+
+
+            			<tr ng-repeat="(key, value) in form_details[sections[selected]]">
+            				<td ng-show="!value.verbose">{{value.name}}</td>
+            				<td ng-show="value.verbose">{{value.verbose}}</td>
+            				<td><input type="text" name=""></td>
+            			</tr>
+            		</tbody>
+            	</table>
             </div>
         </div>
     </div>
 </div>
+<script type="text/javascript">
+	
+  $(document).ready(function() {
+    $('select').material_select();
+  });
+</script>
