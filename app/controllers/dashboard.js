@@ -2,7 +2,7 @@ angular.module('employee')
 	.controller('DashboardCtrl', ["$scope", "$http" , "$rootScope", "$sessionStorage", "$resource",
 		function ($scope, $http, $rootScope, $sessionStorage, $resource) {
 			$scope.selected = 0;
- 	
+
 			var Columns = $resource(BACKEND + '/api/columns');
 			 Columns.get().$promise.then(function(data) {
        data = data.toJSON();
