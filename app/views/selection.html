@@ -1,24 +1,41 @@
-         <div class="input-field col s6">
-             <select style="margin-top: 1em">
-               <option value="" disabled selected>Choose your option</option>
-               <option value="1">University School of Info &amp; Communication Technology</option>
-               <option value="2">University School of Law and Legal Studies</option>
-               <option value="3">University School of Management Studies</option>
-                <option value="4">University School of Education</option>
-                <option value="5">University School of BioTechnology</option>
-                <option value="6">University School of Chemical Technology</option>
-                <option value="7">University School of Environment Management</option>
-                <option value="8">University School of Mass Communication</option>
-                <option value="9">University School of Basic and Applied Sciences</option>
-                <option value="10">University School of Architecture and Planning</option>
-              <option value="11">University School of Humanities and Social Sciences</option>
-             </select>
-              <label>Select School<br></label>
-         </div>
+<div class="row">
+<div class="input-field col s6 push-s3">
+  <select style="margin-top: 1em" class="dropdown">
+    <option value="0" disabled selected>Choose your option</option>
+    <option value="1">University School of Info &amp; Communication Technology</option>
+    <option value="2">University School of Law and Legal Studies</option>
+    <option value="3">University School of Management Studies</option>
+    <option value="4">University School of Education</option>
+    <option value="5">University School of BioTechnology</option>
+    <option value="6">University School of Chemical Technology</option>
+    <option value="7">University School of Environment Management</option>
+    <option value="8">University School of Mass Communication</option>
+    <option value="9">University School of Basic and Applied Sciences</option>
+    <option value="10">University School of Architecture and Planning</option>
+    <option value="11">University School of Humanities and Social Sciences</option>
+  </select>
+  <label>Select School<br></label>
+</div>
+</div>
+<script type="text/javascript">
 
-         <script type="text/javascript">
+$(document).ready(function() {
+  $('select').material_select();
 
-           $(document).ready(function() {
-             $('select').material_select();
-           });
-         </script>
+  $('select').dropdown({
+    inDuration: 300,
+    outDuration: 225,
+    constrainWidth: false, // Does not change width of dropdown to that of the activator
+    hover: true, // Activate on hover
+    gutter: 0, // Spacing from edge
+    belowOrigin: false, // Displays dropdown below the button
+    alignment: 'left', // Displays dropdown with edge aligned to the left of button
+    stopPropagation: false // Stops event propagation
+  }
+);
+
+
+});
+
+
+</script>
