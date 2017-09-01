@@ -37,6 +37,24 @@
 
 										  </div>
 
+              <!-- Experiment  -->
+
+              <div class="input-field col s12">
+                          <select style="margin-top: 1em" >
+                            <option value="0" selected disabled>{{model_type}}</option>
+                            <option ng-repeat="x in result" ng-model="x">{{x}}</option>
+                          </select>
+                          <label for="">Yaha pe selected columns daal diyo</label>
+
+                        </div>
+
+
+
+
+
+
+
+
             	<table>
             		<tbody>
 
@@ -54,7 +72,7 @@
     </div>
 </div>
 <script type="text/javascript">
-	
+
   $(document).ready(function() {
     $('select').material_select();
   });

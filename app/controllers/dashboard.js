@@ -2,13 +2,15 @@ angular.module('employee')
 	.controller('DashboardCtrl', ["$scope", "$http" , "$rootScope", "$sessionStorage", "$resource",
 		function ($scope, $http, $rootScope, $sessionStorage, $resource) {
 			$scope.selected = 0;
- 	
+
 			var Columns = $resource(BACKEND + '/api/columns');
 			 Columns.get().$promise.then(function(data) {
        data = data.toJSON();
+			 console.log(data);
        $scope.attributes = [];
        $scope.form_details = data;
        $scope.sections = Object.keys(data);
+			 console.log($scope.sections[0]);
        angular.forEach(Object.keys(data), function(value, key){
 	       $scope.attributes.push({
 					  		'key' : value,
@@ -26,9 +28,24 @@ angular.module('employee')
     $scope.setSelected = function (value) {
     	console.log(value)
         $scope.selected = value;
-        console.log($scope.va)
+				// Experiment
+					var data_get = $resource(BACKEND+'/api/get/', null,
+					{
+					    'query':  {method:'POST', isArray:true}
+					});
+					data_get.query({empid:"30003",kls:$scope.attributes[value].key}).$promise.then(function(data) {
+					console.log(data);
+					$scope.model_type = data[0].model;
+					$scope.saved_columns = data[0].fields;
+					$scope.result = data.map(function(a) {return a.fields;});
+					console.log($scope.result);
+					console.log($scope.attributes[$scope.selected].key);
+					});
+
+
     }
 				$scope.splitAtCaps = function(s) {
 						return s.split(/(?=[A-Z])/).join(' ')
 				}
+
 		}]);
