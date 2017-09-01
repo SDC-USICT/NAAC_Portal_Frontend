@@ -2,16 +2,20 @@ angular.module('employee')
 	.controller('DashboardCtrl', ["$scope", "$http" , "$rootScope", "$sessionStorage", "$resource",
 		function ($scope, $http, $rootScope, $sessionStorage, $resource) {
 			$scope.selected = 0;
-				 var Sections = $resource(BACKEND + '/api/sections');
-			 Sections.query(function(secs) {
-			 	$scope.attributes = [];
-				  angular.forEach(secs, function(value, key){
-				  	$scope.attributes.push({
-				  		'key' : value,
-				  		'val' : key
-				  	})
-				  });
-				});
+ 	
+			var Columns = $resource(BACKEND + '/api/columns');
+			 Columns.get().$promise.then(function(data) {
+       data = data.toJSON();
+       $scope.attributes = [];
+       $scope.form_details = data;
+       $scope.sections = Object.keys(data);
+       angular.forEach(Object.keys(data), function(value, key){
+	       $scope.attributes.push({
+					  		'key' : value,
+					  		'val' : key
+					  	})
+       });
+   });
 
     $scope.get_status = function () {
         return $scope.save_status;
@@ -24,5 +28,7 @@ angular.module('employee')
         $scope.selected = value;
         console.log($scope.va)
     }
-
+				$scope.splitAtCaps = function(s) {
+						return s.split(/(?=[A-Z])/).join(' ')
+				}
 		}]);
