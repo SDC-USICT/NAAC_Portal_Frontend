@@ -1,3 +1,29 @@
-<div class="container">
-	{{schools}}
+<div class="container selection" ng-controller="MainCtrl as main" id="selection">
+    <br><br>
+	<select ng-model="selectedSchool" required>
+		<option value="" selected disabled>Choose Your Option</option>
+        <option ng-repeat="x in schools" value="{{ x.key }}">{{ x.value }}</option>
+	</select>
 </div>
+<script>
+    $(document).ready(function (){
+        $('select').material_select();
+        $('li').click(function(){
+            var scope = angular.element($('#selection')).scope();
+            scope.$apply(function(){
+            scope.showSchool();
+            });
+            var dept = $('li').attr('value');
+            console.log("department " + dept);
+            scope.$apply(function(){
+                scope.updateDept(dept);
+            });
+        });
+    });
+</script>
+<style>
+    .selection{
+        width: 40%;
+    }
+</style>
+
