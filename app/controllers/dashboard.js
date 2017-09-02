@@ -3,6 +3,7 @@ angular.module('employee')
         function($scope, $http, $rootScope, $sessionStorage, $resource) {
             $scope.selected = 0;
             $scope.results = {};
+            $scope.selectedResult = null;
             var Columns = $resource(BACKEND + '/api/columns');
             Columns.get().$promise.then(function(data) {
                 data = data.toJSON();
@@ -50,7 +51,7 @@ angular.module('employee')
                         });
                         console.log($scope.results);
                         console.log($scope.attributes[$scope.selected].key);
-                        $scope.selectedResult = ($scope.results[$scope.attributes[$scope.selected].key])[0];
+                        $scope.selectedResult = $scope.results[$scope.attributes[$scope.selected].key][0];
                         $(document).ready(function() {
                             $('select').material_select();
                           });
@@ -65,6 +66,8 @@ angular.module('employee')
             $scope.splitAtCaps = function(s) {
                 return s.split(/(?=[A-Z])/).join(' ')
             }  
-
+            $scope.setSelectedResult = function (val) {
+                $scope.selectedResult = val;
+            }
         }
     ]);
