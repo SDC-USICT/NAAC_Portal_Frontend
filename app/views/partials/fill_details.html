@@ -40,9 +40,9 @@
               <!-- Experiment  -->
 
               <div ng-if="results[attributes[selected].key]" class="input-field col s12" >
-                 <select style="margin-top: 1em" ng-model="selectedResult" ng-options="result as result for result in results[attributes[selected].key]" ng-init="selectedResult=results[attributes[selected].key][0]">
+                 <select style="margin-top: 1em" ng-model="selectedResult" ng-options="result as result.title for result in results[attributes[selected].key]" ng-init="selectedResult=results[attributes[selected].key][0]">
                  </select>
-               
+               	 <label>Choose {{splitAtCaps(attributes[selected].key)}} </label>
                </div>
             	<table>
             		<tbody>
