@@ -39,27 +39,13 @@
 
               <!-- Experiment  -->
 
-              <div class="input-field col s12">
-                          <select style="margin-top: 1em" >
-                            <option value="0" selected disabled>{{model_type}}</option>
-                            <option ng-repeat="x in result" ng-model="x">{{x}}</option>
-                          </select>
-                          <label for="">Yaha pe selected columns daal diyo</label>
-
-                        </div>
-
-
-
-
-
-
-
-
+              <div ng-if="results[attributes[selected].key]" class="input-field col s12" >
+                 <select style="margin-top: 1em" ng-model="selectedResult" ng-options="result as result for result in results[attributes[selected].key]" ng-init="selectedResult=results[attributes[selected].key][0]">
+                 </select>
+               
+               </div>
             	<table>
             		<tbody>
-
-
-
             			<tr ng-repeat="(key, value) in form_details[sections[selected]]">
             				<td ng-show="!value.verbose">{{value.name}}</td>
             				<td ng-show="value.verbose">{{value.verbose}}</td>
