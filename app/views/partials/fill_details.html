@@ -26,19 +26,30 @@
             <br>
 
               <!-- Experiment  -->
-
-              <div ng-if="results[attributes[selected].key]" class="input-field col s12" >
-                 <select ng-change="setSelectedResult(selectedResult)" style="margin-top: 1em" ng-model="selectedResult" ng-options="result as result.title for result in results[attributes[selected].key]" ng-init="selectedResult=results[attributes[selected].key][0]">
+              <div class="row no-margins" ng-if="results[attributes[selected].key]" >
+              <div class="input-field col s10 m10" >
+                 <select 
+                 style="margin-top: 1em" ng-model="selectedResult"
+                 ng-options="result as result.title for result in results[attributes[selected].key]"
+                  >
                  </select>
                	 <label>Choose {{splitAtCaps(attributes[selected].key)}} </label>
                </div>
-           
+             <div class="col s2 m2">
+               <i ng-click="addNewObject()"
+
+               style="font-size:3em; line-height:2.2em;" class="fa fa-plus-circle" aria-hidden="true"></i>
+             </div>
+           </div>
+           {{selectedResult}}
+
             	<table>
             		<tbody>
             			<tr ng-repeat="(key, value) in form_details[sections[selected]]">
             				<td ng-show="!value.verbose">{{value.name}}</td>
             				<td ng-show="value.verbose">{{value.verbose}}</td>
-            				<td><input type="text" name="" ng-model="results[attributes[selected].key][results[attributes[selected].key].indexOf(selectedResult)][value.name]"></td>
+            				<td><input type="text" name=""
+                      ng-model="results[attributes[selected].key][results[attributes[selected].key].indexOf(selectedResult)][value.name]"></td>
             			</tr>
             		</tbody>
             	</table>

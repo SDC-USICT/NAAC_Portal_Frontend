@@ -45,7 +45,7 @@ angular.module('employee')
                     if (data[0] != undefined) {
                          $scope.model_type = data[0].model;
                         $scope.saved_columns = data[0].fields;
-                         $scope.results[$scope.attributes[$scope.selected].key] = 
+                         $scope.results[$scope.attributes[$scope.selected].key] =
                          data.map(function(a) {
                             return a.fields;
                         });
@@ -65,9 +65,46 @@ angular.module('employee')
             }
             $scope.splitAtCaps = function(s) {
                 return s.split(/(?=[A-Z])/).join(' ')
-            }  
-            $scope.setSelectedResult = function (val) {
-                $scope.selectedResult = val;
             }
+            $scope.setSelectedResult = function (val) {
+							console.log('in selected result');
+							console.log(val)
+                $scope.selectedResult = val;
+								// $(document).ready(function () {
+								// 	$('select').material_select();
+								// })
+								// $scope.$evalAsync();
+
+
+            }
+						function skeleton(source, isArray) {
+						  var o = Array.isArray(source) ? [] : {};
+						  for (var key in source) {
+						    if (source.hasOwnProperty(key)) {
+						      var t = typeof source[key];
+						      o[key] = t == 'object' ? skeleton(source[key]) : { string: '', number: 0, boolean: false }[t];
+						    }
+						  }
+						  return o;
+						}
+						$scope.addNewObject = function () {
+							var sample = $scope.results[$scope.attributes[$scope.selected].key][0];
+							var skel = skeleton(sample);
+							skel.title = "Please enter a title!" + Math.random();
+							$scope.results[$scope.attributes[$scope.selected].key].push(skel);
+							$(document).ready(function () {
+								$('select').material_select();
+							})
+
+							console.log($scope.results);
+
+							$scope.setSelectedResult(skel);
+							$scope.$evalAsync();
+							$(document).ready(function () {
+								$('select').material_select();
+								  $("select").val($scope.results[$scope.attributes[$scope.selected].key][$scope.results[$scope.attributes[$scope.selected].key].length-1]);
+
+							})
+						}
         }
     ]);
