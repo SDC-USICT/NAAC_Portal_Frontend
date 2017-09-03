@@ -4,6 +4,29 @@ angular.module('employee')
             $scope.selected = 0;
             $scope.results = {};
             $scope.selectedResult = null;
+
+          
+            //var emp_detail = $resource(BACKEND +  '/api/employee_details');
+            //emp_detail.get().$promise.then(function(data) {
+                //data = data.toJSON();
+                //console.log(data);
+            //});
+             var data_get = $resource(BACKEND + '/api/get/', null, {
+                    'query': {
+                        method: 'POST',
+                        isArray: true
+                    }
+                });
+             //To be Checked
+                data_get.query({
+                    empid: "$rootScope.loginid"
+
+                }).$promise.then(function(data){
+                    console.log(data);
+                });
+
+
+
             var Columns = $resource(BACKEND + '/api/columns');
             Columns.get().$promise.then(function(data) {
                 data = data.toJSON();
@@ -22,12 +45,12 @@ angular.module('employee')
 
             $scope.get_status = function() {
                 return $scope.save_status;
-            }
+            };
             $scope.isSelected = function(value) {
                 return value.val == $scope.selected;
-            }
+            };
             $scope.setSelected = function(value) {
-                console.log(value)
+                console.log(value);
                 $scope.selected = value;
                 // Experiment
                 var data_get = $resource(BACKEND + '/api/get/', null, {
@@ -62,10 +85,10 @@ angular.module('employee')
                     }
                 });
 
-            }
+            };
             $scope.splitAtCaps = function(s) {
                 return s.split(/(?=[A-Z])/).join(' ')
-            }
+            };
             $scope.setSelectedResult = function (val) {
 							console.log('in selected result');
 							console.log(val)
@@ -76,7 +99,7 @@ angular.module('employee')
 								// $scope.$evalAsync();
 
 
-            }
+            };
 						function skeleton(source, isArray) {
 						  var o = Array.isArray(source) ? [] : {};
 						  for (var key in source) {
@@ -94,7 +117,7 @@ angular.module('employee')
 							$scope.results[$scope.attributes[$scope.selected].key].push(skel);
 							$(document).ready(function () {
 								$('select').material_select();
-							})
+							});
 
 							console.log($scope.results);
 
