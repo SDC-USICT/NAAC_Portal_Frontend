@@ -3,7 +3,10 @@ angular.module('employee')
         function($scope, $http, $rootScope, $sessionStorage, $resource) {
             $scope.selected = 0;
             $scope.results = {};
-            $scope.selectedResult = null;
+            $scope.selectedResult = 0;
+            $scope.attributes= [];
+
+
             var Columns = $resource(BACKEND + '/api/columns');
             Columns.get().$promise.then(function(data) {
                 data = data.toJSON();
@@ -19,10 +22,6 @@ angular.module('employee')
                     })
                 });
             });
-
-            $scope.get_status = function() {
-                return $scope.save_status;
-            }
             $scope.isSelected = function(value) {
                 return value.val == $scope.selected;
             }
@@ -44,14 +43,13 @@ angular.module('employee')
 
                     if (data[0] != undefined) {
                          $scope.model_type = data[0].model;
-                        $scope.saved_columns = data[0].fields;
+                         $scope.saved_columns = data[0].fields;
                          $scope.results[$scope.attributes[$scope.selected].key] =
                          data.map(function(a) {
                             return a.fields;
                         });
                         console.log($scope.results);
                         console.log($scope.attributes[$scope.selected].key);
-                        $scope.selectedResult = $scope.results[$scope.attributes[$scope.selected].key][0];
                         $(document).ready(function() {
                             $('select').material_select();
                           });
@@ -66,45 +64,57 @@ angular.module('employee')
             $scope.splitAtCaps = function(s) {
                 return s.split(/(?=[A-Z])/).join(' ')
             }
-            $scope.setSelectedResult = function (val) {
-							console.log('in selected result');
-							console.log(val)
+            $scope.setSelectedResult = function (val=null) {
+						
+               if(val != null) {
                 $scope.selectedResult = val;
-								// $(document).ready(function () {
-								// 	$('select').material_select();
-								// })
-								// $scope.$evalAsync();
-
+               }
 
             }
-						function skeleton(source, isArray) {
-						  var o = Array.isArray(source) ? [] : {};
-						  for (var key in source) {
-						    if (source.hasOwnProperty(key)) {
-						      var t = typeof source[key];
-						      o[key] = t == 'object' ? skeleton(source[key]) : { string: '', number: 0, boolean: false }[t];
-						    }
-						  }
-						  return o;
-						}
-						$scope.addNewObject = function () {
-							var sample = $scope.results[$scope.attributes[$scope.selected].key][0];
-							var skel = skeleton(sample);
-							skel.title = "Please enter a title!" + Math.random();
-							$scope.results[$scope.attributes[$scope.selected].key].push(skel);
-							$(document).ready(function () {
-								$('select').material_select();
-							})
+			function skeleton(source, isArray) {
+			  var o = Array.isArray(source) ? [] : {};
+			  for (var key in source) {
+			    if (source.hasOwnProperty(key)) {
+			      var t = typeof source[key];
+			      o[key] = t == 'object' ? skeleton(source[key]) : { string: '', number: 0, boolean: false }[t];
+			    }
+			  }
+			  return o;
+			}
+			$scope.addNewObject = function () {
+				sample = $scope.results[$scope.attributes[$scope.selected].key][0];
+				skel = skeleton(sample);
+				skel.title = "Please enter a title!" + Math.random();
+				$scope.results[$scope.attributes[$scope.selected].key].push(skel);
 
-							console.log($scope.results);
+                length = $scope.results[$scope.attributes[$scope.selected].key].length - 1
+				$(document).ready(function () {
+					$('select').material_select();
+				})
 
-							$scope.setSelectedResult(skel);
-							$scope.$evalAsync();
-							$(document).ready(function () {
-								$('select').material_select();
-								  $("select").val($scope.results[$scope.attributes[$scope.selected].key][$scope.results[$scope.attributes[$scope.selected].key].length-1]);
+				console.log($scope.results);
+                $scope.selectedResult = length;
+				console.log($scope.selectedResult);
+                $('select').material_select();
 
-							})
-						}
+				$scope.$evalAsync();
+				$('select').material_select();
+
+			}
+
+            $scope.getSelectedResult = function () {
+                return $scope.selectedResult;
+            }
+            $scope.save = function () {
+                rq = {
+                    'kls' : $scope.attributes[$scope.selected].key,
+                    'data' :  $scope.results[$scope.attributes[$scope.selected].key]
+                }
+                console.log(rq);
+                $http.post(BACKEND+'/api/post', JSON.stringify(rq))
+                .then(function (res) {
+                    console.log(res.data);
+                })
+            }
         }
     ]);
