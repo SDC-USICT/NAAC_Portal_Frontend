@@ -40,10 +40,16 @@ angular.module('employee')
                     empid: "30003",
                     kls: $scope.attributes[value].key
                 }).$promise.then(function(data) {
-
+                    console.log(data);
                     if (data[0] != undefined) {
                          $scope.model_type = data[0].model;
                          $scope.saved_columns = data[0].fields;
+                         // TODO: Rethink 
+                         angular.forEach(data, function(value, key){
+                             console.log(key)
+                             data[key]['fields']['pk'] = data[key]['pk'] 
+                             data[key]['fields']['model'] = data[key]['model']
+                         });
                          $scope.results[$scope.attributes[$scope.selected].key] =
                          data.map(function(a) {
                             return a.fields;
@@ -56,7 +62,7 @@ angular.module('employee')
                         $scope.$evalAsync()
 
                     } else {
-
+                        $scope.results[$scope.attributes[$scope.selected].key] = []
                     }
                 });
 
@@ -76,7 +82,7 @@ angular.module('employee')
 			  for (var key in source) {
 			    if (source.hasOwnProperty(key)) {
 			      var t = typeof source[key];
-			      o[key] = t == 'object' ? skeleton(source[key]) : { string: '', number: 0, boolean: false }[t];
+			      o[key] = t == 'object' ? skeleton(source[key]) : { string: '', number: null, boolean: false }[t];
 			    }
 			  }
 			  return o;
