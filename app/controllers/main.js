@@ -1,6 +1,8 @@
 angular.module('employee')
 	.controller('MainCtrl', ["$scope", "$http" , "$rootScope", "$sessionStorage", "$resource","$location",
 		function ($scope, $http, $rootScope, $sessionStorage, $resource, $location, getDept) {
+
+
 			$scope.schools = [
 				{
 					"value" : "University School of Information & Communication Technology",
@@ -48,14 +50,25 @@ angular.module('employee')
 				}
 
 			];
+			$scope.ss = {
+				'selected' : $scope.schools[0]
+			};
+			$scope.setSelectedSchool = function () {
+				console.log($scope.ss);
+				$rootScope.school = $scope.ss.selected;
+								$location.path('/selection');
+
+
+			}
             $scope.school = "";
             console.log("controller");
 			$scope.showSchool = function(){
-				$location.path('/selection');
                 console.log("directing");
 			}
             $scope.updateDept = function(department){
                 $scope.school = department;
+                				$rootScope.school = department;
+
                 console.log("Updated value " + $scope.school + " " + department);
             }
 		}]);

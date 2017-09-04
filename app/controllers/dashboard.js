@@ -5,6 +5,31 @@ angular.module('employee')
             $scope.results = {};
             $scope.selectedResult = 0;
             $scope.attributes= [];
+            $scope.editing = 0;
+            if($rootScope.loginid == undefined) {
+                if($sessionStorage.loginid != undefined) {
+                    $sessionStorage.loginid = $rootScope.loginid;
+                } else {
+                    $location.url('/')
+                }
+            } else {
+                $sessionStorage.loginid = $rootScope.loginid;
+            }
+
+            var data_emp = $resource(BACKEND + '/api/employee', null, {
+                'query': {
+                    method: 'POST',
+                    isArray: true
+                }
+            });
+            data_emp.query({
+                empid: $rootScope.loginid
+
+            }).$promise.then(function(data){
+                console.log(data);
+                $scope.employee = data[0]['fields'];
+                $scope.employee.pk = data[0]['pk']
+            });
 
 
             var Columns = $resource(BACKEND + '/api/columns');
@@ -13,15 +38,43 @@ angular.module('employee')
                 console.log(data);
                 $scope.attributes = [];
                 $scope.form_details = data;
-                $scope.sections = Object.keys(data);
-                console.log($scope.sections[0]);
-                angular.forEach(Object.keys(data), function(value, key) {
+                $scope.sections = Object.keys(data).sort();
+                console.log($scope.sections);
+                angular.forEach($scope.sections, function(value, key) {
                     $scope.attributes.push({
                         'key': value,
                         'val': key
                     })
                 });
+                console.log($scope.attributes);
+                $scope.setSelected(0);
+                
             });
+            $scope.setEditing = function () {
+               $(document).ready(function () {
+                    $("input").attr("readonly", false);
+                })
+                $scope.$evalAsync();
+                $scope.editing = 1;
+            }
+            $scope.unsetEditing = function () {
+                $(document).ready(function () {
+                    $("input").attr("readonly", true);
+                })
+                $scope.$evalAsync();
+
+                $scope.editing = 0;
+                req = {
+                    'data' : $scope.employee
+                }
+                console.log(req)
+                $http.post(BACKEND+'/api/emppost', req)
+                .then(function (data) {
+                    data = data.data;
+                    $scope.employee = data[0]['fields'];
+                    $scope.employee.pk = data[0]['pk']
+                })
+            }
             $scope.isSelected = function(value) {
                 return value.val == $scope.selected;
             }
@@ -37,7 +90,7 @@ angular.module('employee')
                 });
 
                 data_get.query({
-                    empid: "30003",
+                    empid: $rootScope.loginid,
                     kls: $scope.attributes[value].key
                 }).$promise.then(function(data) {
                     console.log(data);
@@ -52,6 +105,7 @@ angular.module('employee')
                          });
                          $scope.results[$scope.attributes[$scope.selected].key] =
                          data.map(function(a) {
+                            a.fields.employee = $rootScope.loginid;
                             return a.fields;
                         });
                         console.log($scope.results);
@@ -87,10 +141,29 @@ angular.module('employee')
 			  }
 			  return o;
 			}
+            function orderKeys(obj, expected) {
+              var keys = Object.keys(obj).sort(function keyOrder(k1, k2) {
+                  if (k1 < k2) return -1;
+                  else if (k1 > k2) return +1;
+                  else return 0;
+              });
+
+              var i, after = {};
+              for (i = 0; i < keys.length; i++) {
+                after[keys[i]] = obj[keys[i]];
+                delete obj[keys[i]];
+              }
+
+              for (i = 0; i < keys.length; i++) {
+                obj[keys[i]] = after[keys[i]];
+              }
+              return obj;
+            }
 			$scope.addNewObject = function () {
 				sample = $scope.results[$scope.attributes[$scope.selected].key][0];
 				skel = skeleton(sample);
 				skel.title = "Please enter a title!" + Math.random();
+                skel.employee = $rootScope.loginid;
 				$scope.results[$scope.attributes[$scope.selected].key].push(skel);
 
                 length = $scope.results[$scope.attributes[$scope.selected].key].length - 1
@@ -119,7 +192,20 @@ angular.module('employee')
                 console.log(rq);
                 $http.post(BACKEND+'/api/post', JSON.stringify(rq))
                 .then(function (res) {
-                    console.log(res.data);
+                    console.log(res.data.data);
+                    raw = res.data.data;
+
+                    angular.forEach(raw, function(value, key){
+                             console.log(key)
+                             raw[key]['fields']['pk'] = raw[key]['pk'] 
+                             raw[key]['fields']['model'] = raw[key]['model']
+                         });
+                     $scope.results[$scope.attributes[$scope.selected].key] =
+                     raw.map(function(a) {
+                        return a.fields;
+                    });
+
+
                 })
             }
         }

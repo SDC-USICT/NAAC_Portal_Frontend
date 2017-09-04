@@ -12,14 +12,14 @@
          <div class="row">
            <div class="input-field col s12">
              <i class="material-icons prefix">mail_outline</i>
-             <input class="validate" id="empid" type="number" value="{{employeeData.instructor_id}}">
+             <input class="validate" id="empid" type="text" ng-model="loginid">
              <label for="empid">Employee ID</label>
            </div>
          </div>
          <div class="row">
            <div class="input-field col s12">
              <i class="material-icons prefix">lock_outline</i>
-             <input id="password" type="password">
+             <input id="password" type="password" ng-model="password">
              <label for="password">Password</label>
            </div>
          </div>
@@ -31,7 +31,7 @@
          </div>
          <div class="row">
            <div class="input-field col s12">
-             <a href="#" class="btn waves-effect waves-light col s12" style="background: #1a237d">Login</a>
+             <a ng-click="submit()" href="#" class="btn waves-effect waves-light col s12" style="background: #1a237d">Login</a>
            </div>
          </div>
          <div class="row">
@@ -43,3 +43,10 @@
        </form>
      </div>
    </div>
+
+<script>
+ $(document).ready(function() {
+    Materialize.updateTextFields();
+  });
+        
+</script>

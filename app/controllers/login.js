@@ -2,11 +2,11 @@ angular.module('employee')
 	.controller('LoginCtrl', ["$scope", "$http" , "$rootScope", "$sessionStorage", "$location",
 		function ($scope, $http, $rootScope, $sessionStorage, $location) {
 			
-		
+			console.log($rootScope.loginid);
 
 			$scope.submit = function () {
 				req = {
-				'empid' : $scope.empid,
+				'empid' : $rootScope.loginid,
 				'password' : $scope.password
 			}
 			console.log(req);
@@ -14,9 +14,13 @@ angular.module('employee')
 				.then(function (res) {
 					console.log(res.data);
 					if (res.data.success != undefined) {
+						$rootScope.loginid = $scope.empid;
 						$location.path('/dashboard');
+
 					}
-				})
+					else
+						alert('Login incorrect');
+				});
 			}
 		
 		}]);

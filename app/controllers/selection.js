@@ -1,7 +1,31 @@
 angular.module('employee')
-	.controller('SelCtrl', ["$scope", "$http" , "$rootScope", "$sessionStorage",
-		function ($scope, $http, $rootScope, $sessionStorage, getDept) {
-            console.log("sel" + getDept.school);
-            $scope.sch = getDept.school;
-			var empData = $resource(BACKEND + 'api/employeeData' + sch);
+	.controller('SelCtrl', ["$scope", "$http" , "$rootScope", "$location", "$resource",
+		function ($scope, $http, $rootScope, $location, $resource) {
+            console.log($rootScope.school);
+            if($rootScope.school == undefined){
+            	$location.path('/')
+            }
+            else {
+            	 var data_emp = $resource(BACKEND + '/api/school', null, {
+                'query': {
+                    method: 'POST',
+                    isArray: true
+                }
+            });
+
+             data_emp.query({
+                school: $rootScope.school
+
+            }).$promise.then(function(data){
+                console.log(data);
+              	$scope.empData = data;
+            });
+            }	
+
+            $scope.setEmployee = function (val) {
+            	$rootScope.loginid = val.pk;
+            	console.log(val.pk);
+            	$location.url('/login');
+            }
+          
 		}]);

@@ -24,7 +24,7 @@
             </div>
             <div class="col m2">
                 <br>
-                <div ng-if="results[attributes[selected].key]">
+                <div ng-if="results[attributes[selected].key].length > 0">
                     <div style="    width: 100%;">
                         <a ng-click="addNewObject()" class="btn waves-effect waves-light">
                             <i style="font-size:1.2em; line-height:1.2em;" class="fa fa-plus-circle" aria-hidden="true"></i> ADD {{splitAtCaps(attributes[selected].key)}} </a>
@@ -32,7 +32,7 @@
                     <br>
                     <label>Choose {{splitAtCaps(attributes[selected].key)}} </label>
                     <BR>
-                    <div ng-repeat="result in results[attributes[selected].key]">
+                    <div ng-repeat="result in results[attributes[selected].key] track by $index">
 
                         <div ng-class="{'active':($index==selectedResult)}" ng-click="setSelectedResult($index)" class="card no-margins">
                             <div style="padding:12px !important" class="card-content result-title">{{result.title}}</div>
@@ -50,7 +50,7 @@
 
                     </div>
                     <tbody>
-                        <tr ng-repeat="(key, value) in form_details[sections[selected]]">
+                        <tr ng-hide="value.name=='id'" ng-repeat="(key, value) in form_details[sections[selected]]">
                             <td ng-show="!value.verbose">{{value.name}}</td>
                             <td ng-show="value.verbose">{{value.verbose}}</td>
                             <td>

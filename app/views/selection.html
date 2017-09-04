@@ -5,28 +5,31 @@
             <div class="card-content">
               <span class="card-title bold">Select School</span>
               <p>
-              <table class="striped">
+              <table class="striped" ng-if="empData">
                     <thead>
                       <tr>
                           <th>&nbsp;&nbsp;Name</th>
                           <th>&nbsp;&nbsp;Id</th>
-                          <th>&nbsp;&nbsp;Email</th>
-                          <th>&nbsp;&nbsp;Designation</th>
-                          <th>&nbsp;&nbsp;School</th>
+                         
                       </tr>
                     </thead>
              <tbody>
-                  <tr ng-repeat="for x in empData" id="{{ x.instructor_id }}" ng-model="employeeData">
-                    <td>&nbsp;&nbsp;{{ x.name }}</td>
-                    <td>&nbsp;&nbsp;{{ x.instructor_id }}</td>
-                    <td>&nbsp;&nbsp;{{ x.email }}</td>
-                    <td>&nbsp;&nbsp;{{ x.designation }}</td>
-                    <td style="text-transform: uppercase">&nbsp;&nbsp;{{ x.school }}</td>
+                  <tr ng-click="setEmployee(x)" ng-repeat="x in empData" id="{{ x.pk }}">
+                    <td>&nbsp;&nbsp;{{ x.fields.name }}</td>
+                    <td>&nbsp;&nbsp;{{ x.pk }}</td>
+                   
                   </tr>
             </tbody>
             </table>
               </p>
             </div>
           </div>
-        <div id="jkdsfj">{{ school }}</div><div>dhsdhf</div>
   </div>
+<style type="text/css">
+  tr {
+    cursor: pointer;
+  }
+  tr:hover{
+    background: aliceblue;
+  }
+</style>
