@@ -1,6 +1,6 @@
 angular.module('employee')
-    .controller('DashboardCtrl', ["$scope", "$http", "$rootScope", "$sessionStorage", "$resource",
-        function($scope, $http, $rootScope, $sessionStorage, $resource) {
+    .controller('DashboardCtrl', ["$scope", "$http", "$rootScope", "$sessionStorage", "$resource","$location",
+        function($scope, $http, $rootScope, $sessionStorage, $resource, $location) {
             $scope.selected = 0;
             $scope.results = {};
             $scope.selectedResult = 0;
