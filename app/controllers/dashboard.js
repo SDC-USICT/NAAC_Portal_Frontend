@@ -6,15 +6,13 @@ angular.module('employee')
             $scope.selectedResult = 0;
             $scope.attributes= [];
             $scope.editing = 0;
+
             if($rootScope.loginid == undefined) {
-                if($sessionStorage.loginid != undefined) {
-                    $sessionStorage.loginid = $rootScope.loginid;
-                } else {
-                    $location.url('/')
-                }
+                console.log($rootScope.loginid);
+                
+                $location.url('/')              
             } else {
-                $sessionStorage.loginid = $rootScope.loginid;
-            }
+
 
             var data_emp = $resource(BACKEND + '/api/employee', null, {
                 'query': {
@@ -208,5 +206,6 @@ angular.module('employee')
 
                 })
             }
+        }
         }
     ]);
