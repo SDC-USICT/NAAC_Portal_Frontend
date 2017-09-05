@@ -8,9 +8,15 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
 
             if($rootScope.loginid == undefined) {
                 console.log($rootScope.loginid);
-                
-                $location.url('/')              
-            } else {
+
+                if($sessionStorage.loginid != undefined) {
+                    $rootScope.loginid = $sessionStorage.loginid;
+                } else {
+                    $location.url('/')              
+                }
+            } 
+
+            $sessionStorage.loginid = $rootScope.loginid;    
 
             var data_emp = $resource(BACKEND + '/api/employee', null, {
                 'query': {
@@ -26,66 +32,6 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                 $scope.employee = data[0]['fields'];
                 $scope.employee.pk = data[0]['pk']
             });
-
-
-
-
-
-
-
-            // image upload
-
-            // $scope.upload = function(){
-            //    var file = $scope.image;
-            //    console.log(file);
-            //    var uploadUrl = BACKEND + '/api/image';
-            //    console.log("url : " + uploadUrl);
-            //    fileUpload.uploadFiletoUrl(file, uploadUrl);
-            //    console.log(file);
-            // };
-
-
-        //     $http({
-        //     method: 'POST',
-        //     url: BACKEND + 'api/image',
-        //     headers: {
-        //         'Content-Type': 'multipart/form-data'
-        //     },
-        //     data: {
-        //         image: $scope.file,
-        //         empid : $rootScope.loginid
-        //     },
-        //     transformRequest: function (data, headersGetter) {
-        //         var formData = new FormData();
-        //         angular.forEach(data, function (value, key) {
-        //             formData.append(key, value);
-        //         });
-
-        //         var headers = headersGetter();
-        //         delete headers['Content-Type'];
-
-        //         return formData;
-        //     }
-        // })
-        // .success(function (data) {
-        //     console.log("success");
-        // })
-        // .error(function (data, status) {
-        //         console.log("error");
-        // });
-
-
-
-
-
-
-
-
-
-
-
-
-
 
             var Columns = $resource(BACKEND + '/api/columns');
             Columns.get().$promise.then(function(data) {
@@ -248,6 +194,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                 console.log(rq);
                 $http.post(BACKEND+'/api/post', JSON.stringify(rq))
                 .then(function (res) {
+                    Materialize.toast('Data Saved Successfully!', 4000) 
                     console.log(res.data.data);
                     raw = res.data.data;
 
@@ -264,6 +211,6 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
 
                 })
             }
-        }
+        
         }
     ]);
