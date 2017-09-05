@@ -3,6 +3,11 @@ angular.module('employee', ['ngRoute', 'ngStorage', 'ngResource'])
 	function ($routeProvider, $locationProvider) {
 	$routeProvider.
    when('/', {
+    templateUrl: 'app/views/index.html',
+    controller: 'IndexCtrl',
+    controllerAs: 'index'
+   }).
+    when('/index', {
     templateUrl: 'app/views/main.html',
     controller: 'MainCtrl',
     controllerAs: 'main'

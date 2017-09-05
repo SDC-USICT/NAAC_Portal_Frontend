@@ -19,7 +19,7 @@
          <div class="row">
            <div class="input-field col s12">
              <i class="material-icons prefix">lock_outline</i>
-             <input id="password" type="password" ng-model="password">
+             <input id="password" type="password" ng-model="password" autofocus>
              <label for="password">Password</label>
            </div>
          </div>
@@ -47,6 +47,11 @@
 <script>
  $(document).ready(function() {
     Materialize.updateTextFields();
+     $('#login-page').keydown(function(e){
+            if(e.keyCode == 13){
+                $('.btn').trigger('click');
+             }
+        });
   });
         
 </script>

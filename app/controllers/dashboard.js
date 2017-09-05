@@ -122,13 +122,13 @@ angular.module('employee')
             $scope.splitAtCaps = function(s) {
                 return s.split(/(?=[A-Z])/).join(' ')
             }
-            $scope.setSelectedResult = function (val=null) {
+            $scope.setSelectedResult = function(val=null){
 						
                if(val != null) {
                 $scope.selectedResult = val;
                }
 
-            }
+            };
 			function skeleton(source, isArray) {
 			  var o = Array.isArray(source) ? [] : {};
 			  for (var key in source) {

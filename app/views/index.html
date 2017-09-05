@@ -1,0 +1,61 @@
+<div class="container" ng-controller="IndexCtrl as index">
+    <div class="row">
+        <div class="col s12 m12">
+          <div class="card hoverable darken-1">
+            <div class="card-content">
+              <span class="card-title">
+                Instructions for submission of Online Form of NAAC
+              </span>
+                <div class="card-action">
+                    <p>
+
+                        <ol>
+                            <li>Please refer <a href="#" style="margin-right:0px;">this video </a>in case of any problem with filling this form.</li>
+                            <li>Procedure: 4 Simple Steps to be followed to apply online
+<li>Step 1:	Fill in the Online Application Form and note down system generated Application Number .</li>
+<li>Step 2:	Upload Scanned Images of Photograph and Signature:</li>
+
+<li>Step 3:	Pay Examination Fee by echallan or debit/credit card:</li>
+
+<li>Step 4: candidate will be able to print the Confirmation Page.</li>
+                        </ol>
+                    <strong>NOTE :</strong> The Candidate will be able to modify/correct the particulars before the payment of fees. Once the payment of fee has been made / e-Challan downloaded, candidate particulars cannot be edited.
+
+                    </p>
+                </div>
+                <div class="card-action">
+                    <p>
+                        <input type="checkbox" id="declaration"/>
+                        <label for="declaration">&nbsp;Declaration : I have download Information Bulletin and read all the instructions.
+                        </label>
+                    </p>
+            </div>
+            </div>
+            <div class="card-action right-align">
+              <button class="btn waves-effect waves-light  indigo darken-4 disabled submit" ng-click="index()" type="submit" name="action">Submit
+                    <i class="material-icons right">send</i>
+              </button>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function(){
+        $('#declaration').click(function(){
+            $('.submit').toggleClass("disabled");
+        });
+        $('.container').keydown(function(e){
+            if(e.keyCode == 13){
+                $('.btn').trigger('click');
+             }
+        });
+    });
+</script>
+<style>
+    li{
+        line-height: 30px;
+    }
+</style>
+

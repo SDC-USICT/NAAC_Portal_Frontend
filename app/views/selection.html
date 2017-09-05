@@ -1,9 +1,60 @@
 
-<div class="container" ng-controller="SelCtrl as sel">
+<!-- preloader -->
+<div class="container">
+    <div class="row mid">
+        <div class="col md2 offset-5">
+<div class="preloader-wrapper medium active">
+      <div class="spinner-layer spinner-blue">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+
+<div class="spinner-layer spinner-red">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+
+<div class="spinner-layer spinner-yellow">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+
+      <div class="spinner-layer spinner-green">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+    </div>
+</div>
+        </div>
+    </div>
+
+<!-- preloader end -->
+
+<div class="container select" ng-controller="SelCtrl as sel" style="display: none;">
     <div class="input-field col s12 school">
         <div class="card">
             <div class="card-content">
-              <span class="card-title bold">Select School</span>
+              <span class="card-title bold">Select Your Id</span>
               <p>
               <table class="striped" ng-if="empData">
                     <thead>
@@ -25,6 +76,17 @@
             </div>
           </div>
   </div>
+    </div>
+
+<script>
+    $(document).ready(function(){
+        setTimeout(function(){
+            $('.spinner-layer').css('display','none');
+            $('.select').css('display','block');
+        },2500);
+    });
+</script>
+
 <style type="text/css">
   tr {
     cursor: pointer;
@@ -32,4 +94,9 @@
   tr:hover{
     background: aliceblue;
   }
+    .preloader-wrapper{
+        position: absolute;
+        top:45%;
+        left: 45%;
+    }
 </style>

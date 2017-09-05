@@ -1,3 +1,11 @@
+<style>
+    .toast{
+        background: #ffffff;
+    color: black;
+    font-weight: 500;
+    }
+</style>
+
 <nav  class="secondary-navbar">
     <div class="nav-wrapper">
         <ul class="tabs">
@@ -38,5 +46,7 @@
      $(document).ready(function(){
     $('ul.tabs').tabs();
     $('#dash').click();
+    Materialize.toast('Logged In Successfully', 4000);
   });
 </script>
+
