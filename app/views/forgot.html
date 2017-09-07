@@ -1,0 +1,34 @@
+<div class="container selection" ng-controller="ForgotCtrl as forg">
+
+    <div class="row">
+        <div class="col s12 m12">
+          <div class="card darken-1">
+            <div class="card-content">
+              <span class="card-title">Change Password</span>
+              <p>
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <input id="email" date-wrong="Incorrect Email" type="email" class="validate" placeholder="Enter your E-mail Id" ng-model="mail.email">
+                      <label for="email">Email</label>
+                    </div>
+                  </div>
+              </p>
+            </div>
+            <div class="card-action right-align">
+              <button class="btn waves-effect waves-light indigo darken-4" type="submit" ng-click="submit()" name="action">Submit
+                <i class="material-icons right">send</i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+</div>
+
+
+
+<script>
+    $(document).ready(function() {
+    Materialize.updateTextFields();
+  });
+</script>

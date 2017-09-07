@@ -21,5 +21,10 @@ angular.module('employee')
 						alert('Login incorrect');
 				});
 			}
+
+			$scope.forgot = function(){
+				console.log("Reidrecting");
+					$location.path('/forgot');
+			};
 		
 		}]);

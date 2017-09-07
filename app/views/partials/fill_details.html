@@ -51,6 +51,7 @@
                     </div>
                     <tbody>
                         <tr ng-hide="value.name=='id'" ng-repeat="(key, value) in form_details[sections[selected]]">
+          
                             <td ng-show="!value.verbose">{{value.name}}</td>
                             <td ng-show="value.verbose">{{value.verbose}}</td>
                             <td>
@@ -74,17 +75,17 @@
             width: 95% !important;
         }
     }
-    
+
     .card.active {
         background: aliceblue;
     }
-    
+
     .card-content.result-title {
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
     }
-    
+
     .btn {
         background-color: #1a237e;
     }

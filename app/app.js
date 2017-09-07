@@ -26,7 +26,12 @@ angular.module('employee', ['ngRoute', 'ngStorage', 'ngResource'])
     templateUrl: 'app/views/dashboard.html',
     controller: 'DashboardCtrl',
     controllerAs: 'dash'
-   })
+   }).
+    when('/forgot', {
+    templateUrl: 'app/views/forgot.html',
+    controller: 'ForgotCtrl',
+    controllerAs: 'forg'
+   });
    $locationProvider.html5Mode(false).hashPrefix('');
 
 }])
