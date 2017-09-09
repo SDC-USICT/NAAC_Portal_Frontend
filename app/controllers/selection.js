@@ -19,6 +19,10 @@ angular.module('employee')
             }).$promise.then(function(data){
                 console.log(data);
               	$scope.empData = data;
+                 $(document).ready(function(){
+                    $('.spinner-layer').css('display','none');
+                    $('.select').css('display','block');
+                 });
             });
             }	
 

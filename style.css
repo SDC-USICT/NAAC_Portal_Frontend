@@ -155,3 +155,15 @@ nav {
   .selection{
         width: 40%;
     }
+  .hovered:hover{
+      background: white;
+      cursor: default;
+  }
+  .toast{
+    background: #ffffff;
+    color: black;
+    font-weight: 500;
+    }
+    .forgot:hover{
+      cursor: pointer;
+    }

@@ -58,7 +58,7 @@
               <p>
               <table class="striped" ng-if="empData">
                     <thead>
-                      <tr>
+                      <tr class="hovered">
                           <th>&nbsp;&nbsp;Name</th>
                           <th>&nbsp;&nbsp;Id</th>
                          
@@ -78,14 +78,8 @@
   </div>
     </div>
 
-<script>
-    $(document).ready(function(){
-        setTimeout(function(){
-            $('.spinner-layer').css('display','none');
-            $('.select').css('display','block');
-        },2500);
-    });
-</script>
+
+
 
 <style type="text/css">
   tr {
