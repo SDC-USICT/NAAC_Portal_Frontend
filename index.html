@@ -32,7 +32,16 @@
 	
 </head>
 <body ng-app="employee">
- <main>
+
+
+<div class="progress">
+      <div class="indeterminate"></div>
+  </div>
+
+
+
+
+ <main class="declaration">
  <header>
     <nav>
         <div class="nav-wrapper">
@@ -51,7 +60,7 @@
 
 		<div ng-view=""></div>
  </main>
-<footer class="page-footer">
+<footer class="page-footer declaration">
     <div class="footer-copyright">
         <div class="container center">
 
@@ -64,4 +73,13 @@
     </div>
 </footer>
 </body>
+
+<script type="text/javascript">
+    $(window).on("load",function(){
+        $('.progress').css('display','none');
+        $('.declaration').css('display','block');
+    });
+</script>
+
+
 </html>

@@ -15,6 +15,7 @@ angular.module('employee')
 					console.log(res.data);
 					if (res.data.success != undefined) {
 						$location.path('/dashboard');
+
 					}
 					else
 						alert('Login incorrect');

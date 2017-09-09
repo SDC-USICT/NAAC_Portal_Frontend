@@ -1,5 +1,4 @@
-angular.module('employee')
-    .controller('DashboardCtrl', ["$scope", "$http", "$rootScope", "$sessionStorage", "$resource","$location",
+angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$rootScope", "$sessionStorage", "$resource","$location",
         function($scope, $http, $rootScope, $sessionStorage, $resource, $location) {
             $scope.selected = 0;
             $scope.results = {};
@@ -12,7 +11,6 @@ angular.module('employee')
                 
                 $location.url('/')              
             } else {
-
 
             var data_emp = $resource(BACKEND + '/api/employee', null, {
                 'query': {
@@ -28,6 +26,65 @@ angular.module('employee')
                 $scope.employee = data[0]['fields'];
                 $scope.employee.pk = data[0]['pk']
             });
+
+
+
+
+
+
+
+            // image upload
+
+            // $scope.upload = function(){
+            //    var file = $scope.image;
+            //    console.log(file);
+            //    var uploadUrl = BACKEND + '/api/image';
+            //    console.log("url : " + uploadUrl);
+            //    fileUpload.uploadFiletoUrl(file, uploadUrl);
+            //    console.log(file);
+            // };
+
+
+        //     $http({
+        //     method: 'POST',
+        //     url: BACKEND + 'api/image',
+        //     headers: {
+        //         'Content-Type': 'multipart/form-data'
+        //     },
+        //     data: {
+        //         image: $scope.file,
+        //         empid : $rootScope.loginid
+        //     },
+        //     transformRequest: function (data, headersGetter) {
+        //         var formData = new FormData();
+        //         angular.forEach(data, function (value, key) {
+        //             formData.append(key, value);
+        //         });
+
+        //         var headers = headersGetter();
+        //         delete headers['Content-Type'];
+
+        //         return formData;
+        //     }
+        // })
+        // .success(function (data) {
+        //     console.log("success");
+        // })
+        // .error(function (data, status) {
+        //         console.log("error");
+        // });
+
+
+
+
+
+
+
+
+
+
+
+
 
 
             var Columns = $resource(BACKEND + '/api/columns');
@@ -51,6 +108,7 @@ angular.module('employee')
             $scope.setEditing = function () {
                $(document).ready(function () {
                     $("input").attr("readonly", false);
+                    $('#date_join').addClass('datepicker');
                 })
                 $scope.$evalAsync();
                 $scope.editing = 1;

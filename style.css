@@ -167,3 +167,13 @@ nav {
     .forgot:hover{
       cursor: pointer;
     }
+    .progress{
+         width: 40%;
+    margin: auto;
+    position: absolute;
+    top: 48%;
+    left: 30%;
+    }
+    .declaration{
+      display: none;
+    }

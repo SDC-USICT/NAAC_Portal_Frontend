@@ -4,7 +4,7 @@ angular.module('employee')
 
 			$scope.submit = function () {
 				mail = {
-				'email' : $scope.email
+				'email' : $scope.email,
 				'empid' : $rootScope.loginid
 			};
 				$http.post(BACKEND+'/api/forgot', JSON.stringify(mail))

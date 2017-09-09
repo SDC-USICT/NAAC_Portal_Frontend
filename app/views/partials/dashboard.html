@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
 <div id="grad" class="student-card card no-margin" style="margin: 0 !important">
     <div class=" card-content row">
 
@@ -11,6 +11,122 @@
             <div class="teacher-id">{{employee.pk}}</div>
         </div>
         <div class="col m4 ">
+        </div>
+        <div class="col m4">
+
+            <a ng-if="editing==0" ng-click="setEditing()" class="editBtn btn waves-effect waves-light">
+                 EDIT DETAILS
+                </a>
+            <a ng-if="editing==1" ng-click="unsetEditing()" class="saveBtn btn waves-effect waves-light">
+                 SAVE DETAILS
+                </a>
+            <a class="disabled logout btn waves-effect waves-light right">LOG OUT </a>
+
+        </div>
+    </div>
+
+    <div class="card-action">
+        <div class="row">
+
+            <div class="col m4">
+                <div class="small-title">DESIGNATION</div>
+              <input type="text" name="" ng-class="{'noneditable':(editing!=1)}" ng-model="employee.designation">
+            </div>
+            <div class="col m4">
+                <div class="small-title">ROOM</div>
+                <input type="text" name="" ng-class="{'noneditable':(editing!=1)}" ng-model="employee.room_no">
+
+            </div>
+            <div class="col m4">
+                <div class="small-title">DATE OF JOINING</div>
+                <input type="text" name="" id="date_join" ng-class="{'noneditable':(editing!=1)}" ng-model="employee.date_of_joining">
+
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="card-action">
+
+        <div class="row">
+            <div class="col m12">
+
+                <div class="input-field col m6">
+                    <div class="small-title">EMAIL ID</div>
+                    <input type="text" name="" ng-class="{'disable':(editing!=1)}" ng-model="employee.email">
+
+                </div>
+
+                <div class="input-field col m6">
+                    <div class="small-title">PHONE</div>
+                    <input type="text" name="" ng-class="{'noneditable':(editing!=1)}" ng-model="employee.phone">
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="card-action">
+        <div class="row">
+
+            <a class="disabled change-password btn waves-effect waves-light left">CHANGE
+                    PASSWORD </a>
+            
+        </div>
+
+    </div>
+</div>
+
+</div>
+
+<br><br>
+<script type="text/javascript">
+$(document).ready(function () {
+        $("input").attr("readonly", true);
+
+})
+   
+</script>
+<style type="text/css">
+    input[type=text]:not(.browser-default)[readonly="readonly"] {
+        color: black;
+        border-bottom: 0;
+    }
+</style> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container">
+<div id="grad" class="student-card card no-margin" style="margin: 0 !important">
+    <div class=" card-content row">
+
+        <div class="col m2 ">
+
+            <img src="app/views/images/dummy.jpg" style="width: 100%;height: 90%;">
+            <button class="btn waves-effect waves-light indigo darken-4 modal-trigger" data-target="modal1" style="width: 100%">Upload Image</button>
+        </div>
+
+        <div class="col m6">
+
+            <div class='greeting'>HELLO</div>
+
+            <h4 class="light">{{employee.name}}</h4>
+
+            <div class="teacher-id">{{employee.pk}}</div>
         </div>
         <div class="col m4">
 
@@ -80,19 +196,56 @@
     </div>
 </div>
 
+
+ <!-- modal trigger -->
+        <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Upload Your Photo</h4>
+      <p>
+        <form action="#"  enctype="multipart/form-data">
+        <div class="row">
+            <div class="col md2">
+                <img src="app/views/images/dummy.jpg" style="width: 150px;height: 150px;">
+            </div>
+            <div class="col md10" style="width: 75%;">
+                <div class="file-field input-field">
+          <div class="btn indigo darken-4">
+            <span>Choose File</span>
+            <input type="file" id="fileUploadForm" class="image" placeholder="Click to Upload File">
+          </div>
+          <div class="file-path-wrapper">
+            <input class="file-path validate" type="text" style="border-bottom: 1px solid green;">
+          </div>
+        </div>
+            </div>
+        </div>
+      </form>
+      </p>
+    </div>
+    <div class="modal-footer right-align">
+    <button id="submit" class="btn waves-effect waves-light indigo darken-4 modal-action modal-close" style="margin: 20px" name="action">Upload
+                    <i class="material-icons right">cloud_upload</i>
+    </div>
+  </div>
+
+
+
 </div>
 
 <br><br>
 <script type="text/javascript">
 $(document).ready(function () {
         $("input").attr("readonly", true);
-
-})
+        $('.modal').modal();
+});
    
 </script>
 <style type="text/css">
     input[type=text]:not(.browser-default)[readonly="readonly"] {
         color: black;
         border-bottom: 0;
+    }
+    .modal{
+        height: 55%;
     }
 </style>
