@@ -199,4 +199,10 @@ button {
   letter-spacing: 0.2em;
 }
 
-
+.time {
+  color: black;
+  font-weight: 500;
+}
+.time.grey-text {
+  font-weight: 400;
+}

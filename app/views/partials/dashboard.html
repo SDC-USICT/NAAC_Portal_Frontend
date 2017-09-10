@@ -3,8 +3,8 @@
     <div class=" card-content row">
 
         <div class="col m2 ">
-
-            <img src="app/views/images/dummy.jpg" style="width: 100%;height: 90%;">
+            <img ng-show="empImg" ng-src="{{empImg}}" style="width: 100%;height: 90%;">
+            <img ng-hide="empImg" src="app/views/images/dummy.jpg" style="width: 100%;height: 90%;">
             <button class="btn waves-effect waves-light indigo darken-4 modal-trigger" data-target="modal1" style="width: 100%">Upload Image</button>
         </div>
 
@@ -90,30 +90,26 @@
     <div class="modal-content">
       <h4>Upload Your Photo</h4>
       <p>
-        <form action="#"  enctype="multipart/form-data">
+        <form ng-submit="uploadImage()" enctype="multipart/form-data">
         <div class="row">
-            <div class="col md2">
-                <img src="app/views/images/dummy.jpg" style="width: 150px;height: 150px;">
-            </div>
             <div class="col md10" style="width: 75%;">
                 <div class="file-field input-field">
-          <div class="btn indigo darken-4">
-            <span>Choose File</span>
-            <input type="file" id="fileUploadForm" class="image" placeholder="Click to Upload File">
-          </div>
-          <div class="file-path-wrapper">
-            <input class="file-path validate" type="text" style="border-bottom: 1px solid green;">
-          </div>
-        </div>
+                <div class="btn indigo darken-4">
+                    <span>Choose File</span>
+                    <input type="file" files-input ng-model="employeeMeta.image" id="fileUploadForm" class="image" placeholder="Click to Upload File">
+                </div>
+                <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text" style="border-bottom: 1px solid green;">
+                </div>
             </div>
         </div>
+    </div>
+
+        <button type="submit" class="btn waves-effect">UPLOAD</button>
       </form>
       </p>
     </div>
-    <div class="modal-footer right-align">
-    <button id="submit" class="btn waves-effect waves-light indigo darken-4 modal-action modal-close" style="margin: 20px" name="action">Upload
-                    <i class="material-icons right">cloud_upload</i>
-    </div>
+ 
   </div>
 
 

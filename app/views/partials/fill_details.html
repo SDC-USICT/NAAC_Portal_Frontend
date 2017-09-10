@@ -6,11 +6,7 @@
 
             </div>
             <div class="col m9">
-                <div class="right">
-                    <button ng-click="save()" style="margin-top: 0.4em; background-color: #1a237e" class="btn waves-effect waves-light no-borders">
-                       <i style="font-size:1.2em; line-height:1.2em;" class="fa fa-paper-plane" aria-hidden="true"></i> SAVE
-                    </button>
-                </div>
+                
             </div>
         </div>
 
@@ -18,33 +14,19 @@
             <div class="col m3">
                 <ul class="flexed">
                     <li ng-repeat="info in attributes">
-                        <div ng-click="setSelected(info.val)" class="time" ng-class="{'grey-text':!isSelected(info)}" ng-class="{'yellow-time':isSelected(info)">{{ splitAtCaps(info.key) }}</div>
+                        <div ng-click="setSelected(info.val)" class="time" ng-class="{'grey-text':!isSelected(info)}" >{{ splitAtCaps(info.key) }}</div>
                     </li>
                 </ul>
             </div>
-            <div class="col m2">
-                <br>
-                <div ng-if="results[attributes[selected].key].length > 0">
-                    <div style="    width: 100%;">
-                        <a ng-click="addNewObject()" class="btn waves-effect waves-light">
-                            <i style="font-size:1.2em; line-height:1.2em;" class="fa fa-plus-circle" aria-hidden="true"></i> ADD {{splitAtCaps(attributes[selected].key)}} </a>
-                    </div>
-                    <br>
-                    <label>Saved {{splitAtCaps(attributes[selected].key)}} </label>
-                    <BR>
-                    <div ng-if="result!=null && result.pk" ng-repeat="result in results[attributes[selected].key] track by $index">
 
-                        <div style="cursor: pointer;" ng-class="{'active':($index==selectedResult)}" ng-click="openTheatre($index)" class="card no-margins">
-                            <div style="padding:12px !important" class="card-content result-title">{{result.title}}</div>
-                        </div>
-                        <br>
-                    </div>
-
-                </div>
-            </div>
             <div class="col m7">
+                <div class="right">
+                    <button ng-click="save()" style="margin-top: 1em; background-color: #1a237e" class="btn waves-effect waves-light no-borders">
+                       <i style="font-size:1.2em; line-height:1.2em;" class="fa fa-paper-plane" aria-hidden="true"></i> SAVE
+                    </button>
+                </div>
                 <br>
-
+                <br>
                 <table>
 
                     <div class=" col s10 m10">
@@ -62,6 +44,25 @@
                         </tr>
                     </tbody>
                 </table>
+            </div>
+            <div class="col m2" style="background: lavender;">
+                <br>
+                <div ng-if="results[attributes[selected].key].length > 0">
+                    <div style="    width: 100%;">
+                        <a ng-click="addNewObject()" class="btn waves-effect waves-light">
+                            <i style="font-size:1.2em; line-height:1.2em;" class="fa fa-plus-circle" aria-hidden="true"></i> ADD {{splitAtCaps(attributes[selected].key)}} </a>
+                    </div>
+                    <br>
+                    <label>Saved {{splitAtCaps(attributes[selected].key)}} </label>
+                    <BR>
+                    <div ng-if="result!=null && result.pk" ng-repeat="result in results[attributes[selected].key] track by $index">
+
+                        <div style="cursor: pointer;border-bottom: 1px solid lightgray;" ng-class="{'active':($index==selectedResult)}" ng-click="openTheatre($index)" class="listelements no-margins">
+                            <div style="padding:12px !important" class="card-content result-title">{{result.title}}</div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </div>
     </div>
@@ -96,7 +97,7 @@
     </div>
     <div class="modal-footer">
         <a ng-click="setSelectedResult(selectedResultTheatre)" class="modal-close btn waves-effect white-text left">EDIT</a>
-        <a class="red btn waves-effect white-text ">DELETE</a>
+        <a ng-click="delete(selectedResultTheatre)" class="red modal-close btn waves-effect white-text ">DELETE</a>
     </div>
 </div>
 
@@ -120,5 +121,9 @@
 
     .btn {
         background-color: #1a237e;
+    }
+    .listelements.active {
+        background-color: crimson;
+        color: white;
     }
 </style>

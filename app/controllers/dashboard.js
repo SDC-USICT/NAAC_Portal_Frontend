@@ -6,6 +6,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
             $scope.attributes= [];
             $scope.editing = 0;
             $scope.marked_authors = {};
+            $scope.employeeMeta = {}
             if($rootScope.loginid == undefined) {
                 if($sessionStorage.loginid != undefined) {
                     $rootScope.loginid = $sessionStorage.loginid;
@@ -16,8 +17,11 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                 }
             } 
 
+
             $sessionStorage.loginid = $rootScope.loginid;    
             $sessionStorage.school_teachers = $rootScope.school_teachers;
+
+            $scope.empImg = BACKEND + '/static/images/' + $rootScope.loginid + '.png';
 
             var data_emp = $resource(BACKEND + '/api/employee', null, {
                 'query': {
@@ -32,6 +36,8 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                 $scope.employee = data[0]['fields'];
                 $scope.employee.pk = data[0]['pk']
             });
+
+
 
             var Columns = $resource(BACKEND + '/api/columns');
             Columns.get().$promise.then(function(data) {
@@ -128,7 +134,10 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
 
             }
             $scope.splitAtCaps = function(s) {
-                return s.split(/(?=[A-Z])/).join(' ')
+                if (s){
+                    return s.split(/(?=[A-Z])/).join(' ')
+                } 
+                return s;
             }
             $scope.setSelectedResult = function(val=null){
 						
@@ -229,7 +238,71 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                 $scope.$evalAsync();
                 
             }
+
+            $scope.delete = function (val) {
+                rq = {
+                    'empid' : $rootScope.loginid,
+                    'kls' : $scope.attributes[$scope.selected].key,
+                    'data' :  $scope.results[$scope.attributes[$scope.selected].key][val]
+                }
+                $http.post(BACKEND+'/api/delete', JSON.stringify(rq))
+                .then(function (res) {
+                    if(res.data.error) {
+                        Materialize.toast('Oops! Error', 4000) 
+                        return;
+                    }
+                    Materialize.toast('Record Deleted Successfully!', 4000) 
+                    raw = res.data.data;
+
+                    angular.forEach(raw, function(value, key){
+                             raw[key]['fields']['pk'] = raw[key]['pk'] 
+                             raw[key]['fields']['model'] = raw[key]['model']
+                         });
+                     $scope.results[$scope.attributes[$scope.selected].key] =
+                     raw.map(function(a) {
+                        return a.fields;
+                    });
+
+                    //$scope.selectedResult =  $scope.results[$scope.attributes[$scope.selected].key].length-1;
+
+
+                })
+            }
+
+            $scope.uploadImage = function(){
+                var fd = new FormData();
+                fd.append('image', $scope.employeeMeta.image[0]);
+                fd.append("name", $rootScope.loginid);
+                console.log($scope.employeeMeta.image[0])
+
+                $http({
+                    method: 'POST',
+                    url: BACKEND + '/api/upload',
+                    headers: {
+                      'Content-Type': undefined
+                    },
+                    data: fd,
+                    transformRequest: angular.identity
+                })
+                .then(function (response) {
+                  console.log(response.data)
+                  window.location.reload();
+                  
+                })
+            }
+
             
         
         }
-    ]);
+    ]).directive("filesInput", function() {
+  return {
+    require: "ngModel",
+    link: function postLink(scope,elem,attrs,ngModel) {
+      elem.on("change", function(e) {
+        console.log('Changed!')
+        var files = elem[0].files;
+        ngModel.$setViewValue(files);
+      })
+    }
+  }
+});
