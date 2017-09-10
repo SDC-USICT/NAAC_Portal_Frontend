@@ -25,6 +25,7 @@ angular.module('employee')
                     toast(i);
                     i++;
                  });
+                $rootScope.school_teachers = data;
             });
             }	
 

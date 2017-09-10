@@ -5,18 +5,19 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
             $scope.selectedResult = 0;
             $scope.attributes= [];
             $scope.editing = 0;
-
+            $scope.marked_authors = {};
             if($rootScope.loginid == undefined) {
-                console.log($rootScope.loginid);
-
                 if($sessionStorage.loginid != undefined) {
                     $rootScope.loginid = $sessionStorage.loginid;
+                    $rootScope.school_teachers = $sessionStorage.school_teachers 
+
                 } else {
                     $location.url('/')              
                 }
             } 
 
             $sessionStorage.loginid = $rootScope.loginid;    
+            $sessionStorage.school_teachers = $rootScope.school_teachers;
 
             var data_emp = $resource(BACKEND + '/api/employee', null, {
                 'query': {
@@ -28,7 +29,6 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                 empid: $rootScope.loginid
 
             }).$promise.then(function(data){
-                console.log(data);
                 $scope.employee = data[0]['fields'];
                 $scope.employee.pk = data[0]['pk']
             });
@@ -36,18 +36,15 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
             var Columns = $resource(BACKEND + '/api/columns');
             Columns.get().$promise.then(function(data) {
                 data = data.toJSON();
-                console.log(data);
                 $scope.attributes = [];
                 $scope.form_details = data;
                 $scope.sections = Object.keys(data).sort();
-                console.log($scope.sections);
                 angular.forEach($scope.sections, function(value, key) {
                     $scope.attributes.push({
                         'key': value,
                         'val': key
                     })
                 });
-                console.log($scope.attributes);
                 $scope.setSelected(0);
                 
             });
@@ -69,7 +66,6 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                 req = {
                     'data' : $scope.employee
                 }
-                console.log(req)
                 $http.post(BACKEND+'/api/emppost', req)
                 .then(function (data) {
                     data = data.data;
@@ -81,8 +77,9 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                 return value.val == $scope.selected;
             }
             $scope.setSelected = function(value) {
-                console.log(value)
                 $scope.selected = value;
+                $scope.selectedResult = 0;
+                console.log($scope.form_details[$scope.sections[$scope.selected]])
                 // Experiment
                 var data_get = $resource(BACKEND + '/api/get/', null, {
                     'query': {
@@ -95,31 +92,38 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                     empid: $rootScope.loginid,
                     kls: $scope.attributes[value].key
                 }).$promise.then(function(data) {
-                    console.log(data);
+                    console.log($scope.results)
                     if (data[0] != undefined) {
                          $scope.model_type = data[0].model;
                          $scope.saved_columns = data[0].fields;
                          // TODO: Rethink 
                          angular.forEach(data, function(value, key){
-                             console.log(key)
                              data[key]['fields']['pk'] = data[key]['pk'] 
                              data[key]['fields']['model'] = data[key]['model']
                          });
                          $scope.results[$scope.attributes[$scope.selected].key] =
                          data.map(function(a) {
+                            console.log('map')
+                            console.log(a)
                             a.fields.employee = $rootScope.loginid;
                             return a.fields;
                         });
-                        console.log($scope.results);
-                        console.log($scope.attributes[$scope.selected].key);
+
+                         console.log($scope.results)
                         $(document).ready(function() {
                             $('select').material_select();
                           });
                         $scope.$evalAsync()
+                        $scope.selectedResult =  $scope.results[$scope.attributes[$scope.selected].key].length -1;
 
                     } else {
+                        console.log('Here!')
                         $scope.results[$scope.attributes[$scope.selected].key] = []
+                        console.log($scope.results)
+                        console.log($scope.attributes[$scope.selected])
+
                     }
+                    console.log($scope.results)
                 });
 
             }
@@ -162,44 +166,44 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
               return obj;
             }
 			$scope.addNewObject = function () {
+                console.log('me')
 				sample = $scope.results[$scope.attributes[$scope.selected].key][0];
+                console.log(sample)
 				skel = skeleton(sample);
-				skel.title = "Please enter a title!" + Math.random();
                 skel.employee = $rootScope.loginid;
-				$scope.results[$scope.attributes[$scope.selected].key].push(skel);
-
-                length = $scope.results[$scope.attributes[$scope.selected].key].length - 1
-				$(document).ready(function () {
-					$('select').material_select();
-				})
-
-				console.log($scope.results);
-                $scope.selectedResult = length;
-				console.log($scope.selectedResult);
-                $('select').material_select();
-
-				$scope.$evalAsync();
-				$('select').material_select();
-
+				$scope.results[$scope.attributes[$scope.selected].key].push(skel);	
+                $scope.selectedResult =  $scope.results[$scope.attributes[$scope.selected].key].length-1;
+	
 			}
 
             $scope.getSelectedResult = function () {
                 return $scope.selectedResult;
             }
             $scope.save = function () {
+                console.log($scope.results[$scope.attributes[$scope.selected].key])
+                var d =  $scope.results[$scope.attributes[$scope.selected].key];
+                tmp = [];
+                angular.forEach( d, function(value, key){
+                    if(value){
+                        value.employee = $rootScope.loginid;
+                        tmp.push(value);
+                    }
+                });
+                $scope.results[$scope.attributes[$scope.selected].key] = tmp;
                 rq = {
                     'kls' : $scope.attributes[$scope.selected].key,
                     'data' :  $scope.results[$scope.attributes[$scope.selected].key]
                 }
-                console.log(rq);
                 $http.post(BACKEND+'/api/post', JSON.stringify(rq))
                 .then(function (res) {
+                    if(res.data.error) {
+                        Materialize.toast('Oops! Error', 4000) 
+                        return;
+                    }
                     Materialize.toast('Data Saved Successfully!', 4000) 
-                    console.log(res.data.data);
                     raw = res.data.data;
 
                     angular.forEach(raw, function(value, key){
-                             console.log(key)
                              raw[key]['fields']['pk'] = raw[key]['pk'] 
                              raw[key]['fields']['model'] = raw[key]['model']
                          });
@@ -208,9 +212,12 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                         return a.fields;
                     });
 
+                     $scope.selectedResult =  $scope.results[$scope.attributes[$scope.selected].key].length-1;
+
 
                 })
             }
+            
         
         }
     ]);

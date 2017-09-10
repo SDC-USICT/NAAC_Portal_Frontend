@@ -30,9 +30,9 @@
                             <i style="font-size:1.2em; line-height:1.2em;" class="fa fa-plus-circle" aria-hidden="true"></i> ADD {{splitAtCaps(attributes[selected].key)}} </a>
                     </div>
                     <br>
-                    <label>Choose {{splitAtCaps(attributes[selected].key)}} </label>
+                    <label>Saved {{splitAtCaps(attributes[selected].key)}} </label>
                     <BR>
-                    <div ng-repeat="result in results[attributes[selected].key] track by $index">
+                    <div ng-if="result!=null && result.pk" ng-repeat="result in results[attributes[selected].key] track by $index">
 
                         <div ng-class="{'active':($index==selectedResult)}" ng-click="setSelectedResult($index)" class="card no-margins">
                             <div style="padding:12px !important" class="card-content result-title">{{result.title}}</div>
@@ -47,16 +47,17 @@
 
                 <table>
                     <div class=" col s10 m10">
-
                     </div>
                     <tbody>
-                        <tr ng-hide="value.name=='id'" ng-repeat="(key, value) in form_details[sections[selected]]">
-          
+
+                        <tr ng-hide="value.name=='id' || value.name =='employee'" ng-repeat="(key, value) in form_details[sections[selected]]">
+
                             <td ng-show="!value.verbose">{{value.name}}</td>
                             <td ng-show="value.verbose">{{value.verbose}}</td>
-                            <td>
-                                <input type="text" name="" ng-model="results[attributes[selected].key][selectedResult][value.name]">
+                            <td >    
+                                <input  type="text" name="" ng-model="results[attributes[selected].key][selectedResult][value.name]">
                             </td>
+                          
                         </tr>
                     </tbody>
                 </table>
@@ -64,11 +65,6 @@
         </div>
     </div>
 </div>
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('select').material_select();
-    });
-</script>
 <style type="text/css">
     @media only screen and (min-width: 993px) {
         .container {
