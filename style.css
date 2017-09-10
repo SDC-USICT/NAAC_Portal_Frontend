@@ -153,9 +153,7 @@ nav {
   .no-borders {
     border: 0 !important;
   }
-  .selection{
-        width: 40%;
-    }
+
   .hovered:hover{
       background: white;
       cursor: default;

@@ -217,6 +217,18 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
 
                 })
             }
+
+            $scope.openTheatre = function (index) {
+                console.log('Hello')
+                $scope.selectedResultTheatre = index;
+                $scope.$evalAsync()
+                $(document).ready(function () {
+                     $('.modal').modal();
+                     $('#modal2').modal('open');
+                })
+                $scope.$evalAsync();
+                
+            }
             
         
         }
