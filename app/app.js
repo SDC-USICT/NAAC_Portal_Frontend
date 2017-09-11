@@ -3,32 +3,32 @@ angular.module('employee', ['ngRoute', 'ngStorage', 'ngResource'])
 	function ($routeProvider, $locationProvider) {
 	$routeProvider.
    when('/', {
-    templateUrl: 'app/views/index.html',
+    templateUrl: 'NAAC_Portal_Frontend/app/views/index.html',
     controller: 'IndexCtrl',
     controllerAs: 'index'
    }).
     when('/index', {
-    templateUrl: 'app/views/main.html',
+    templateUrl: 'NAAC_Portal_Frontend/app/views/main.html',
     controller: 'MainCtrl',
     controllerAs: 'main'
    }).
     when('/selection', {
-    templateUrl: 'app/views/selection.html',
+    templateUrl: 'NAAC_Portal_Frontend/app/views/selection.html',
     controller: 'SelCtrl',
     controllerAs: 'sel'
    }).
    when('/login', {
-    templateUrl: 'app/views/login.html',
+    templateUrl: 'NAAC_Portal_Frontend/app/views/login.html',
     controller: 'LoginCtrl',
     controllerAs: 'con'
    }).
    when('/dashboard', {
-    templateUrl: 'app/views/dashboard.html',
+    templateUrl: 'NAAC_Portal_Frontend/app/views/dashboard.html',
     controller: 'DashboardCtrl',
     controllerAs: 'dash'
    }).
     when('/forgot', {
-    templateUrl: 'app/views/forgot.html',
+    templateUrl: 'NAAC_Portal_Frontend/app/views/forgot.html',
     controller: 'ForgotCtrl',
     controllerAs: 'forg'
    }).
