@@ -2,13 +2,14 @@
 <div id="grad" class="student-card card no-margin" style="margin: 0 !important">
     <div class=" card-content row">
 
-        <div class="col m2 ">
-            <img ng-show="empImg" ng-src="{{empImg}}" style="width: 100%;height: 90%;">
-            <img ng-hide="empImg" src="app/views/images/dummy.jpg" style="width: 100%;height: 90%;">
-            <button class="btn waves-effect waves-light indigo darken-4 modal-trigger" data-target="modal1" style="width: 100%">Upload Image</button>
+        <div class="col m3">
+            <img ng-show="empImg" ng-src="{{empImg}}" style="width: 100%;height: 100%;">
+            <img ng-hide="empImg" src="#" style="width: 100%;height: 90%;">
+            <button class="btn waves-effect waves-light indigo darken-4 modal-trigger" data-target="modal1" style="width: 100%">Upload Image
+            <i class="material-icons left">file_upload</i></button>
         </div>
 
-        <div class="col m6">
+        <div class="col m4">
 
             <div class='greeting'>HELLO</div>
 
@@ -16,15 +17,18 @@
 
             <div class="teacher-id">{{employee.pk}}</div>
         </div>
-        <div class="col m4">
+        <div class="col m5">
 
-            <a ng-if="editing==0" ng-click="setEditing()" class="editBtn btn waves-effect waves-light">
+            <a ng-if="editing==0" ng-click="setEditing()" class="editBtn btn waves-effect indigo darken-4">
                  EDIT DETAILS
+                 <i class="material-icons left">edit</i>
                 </a>
-            <a ng-if="editing==1" ng-click="unsetEditing()" class="saveBtn btn waves-effect waves-light">
+            <a ng-if="editing==1" ng-click="unsetEditing()" class="saveBtn btn waves-effect indigo darken-4">
                  SAVE DETAILS
                 </a>
-            <a class="disabled logout btn waves-effect waves-light right">LOG OUT </a>
+            <a class="logout btn waves-effect waves-light right indigo darken-4" ng-click="logout()">LOG OUT 
+            <i class="fa fa-sign-out left " aria-hidden="true"></i>
+            </a>
 
         </div>
     </div>
@@ -78,6 +82,10 @@
 
             <a class="disabled change-password btn waves-effect waves-light left">CHANGE
                     PASSWORD </a>
+
+            <a class="btn waves-effect waves-light  indigo darken-4 right" ng-click="fillDetails()">FILL DETAILS
+                <i class="material-icons left">details</i>
+            </a>
             
         </div>
 
@@ -105,7 +113,8 @@
         </div>
     </div>
 
-        <button type="submit" class="btn waves-effect">UPLOAD</button>
+        <button type="submit" class="btn waves-effect indigo darken-4">UPLOAD
+        <i class="material-icons left">file_upload</i></button>
       </form>
       </p>
     </div>

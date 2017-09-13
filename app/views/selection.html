@@ -18,13 +18,15 @@
               <table class="striped" ng-if="empData">
                     <thead>
                       <tr class="hovered">
+                          <th>&nbsp;&nbsp;</th>
                           <th>&nbsp;&nbsp;Name</th>
-                          <th>&nbsp;&nbsp;Id</th>
+                          <th>&nbsp;&nbsp;Employee Id</th>
                          
                       </tr>
                     </thead>
              <tbody>
                   <tr ng-click="setEmployee(x)" ng-repeat="x in empData" id="{{ x.pk }}">
+                  <td class="empDetails"><img ng-src="http://localhost:8000/static/images/{{x.pk}}.png" class="empImage"></td>
                     <td>&nbsp;&nbsp;{{ x.fields.name }}</td>
                     <td>&nbsp;&nbsp;{{ x.pk }}</td>
                    
@@ -60,5 +62,15 @@ var i = 1;
         position: absolute;
         top:45%;
         left: 45%;
+    }
+    .empDetails{
+        padding: 5px;
+        line-height: 0.9;
+    }
+    .empImage{
+      width: 100px;
+      height: 100px;
+      border-radius: 100%;
+      border: 5px solid white;
     }
 </style>

@@ -31,7 +31,13 @@ angular.module('employee', ['ngRoute', 'ngStorage', 'ngResource'])
     templateUrl: 'app/views/forgot.html',
     controller: 'ForgotCtrl',
     controllerAs: 'forg'
-   });
+   }).
+    when('/logout',{
+        templateUrl: 'app/views/logout.html'
+    }).
+    when('/fill_details',{
+      templateUrl: 'app/views/partials/fill_details.html'
+    });
    $locationProvider.html5Mode(false).hashPrefix('');
 
 }])

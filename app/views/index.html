@@ -1,11 +1,4 @@
-<div class="container" ng-controller="IndexCtrl as index">
-
-
-
-
-
-
-
+<div class="container index" ng-controller="IndexCtrl as index" ng-keypress="redirect()">
 
     <div class="row">
         <div class="col s12 m12">
@@ -41,7 +34,7 @@
             </div>
             </div>
             <div class="card-action right-align">
-              <button ng-class="{'disabled':(!checked)}" class="btn waves-effect waves-light  indigo darken-4 submit" ng-click="index()" type="submit" name="action">Submit
+              <button ng-class="{'disabled':(!checked)}" class="btn waves-effect waves-light  indigo darken-4 submit" ng-click="index()" type="submit" name="action" >Submit
                     <i class="material-icons right">send</i>
               </button>
             </div>

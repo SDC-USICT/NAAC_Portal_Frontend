@@ -1,26 +1,34 @@
 angular.module('employee')
-	.controller('LoginCtrl', ["$scope", "$http" , "$rootScope", "$sessionStorage", "$location",
-		function ($scope, $http, $rootScope, $sessionStorage, $location) {
-			
-			console.log($rootScope.loginid);
+	.controller('LoginCtrl', ["$scope", "$http" , "$rootScope", "$window", "$location",
+		function ($scope, $http, $rootScope, $window, $location) {
 
+		if(sessionStorage.getItem('school') == undefined || sessionStorage.getItem('loginid') == undefined){
+			$location.path('/index');
+		}
+		if(sessionStorage.getItem('status') != undefined && sessionStorage.getItem('school') != undefined && sessionStorage.getItem('loginid') != undefined){
+		    $location.path('/dashboard');
+        }
+		$rootScope.loginid = sessionStorage.getItem('loginid');
+		console.log("log " + $rootScope.loginid);
 			$scope.submit = function () {
-				req = {
+  				req = {
 				'empid' : $rootScope.loginid,
 				'password' : $scope.password
-			}
+			};
 			console.log(req);
 				$http.post(BACKEND+'/api/login', JSON.stringify(req))
 				.then(function (res) {
-					console.log(res.data);
+				   
 					if (res.data.success != undefined) {
+					   
 						$location.path('/dashboard');
-
 					}
-					else
-						alert('Login incorrect');
+					else {
+                        alert('Login incorrect');
+                        $location.path('/login');
+                    }
 				});
-			}
+			};
 
 			$scope.forgot = function(){
 				console.log("Reidrecting");

@@ -1,5 +1,5 @@
-angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$rootScope", "$sessionStorage", "$resource","$location",
-        function($scope, $http, $rootScope, $sessionStorage, $resource, $location) {
+angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$rootScope", "$sessionStorage","$localStorage", "$resource","$location",
+        function($scope, $http, $rootScope, $sessionStorage,$localStorage, $resource, $location) {
             $scope.selected = 0;
             $scope.results = {};
             $scope.selectedResult = 0;
@@ -268,6 +268,24 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
 
                 })
             }
+
+                $scope.logout = function(){
+                sessionStorage.clear();
+                localStorage.clear();
+                console.log("logout");
+                $location.path('/logout');
+                };
+
+
+                $scope.fillDetails = function(){
+                    $location.path('/fill_details');
+                }
+
+                $scope.dashboard = function(){
+                    $location.path('/dashboard');
+                }
+
+
 
             $scope.uploadImage = function(){
                 var fd = new FormData();

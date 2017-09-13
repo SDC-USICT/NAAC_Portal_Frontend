@@ -1,8 +1,14 @@
 angular.module('employee')
-	.controller('MainCtrl', ["$scope", "$http" , "$rootScope", "$sessionStorage", "$resource","$location",
-		function ($scope, $http, $rootScope, $sessionStorage, $resource, $location, getDept) {
+	.controller('MainCtrl', ["$scope", "$http" , "$rootScope", "$window", "$resource","$location",
+		function ($scope, $http, $rootScope, $window, $resource, $location, getDept) {
 
-
+		if(localStorage.getItem('declaration') == undefined){
+		    localStorage.clear();
+		    sessionStorage.clear();
+			$location.path('/');
+		}else if(sessionStorage.getItem('status') != undefined && sessionStorage.getItem('school') != undefined && sessionStorage.getItem('loginid') != undefined){
+		    $location.path('/dashboard');
+        }
 			$scope.schools = [
 				{
 					"value" : "University School of Information & Communication Technology",
@@ -54,21 +60,13 @@ angular.module('employee')
 				'selected' : $scope.schools[0]
 			};
 			$scope.setSelectedSchool = function () {
-				console.log($scope.ss);
+			    sessionStorage.setItem('school',$scope.ss.selected);
 				$rootScope.school = $scope.ss.selected;
-								$location.path('/selection');
-
-
-			}
+				$location.path('/selection');
+			};
             $scope.school = "";
-            console.log("controller");
-			$scope.showSchool = function(){
-                console.log("directing");
-			}
             $scope.updateDept = function(department){
                 $scope.school = department;
-                				$rootScope.school = department;
-
-                console.log("Updated value " + $scope.school + " " + department);
+                $rootScope.school = department;
             }
 		}]);
