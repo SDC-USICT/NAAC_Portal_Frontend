@@ -26,7 +26,7 @@
                     </thead>
              <tbody>
                   <tr ng-click="setEmployee(x)" ng-repeat="x in empData" id="{{ x.pk }}">
-                  <td class="empDetails"><img ng-src="http://localhost:8000/static/images/{{x.pk}}.png" class="empImage"></td>
+                  <td class="empDetails"><img ng-src="{{BACKEND}}/static/images/{{x.pk}}.jpg" class="empImage"></td>
                     <td>&nbsp;&nbsp;{{ x.fields.name }}</td>
                     <td>&nbsp;&nbsp;{{ x.pk }}</td>
                    

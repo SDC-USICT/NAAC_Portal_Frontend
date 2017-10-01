@@ -1,8 +1,8 @@
 angular.module('employee')
     .controller('SelCtrl', ["$scope", "$http" , "$rootScope", "$location", "$resource","$window",
         function ($scope, $http, $rootScope, $location, $resource,$window) {
+            $scope.BACKEND = BACKEND;
             if(sessionStorage.getItem('school') == undefined){
-                console.log("hey");
                 $location.path('/index');
             }else if(sessionStorage.getItem('status') != undefined) {
                 $location.path('/dashboard');
