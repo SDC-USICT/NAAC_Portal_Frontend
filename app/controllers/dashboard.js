@@ -21,7 +21,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
             $sessionStorage.loginid = $rootScope.loginid;    
             $sessionStorage.school_teachers = $rootScope.school_teachers;
 
-            $scope.empImg = BACKEND + '/static/images/' + $rootScope.loginid + '.png';
+            $scope.empImg = BACKEND + '/static/images/' + $rootScope.loginid + '.jpg?' + new Date().getTime();
 
             var data_emp = $resource(BACKEND + '/api/employee', null, {
                 'query': {

@@ -12,7 +12,7 @@ angular.module('employee')
 					console.log(res.data);
 					if (res.data.success != undefined) {
 					    console.log("Reidrecting");
-						$location.path('/login');
+						$location.url('/login');
 						$scope.error = "false";
 					}else{
 						alert('Error during sending email');

@@ -20,8 +20,9 @@ angular.module('employee')
 				.then(function (res) {
 				   
 					if (res.data.success != undefined) {
-					   
-						$location.path('/dashboard');
+
+						$location.url('/dashboard');
+
 					}
 					else {
                         alert('Login incorrect');
@@ -32,7 +33,7 @@ angular.module('employee')
 
 			$scope.forgot = function(){
 				console.log("Reidrecting");
-					$location.path('/forgot');
+					$location.url('/forgot');
 			};
 		
 		}]);
