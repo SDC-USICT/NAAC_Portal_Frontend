@@ -2,6 +2,7 @@ angular.module('employee')
 	.controller('IndexCtrl', ["$scope", "$http" , "$rootScope", "$sessionStorage", "$location","$window",
 		function ($scope, $http, $rootScope,$sessionStorage, $location, $window) {
             console.log($location.absUrl())
+            $scope.baseUrl = $location.url();
 	        if($sessionStorage.declaration){
                 if($sessionStorage.declaration == "checked"){
                     $location.path('/index');
