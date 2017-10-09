@@ -103,11 +103,19 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                     if(allInput[i].name == 'month'){
                       allInput[i].className="monthpicker";
                       allInput[i].id = "month";
-
+                    }
+                    else if(allInput[i].name == 'year' || allInput[i].name=='year_application' || allInput[i].name== "year_grant"){
+                      allInput[i].className="yearpicker";
+                      allInput[i].id = "year";
+                    }
+                    else if(allInput[i].name == 'date' || allInput[i].name=="date_of_award" || allInput[i].name=="date_completed"){
+                      allInput[i].className="datepicker";
+                      allInput[i].id = "date";
                     }
                     console.log(allInput[i].name);
 
                   }
+                  //Month Picker using pickadate
                   $('.monthpicker').pickadate({
                     selectMonths: true,
                     format: 'mmmm',
@@ -126,6 +134,33 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                       this.close();
                       this.set('select', [selectedYear, selectedMonth, selectedDate,{ format: 'yyyy/mm/dd' }]);
                     }
+                  });
+                  //Year Picker
+
+                  $('.yearpicker').pickadate({
+                    selectMonths: true,
+                    format: 'yyyy',
+                    selectYears: true,
+                    selectMonths:false,
+                    buttonImageOnly: false,
+                    disable: [true],
+                    onOpen: function() {
+                      Materialize.toast('Select a Year', 4000)
+                      $(".picker__nav--prev, .picker__nav--next").remove();
+                    },
+                    onSet: function( arg ){
+                      console.log(arg.highlight);
+                      var selectedMonth = parseInt(arg.highlight[1]);
+                      var selectedYear = arg.highlight[0];
+                      var selectedDate = arg.highlight[2];
+                      this.close();
+                      this.set('select', [selectedYear, selectedMonth, selectedDate,{ format: 'yyyy/mm/dd' }]);
+                    }
+                  });
+
+                  $('.datepicker').pickadate({
+                    selectMonths:true,
+                    selectYears:true
                   });
 
                   });
