@@ -108,22 +108,26 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                     console.log(allInput[i].name);
 
                   }
-                    // console.log($("input"));
-                    $('.monthpicker').pickadate({
-                      selectMonths: true, // Creates a dropdown to control month
-                      format: 'mmmm',
-                      clear: '',
-                      close: 'Ok',
-                      minViewMode: "months",
-                      onOpen: function() {
-                        Materialize.toast('Select Only Month', 4000)
-                        console.log($(this));
-                      },
-                      onClose: function(dateText, inst) {
-                        console.log(inst);
-                        console.log(dateText);
-                      }
-                    });
+                  $('.monthpicker').pickadate({
+                    selectMonths: true,
+                    format: 'mmmm',
+                    selectYears: false,
+                    buttonImageOnly: false,
+                    disable: [true],
+                    onOpen: function() {
+                      Materialize.toast('Select a Month', 4000)
+                      $(".picker__nav--prev, .picker__nav--next").remove();
+                    },
+                    onSet: function( arg ){
+                      console.log(arg.highlight);
+                      var selectedMonth = parseInt(arg.highlight[1]);
+                      var selectedYear = arg.highlight[0];
+                      var selectedDate = arg.highlight[2];
+                      this.close();
+                      this.set('select', [selectedYear, selectedMonth, selectedDate,{ format: 'yyyy/mm/dd' }]);
+                    }
+                  });
+
                   });
                 // Experiment
                 var data_get = $resource(BACKEND + '/api/get/', null, {
