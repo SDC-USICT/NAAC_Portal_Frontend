@@ -1,4 +1,4 @@
-angular.module('employee', ['ngRoute', 'ngStorage', 'ngResource'])
+angular.module('employee', ['ngRoute', 'ngStorage', 'ngResource','ngAnimate'])
 .config(['$routeProvider', '$locationProvider',
 	function ($routeProvider, $locationProvider) {
 	$routeProvider.
