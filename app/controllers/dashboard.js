@@ -10,25 +10,27 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
             if($rootScope.loginid == undefined) {
                 if($sessionStorage.loginid != undefined) {
                     $rootScope.loginid = $sessionStorage.loginid;
-                    $rootScope.school_teachers = $sessionStorage.school_teachers 
+                    $rootScope.school_teachers = $sessionStorage.school_teachers
 
                 } else {
-                    $location.url('/')              
+                    $location.url('/')
                 }
-            } 
+            }
 
 
-            $sessionStorage.loginid = $rootScope.loginid;    
+            $sessionStorage.loginid = $rootScope.loginid;
             $sessionStorage.school_teachers = $rootScope.school_teachers;
 
             $scope.empImg = BACKEND + '/static/images/' + $rootScope.loginid + '.jpg?' + new Date().getTime();
 
+            //Declareing a resourcefor post method. It accept Arrays in post method.
             var data_emp = $resource(BACKEND + '/api/employee', null, {
                 'query': {
                     method: 'POST',
                     isArray: true
                 }
             });
+            // Sending login data to backend.
             data_emp.query({
                 empid: $rootScope.loginid
 
@@ -38,7 +40,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
             });
 
 
-
+            // Getting coulmns from BACKEND.
             var Columns = $resource(BACKEND + '/api/columns');
             Columns.get().$promise.then(function(data) {
                 data = data.toJSON();
@@ -52,16 +54,19 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                     })
                 });
                 $scope.setSelected(0);
-                
+
             });
+            //  Set all input editable.
             $scope.setEditing = function () {
                $(document).ready(function () {
                     $("input").attr("readonly", false);
                     $('#date_join').addClass('datepicker');
+
                 })
                 $scope.$evalAsync();
                 $scope.editing = 1;
             }
+            // Set all inputs uneditable.
             $scope.unsetEditing = function () {
                 $(document).ready(function () {
                     $("input").attr("readonly", true);
@@ -79,13 +84,47 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                     $scope.employee.pk = data[0]['pk']
                 })
             }
+
+            // Returns if some tab is selected or not. boolean return.
             $scope.isSelected = function(value) {
                 return value.val == $scope.selected;
             }
+            // Set selected tab.
             $scope.setSelected = function(value) {
                 $scope.selected = value;
                 $scope.selectedResult = 0;
                 console.log($scope.form_details[$scope.sections[$scope.selected]])
+
+                //Set Input type
+                $(document).ready(function() {
+                  var allInput = $('input');
+                  console.log(allInput);
+                  for(var i=0;i<allInput.length;i++){
+                    if(allInput[i].name == 'month'){
+                      allInput[i].className="monthpicker";
+                      allInput[i].id = "month";
+
+                    }
+                    console.log(allInput[i].name);
+
+                  }
+                    // console.log($("input"));
+                    $('.monthpicker').pickadate({
+                      selectMonths: true, // Creates a dropdown to control month
+                      format: 'mmmm',
+                      clear: '',
+                      close: 'Ok',
+                      minViewMode: "months",
+                      onOpen: function() {
+                        Materialize.toast('Select Only Month', 4000)
+                        console.log($(this));
+                      },
+                      onClose: function(dateText, inst) {
+                        console.log(inst);
+                        console.log(dateText);
+                      }
+                    });
+                  });
                 // Experiment
                 var data_get = $resource(BACKEND + '/api/get/', null, {
                     'query': {
@@ -102,9 +141,9 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                     if (data[0] != undefined) {
                          $scope.model_type = data[0].model;
                          $scope.saved_columns = data[0].fields;
-                         // TODO: Rethink 
+                         // TODO: Rethink
                          angular.forEach(data, function(value, key){
-                             data[key]['fields']['pk'] = data[key]['pk'] 
+                             data[key]['fields']['pk'] = data[key]['pk']
                              data[key]['fields']['model'] = data[key]['model']
                          });
                          $scope.results[$scope.attributes[$scope.selected].key] =
@@ -136,11 +175,11 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
             $scope.splitAtCaps = function(s) {
                 if (s){
                     return s.split(/(?=[A-Z])/).join(' ')
-                } 
+                }
                 return s;
             }
             $scope.setSelectedResult = function(val=null){
-						
+
                if(val != null) {
                 $scope.selectedResult = val;
                }
@@ -180,9 +219,9 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                 console.log(sample)
 				skel = skeleton(sample);
                 skel.employee = $rootScope.loginid;
-				$scope.results[$scope.attributes[$scope.selected].key].push(skel);	
+				$scope.results[$scope.attributes[$scope.selected].key].push(skel);
                 $scope.selectedResult =  $scope.results[$scope.attributes[$scope.selected].key].length-1;
-	
+
 			}
 
             $scope.getSelectedResult = function () {
@@ -206,14 +245,14 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                 $http.post(BACKEND+'/api/post', JSON.stringify(rq))
                 .then(function (res) {
                     if(res.data.error) {
-                        Materialize.toast('Oops! Error', 4000) 
+                        Materialize.toast('Oops! Error', 4000)
                         return;
                     }
-                    Materialize.toast('Data Saved Successfully!', 4000) 
+                    Materialize.toast('Data Saved Successfully!', 4000)
                     raw = res.data.data;
 
                     angular.forEach(raw, function(value, key){
-                             raw[key]['fields']['pk'] = raw[key]['pk'] 
+                             raw[key]['fields']['pk'] = raw[key]['pk']
                              raw[key]['fields']['model'] = raw[key]['model']
                          });
                      $scope.results[$scope.attributes[$scope.selected].key] =
@@ -236,7 +275,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                      $('#modal2').modal('open');
                 })
                 $scope.$evalAsync();
-                
+
             }
 
             $scope.delete = function (val) {
@@ -248,14 +287,14 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                 $http.post(BACKEND+'/api/delete', JSON.stringify(rq))
                 .then(function (res) {
                     if(res.data.error) {
-                        Materialize.toast('Oops! Error', 4000) 
+                        Materialize.toast('Oops! Error', 4000)
                         return;
                     }
-                    Materialize.toast('Record Deleted Successfully!', 4000) 
+                    Materialize.toast('Record Deleted Successfully!', 4000)
                     raw = res.data.data;
 
                     angular.forEach(raw, function(value, key){
-                             raw[key]['fields']['pk'] = raw[key]['pk'] 
+                             raw[key]['fields']['pk'] = raw[key]['pk']
                              raw[key]['fields']['model'] = raw[key]['model']
                          });
                      $scope.results[$scope.attributes[$scope.selected].key] =
@@ -305,12 +344,12 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                 .then(function (response) {
                   console.log(response.data)
                   window.location.reload();
-                  
+
                 })
             }
 
-            
-        
+
+
         }
     ]).directive("filesInput", function() {
   return {

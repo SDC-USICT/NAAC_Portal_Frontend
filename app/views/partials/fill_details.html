@@ -46,7 +46,7 @@
 
             </div>
             <div class="col m9">
-                
+
             </div>
         </div>
 
@@ -77,10 +77,10 @@
 
                             <td ng-show="!value.verbose">{{value.name}}</td>
                             <td ng-show="value.verbose">{{value.verbose}}</td>
-                            <td >    
-                                <input  type="text" name="" ng-model="results[attributes[selected].key][selectedResult][value.name]">
+                            <td >
+                                <input  type="text" name="{{value.name}}" ng-model="results[attributes[selected].key][selectedResult][value.name]">
                             </td>
-                          
+
                         </tr>
                     </tbody>
                 </table>
@@ -115,7 +115,7 @@
 
 <div id="modal2" class="modal modal-fixed-footer">
     <div class="modal-content">
-        <h4>Record #{{ selectedResultTheatre + 1}} <i class="fa fa-circle" style="font-size: 0.3em;"></i> {{splitAtCaps(attributes[selected].key)}} 
+        <h4>Record #{{ selectedResultTheatre + 1}} <i class="fa fa-circle" style="font-size: 0.3em;"></i> {{splitAtCaps(attributes[selected].key)}}
         <i class="fa fa-close modal-close right" style="font-size: 1em;"></i>
         </h4>
 
@@ -130,7 +130,7 @@
 
                     <td ng-show="!value.verbose" style="font-weight: 500">{{value.name}}</td>
                     <td ng-show="value.verbose" style="font-weight: 500;">{{value.verbose}}</td>
-                    <td >{{results[attributes[selected].key][selectedResultTheatre][value.name]}}</td>    
+                    <td >{{results[attributes[selected].key][selectedResultTheatre][value.name]}}</td>
                 </tr>
             </tbody>
         </table>
@@ -141,7 +141,7 @@
     </div>
 
 
-   
+
 
 
 </div>
