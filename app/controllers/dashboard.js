@@ -157,7 +157,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                       this.set('select', [selectedYear, selectedMonth, selectedDate,{ format: 'yyyy/mm/dd' }]);
                     }
                   });
-
+                  // Date Picker
                   $('.datepicker').pickadate({
                     selectMonths:true,
                     selectYears:true
