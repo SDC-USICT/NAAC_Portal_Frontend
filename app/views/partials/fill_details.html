@@ -71,14 +71,34 @@
 
                     <div class=" col s10 m10">
                     </div>
-                    <tbody>
 
+                    <tbody>
                         <tr ng-hide="value.name=='id' || value.name =='employee'" ng-repeat="(key, value) in form_details[sections[selected]]">
 
                             <td ng-show="!value.verbose">{{value.name}}</td>
                             <td ng-show="value.verbose">{{value.verbose}}</td>
                             <td >
-                                <input  type="text" name="{{value.name}}" ng-model="results[attributes[selected].key][selectedResult][value.name]">
+                                <input ng-if="value.name != 'coauthor' " type="text" name="{{value.name}}" ng-model="results[attributes[selected].key][selectedResult][value.name]">
+                                <div ng-if="value.name == 'coauthor' " class="{{sections[selected]}}{{selectedResult}}">
+                                    <br><br>
+                                    <div class="row" ng-repeat="(k, v) in coauthors[attributes[selected].key][selectedResult]">
+                                        <div class="col m5">
+                                            <input type="text" name="" ng-model="v.name" placeholder="Name">
+                                        </div>
+                                        <div class="col m5">
+                                            <input type="text" name="" ng-model="v.email" placeholder="Email">
+                                        </div>
+                                        <div class="col m2">
+                                            <div ng-if="v.approved=='0'">!</div>
+                                        </div>
+
+                                    </div>
+                                    <div class="right">
+                                        <button ng-click="add_coauthor(key)" background-color: #1a237e" class="btn waves-effect waves-light no-borders">
+                                           <i style="font-size:1.2em; line-height:1.2em;" class="fa fa-plus-circle" aria-hidden="true"></i> ADD CO AUTHOR
+                                        </button>
+                                    </div>
+                                </div>
                             </td>
 
                         </tr>
@@ -130,7 +150,20 @@
 
                     <td ng-show="!value.verbose" style="font-weight: 500">{{value.name}}</td>
                     <td ng-show="value.verbose" style="font-weight: 500;">{{value.verbose}}</td>
-                    <td >{{results[attributes[selected].key][selectedResultTheatre][value.name]}}</td>
+                    <td ng-if="value.name!='coauthor'">{{results[attributes[selected].key][selectedResultTheatre][value.name]}}</td>
+                    <td ng-if="value.name=='coauthor'">
+                        <br>
+                       <div class="row" ng-repeat="(k, v) in coauthors[attributes[selected].key][selectedResultTheatre]">
+                            <div class="col m6">
+                                <span>{{v.name}}</span>
+                            </div>
+                            <div class="col m6">
+                                <span>{{v.email}}</span>
+                            </div>
+                           
+
+                        </div>
+                    </td>
                 </tr>
             </tbody>
         </table>

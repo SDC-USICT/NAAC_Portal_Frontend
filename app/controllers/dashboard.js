@@ -2,6 +2,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
         function($scope, $http, $rootScope, $sessionStorage,$localStorage, $resource, $location) {
             $scope.selected = 0;
             $scope.results = {};
+            $scope.coauthors = {};
             $scope.selectedResult = 0;
             $scope.attributes= [];
             $scope.editing = 0;
@@ -23,7 +24,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
 
             $scope.empImg = BACKEND + '/static/images/' + $rootScope.loginid + '.jpg?' + new Date().getTime();
 
-            //Declareing a resourcefor post method. It accept Arrays in post method.
+            //Declaring a resource for post method. It accept Arrays in post method.
             var data_emp = $resource(BACKEND + '/api/employee', null, {
                 'query': {
                     method: 'POST',
@@ -163,6 +164,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                     selectYears:true
                   });
 
+
                   });
                 // Experiment
                 var data_get = $resource(BACKEND + '/api/get/', null, {
@@ -193,7 +195,24 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                             return a.fields;
                         });
 
+                        $scope.coauthors[$scope.attributes[$scope.selected].key] = data.map(function (a) {
+                          if(a.fields.coauthor ){
+                            var tmp = [];
+                            angular.forEach(a.fields.coauthor.split(';'), function(v, k){
+                              tmp.push({
+                                'name' : v.split(':')[0],
+                                'email' : v.split(':')[1],
+                                'approved' : v.split(':')[2]
+                              })
+                            });
+                            return tmp;
+                          }
+                        })
+
+
+
                          console.log($scope.results)
+                         console.log($scope.coauthors);
                         $(document).ready(function() {
                             $('select').material_select();
                           });
@@ -267,15 +286,32 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                 return $scope.selectedResult;
             }
             $scope.save = function () {
-                console.log($scope.results[$scope.attributes[$scope.selected].key])
                 var d =  $scope.results[$scope.attributes[$scope.selected].key];
                 tmp = [];
                 angular.forEach( d, function(value, key){
                     if(value){
                         value.employee = $rootScope.loginid;
-                        tmp.push(value);
+                       
+                    if (value.coauthor) {
+
+      
+                      var t = {};
+                      angular.forEach($scope.coauthors[$scope.attributes[$scope.selected].key], function(v, k){
+                        var tt = [];
+                        angular.forEach(v, function(vv, kk){
+                          tt.push(vv.name+ ":" + vv.email + ":" + vv.approved) ;
+                        });
+                        t[k] = tt.join(';');
+                      }); 
+                     
+                      value.coauthor = t[key];
+                    } else {
+                      console.log('NO!')
+                    }
+                  tmp.push(value);
                     }
                 });
+                console.log(tmp);
                 $scope.results[$scope.attributes[$scope.selected].key] = tmp;
                 rq = {
                     'kls' : $scope.attributes[$scope.selected].key,
@@ -385,6 +421,15 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                   window.location.reload();
 
                 })
+            }
+
+            $scope.add_coauthor = function () {
+              console.log($scope.coauthors[$scope.attributes[$scope.selected].key][$scope.selectedResult])
+              $scope.coauthors[$scope.attributes[$scope.selected].key][$scope.selectedResult].push({
+                'name' : '',
+                'value' : '',
+                'approved': '0'
+              })
             }
 
 

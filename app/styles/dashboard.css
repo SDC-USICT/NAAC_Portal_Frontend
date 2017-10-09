@@ -110,7 +110,6 @@
 }
 .info input[type=text] {
     background-color: #f3f3f5;
-    text-indent: 1em;
     border-bottom: 0;
 }
 .info input[type=text].valid {

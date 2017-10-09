@@ -35,6 +35,11 @@ angular.module('employee', ['ngRoute', 'ngStorage', 'ngResource','ngAnimate'])
     when('/logout',{
         templateUrl: './app/views/logout.html'
     }).
+     when('/approve',{
+        templateUrl: './app/views/approve.html',
+        controller: 'ApproveCtrl',
+    controllerAs: 'appr'
+    }).
     when('/fill_details',{
       templateUrl: './app/views/partials/fill_details.html'
     });
