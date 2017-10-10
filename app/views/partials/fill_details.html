@@ -73,7 +73,7 @@
                     </div>
 
                     <tbody>
-                        <tr ng-hide="value.name=='id' || value.name =='employee'" ng-repeat="(key, value) in form_details[sections[selected]]">
+                        <tr ng-hide="value.name=='id' || value.name =='employee'" ng-repeat="(key, value) in form_details[sections[selected]]" >
 
                             <td ng-show="!value.verbose">{{value.name}}</td>
                             <td ng-show="value.verbose">{{value.verbose}}</td>
@@ -160,7 +160,7 @@
                             <div class="col m6">
                                 <span>{{v.email}}</span>
                             </div>
-                           
+
 
                         </div>
                     </td>
