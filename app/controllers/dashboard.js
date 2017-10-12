@@ -142,6 +142,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                     selectMonths: true,
                     format: 'yyyy',
                     selectYears: true,
+                    selectYears: 60,
                     selectMonths:false,
                     buttonImageOnly: false,
                     disable: [true],
@@ -291,10 +292,10 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                 angular.forEach( d, function(value, key){
                     if(value){
                         value.employee = $rootScope.loginid;
-                       
+
                     if (value.coauthor) {
 
-      
+
                       var t = {};
                       angular.forEach($scope.coauthors[$scope.attributes[$scope.selected].key], function(v, k){
                         var tt = [];
@@ -302,8 +303,8 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                           tt.push(vv.name+ ":" + vv.email + ":" + vv.approved) ;
                         });
                         t[k] = tt.join(';');
-                      }); 
-                     
+                      });
+
                       value.coauthor = t[key];
                     } else {
                       console.log('NO!')
