@@ -82,10 +82,13 @@
                                 <div ng-if="value.name == 'coauthor' " class="{{sections[selected]}}{{selectedResult}}">
                                     <br><br>
                                     <div class="row" ng-repeat="(k, v) in coauthors[attributes[selected].key][selectedResult]">
-                                        <div class="col m5">
+                                        <div class="col m2">
+                                            {{ $index + 1}}
+                                        </div>
+                                        <div class="col m4">
                                             <input type="text" name="" ng-model="v.name" placeholder="Name">
                                         </div>
-                                        <div class="col m5">
+                                        <div class="col m4">
                                             <input type="text" name="" ng-model="v.email" placeholder="Email">
                                         </div>
                                         <div class="col m2">
