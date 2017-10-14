@@ -102,59 +102,33 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                   console.log(allInput);
                   for(var i=0;i<allInput.length;i++){
                     if(allInput[i].name == 'month'){
-                      allInput[i].className="monthpicker";
                       allInput[i].id = "month";
+                      for (var j = 1; j <= 12; j++) {
+                          $("#month_select").eq(0).append("<option value="+j+">"+j+"</option>");
+                        }
+                      $("input[id='month']").replaceWith($("#month_drop")[0].outerHTML);
+                      $('select').material_select();
+
                     }
-                    
+                    else if(allInput[i].name == 'year' || allInput[i].name=='year_application' || allInput[i].name== "year_grant"){
+                      allInput[i].id = "year";
+                      for (var j = 0; j < 101; j++) {
+                          $("#year_select").eq(0).append("<option value="+(1980+j)+">"+(1980+j)+"</option>");
+                        }
+                      $("input[id='year']").replaceWith($("#year_drop")[0].outerHTML);
+                      $('select').material_select();
+
+                    }
                     else if(allInput[i].name == 'date' || allInput[i].name=="date_of_award" || allInput[i].name=="date_completed"){
                       allInput[i].className="datepicker";
                       allInput[i].id = "date";
                     }
+                    else if (allInput[i].name == 'isbn' || allInput[i].name == 'isbn_no' || allInput[i].name == 'page_no' || allInput[i].name == 'indexing' || allInput[i].name=='volume_no'||allInput[i].name=='issn_isbn' || allInput[i].name=='phds') {
+                      allInput[i].type="number";
+                    }
                     console.log(allInput[i].name);
 
                   }
-                  //Month Picker using pickadate
-                  $('.monthpicker').pickadate({
-                    selectMonths: true,
-                    format: 'mmmm',
-                    selectYears: false,
-                    buttonImageOnly: false,
-                    disable: [true],
-                    onOpen: function() {
-                      Materialize.toast('Select a Month', 4000)
-                      $(".picker__nav--prev, .picker__nav--next").remove();
-                    },
-                    onSet: function( arg ){
-                      console.log(arg.highlight);
-                      var selectedMonth = parseInt(arg.highlight[1]);
-                      var selectedYear = arg.highlight[0];
-                      var selectedDate = arg.highlight[2];
-                      this.close();
-                      this.set('select', [selectedYear, selectedMonth, selectedDate,{ format: 'yyyy/mm/dd' }]);
-                    }
-                  });
-                  //Year Picker
-
-                  $('.yearpicker').pickadate({
-                    selectMonths: true,
-                    format: 'yyyy',
-                    selectYears: true,
-                    selectMonths:false,
-                    buttonImageOnly: false,
-                    disable: [true],
-                    onOpen: function() {
-                      Materialize.toast('Select a Year', 4000)
-                      $(".picker__nav--prev, .picker__nav--next").remove();
-                    },
-                    onSet: function( arg ){
-                      console.log(arg.highlight);
-                      var selectedMonth = parseInt(arg.highlight[1]);
-                      var selectedYear = arg.highlight[0];
-                      var selectedDate = arg.highlight[2];
-                      this.close();
-                      this.set('select', [selectedYear, selectedMonth, selectedDate,{ format: 'yyyy/mm/dd' }]);
-                    }
-                  });
                   // Date Picker
                   $('.datepicker').pickadate({
                     selectMonths:true,
@@ -310,7 +284,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                     console.log('out for each')
 
                     console.log(t)
-                  }); 
+                  });
                   console.log('assign to coauthor')
                   console.log(t[key]);
                   value.coauthor = t[key];
@@ -445,9 +419,9 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
 
             console.log($scope.coauthors)
             if ($scope.coauthors[$scope.attributes[$scope.selected].key] == undefined) {
-             $scope.coauthors[$scope.attributes[$scope.selected].key] = []; 
+             $scope.coauthors[$scope.attributes[$scope.selected].key] = [];
            }
-           if ($scope.coauthors[$scope.attributes[$scope.selected].key][$scope.selectedResult] == undefined) 
+           if ($scope.coauthors[$scope.attributes[$scope.selected].key][$scope.selectedResult] == undefined)
             $scope.coauthors[$scope.attributes[$scope.selected].key][$scope.selectedResult] = [];
           $scope.coauthors[$scope.attributes[$scope.selected].key][$scope.selectedResult].push({
             'name' : '',
