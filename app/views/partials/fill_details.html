@@ -78,7 +78,7 @@
                             <td ng-show="!value.verbose">{{value.name}}</td>
                             <td ng-show="value.verbose">{{value.verbose}}</td>
                             <td >
-                                <input ng-if="value.name != 'coauthor' " type="text" name="{{value.name}}" ng-model="results[attributes[selected].key][selectedResult][value.name]">
+                                <input ng-if="value.name != 'coauthor' " type="text" name="{{value.name}}"  ng-model="results[attributes[selected].key][selectedResult][value.name]" placeholder="{{value.verbose}}">
                                 <div ng-if="value.name == 'coauthor' " class="{{sections[selected]}}{{selectedResult}}">
                                     <br><br>
                                     <div class="row" ng-repeat="(k, v) in coauthors[attributes[selected].key][selectedResult]">
@@ -178,7 +178,18 @@
 
 
 
-
+    <div class="input-field" id="year_drop">
+            <select id="year_select">
+              <option value="">Choose a Year</option>
+            </select>
+            <label>Select year</label>
+          </div>
+    <div class="input-field" id="month_drop">
+            <select id="month_select">
+              <option value="">Choose a Month</option>
+            </select>
+            <label>Select Month</label >
+        </div>
 
 </div>
 
