@@ -1,5 +1,5 @@
-angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$rootScope", "$sessionStorage","$localStorage", "$resource","$location",
-  function($scope, $http, $rootScope, $sessionStorage,$localStorage, $resource, $location) {
+angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$rootScope", "$sessionStorage","$localStorage", "$resource","$location","validationService",
+  function($scope, $http, $rootScope, $sessionStorage,$localStorage, $resource, $location,validationService) {
     $scope.selected = 0;
     $scope.results = {};
     $scope.coauthors = {};
@@ -100,6 +100,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                 //Set Input type
                 $(document).ready(function() {
                   var allInput = $('input');
+                  validationService.validator(allInput);
                   console.log(allInput);
                   for(var i=0;i<allInput.length;i++){
                     if(allInput[i].name == 'month'){
