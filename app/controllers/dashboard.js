@@ -47,6 +47,8 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
               data = data.toJSON();
               $scope.attributes = [];
               $scope.form_details = data;
+              console.log("from");
+              console.log($scope.form_details);
               $scope.sections = Object.keys(data).sort();
               angular.forEach($scope.sections, function(value, key) {
                 $scope.attributes.push({
@@ -114,8 +116,8 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                     else if(allInput[i].name == 'year' || allInput[i].name=='year_application' || allInput[i].name== "year_grant"){
                       allInput[i].id = "year";
                       if($('#year_select')[0].length<=1)
-                      for (var j = 0; j < 50; j++) {
-                          $("#year_select").eq(0).append("<option value="+(1980+j)+">"+(1980+j)+"</option>");
+                      for (var j = 0; j < 6; j++) {
+                          $("#year_select").eq(0).append("<option value="+(2012+j)+">"+(2012+j)+"</option>");
                         }
                       $("input[id='year']").replaceWith($("#year_drop")[0].outerHTML);
                       $('select').material_select();

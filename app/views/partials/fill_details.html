@@ -79,10 +79,13 @@
                             <td ng-show="value.verbose">{{value.verbose}}</td>
                             <td >
                                 <input ng-if="value.name != 'coauthor' " type="text" name="{{value.name}}"  ng-model="results[attributes[selected].key][selectedResult][value.name]" placeholder="{{value.verbose}}">
+
                                 <div ng-if="value.name == 'coauthor' " class="{{sections[selected]}}{{selectedResult}}">
                                     <br><br>
                                     <div class="row" ng-repeat="(k, v) in coauthors[attributes[selected].key][selectedResult]">
-                                        <div class="col m2">
+                                
+                                        <div class="col m2" style="color: #9e9e9e;font-size: 14px;padding-top: 10px; ">
+                                        <span>Priority</span>
                                             {{ $index + 1}}
                                         </div>
                                         <div class="col m4">
@@ -92,7 +95,9 @@
                                             <input type="text" name="" ng-model="v.email" placeholder="Email">
                                         </div>
                                         <div class="col m2">
-                                            <div ng-if="v.approved=='0'">!</div>
+                                            <div class="tooltip">?
+                                                <span class="tooltiptext">Waiting For Confirmation...</span>
+                                            </div>
                                         </div>
 
                                     </div>
@@ -197,6 +202,9 @@
 <script type="text/javascript">
     $(document).ready(function(){
     $('.tooltipped').tooltip({delay: 50});
+    function tooltip(){
+        Materialize.toast('Waiting For Confirmation', 2000);
+    }
   });
 </script>
 
@@ -230,4 +238,45 @@
     right: 2%;
     bottom: 10%;
     }
+    .tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+    background: #1a237e;
+    border-radius: 100%;
+    color: white;
+    width: 18px;
+    height: 20px;
+    text-align: center;
+    margin-top: 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.tooltip .tooltiptext::after {
+    content: " ";
+    position: absolute;
+    top: 33%;
+    right: 100%; /* To the left of the tooltip */
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent black transparent transparent;
+}
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+    top: -5px;
+    left: 110%; 
+    margin-left: 8px;
+}
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
 </style>
