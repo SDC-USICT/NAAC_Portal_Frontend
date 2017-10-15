@@ -20,7 +20,6 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
 
 
     $sessionStorage.loginid = $rootScope.loginid;
-    $sessionStorage.school_teachers = $rootScope.school_teachers;
 
     $scope.empImg = BACKEND + '/static/images/' + $rootScope.loginid + '.jpg?' + new Date().getTime();
 
