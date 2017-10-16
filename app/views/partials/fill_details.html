@@ -80,6 +80,7 @@
                     <td ng-show="!value.verbose">{{value.name}}</td>
                     <td ng-show="value.verbose">{{value.verbose}}</td>
                     <td >
+
                       <input ng-if="value.name != 'coauthor' && value.name !='year' && value.name != 'month' && value.name != 'isbn'" type="text" name="{{value.name}}"  ng-model="results[attributes[selected].key][selectedResult][value.name]" placeholder="{{value.verbose}}">
                       <div ng-if="value.name=='isbn'">
                         <div class="input-field" >
@@ -127,10 +128,12 @@
                         </div>
                       </div>
                     </td>
-
                   </tr>
                 </tbody>
               </table>
+              <button class="btn waves-effect waves-light  indigo darken-4 submit right" ng-click="finalSubmit()" type="submit" name="action" style="margin-bottom: 5px;">Final Submit
+                    <i class="material-icons right">send</i>
+              </button>
             </form>
           </div>
 

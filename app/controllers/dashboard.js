@@ -8,7 +8,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
     $scope.editing = 0;
     $scope.marked_authors = {};
     $scope.employeeMeta = {};
-    $scope.years = ['2012', '2013'];
+    $scope.years = ['2012', '2013','2014','2015','2016','2017'];
     $scope.months = ['Jan', 'Feb'];
     if($rootScope.loginid == undefined) {
       if($sessionStorage.loginid != undefined) {
@@ -461,7 +461,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
 
           }
         }
-
+        
 
       }
       ]).directive("filesInput", function() {
