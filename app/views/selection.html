@@ -12,8 +12,7 @@
 <div class="container select" ng-controller="SelCtrl as sel" style="display: none;">
     <div class="input-field col s12 school">
 
-    <input type="text" name="search" ng-model="search" placeholder="Search..." style="border: 3px solid #283593;padding-left: 10px;width: 50%;margin-left: 49%;">
-
+    <input type="text" name="search" ng-model="search" placeholder="Search..." style="border: 3px solid #283593;padding-left: 10px;width: 30%;margin-left: 69%;">
 
         <div class="card">
             <div class="card-content">
@@ -29,7 +28,7 @@
                       </tr>
                     </thead>
              <tbody>
-                  <tr ng-click="setEmployee(x)" ng-repeat="x in empData | filter : search" id="{{ x.pk }}">
+                  <tr ng-click="setEmployee(x)" ng-repeat="x in empData | filter : search | filter : validateEmp" id="{{ x.pk }}">
                   <td class="empDetails"><img ng-src="{{BACKEND}}/static/images/{{x.pk}}.jpg" class="empImage"></td>
                     <td>&nbsp;&nbsp;{{ x.fields.name }}</td>
                     <td>&nbsp;&nbsp;{{ x.pk }}</td>

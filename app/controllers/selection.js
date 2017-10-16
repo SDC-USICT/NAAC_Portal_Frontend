@@ -36,5 +36,10 @@ angular.module('employee')
                 $location.url('/login');
                 Materialize.Toast.removeAll();
             }
+            $scope.validateEmp = function(data){
+                if(data.pk.length == 5){
+                    return true;
+                }
+            }
           
         }]);
