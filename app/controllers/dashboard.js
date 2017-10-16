@@ -7,7 +7,9 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
     $scope.attributes= [];
     $scope.editing = 0;
     $scope.marked_authors = {};
-    $scope.employeeMeta = {}
+    $scope.employeeMeta = {};
+    $scope.years = ['2012', '2013'];
+    $scope.months = ['Jan', 'Feb'];
     if($rootScope.loginid == undefined) {
       if($sessionStorage.loginid != undefined) {
         $rootScope.loginid = $sessionStorage.loginid;
@@ -17,7 +19,9 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
         $location.url('/')
       }
     }
-
+    $(document).ready(function() {
+     $('input#input_text, textarea#textarea1').characterCounter();
+    });
 
     $sessionStorage.loginid = $rootScope.loginid;
 
@@ -102,28 +106,14 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                   var allInput = $('input');
                   validationService.validator(allInput);
                   console.log(allInput);
+                  $('select').material_select();
+
+                   $('input#input_text, textarea#textarea1').characterCounter();
+                
                   for(var i=0;i<allInput.length;i++){
-                    if(allInput[i].name == 'month'){
-                      allInput[i].id = "month";
-                      if($('#month_select')[0].length<=1)
-                      for (var j = 1; j <= 12; j++) {
-                          $("#month_select").eq(0).append("<option value="+j+">"+j+"</option>");
-                        }
-                      $("input[id='month']").replaceWith($("#month_drop")[0].outerHTML);
-                      $('select').material_select();
 
-                    }
-                    else if(allInput[i].name == 'year' || allInput[i].name=='year_application' || allInput[i].name== "year_grant"){
-                      allInput[i].id = "year";
-                      if($('#year_select')[0].length<=1)
-                      for (var j = 0; j < 6; j++) {
-                          $("#year_select").eq(0).append("<option value="+(2012+j)+">"+(2012+j)+"</option>");
-                        }
-                      $("input[id='year']").replaceWith($("#year_drop")[0].outerHTML);
-                      $('select').material_select();
 
-                    }
-                    else if(allInput[i].name == 'date' || allInput[i].name=="date_of_award" || allInput[i].name=="date_completed"){
+                   if(allInput[i].name == 'date' || allInput[i].name=="date_of_award" || allInput[i].name=="date_completed"){
                       allInput[i].className="datepicker";
                       allInput[i].id = "date";
                     }
