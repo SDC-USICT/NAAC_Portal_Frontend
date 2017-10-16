@@ -54,13 +54,45 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
               console.log($scope.form_details);
               $scope.sections = Object.keys(data).sort();
               angular.forEach($scope.sections, function(value, key) {
-                $scope.attributes.push({
-                  'key': value,
-                  'val': key
-                })
-              });
-              $scope.setSelected(0);
+                var tmp = {
+                  'key' : value,
+                  'val' : key
+                }
+                if (value == 'Awards') {
+                  tmp['priority'] = 10;
+                } else if(value == 'Book'){
+                  tmp['priority'] = 4;
+                }if (value == 'Book Chapters') {
+                  tmp['priority'] = 3;
+                } else if(value == 'Conference'){
+                  tmp['priority'] = 2;
+                }if (value == 'Extra') {
+                  tmp['priority'] = 12;
+                } else if(value == 'Guest Lecturer'){
+                  tmp['priority'] = 7;
+                }if (value == 'Journal Papers') {
+                  tmp['priority'] = 1;
+                } else if(value == 'Membership'){
+                  tmp['priority'] = 8;
+                }if (value == 'Patents') {
+                  tmp['priority'] = 9;
+                } else if(value == 'Professional'){
+                  tmp['priority'] = 0;
+                }if (value == 'Projects') {
+                  tmp['priority'] = 6;
+                } else if(value == 'Subjects Taken'){
+                  tmp['priority'] = 11;
+                }else if (value == 'Workshop') {
+                  tmp['priority'] = 5;
+                }
 
+                $scope.attributes.push(tmp)
+              });
+
+
+
+              $scope.setSelected(9);
+              console.log($scope.attributes); 
             });
             //  Set all input editable.
             $scope.setEditing = function () {

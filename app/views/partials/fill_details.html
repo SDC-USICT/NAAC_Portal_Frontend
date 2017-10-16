@@ -51,13 +51,14 @@
         </div>
 
         <div class="row border-top no-margins">
-          <div class="col m3">
-            <ul class="flexed">
-              <li ng-repeat="info in attributes">
-                <div ng-click="setSelected(info.val)" class="time" ng-class="{'grey-text':!isSelected(info)}" >{{ splitAtCaps(info.key) }}</div>
-              </li>
-            </ul>
-          </div>
+
+            <div class="col m3">
+                <ul class="flexed">
+                    <li ng-repeat="info in attributes| orderBy: 'priority'">
+                        <div ng-click="setSelected(info.val)" class="time" ng-class="{'grey-text':!isSelected(info)}" >{{ splitAtCaps(info.key) }}</div>
+                    </li>
+                </ul>
+            </div>
 
           <div class="col m7">
             <form >
