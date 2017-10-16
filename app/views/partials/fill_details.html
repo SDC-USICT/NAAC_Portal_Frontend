@@ -2,281 +2,290 @@
 <div id="test2" class="info container" ng-controller="DashboardCtrl">
 
 
-<div class="container">
-<div id="grad" class="student-card card no-margin" style="margin: 0 !important">
-    <div class=" card-content row">
+  <div class="container">
+    <div id="grad" class="student-card card no-margin" style="margin: 0 !important">
+      <div class=" card-content row">
 
         <div class="col m3 no-borders" style="background: white;">
-            <img ng-show="empImg" ng-src="{{empImg}}" style="width: 50%; margin-left: 20%">
-            <img ng-hide="empImg" src="#" style="width: 50%; margin-left: 20%">
-            <button class="btn waves-effect waves-light indigo darken-4 modal-trigger" data-target="modal1">Upload Image
+          <img ng-show="empImg" ng-src="{{empImg}}" style="width: 50%; margin-left: 20%">
+          <img ng-hide="empImg" src="#" style="width: 50%; margin-left: 20%">
+          <button class="btn waves-effect waves-light indigo darken-4 modal-trigger" data-target="modal1">Upload Image
             <i class="material-icons left">file_upload</i></button>
-        </div>
+          </div>
 
-        <div class="col m4 no-borders">
+          <div class="col m4 no-borders">
 
             <div class='greeting'>HELLO</div>
 
             <h4 class="light">{{employee.name}}</h4>
 
             <div class="teacher-id">{{employee.pk}}</div>
-        </div>
+          </div>
 
-        <div class="col m3 no-borders" style="background: white;">
+          <div class="col m3 no-borders" style="background: white;">
             <button href="#" class="btn waves-effect waves-light indigo darken-4 tooltipped right" data-position="bottom" data-delay="50" data-tooltip="Trouble Filling the Form" type="button" >Watch Video
-                    <i class="material-icons left">switch_video</i>
-              </button>
-        </div>
-        <div class="col m3 no-borders" style="background: white;">
+              <i class="material-icons left">switch_video</i>
+            </button>
+          </div>
+          <div class="col m3 no-borders" style="background: white;">
             <button href="#" class="btn waves-effect waves-light indigo darken-4 right" type="button" ng-click="dashboard()">Dashboard
-            <i class="material-icons left">dashboard</i>
-              </button>
-              <button href="#" class="btn waves-effect waves-light indigo darken-4 logoutButton" type="button" ng-click="logout()">Logout
-            <i class="fa fa-sign-out left"></i>
-              </button>
+              <i class="material-icons left">dashboard</i>
+            </button>
+            <button href="#" class="btn waves-effect waves-light indigo darken-4 logoutButton" type="button" ng-click="logout()">Logout
+              <i class="fa fa-sign-out left"></i>
+            </button>
+          </div>
         </div>
-    </div>
-    </div>
+      </div>
 
 
-    <div class="card">
+      <div class="card">
         <div class="row no-margins">
-            <div style="padding:0 0;" class="col m3">
-                <div class="table-title">INFORMATION</div>
+          <div style="padding:0 0;" class="col m3">
+            <div class="table-title">INFORMATION</div>
 
-            </div>
-            <div class="col m9">
+          </div>
+          <div class="col m9">
 
-            </div>
+          </div>
         </div>
 
         <div class="row border-top no-margins">
-            <div class="col m3">
-                <ul class="flexed">
-                    <li ng-repeat="info in attributes">
-                        <div ng-click="setSelected(info.val)" class="time" ng-class="{'grey-text':!isSelected(info)}" >{{ splitAtCaps(info.key) }}</div>
-                    </li>
-                </ul>
-            </div>
+          <div class="col m3">
+            <ul class="flexed">
+              <li ng-repeat="info in attributes">
+                <div ng-click="setSelected(info.val)" class="time" ng-class="{'grey-text':!isSelected(info)}" >{{ splitAtCaps(info.key) }}</div>
+              </li>
+            </ul>
+          </div>
 
-            <div class="col m7">
-                <div class="right">
-                    <button ng-click="save()" style="margin-top: 1em; background-color: #1a237e" class="btn waves-effect waves-light no-borders">
-                       <i style="font-size:1.2em; line-height:1.2em;" class="fa fa-paper-plane" aria-hidden="true"></i> SAVE
-                    </button>
+          <div class="col m7">
+            <form >
+              <div class="right">
+                <button ng-click="save()" style="margin-top: 1em; background-color: #1a237e" class="btn waves-effect waves-light no-borders">
+                  <i style="font-size:1.2em; line-height:1.2em;" class="fa fa-paper-plane" aria-hidden="true"></i> SAVE
+                </button>
+              </div>
+              <br>
+              <br>
+              <table>
+
+                <div class=" col s10 m10">
                 </div>
-                <br>
-                <br>
-                <table>
 
-                    <div class=" col s10 m10">
-                    </div>
+                <tbody>
+                  <tr ng-hide="value.name=='id' || value.name =='employee'" ng-repeat="(key, value) in form_details[sections[selected]]" >
 
-                    <tbody>
-                        <tr ng-hide="value.name=='id' || value.name =='employee'" ng-repeat="(key, value) in form_details[sections[selected]]" >
-
-                            <td ng-show="!value.verbose">{{value.name}}</td>
-                            <td ng-show="value.verbose">{{value.verbose}}</td>
-                            <td >
-                                <input ng-if="value.name != 'coauthor' " type="text" name="{{value.name}}"  ng-model="results[attributes[selected].key][selectedResult][value.name]" placeholder="{{value.verbose}}">
-
-                                <div ng-if="value.name == 'coauthor' " class="{{sections[selected]}}{{selectedResult}}">
-                                    <br><br>
-                                    <div class="row" ng-repeat="(k, v) in coauthors[attributes[selected].key][selectedResult]">
-                                
-                                        <div class="col m2" style="color: #9e9e9e;font-size: 14px;padding-top: 10px; ">
-                                        <span>Priority</span>
-                                            {{ $index + 1}}
-                                        </div>
-                                        <div class="col m4">
-                                            <input type="text" name="" ng-model="v.name" placeholder="Name">
-                                        </div>
-                                        <div class="col m4">
-                                            <input type="text" name="" ng-model="v.email" placeholder="Email">
-                                        </div>
-                                        <div class="col m2">
-                                            <div class="tooltip">?
-                                                <span class="tooltiptext">Waiting For Confirmation...</span>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    <div class="right">
-                                        <button ng-click="add_coauthor(key)" background-color: #1a237e" class="btn waves-effect waves-light no-borders">
-                                           <i style="font-size:1.2em; line-height:1.2em;" class="fa fa-plus-circle" aria-hidden="true"></i> ADD CO AUTHOR
-                                        </button>
-                                    </div>
-                                </div>
-                            </td>
-
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="col m2" style="background: lavender;">
-                <br>
-                <div ng-if="results[attributes[selected].key].length > 0">
-                    <div style="    width: 100%;">
-                        <a ng-click="addNewObject()" class="btn waves-effect waves-light">
-                            <i style="font-size:1.2em; line-height:1.2em;" class="fa fa-plus-circle" aria-hidden="true"></i> ADD {{splitAtCaps(attributes[selected].key)}} </a>
-                    </div>
-                    <br>
-                    <label>Saved {{splitAtCaps(attributes[selected].key)}} </label>
-                    <BR>
-                    <div ng-if="result!=null && result.pk" ng-repeat="result in results[attributes[selected].key] track by $index">
-
-                        <div style="cursor: pointer;border-bottom: 1px solid lightgray;" ng-class="{'active':($index==selectedResult)}" ng-click="openTheatre($index)" class="listelements no-margins">
-                            <div style="padding:12px !important" class="card-content result-title">{{result.title}}</div>
+                    <td ng-show="!value.verbose">{{value.name}}</td>
+                    <td ng-show="value.verbose">{{value.verbose}}</td>
+                    <td >
+                      <input ng-if="value.name != 'coauthor' && value.name !='year' && value.name != 'month' && value.name != 'isbn'" type="text" name="{{value.name}}"  ng-model="results[attributes[selected].key][selectedResult][value.name]" placeholder="{{value.verbose}}">
+                      <div ng-if="value.name=='isbn'">
+                        <div class="input-field" >
+                          <input id="input_text"  type="text" data-length="10" ng-model="results[attributes[selected].key][selectedResult][value.name]">
+                          <label for="input_text"></label>
                         </div>
+                      </div>
+                      <div ng-if="value.name=='year'" class="input-field" >
+                              <select id="year_select" ng-model="results[attributes[selected].key][selectedResult][value.name]" ng-options="year for year in years">
+                                <option value="" disabled>Choose a Year</option>
+                              </select>
+                              <label>Select year</label>
+                      </div>
+                      <div ng-if="value.name=='month'" class="input-field" >
+                              <select  ng-options="month for month in months" ng-model="results[attributes[selected].key][selectedResult][value.name]">
+                                <option value="" disabled>Choose a Month</option>
+                              </select>
+                              <label>Select month</label>
+                      </div>
+                      <div ng-if="value.name == 'coauthor'" class="{{sections[selected]}}{{selectedResult}}">
+                        <br><br>
+                        <div class="row" ng-repeat="(k, v) in coauthors[attributes[selected].key][selectedResult]">
+
+                          <div class="col m2" style="color: #9e9e9e;font-size: 14px;padding-top: 10px; ">
+                            <span>Priority</span>
+                            {{ $index + 1}}
+                          </div>
+                          <div class="col m4">
+                            <input type="text" name="" ng-model="v.name" placeholder="Name">
+                          </div>
+                          <div class="col m4">
+                            <input type="text" name="" ng-model="v.email" placeholder="Email">
+                          </div>
+                          <div class="col m2">
+                            <div class="tooltip">?
+                              <span class="tooltiptext">Waiting For Confirmation...</span>
+                            </div>
+                          </div>
+
+                        </div>
+                        <div class="right">
+                          <button ng-click="add_coauthor(key)" background-color: #1a237e" class="btn waves-effect waves-light no-borders">
+                            <i style="font-size:1.2em; line-height:1.2em;" class="fa fa-plus-circle" aria-hidden="true"></i> ADD CO AUTHOR
+                          </button>
+                        </div>
+                      </div>
+                    </td>
+
+                  </tr>
+                </tbody>
+              </table>
+            </form>
+          </div>
+
+          <div class="col m2" style="background: lavender;">
+            <br>
+            <div ng-if="results[attributes[selected].key].length > 0">
+              <div style="    width: 100%;">
+                <a ng-click="addNewObject()" class="btn waves-effect waves-light">
+                  <i style="font-size:1.2em; line-height:1.2em;" class="fa fa-plus-circle" aria-hidden="true"></i> ADD {{splitAtCaps(attributes[selected].key)}} </a>
+                </div>
+                <br>
+                <label>Saved {{splitAtCaps(attributes[selected].key)}} </label>
+                <BR>
+                  <div ng-if="result!=null && result.pk" ng-repeat="result in results[attributes[selected].key] track by $index">
+
+                    <div style="cursor: pointer;border-bottom: 1px solid lightgray;" ng-class="{'active':($index==selectedResult)}" ng-click="openTheatre($index)" class="listelements no-margins">
+                      <div style="padding:12px !important" class="card-content result-title">{{result.title}}</div>
                     </div>
+                  </div>
 
                 </div>
+              </div>
             </div>
+          </div>
         </div>
-    </div>
-</div>
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('.modal').modal();
-    })
-</script>
+        <script type="text/javascript">
+        $(document).ready(function () {
+          $('.modal').modal();
+        })
+        </script>
 
-<div id="modal2" class="modal modal-fixed-footer">
-    <div class="modal-content">
-        <h4>Record #{{ selectedResultTheatre + 1}} <i class="fa fa-circle" style="font-size: 0.3em;"></i> {{splitAtCaps(attributes[selected].key)}}
-        <i class="fa fa-close modal-close right" style="font-size: 1em;"></i>
-        </h4>
+        <div id="modal2" class="modal modal-fixed-footer">
+          <div class="modal-content">
+            <h4>Record #{{ selectedResultTheatre + 1}} <i class="fa fa-circle" style="font-size: 0.3em;"></i> {{splitAtCaps(attributes[selected].key)}}
+              <i class="fa fa-close modal-close right" style="font-size: 1em;"></i>
+            </h4>
 
 
-        <table>
+            <table>
 
-            <div class=" col s10 m10">
-            </div>
-            <tbody>
+              <div class=" col s10 m10">
+              </div>
+              <tbody>
 
                 <tr ng-hide="value.name=='id' || value.name =='employee'" ng-repeat="(key, value) in form_details[sections[selected]]">
 
-                    <td ng-show="!value.verbose" style="font-weight: 500">{{value.name}}</td>
-                    <td ng-show="value.verbose" style="font-weight: 500;">{{value.verbose}}</td>
-                    <td ng-if="value.name!='coauthor'">{{results[attributes[selected].key][selectedResultTheatre][value.name]}}</td>
-                    <td ng-if="value.name=='coauthor'">
-                        <br>
-                       <div class="row" ng-repeat="(k, v) in coauthors[attributes[selected].key][selectedResultTheatre]">
-                            <div class="col m6">
-                                <span>{{v.name}}</span>
-                            </div>
-                            <div class="col m6">
-                                <span>{{v.email}}</span>
-                            </div>
+                  <td ng-show="!value.verbose" style="font-weight: 500">{{value.name}}</td>
+                  <td ng-show="value.verbose" style="font-weight: 500;">{{value.verbose}}</td>
+                  <td ng-if="value.name!='coauthor'">{{results[attributes[selected].key][selectedResultTheatre][value.name]}}</td>
+                  <td ng-if="value.name=='coauthor'">
+                    <br>
+                    <div class="row" ng-repeat="(k, v) in coauthors[attributes[selected].key][selectedResultTheatre]">
+                      <div class="col m6">
+                        <span>{{v.name}}</span>
+                      </div>
+                      <div class="col m6">
+                        <span>{{v.email}}</span>
+                      </div>
 
 
-                        </div>
-                    </td>
+                    </div>
+                  </td>
                 </tr>
-            </tbody>
-        </table>
-    </div>
-    <div class="modal-footer">
-        <a ng-click="setSelectedResult(selectedResultTheatre)" class="modal-close btn waves-effect white-text left">EDIT</a>
-        <a ng-click="delete(selectedResultTheatre)" class="red modal-close btn waves-effect white-text ">DELETE</a>
-    </div>
-
-
-
-    <div class="input-field" id="year_drop">
-            <select id="year_select">
-              <option value="">Choose a Year</option>
-            </select>
-            <label>Select year</label>
+              </tbody>
+            </table>
           </div>
-    <div class="input-field" id="month_drop">
-            <select id="month_select">
-              <option value="">Choose a Month</option>
-            </select>
-            <label>Select Month</label >
-        </div>
-
-</div>
+          <div class="modal-footer">
+            <a ng-click="setSelectedResult(selectedResultTheatre)" class="modal-close btn waves-effect white-text left">EDIT</a>
+            <a ng-click="delete(selectedResultTheatre)" class="red modal-close btn waves-effect white-text ">DELETE</a>
+          </div>
+          </div>
 
 
-<script type="text/javascript">
-    $(document).ready(function(){
-    $('.tooltipped').tooltip({delay: 50});
-    function tooltip(){
-        Materialize.toast('Waiting For Confirmation', 2000);
-    }
-  });
+          <script type="text/javascript">
+          $(document).ready(function(){
+            $('.tooltipped').tooltip({delay: 50});
+            function tooltip(){
+              Materialize.toast('Waiting For Confirmation', 2000);
+            }
+          });
+          </script>
+
+
+          <style type="text/css">
+          @media only screen and (min-width: 993px) {
+            .container {
+              width: 95% !important;
+            }
+          }
+
+          .card.active {
+            background: aliceblue;
+          }
+
+          .card-content.result-title {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+          }
+
+          .btn {
+            background-color: #1a237e;
+          }
+          .listelements.active {
+            background-color: crimson;
+            color: white;
+          }
+          .logoutButton{
+            position: absolute;
+            right: 2%;
+            bottom: 10%;
+          }
+          .tooltip {
+            position: relative;
+            display: inline-block;
+            border-bottom: 1px dotted black;
+            background: #1a237e;
+            border-radius: 100%;
+            color: white;
+            width: 18px;
+            height: 20px;
+            text-align: center;
+            margin-top: 14px;
+            font-weight: bold;
+            cursor: pointer;
+          }
+          .tooltip .tooltiptext::after {
+            content: " ";
+            position: absolute;
+            top: 33%;
+            right: 100%; /* To the left of the tooltip */
+            margin-top: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: transparent black transparent transparent;
+          }
+          .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 120px;
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            padding: 5px 0;
+            border-radius: 6px;
+            position: absolute;
+            z-index: 1;
+            top: -5px;
+            left: 110%;
+            margin-left: 8px;
+          }
+          .tooltip:hover .tooltiptext {
+            visibility: visible;
+          }
+          </style>
+<script>
+$(document).ready(function() {
+ $('input#input_text, textarea#textarea1').characterCounter();
+});
 </script>
-
-
-<style type="text/css">
-    @media only screen and (min-width: 993px) {
-        .container {
-            width: 95% !important;
-        }
-    }
-
-    .card.active {
-        background: aliceblue;
-    }
-
-    .card-content.result-title {
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-    }
-
-    .btn {
-        background-color: #1a237e;
-    }
-    .listelements.active {
-        background-color: crimson;
-        color: white;
-    }
-    .logoutButton{
-         position: absolute;
-    right: 2%;
-    bottom: 10%;
-    }
-    .tooltip {
-    position: relative;
-    display: inline-block;
-    border-bottom: 1px dotted black;
-    background: #1a237e;
-    border-radius: 100%;
-    color: white;
-    width: 18px;
-    height: 20px;
-    text-align: center;
-    margin-top: 14px;
-    font-weight: bold;
-    cursor: pointer;
-}
-.tooltip .tooltiptext::after {
-    content: " ";
-    position: absolute;
-    top: 33%;
-    right: 100%; /* To the left of the tooltip */
-    margin-top: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: transparent black transparent transparent;
-}
-.tooltip .tooltiptext {
-    visibility: hidden;
-    width: 120px;
-    background-color: black;
-    color: #fff;
-    text-align: center;
-    padding: 5px 0;
-    border-radius: 6px;
-    position: absolute;
-    z-index: 1;
-    top: -5px;
-    left: 110%; 
-    margin-left: 8px;
-}
-.tooltip:hover .tooltiptext {
-    visibility: visible;
-}
-</style>
