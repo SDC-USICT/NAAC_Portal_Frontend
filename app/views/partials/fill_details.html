@@ -39,6 +39,8 @@
       </div>
 
 
+
+
       <div class="card">
         <div class="row no-margins">
           <div style="padding:0 0;" class="col m3">
@@ -61,7 +63,7 @@
             </div>
 
           <div class="col m7">
-            <form >
+            <form name="naacForm">
               <div class="right">
                 <button ng-click="save()" style="margin-top: 1em; background-color: #1a237e" class="btn waves-effect waves-light no-borders">
                   <i style="font-size:1.2em; line-height:1.2em;" class="fa fa-paper-plane" aria-hidden="true"></i> SAVE
@@ -75,7 +77,343 @@
                 </div>
 
                 <tbody>
-                  <tr ng-hide="value.name=='id' || value.name =='employee'" ng-repeat="(key, value) in form_details[sections[selected]]" >
+                <tr ng-if="selected == '9'">
+                    
+                  <td>
+
+        <div class="input-field col s6 fields">
+          Academic Experience
+        </div>
+        <div class="input-field col s6">
+          <input placeholder="Academic Experience" id="acadExp" type="text" class="validate" ng-model="acadExp" name="acadExp" required>
+          <span ng-show="naacForm.acadExp.$touched && naacForm.acadExp.$invalid" class="error">Field cannot be empty</span>
+        </div>
+                  </td>
+
+                </tr>
+
+
+
+<tr ng-if="selected == '9'">
+                    
+                  <td>
+
+        <div class="input-field col s6 fields">
+          Industrial Experience
+        </div>
+        <div class="input-field col s6">
+          <input placeholder="Industrial Experience" id="indExp" type="text" class="validate" ng-model="indExp" name="indExp" required>
+          <span ng-show="naacForm.indExp.$touched && naacForm.indExp.$invalid" class="error">Field cannot be empty</span>
+        </div>
+                  </td>
+
+                </tr>
+
+<tr ng-if="selected == '9'">
+                    
+                  <td>
+
+        <div class="input-field col s6 fields">
+          Highest Qualification
+        </div>
+        <div class="input-field col s6">
+          <input placeholder="Highest Qualification" id="highQual" type="text" class="validate" ng-model="highQual" name="highQual" required>
+          <span ng-show="naacForm.highQual.$touched && naacForm.highQual.$invalid" class="error">Field cannot be empty</span>
+        </div>
+                  </td>
+
+                </tr>
+
+<tr ng-if="selected == '9'">
+                    
+                  <td>
+
+        <div class="input-field col s6 fields">
+          Qualification Added
+        </div>
+        <div class="input-field col s6">
+          <input placeholder="Qualification Added" id="qualAdd" type="text" class="validate" ng-model="qualAdd" name="qualAdd" required>
+          <span ng-show="naacForm.qualAdd.$touched && naacForm.qualAdd.$invalid" class="error">Field cannot be empty</span>
+        </div>
+                  </td>
+
+                </tr>
+
+<tr ng-if="selected == '9'">
+                    
+                  <td>
+
+        <div class="input-field col s6 fields">
+          Total Student
+        </div>
+        <div class="input-field col s6">
+          <input placeholder="Total Student" id="totStu" type="text" class="validate" ng-model="totStu" name="totStu" required>
+          <span ng-show="naacForm.totStu.$touched && naacForm.totStu.$invalid" class="error">Field cannot be empty</span>
+        </div>
+                  </td>
+
+                </tr>
+
+<tr ng-if="selected == '9'">
+                    
+                  <td>
+
+        <div class="input-field col s6 fields">
+          Phd Pursuing
+        </div>
+        <div class="input-field col s6">
+          <input placeholder="Phd Pursuing" id="phdp" type="text" class="validate" ng-model="phdp" name="phdp" required>
+          <span ng-show="naacForm.phdp.$touched && naacForm.phdp.$invalid" class="error">Field cannot be empty</span>
+        </div>
+                  </td>
+
+                </tr>
+
+<tr ng-if="selected == '9'">
+                    
+                  <td>
+
+        <div class="input-field col s6 fields">
+          Phd Submitted
+        </div>
+        <div class="input-field col s6">
+          <input placeholder="Phd Submitted" id="phds" type="text" class="validate" ng-model="phds" name="phds" required>
+          <span ng-show="naacForm.phds.$touched && naacForm.phds.$invalid" class="error">Field cannot be empty</span>
+        </div>
+                  </td>
+
+                </tr>
+
+<tr ng-if="selected == '9'">
+                    
+                  <td>
+
+        <div class="input-field col s6 fields">
+          Phd Awarded
+        </div>
+        <div class="input-field col s6">
+          <input placeholder="Phd Awarded" id="phda" type="text" class="validate" ng-model="phda" name="phda" required>
+          <span ng-show="naacForm.phda.$touched && naacForm.phda.$invalid" class="error">Field cannot be empty</span>
+        </div>
+                  </td>
+
+                </tr>
+
+<tr ng-if="selected == '9'">
+                    
+                  <td>
+
+        <div class="input-field col s6 fields">
+          Year
+        </div>
+        <div class="input-field col s6">
+          <select name="yearProf" ng-model="yearProf">
+      <option value="" disabled selected>Choose your option</option>
+      <option value="2012">2012</option>
+      <option value="2013">2013</option>
+      <option value="2014">2014</option>
+      <option value="2015">2015</option>
+      <option value="2016">2016</option>
+      <option value="2017">2017</option>
+
+    </select>
+        </div>
+                  </td>
+
+                </tr>
+
+
+
+                <tr ng-if="selected == '12'">
+                    
+                  <td>
+
+        <div class="input-field col s6 fields">
+          Name
+        </div>
+        <div class="input-field col s6">
+          <input placeholder="Name" id="nameWork" type="text" class="validate" ng-model="nameWork" name="nameWork" required>
+          <span ng-show="naacForm.nameWork.$touched && naacForm.nameWork.$invalid" class="error">Field cannot be empty</span>
+        </div>
+                  </td>
+
+                </tr>
+
+
+                <tr ng-if="selected == '12'">
+                    
+                  <td>
+
+        <div class="input-field col s6 fields">
+          Date
+        </div>
+        <div class="input-field col s6">
+          <input placeholder="Date" id="dateWork" type="text" class="datepicker" ng-model="dateWork" name="dateWork" required>
+        </div>
+                  </td>
+
+                </tr>
+
+
+                <tr ng-if="selected == '12'">
+                    
+                  <td>
+
+        <div class="input-field col s6 fields">
+          Duration
+        </div>
+        <div class="input-field col s6">
+          <input placeholder="Duration in Days" id="durinday" type="text" class="validate" ng-model="durinday" name="durinday" required>
+          <span ng-show="naacForm.durinday.$touched && naacForm.durinday.$invalid" class="error">Field cannot be empty</span>
+        </div>
+                  </td>
+
+                </tr>
+
+                <tr ng-if="selected == '12'">
+                    
+                  <td>
+
+        <div class="input-field col s6 fields">
+          Organisation
+        </div>
+        <div class="input-field col s6">
+          <input placeholder="Organisation" id="orgWork" type="text" class="validate" ng-model="orgWork" name="orgWork" required>
+          <span ng-show="naacForm.orgWork.$touched && naacForm.orgWork.$invalid" class="error">Field cannot be empty</span>
+        </div>
+                  </td>
+
+                </tr>
+
+
+
+                <!-- Awards -->
+
+                <tr ng-if="selected == '0'">
+                    
+                  <td>
+
+        <p style="padding-left: 12px;">
+      <input type="checkbox" id="awardtb" ng-model="noaward" />
+      <label for="awardtb">No Awards</label>
+    </p>
+                  </td>
+
+                </tr>
+
+
+                <tr ng-if="selected == '0'" ng-show="!noaward">
+                    
+                  <td>
+
+        <div class="input-field col s6 fields">
+          Title
+        </div>
+        <div class="input-field col s6">
+          <input placeholder="Title" id="c" type="text" class="validate" ng-model="titleAward" name="titleAward" required>
+          <span ng-show="naacForm.titleAward.$touched && naacForm.titleAward.$invalid" class="error">Field cannot be empty</span>
+        </div>
+                  </td>
+
+                </tr>
+
+
+                <tr ng-if="selected == '0'" ng-show="!noaward">
+                    
+                  <td>
+
+        <div class="input-field col s6 fields">
+          Award Type
+        </div>
+        <div class="input-field col s6">
+          
+          <select name="awardtype" ng-model="awardtype">
+      <option value="" disabled selected>Choose your option</option>
+      <option value="national">National</option>
+      <option value="international">International</option>
+      </select>
+          
+        </div>
+                  </td>
+
+                </tr>
+
+
+                <tr ng-if="selected == '0'" ng-show="!noaward">
+                    
+                  <td>
+
+        <div class="input-field col s6 fields">
+          Organisation
+        </div>
+        <div class="input-field col s6">
+          <input placeholder="Organisation" id="orgAward" type="text" class="validate" ng-model="orgAward" name="orgAward" required>
+          <span ng-show="naacForm.orgAward.$touched && naacForm.orgAward.$invalid" class="error">Field cannot be empty</span>
+        </div>
+                  </td>
+
+                </tr>
+
+
+                <tr ng-if="selected == '0'" ng-show="!noaward">
+                    
+                  <td>
+
+        <div class="input-field col s6 fields">
+          Month
+        </div>
+        <div class="input-field col s6">
+          <select name="monthAward" ng-model="monthAward">
+      <option value="" disabled selected>Choose your option</option>
+      <option value="jan">January</option>
+      <option value="feb">February</option>
+      <option value="mar">March</option>
+      <option value="apr">April</option>
+      <option value="may">May</option>
+      <option value="june">June</option>
+      <option value="july">July</option>
+      <option value="aug">August</option>
+      <option value="sep">September</option>
+      <option value="oct">October</option>
+      <option value="nov">November</option>
+      <option value="dec">December</option>
+    </select>
+        </div>
+                  </td>
+
+                </tr>
+
+
+
+                <tr ng-if="selected == '0'" ng-show="!noaward">
+                    
+                  <td>
+
+        <div class="input-field col s6 fields">
+          Year of Award
+        </div>
+        <div class="input-field col s6">
+          <select name="yearAward" ng-model="yearAward">
+      <option value="" disabled selected>Choose your option</option>
+      <option value="2012">2012</option>
+      <option value="2013">2013</option>
+      <option value="2014">2014</option>
+      <option value="2015">2015</option>
+      <option value="2016">2016</option>
+      <option value="2017">2017</option>
+
+    </select>
+        </div>
+                  </td>
+
+                </tr>
+
+
+
+
+
+
+                  <!-- <tr ng-hide="value.name=='id' || value.name =='employee'" ng-repeat="(key, value) in form_details[sections[selected]]" >
 
                     <td ng-show="!value.verbose">{{value.name}}</td>
                     <td ng-show="value.verbose">{{value.verbose}}</td>
@@ -128,7 +466,7 @@
                         </div>
                       </div>
                     </td>
-                  </tr>
+                  </tr> -->
                 </tbody>
               </table>
           
@@ -285,9 +623,17 @@
           .tooltip:hover .tooltiptext {
             visibility: visible;
           }
+          .fields{
+                padding-top: 18px !important    
+          }
+          .error{
+            color: red;
+            font-weight: 400;
+          }
           </style>
 <script>
 $(document).ready(function() {
  $('input#input_text, textarea#textarea1').characterCounter();
+
 });
 </script>
