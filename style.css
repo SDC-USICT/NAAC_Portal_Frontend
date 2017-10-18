@@ -184,7 +184,7 @@ nav {
 .view.ng-leave.ng-leave-active { opacity:0; }
 
 
-input.ng-pristine {
+/*input.ng-pristine {
             background-color:yellow;
       }
 input.ng-touched.ng-valid.ng-empty {
@@ -193,4 +193,4 @@ input.ng-touched.ng-valid.ng-empty {
 
 input.ng-touched.ng-valid.ng-not-empty {
               border-bottom: 1.5px solid limegreen;
-}
+}*/

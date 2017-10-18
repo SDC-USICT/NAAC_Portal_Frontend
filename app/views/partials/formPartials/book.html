@@ -1,0 +1,70 @@
+<table>
+  <tbody>
+    <!-- Book Title -->
+    <tr ng-if="selected == '1'">
+
+      <td>
+
+        <div class="input-field col s6 fields">
+          Book Title
+        </div>
+        <div class="input-field col s6">
+          <input placeholder="Enter a book title." id="bookTitle" type="text" class="validate" ng-model="bookTitle" name="bookTitle" ng-minlength="3" ng-maxlength="100" required>
+          <span ng-show="naacForm.bookTitle.$error.minlength || naacForm.bookTitle.$error.maxlength" class="error">Book title length should be between 3 and 100.</span>
+          <span ng-show="naacForm.bookTitle.$touched && naacForm.bookTitle.$error.required" class="error">Field cannot be empty</span>
+        </div>
+      </td>
+
+    </tr>
+
+    <!-- Book ISBN -->
+
+    <tr ng-if="selected == '1'">
+
+      <td>
+
+        <div class="input-field col s6 fields">
+          Book ISBN
+        </div>
+        <div class="input-field col s6">
+          <input placeholder="Enter book isbn number." id="bookISBN" type="number" class="validate" ng-model="bookISBN" name="bookISBN" ng-minlength="10" ng-maxlength="13" required>
+          <span ng-show="naacForm.bookISBN.$error.minlength || naacForm.bookISBN.$error.maxlength" class="error">Book ISBN length should be between 10 or 13.</span>
+          <span ng-show="naacForm.bookISBN.$touched && naacForm.bookISBN.$error.required" class="error">Field cannot be empty</span>
+
+        </div>
+      </td>
+
+    </tr>
+
+
+    <!-- Book Year -->
+
+    <tr ng-if="selected == '1'">
+
+      <td>
+
+        <div class="input-field col s6 fields">
+          Year
+        </div>
+        <div class="input-field col s6">
+          <select name="bookYear" ng-model="bookYear">
+            <option value="" disabled selected>Choose your option</option>
+            <option value="2012">2012</option>
+            <option value="2013">2013</option>
+            <option value="2014">2014</option>
+            <option value="2015">2015</option>
+            <option value="2016">2016</option>
+            <option value="2017">2017</option>
+
+          </select>
+        </div>
+      </td>
+
+    </tr>
+
+
+
+    <!-- Book Co-Author -->
+
+  </tbody>
+</table>

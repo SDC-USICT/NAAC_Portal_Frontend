@@ -1,0 +1,125 @@
+<table>
+  <tbody>
+    <!-- Awards -->
+
+    <tr ng-if="selected == '0'">
+
+      <td>
+
+        <p style="padding-left: 12px;">
+          <input type="checkbox" id="awardtb" ng-model="noaward" />
+          <label for="awardtb">No Awards</label>
+        </p>
+      </td>
+
+    </tr>
+
+
+    <tr ng-if="selected == '0'" ng-show="!noaward">
+
+      <td>
+
+        <div class="input-field col s6 fields">
+          Title
+        </div>
+        <div class="input-field col s6">
+          <input placeholder="Title" id="c" type="text" class="validate" ng-model="titleAward" name="titleAward" required>
+          <span ng-show="naacForm.titleAward.$touched && naacForm.titleAward.$invalid" class="error">Field cannot be empty</span>
+        </div>
+      </td>
+
+    </tr>
+
+
+    <tr ng-if="selected == '0'" ng-show="!noaward">
+
+      <td>
+
+        <div class="input-field col s6 fields">
+          Award Type
+        </div>
+        <div class="input-field col s6">
+
+          <select name="awardtype" ng-model="awardtype">
+            <option value="" disabled selected>Choose your option</option>
+            <option value="national">National</option>
+            <option value="international">International</option>
+          </select>
+
+        </div>
+      </td>
+
+    </tr>
+
+
+    <tr ng-if="selected == '0'" ng-show="!noaward">
+
+      <td>
+
+        <div class="input-field col s6 fields">
+          Organisation
+        </div>
+        <div class="input-field col s6">
+          <input placeholder="Organisation" id="orgAward" type="text" class="validate" ng-model="orgAward" name="orgAward" required>
+          <span ng-show="naacForm.orgAward.$touched && naacForm.orgAward.$invalid" class="error">Field cannot be empty</span>
+        </div>
+      </td>
+
+    </tr>
+
+
+    <tr ng-if="selected == '0'" ng-show="!noaward">
+
+      <td>
+
+        <div class="input-field col s6 fields">
+          Month
+        </div>
+        <div class="input-field col s6">
+          <select name="monthAward" ng-model="monthAward">
+            <option value="" disabled selected>Choose your option</option>
+            <option value="jan">January</option>
+            <option value="feb">February</option>
+            <option value="mar">March</option>
+            <option value="apr">April</option>
+            <option value="may">May</option>
+            <option value="june">June</option>
+            <option value="july">July</option>
+            <option value="aug">August</option>
+            <option value="sep">September</option>
+            <option value="oct">October</option>
+            <option value="nov">November</option>
+            <option value="dec">December</option>
+          </select>
+        </div>
+      </td>
+
+    </tr>
+
+
+
+    <tr ng-if="selected == '0'" ng-show="!noaward">
+
+      <td>
+
+        <div class="input-field col s6 fields">
+          Year of Award
+        </div>
+        <div class="input-field col s6">
+          <select name="yearAward" ng-model="yearAward">
+            <option value="" disabled selected>Choose your option</option>
+            <option value="2012">2012</option>
+            <option value="2013">2013</option>
+            <option value="2014">2014</option>
+            <option value="2015">2015</option>
+            <option value="2016">2016</option>
+            <option value="2017">2017</option>
+
+          </select>
+        </div>
+      </td>
+
+    </tr>
+
+  </tbody>
+</table>
