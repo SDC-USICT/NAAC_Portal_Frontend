@@ -1,0 +1,90 @@
+
+<table>
+  <tbody>
+
+
+
+    <tr ng-if="selected == '8'">
+
+      <td>
+
+        <div class="input-field col s6 fields">
+          Patent Name
+        </div>
+        <div class="input-field col s6">
+          <input placeholder="Patent Name" id="patentName" type="text" class="validate" ng-model="patentName" name="patentName" ng-minlength="3" ng-maxlength="100" required>
+          <span ng-show="naacForm.patentName.$error.minlength || naacForm.patentName.$error.maxlength" class="error">Length should be between 3 and 100.</span>
+          <span ng-show="naacForm.patentName.$touched && naacForm.patentName.$error.required" class="error">Field cannot be empty</span>
+        </div>
+      </td>
+
+    </tr>
+
+
+    <tr ng-if="selected == '8'">
+
+      <td>
+
+        <div class="input-field col s6 fields">
+          Patenting Agency
+        </div>
+        <div class="input-field col s6">
+          <input placeholder="Patenting Agency" id="patentAgency" type="text" class="validate" ng-model="patentAgency" name="patentAgency" ng-minlength="3" ng-maxlength="100" required>
+          <span ng-show="naacForm.patentAgency.$error.minlength || naacForm.patentAgency.$error.maxlength" class="error">Length should be between 3 and 100.</span>
+          <span ng-show="naacForm.patentAgency.$touched && naacForm.patentAgency.$error.required" class="error">Field cannot be empty</span>
+        </div>
+      </td>
+
+    </tr>
+
+
+    <tr ng-if="selected == '8'">
+
+      <td>
+
+        <div class="input-field col s6 fields">
+          Year of Application
+        </div>
+        <div class="input-field col s6">
+          <select name="patentYear" ng-model="patentYear">
+            <option value="" disabled selected>Choose your option</option>
+            <option value="2012">2012</option>
+            <option value="2013">2013</option>
+            <option value="2014">2014</option>
+            <option value="2015">2015</option>
+            <option value="2016">2016</option>
+            <option value="2017">2017</option>
+
+          </select>
+        </div>
+      </td>
+
+    </tr>
+
+
+    <tr ng-if="selected == '8'">
+
+      <td>
+
+        <div class="input-field col s6 fields">
+          Year of Grant
+        </div>
+        <div class="input-field col s6">
+          <select name="patentYearGrant" ng-model="patentYearGrant">
+            <option value="" disabled selected>Choose your option</option>
+            <option value="2012">2012</option>
+            <option value="2013">2013</option>
+            <option value="2014">2014</option>
+            <option value="2015">2015</option>
+            <option value="2016">2016</option>
+            <option value="2017">2017</option>
+
+          </select>
+        </div>
+      </td>
+
+    </tr>
+
+
+    </tbody>
+</table>

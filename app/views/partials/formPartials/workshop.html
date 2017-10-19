@@ -9,7 +9,7 @@
         </div>
         <div class="input-field col s6">
           <input placeholder="Name" id="nameWork" type="text" class="validate" ng-model="nameWork" name="nameWork" required>
-          <span ng-show="naacForm.nameWork.$touched && naacForm.nameWork.$invalid" class="error">Field cannot be empty</span>
+          <span ng-show="naacForm.nameWork.$touched && naacForm.nameWork.$error.required" class="error">Field cannot be empty</span>
         </div>
       </td>
 
@@ -39,8 +39,8 @@
           Duration
         </div>
         <div class="input-field col s6">
-          <input placeholder="Duration in Days" id="durinday" type="text" class="validate" ng-model="durinday" name="durinday" required>
-          <span ng-show="naacForm.durinday.$touched && naacForm.durinday.$invalid" class="error">Field cannot be empty</span>
+          <input placeholder="Duration in Days" id="durinday" type="number" class="validate" ng-model="durinday" name="durinday" required>
+          <span ng-show="naacForm.durinday.$touched && naacForm.durinday.$error.required" class="error">Field cannot be empty</span>
         </div>
       </td>
 
@@ -55,7 +55,7 @@
         </div>
         <div class="input-field col s6">
           <input placeholder="Organisation" id="orgWork" type="text" class="validate" ng-model="orgWork" name="orgWork" required>
-          <span ng-show="naacForm.orgWork.$touched && naacForm.orgWork.$invalid" class="error">Field cannot be empty</span>
+          <span ng-show="naacForm.orgWork.$touched && naacForm.orgWork.$error.required" class="error">Field cannot be empty</span>
         </div>
       </td>
 
