@@ -1,0 +1,119 @@
+
+<table>
+  <tbody>
+
+    <tr ng-if="selected == '10'">
+
+      <td>
+
+        <div class="input-field col s6 fields">
+          Project Title
+        </div>
+        <div class="input-field col s6">
+          <input placeholder="Project Title" id="projectTitle" type="text" class="validate" ng-model="projectTitle" name="projectTitle" ng-minlength="3" ng-maxlength="100" required>
+          <span ng-show="naacForm.projectTitle.$error.minlength || naacForm.projectTitle.$error.maxlength" class="error">Project title length should be between 3 and 100.</span>
+          <span ng-show="naacForm.projectTitle.$touched && naacForm.projectTitle.$error.required" class="error">Field cannot be empty</span>
+        </div>
+      </td>
+
+    </tr>
+
+
+    <tr ng-if="selected == '10'">
+
+      <td>
+
+        <div class="input-field col s6 fields">
+          Sponsoring Agency
+        </div>
+        <div class="input-field col s6">
+          <input placeholder="Sponsoring Agency" id="projectSponsor" type="text" class="validate" ng-model="projectSponsor" name="projectSponsor" ng-minlength="3" ng-maxlength="100" required>
+          <span ng-show="naacForm.projectSponsor.$error.minlength || naacForm.projectSponsor.$error.maxlength" class="error">Sponsor name should be  3 to 100 character long. </span>
+          <span ng-show="naacForm.projectSponsor.$touched && naacForm.projectSponsor.$error.required" class="error">Field cannot be empty</span>
+
+        </div>
+      </td>
+
+    </tr>
+
+
+
+    <tr ng-if="selected == '10'">
+
+      <td>
+
+        <div class="input-field col s6 fields">
+          Date of Award
+        </div>
+        <div class="input-field col s6">
+          <input placeholder="Date  of Award" id="projectDateAward" type="text" class="datepicker" ng-model="projectDateAward" name="projectDateAward" required>
+
+        </div>
+      </td>
+
+    </tr>
+
+
+    <tr ng-if="selected == '10'">
+
+      <td>
+
+        <div class="input-field col s6 fields">
+          Date of Completion
+        </div>
+        <div class="input-field col s6">
+          <input placeholder="Date of Completion" id="projectDateCompleted" type="text" class="datepicker" ng-model="projectDateCompleted" name="projectDateCompleted" required>
+
+        </div>
+      </td>
+
+    </tr>
+
+
+    <tr ng-if="selected == '10'">
+
+      <td>
+
+        <div class="input-field col s6 fields">
+        Project Amount Sanctioned
+        </div>
+        <div class="input-field col s6">
+          <input placeholder="Project Amount Sanctioned" id="projectAmount" type="number" class="validate" ng-model="projectAmount" name="projectAmount" ng-minlength="3" ng-maxlength="10" required>
+          <span ng-show="naacForm.projectAmount.$error.minlength || naacForm.projectAmount.$error.maxlength" class="error">Amount should be  3 to 10 character long. </span>
+          <span ng-show="naacForm.projectAmount.$touched && naacForm.projectAmount.$error.required" class="error">Field cannot be empty</span>
+
+        </div>
+      </td>
+
+    </tr>
+
+
+
+
+<tr ng-if="selected == '10'">
+
+  <td>
+
+    <div class="input-field col s6 fields">
+      Status of Project
+    </div>
+    <div class="input-field col s6">
+      <select name="conferenceYear" ng-model="conferenceYear">
+        <option value="" disabled selected>Choose your option</option>
+        <option value="completed">Completed</option>
+        <option value="inprogress">In-Progress</option>
+        <option value="abandoned">Work Abandoned</option>
+
+      </select>
+    </div>
+  </td>
+
+</tr>
+
+
+    <!-- Project Co-Author -->
+<!-- implementation of co author -->
+
+
+    </tbody>
+</table>

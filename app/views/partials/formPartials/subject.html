@@ -1,0 +1,116 @@
+<table>
+  <tbody>
+
+
+
+
+
+
+        <tr ng-if="selected == '11'">
+
+          <td>
+
+            <div class="input-field col s6 fields">
+              Academic Year
+            </div>
+            <div class="input-field col s6">
+              <select name="subjectYear" ng-model="subjectYear">
+                <option value="" disabled selected>Choose your option</option>
+                <option value="2012">2012</option>
+                <option value="2013">2013</option>
+                <option value="2014">2014</option>
+                <option value="2015">2015</option>
+                <option value="2016">2016</option>
+                <option value="2017">2017</option>
+
+              </select>
+            </div>
+          </td>
+
+        </tr>
+
+
+
+        <tr ng-if="selected == '11'">
+
+          <td>
+
+            <div class="input-field col s6 fields">
+              Choose Semester
+            </div>
+            <div class="input-field col s6">
+              <select name="subjectSem" ng-model="subjectSem">
+                <option value="" disabled selected>Choose your option</option>
+                <option value="1">First</option>
+                <option value="2">Second</option>
+                <option value="3">Third</option>
+                <option value="4">Fourth</option>
+                <option value="5">Fifth</option>
+                <option value="6">Sixth</option>
+                <option value="7">Seventh</option>
+                <option value="8">Eight</option>
+
+              </select>
+            </div>
+          </td>
+
+        </tr>
+
+
+
+
+        <tr ng-if="selected == '11'">
+
+          <td>
+
+            <div class="input-field col s4 fields">
+              Subject Taught
+            </div>
+            <div class="input-field col s4">
+              <select name="subjectMode" ng-model="subjectMode">
+                <option value="" disabled selected>Choose your option</option>
+                <option value="theory">Theory</option>
+                <option value="practicle">Practicle</option>
+
+              </select>
+            </div>
+            <div class="input-field col s4">
+              <select name="subjectSubject" ng-model="subjectSubject">
+                <option value="" disabled selected>Choose your option</option>
+                <option value="1">Chemistry </option>
+                <option value="1">Physics </option>
+                <option value="1">Mathematics </option>
+                <option value="1">Programming and Data Structure </option>
+                <option value="1">Networks</option>
+                <option value="1">Artificial Intelligence</option>
+                <option value="1">Software Engineering </option>
+                <option value="1">Software Testing </option>
+                
+
+              </select>
+            </div>
+          </td>
+
+        </tr>
+
+
+
+
+    <!-- Book Title -->
+    <tr ng-if="selected == '11'">
+
+      <td>
+
+        <div class="input-field col s6 fields">
+          Upload Time Table
+        </div>
+        <div class="input-field col s6">
+          <input  id="bookTitle" type="file" class="validate" ng-model="bookTitle" name="bookTitle" ng-minlength="3" ng-maxlength="100" required>
+        </div>
+      </td>
+
+    </tr>
+
+
+  </tbody>
+</table>

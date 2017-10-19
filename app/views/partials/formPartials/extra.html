@@ -1,0 +1,84 @@
+
+<table>
+  <tbody>
+
+
+
+    <tr ng-if="selected == '4'">
+
+      <td>
+
+        <div class="input-field col s6 fields">
+          Name
+        </div>
+        <div class="input-field col s6">
+          <input placeholder="Name" id="extraName" type="text" class="validate" ng-model="extraName" name="extraName" ng-minlength="3" ng-maxlength="100" required>
+          <span ng-show="naacForm.extraName.$error.minlength || naacForm.extraName.$error.maxlength" class="error">Length should be between 3 and 100.</span>
+          <span ng-show="naacForm.extraName.$touched && naacForm.extraName.$error.required" class="error">Field cannot be empty</span>
+        </div>
+      </td>
+
+    </tr>
+
+
+    <tr ng-if="selected == '4'">
+
+      <td>
+
+        <div class="input-field col s6 fields">
+          Department
+        </div>
+        <div class="input-field col s6">
+          <input placeholder="Department" id="extraDepartment" type="text" class="validate" ng-model="extraDepartment" name="extraDepartment" ng-minlength="3" ng-maxlength="100" required>
+          <span ng-show="naacForm.extraDepartment.$error.minlength || naacForm.extraDepartment.$error.maxlength" class="error">Length should be between 3 and 100.</span>
+          <span ng-show="naacForm.extraDepartment.$touched && naacForm.extraDepartment.$error.required" class="error">Field cannot be empty</span>
+        </div>
+      </td>
+
+    </tr>
+
+
+    <tr ng-if="selected == '4'">
+
+      <td>
+
+        <div class="input-field col s6 fields">
+          Details
+        </div>
+        <div class="input-field col s6">
+          <input placeholder="Details" id="extraDetails" type="text" class="validate" ng-model="extraDetails" name="extraDetails" ng-minlength="3" ng-maxlength="100" required>
+          <span ng-show="naacForm.extraDetails.$error.minlength || naacForm.extraDetails.$error.maxlength" class="error">Length should be between 3 and 100.</span>
+          <span ng-show="naacForm.extraDetails.$touched && naacForm.extraDetails.$error.required" class="error">Field cannot be empty</span>
+
+        </div>
+      </td>
+
+    </tr>
+
+
+    <tr ng-if="selected == '4'">
+
+      <td>
+
+        <div class="input-field col s6 fields">
+          Year of Grant
+        </div>
+        <div class="input-field col s6">
+          <select name="extraYear" ng-model="extraYear">
+            <option value="" disabled selected>Choose your option</option>
+            <option value="2012">2012</option>
+            <option value="2013">2013</option>
+            <option value="2014">2014</option>
+            <option value="2015">2015</option>
+            <option value="2016">2016</option>
+            <option value="2017">2017</option>
+
+          </select>
+        </div>
+      </td>
+
+    </tr>
+
+
+    </tbody>
+</table>
