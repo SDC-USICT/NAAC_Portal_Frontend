@@ -2,7 +2,7 @@
   <tbody>
     <!-- Awards -->
 
-    <tr ng-if="selected == '0'">
+    <tr >
 
       <td>
 
@@ -15,7 +15,7 @@
     </tr>
 
 
-    <tr ng-if="selected == '0'" ng-show="!noaward">
+    <tr  ng-show="!noaward">
 
       <td>
 
@@ -31,7 +31,7 @@
     </tr>
 
 
-    <tr ng-if="selected == '0'" ng-show="!noaward">
+    <tr  ng-show="!noaward">
 
       <td>
 
@@ -40,7 +40,7 @@
         </div>
         <div class="input-field col s6">
 
-          <select name="awardtype" ng-model="awardtype">
+          <select name="awardtype" ng-model="awardtype" required>
             <option value="" disabled selected>Choose your option</option>
             <option value="national">National</option>
             <option value="international">International</option>
@@ -52,7 +52,7 @@
     </tr>
 
 
-    <tr ng-if="selected == '0'" ng-show="!noaward">
+    <tr  ng-show="!noaward">
 
       <td>
 
@@ -68,7 +68,7 @@
     </tr>
 
 
-    <tr ng-if="selected == '0'" ng-show="!noaward">
+    <tr  ng-show="!noaward">
 
       <td>
 
@@ -76,7 +76,7 @@
           Month
         </div>
         <div class="input-field col s6">
-          <select name="monthAward" ng-model="monthAward">
+          <select name="monthAward" ng-model="monthAward" required>
             <option value="" disabled selected>Choose your option</option>
             <option value="jan">January</option>
             <option value="feb">February</option>
@@ -98,7 +98,7 @@
 
 
 
-    <tr ng-if="selected == '0'" ng-show="!noaward">
+    <tr  ng-show="!noaward">
 
       <td>
 
@@ -106,7 +106,7 @@
           Year of Award
         </div>
         <div class="input-field col s6">
-          <select name="yearAward" ng-model="yearAward">
+          <select name="yearAward" ng-model="yearAward" required>
             <option value="" disabled selected>Choose your option</option>
             <option value="2012">2012</option>
             <option value="2013">2013</option>
