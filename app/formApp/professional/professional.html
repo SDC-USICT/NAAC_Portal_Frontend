@@ -1,5 +1,6 @@
-
-<table ng-controller="ProfessionalCtrl">
+<div ng-controller="ProfessionalCtrl">
+<section ng-include="'./app/views/partials/save.html'"></section>
+<table >
   <tbody >
 
     <tr >
@@ -7,6 +8,7 @@
 
         <div class="input-field col s6 fields">
           Academic Experience
+          <p>{{acadExp}}</p>
         </div>
         <div class="input-field col s6">
           {{employee}}
@@ -104,7 +106,7 @@
           Phd Submitted
         </div>
         <div class="input-field col s6">
-          <input placeholder="Phd Submitted" id="phds" type="text" class="validate" ng-model="phds" name="phds" required>
+          <input placeholder="Phd Submitted" id="phds" type="number" class="validate" ng-model="phds" name="phds" required>
           <span ng-show="naacForm.phds.$touched && naacForm.phds.$error.required" class="error">Field cannot be empty</span>
         </div>
       </td>
@@ -152,3 +154,4 @@
 
   </tbody>
 </table>
+</div>
