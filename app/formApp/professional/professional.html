@@ -1,13 +1,15 @@
-<table>
-  <tbody>
-    <tr >
 
+<table ng-controller="ProfessionalCtrl">
+  <tbody >
+
+    <tr >
       <td>
 
         <div class="input-field col s6 fields">
           Academic Experience
         </div>
         <div class="input-field col s6">
+          {{employee}}
           <input placeholder="Academic Experience" id="acadExp" type="text" class="validate" ng-model="acadExp" name="acadExp" required>
           <span ng-show="naacForm.acadExp.$touched && naacForm.acadExp.$error.required" class="error">Field cannot be empty</span>
         </div>

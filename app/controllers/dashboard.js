@@ -8,8 +8,6 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
     $scope.editing = 0;
     $scope.marked_authors = {};
     $scope.employeeMeta = {};
-    $scope.years = ['2012', '2013','2014','2015','2016','2017'];
-    $scope.months = ['Jan', 'Feb'];
     if($rootScope.loginid == undefined) {
       if($sessionStorage.loginid != undefined) {
         $rootScope.loginid = $sessionStorage.loginid;
@@ -19,9 +17,6 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
         $location.url('/')
       }
     }
-    $(document).ready(function() {
-     $('input#input_text, textarea#textarea1').characterCounter();
-    });
 
     $sessionStorage.loginid = $rootScope.loginid;
 
@@ -39,6 +34,8 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
               empid: $rootScope.loginid
 
             }).$promise.then(function(data){
+              console.log("I am surender kumar");
+              console.log(data);
               $scope.employee = data[0]['fields'];
               $scope.employee.pk = data[0]['pk']
             });
@@ -92,7 +89,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
 
 
               $scope.setSelected(9);
-              console.log($scope.attributes); 
+              console.log($scope.attributes);
             });
             //  Set all input editable.
             $scope.setEditing = function () {
@@ -141,7 +138,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                   $('select').material_select();
 
                    $('input#input_text, textarea#textarea1').characterCounter();
-                
+
                   for(var i=0;i<allInput.length;i++){
 
 
@@ -461,7 +458,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
 
           }
         }
-        
+
 
       }
       ]).directive("filesInput", function() {
