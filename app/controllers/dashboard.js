@@ -82,15 +82,15 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                   tmp['priority'] = 10;
                 } else if(value == 'Book'){
                   tmp['priority'] = 4;
-                }if (value == 'Book Chapters') {
+                }if (value == 'BookChapters') {
                   tmp['priority'] = 3;
                 } else if(value == 'Conference'){
                   tmp['priority'] = 2;
                 }if (value == 'Extra') {
                   tmp['priority'] = 12;
-                } else if(value == 'Guest Lecturer'){
+                } else if(value == 'GuestLecturer'){
                   tmp['priority'] = 7;
-                }if (value == 'Journal Papers') {
+                }if (value == 'JournalPapers') {
                   tmp['priority'] = 1;
                 } else if(value == 'Membership'){
                   tmp['priority'] = 8;
