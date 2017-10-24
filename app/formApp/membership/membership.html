@@ -1,4 +1,4 @@
-
+<section ng-include="'./app/views/partials/save.html'"></section>
 <table>
   <tbody>
 
@@ -10,7 +10,7 @@
           Membership Type
         </div>
         <div class="input-field col s6">
-          <select name="membershipType" ng-model="membershipType" required>
+          <select name="membershipType" ng-model="data.title" required>
             <option value="" disabled selected>Choose your option</option>
             <option value="ieee">IEEE</option>
             <option value="acm">ACM</option>
@@ -30,7 +30,7 @@
           Academic Body Name
         </div>
         <div class="input-field col s6">
-          <input placeholder="Academic Body Name" id="membershipAcadBodyName" type="text" class="validate" ng-model="membershipAcadBodyName" name="membershipAcadBodyName" ng-minlength="3" ng-maxlength="100" required>
+          <input placeholder="Academic Body Name" id="membershipAcadBodyName" type="text" class="validate" ng-model="data.academic_body" name="membershipAcadBodyName" ng-minlength="3" ng-maxlength="100" required>
           <span ng-show="naacForm.membershipAcadBodyName.$error.minlength || naacForm.membershipAcadBodyName.$error.maxlength" class="error">Length should be between 3 and 100.</span>
           <span ng-show="naacForm.membershipAcadBodyName.$touched && naacForm.membershipAcadBodyName.$error.required" class="error">Field cannot be empty</span>
         </div>
@@ -47,7 +47,7 @@
           University Agency
         </div>
         <div class="input-field col s6">
-          <input placeholder="University Agency" id="membershipUniversityAgency" type="text" class="validate" ng-model="membershipUniversityAgency" name="membershipUniversityAgency" ng-minlength="3" ng-maxlength="100" required>
+          <input placeholder="University Agency" id="membershipUniversityAgency" type="text" class="validate" ng-model="data.university_agency" name="membershipUniversityAgency" ng-minlength="3" ng-maxlength="100" required>
           <span ng-show="naacForm.membershipUniversityAgency.$error.minlength || naacForm.membershipUniversityAgency.$error.maxlength" class="error">Length should be between 3 and 100.</span>
           <span ng-show="naacForm.membershipUniversityAgency.$touched && naacForm.membershipUniversityAgency.$error.required" class="error">Field cannot be empty</span>
         </div>

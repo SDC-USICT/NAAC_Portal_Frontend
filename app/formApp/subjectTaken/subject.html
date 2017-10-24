@@ -1,11 +1,6 @@
+<section ng-include="'./app/views/partials/save.html'"></section>
 <table>
   <tbody>
-
-
-
-
-
-
         <tr >
 
           <td>
@@ -14,7 +9,7 @@
               Academic Year
             </div>
             <div class="input-field col s6">
-              <select name="subjectYear" ng-model="subjectYear" required>
+              <select name="subjectYear" ng-model="data.year" required>
                 <option value="" disabled selected>Choose your option</option>
                 <option value="2012">2012</option>
                 <option value="2013">2013</option>
@@ -39,7 +34,7 @@
               Choose Semester
             </div>
             <div class="input-field col s6">
-              <select name="subjectSem" ng-model="subjectSem" required>
+              <select name="subjectSem" ng-model="data.sem" required>
                 <option value="" disabled selected>Choose your option</option>
                 <option value="1">First</option>
                 <option value="2">Second</option>
@@ -67,7 +62,7 @@
               Subject Taught
             </div>
             <div class="input-field col s4">
-              <select name="subjectMode" ng-model="subjectMode" required>
+              <select name="subjectMode" ng-model="data.mode" required>
                 <option value="" disabled selected>Choose your option</option>
                 <option value="theory">Theory</option>
                 <option value="practicle">Practicle</option>
@@ -75,7 +70,7 @@
               </select>
             </div>
             <div class="input-field col s4">
-              <select name="subjectSubject" ng-model="subjectSubject"  required>
+              <select name="subjectSubject" ng-model="data.subject"  required>
                 <option value="" disabled selected>Choose your option</option>
                 <option value="1">Chemistry </option>
                 <option value="1">Physics </option>
@@ -105,7 +100,7 @@
           Upload Time Table
         </div>
         <div class="input-field col s6">
-          <input  id="bookTitle" type="file" class="validate" ng-model="bookTitle" name="bookTitle" ng-minlength="3" ng-maxlength="100" required>
+          <input  id="bookTitle" type="file" class="validate" ng-model="data.file" name="bookTitle" ng-minlength="3" ng-maxlength="100" required>
         </div>
       </td>
 

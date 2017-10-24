@@ -1,4 +1,3 @@
-<div ng-controller="ProfessionalCtrl">
 <section ng-include="'./app/views/partials/save.html'"></section>
 <table >
   <tbody >
@@ -8,11 +7,10 @@
 
         <div class="input-field col s6 fields">
           Academic Experience
-          <p>{{acadExp}}</p>
         </div>
         <div class="input-field col s6">
-          {{employee}}
-          <input placeholder="Academic Experience" id="acadExp" type="text" class="validate" ng-model="acadExp" name="acadExp" required>
+          {{professional.title}}
+          <input placeholder="Academic Experience" id="acadExp" type="number" class="validate" ng-model="data.title" name="acadExp" required>
           <span ng-show="naacForm.acadExp.$touched && naacForm.acadExp.$error.required" class="error">Field cannot be empty</span>
         </div>
       </td>
@@ -29,7 +27,7 @@
           Industrial Experience
         </div>
         <div class="input-field col s6">
-          <input placeholder="Industrial Experience" id="indExp" type="text" class="validate" ng-model="indExp" name="indExp" required>
+          <input placeholder="Industrial Experience" id="indExp" type="number" class="validate" ng-model="data.industrial_exp" name="indExp" required>
           <span ng-show="naacForm.indExp.$touched && naacForm.indExp.$error.required" class="error">Field cannot be empty</span>
         </div>
       </td>
@@ -44,7 +42,7 @@
           Highest Qualification
         </div>
         <div class="input-field col s6">
-          <input placeholder="Highest Qualification" id="highQual" type="text" class="validate" ng-model="highQual" name="highQual" required>
+          <input placeholder="Highest Qualification" id="highQual" type="text" class="validate" ng-model="data.qualification_before" name="highQual" required>
           <span ng-show="naacForm.highQual.$touched && naacForm.highQual.$error.required" class="error">Field cannot be empty</span>
         </div>
       </td>
@@ -59,7 +57,7 @@
           Qualification Added
         </div>
         <div class="input-field col s6">
-          <input placeholder="Qualification Added" id="qualAdd" type="text" class="validate" ng-model="qualAdd" name="qualAdd" required>
+          <input placeholder="Qualification Added" id="qualAdd" type="text" class="validate" ng-model="data.qualification_after" name="qualAdd" required>
           <span ng-show="naacForm.qualAdd.$touched && naacForm.qualAdd.$error.required" class="error">Field cannot be empty</span>
         </div>
       </td>
@@ -74,7 +72,7 @@
           Total Student
         </div>
         <div class="input-field col s6">
-          <input placeholder="Total Student" id="totStu" type="number" class="validate" ng-model="totStu" name="totStu" ng-minlength="1" ng-maxlength="10" required>
+          <input placeholder="Total Student" id="totStu" type="number" class="validate" ng-model="data.phds" name="totStu" ng-minlength="1" ng-maxlength="10" required>
           <span ng-show="naacForm.totStu.$touched && naacForm.totStu.$error.required" class="error">Field cannot be empty</span>
           <span ng-show="naacForm.totStu.$error.minlength || naacForm.totStu.$error.maxlength" class="error">Minimum length is 1 and Maximum is 10</span>
 
@@ -91,7 +89,7 @@
           Phd Pursuing
         </div>
         <div class="input-field col s6">
-          <input placeholder="Phd Pursuing" id="phdp" type="text" class="validate" ng-model="phdp" name="phdp" required>
+          <input placeholder="Phd Pursuing" id="phdp" type="text" class="validate" ng-model="data.pursuing" name="phdp" required>
           <span ng-show="naacForm.phdp.$touched && naacForm.phdp.$error.required" class="error">Field cannot be empty</span>
         </div>
       </td>
@@ -106,7 +104,7 @@
           Phd Submitted
         </div>
         <div class="input-field col s6">
-          <input placeholder="Phd Submitted" id="phds" type="number" class="validate" ng-model="phds" name="phds" required>
+          <input placeholder="Phd Submitted" id="phds" type="number" class="validate" ng-model="data.submitted" name="phds" required>
           <span ng-show="naacForm.phds.$touched && naacForm.phds.$error.required" class="error">Field cannot be empty</span>
         </div>
       </td>
@@ -121,7 +119,7 @@
           Phd Awarded
         </div>
         <div class="input-field col s6">
-          <input placeholder="Phd Awarded" id="phda" type="text" class="validate" ng-model="phda" name="phda" required>
+          <input placeholder="Phd Awarded" id="phda" type="text" class="validate" ng-model="data.awarded" name="phda" required>
           <span ng-show="naacForm.phda.$touched && naacForm.phda.$error.required" class="error">Field cannot be empty</span>
         </div>
       </td>
@@ -136,7 +134,7 @@
           Year
         </div>
         <div class="input-field col s6">
-          <select name="yearProf" ng-model="yearProf" required>
+          <select name="yearProf" ng-model="data.year" required>
             <option value="" disabled selected>Choose your option</option>
             <option value="2012">2012</option>
             <option value="2013">2013</option>
@@ -154,4 +152,3 @@
 
   </tbody>
 </table>
-</div>

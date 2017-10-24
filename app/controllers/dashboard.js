@@ -1,5 +1,5 @@
-angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$rootScope", "$sessionStorage","$localStorage", "$resource","$location","validationService",
-  function($scope, $http, $rootScope, $sessionStorage,$localStorage, $resource, $location,validationService) {
+angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$rootScope", "$sessionStorage","$localStorage", "$resource","$location","formService",
+  function($scope, $http, $rootScope, $sessionStorage,$localStorage, $resource, $location,formService) {
     $scope.selected = 0;
     $scope.results = {};
     $scope.coauthors = {};
@@ -17,6 +17,29 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
         $location.url('/')
       }
     }
+//This is used to send data to backend
+    $scope.data={
+      employee:$sessionStorage.loginid
+    }
+//This is save method
+    $scope.saveForm = function(){
+      var req = {
+        'kls' : $scope.attributes[$scope.selected].key,
+        'data' :  [$scope.data]
+      }
+      $scope.data={
+        employee:$sessionStorage.loginid
+      }
+      $scope.naacForm.$setPristine();
+      $scope.naacForm.$setUntouched();
+      console.log(req);
+      formService.post(req);
+
+      $scope.selectedResult =  $scope.results[$scope.attributes[$scope.selected].key].length-1;
+    }
+
+
+
 
     $sessionStorage.loginid = $rootScope.loginid;
 
@@ -130,36 +153,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
               $scope.selectedResult = 0;
               console.log($scope.form_details[$scope.sections[$scope.selected]])
 
-                //Set Input type
-                $(document).ready(function() {
-                  var allInput = $('input');
-                  validationService.validator(allInput);
-                  console.log(allInput);
-                  $('select').material_select();
 
-                   $('input#input_text, textarea#textarea1').characterCounter();
-
-                  for(var i=0;i<allInput.length;i++){
-
-
-                   if(allInput[i].name == 'date' || allInput[i].name=="date_of_award" || allInput[i].name=="date_completed"){
-                      allInput[i].className="datepicker";
-                      allInput[i].id = "date";
-                    }
-                    else if (allInput[i].name == 'isbn' || allInput[i].name == 'isbn_no' || allInput[i].name == 'page_no' || allInput[i].name == 'indexing' || allInput[i].name=='volume_no'||allInput[i].name=='issn_isbn' || allInput[i].name=='phds') {
-                      allInput[i].type="number";
-                    }
-                    console.log(allInput[i].name);
-
-                  }
-                  // Date Picker
-                  $('.datepicker').pickadate({
-                    selectMonths:true,
-                    selectYears:true
-                  });
-
-
-                });
                 // Experiment
                 var data_get = $resource(BACKEND + '/api/get/', null, {
                   'query': {

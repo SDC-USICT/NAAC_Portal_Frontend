@@ -1,4 +1,4 @@
-
+<section ng-include="'./app/views/partials/save.html'"></section>
 <table>
   <tbody>
 
@@ -12,7 +12,7 @@
           Patent Name
         </div>
         <div class="input-field col s6">
-          <input placeholder="Patent Name" id="patentName" type="text" class="validate" ng-model="patentName" name="patentName" ng-minlength="3" ng-maxlength="100" required>
+          <input placeholder="Patent Name" id="patentName" type="text" class="validate" ng-model="data.name" name="patentName" ng-minlength="3" ng-maxlength="100" required>
           <span ng-show="naacForm.patentName.$error.minlength || naacForm.patentName.$error.maxlength" class="error">Length should be between 3 and 100.</span>
           <span ng-show="naacForm.patentName.$touched && naacForm.patentName.$error.required" class="error">Field cannot be empty</span>
         </div>
@@ -29,7 +29,7 @@
           Patenting Agency
         </div>
         <div class="input-field col s6">
-          <input placeholder="Patenting Agency" id="patentAgency" type="text" class="validate" ng-model="patentAgency" name="patentAgency" ng-minlength="3" ng-maxlength="100" required>
+          <input placeholder="Patenting Agency" id="patentAgency" type="text" class="validate" ng-model="data.patenting_agency" name="patentAgency" ng-minlength="3" ng-maxlength="100" required>
           <span ng-show="naacForm.patentAgency.$error.minlength || naacForm.patentAgency.$error.maxlength" class="error">Length should be between 3 and 100.</span>
           <span ng-show="naacForm.patentAgency.$touched && naacForm.patentAgency.$error.required" class="error">Field cannot be empty</span>
         </div>
@@ -46,7 +46,7 @@
           Year of Application
         </div>
         <div class="input-field col s6">
-          <select name="patentYear" ng-model="patentYear" required>
+          <select name="patentYear" ng-model="data.year_application" required>
             <option value="" disabled selected>Choose your option</option>
             <option value="2012">2012</option>
             <option value="2013">2013</option>
@@ -70,7 +70,7 @@
           Year of Grant
         </div>
         <div class="input-field col s6">
-          <select name="patentYearGrant" ng-model="patentYearGrant" required>
+          <select name="patentYearGrant" ng-model="data.year_grant" required>
             <option value="" disabled selected>Choose your option</option>
             <option value="2012">2012</option>
             <option value="2013">2013</option>

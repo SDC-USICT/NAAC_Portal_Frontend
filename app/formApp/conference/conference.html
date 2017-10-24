@@ -1,3 +1,4 @@
+<section ng-include="'./app/views/partials/save.html'"></section>
 <table>
   <tbody>
     <!-- Publication Title -->
@@ -9,7 +10,7 @@
           Title of Paper
         </div>
         <div class="input-field col s6">
-          <input placeholder="Enter paper title." id="conferenceTitle" type="text" class="validate" ng-model="conferenceTitle" name="conferenceTitle" ng-minlength="3" ng-maxlength="100" required>
+          <input placeholder="Enter paper title." id="conferenceTitle" type="text" class="validate" ng-model="data.title" name="conferenceTitle" ng-minlength="3" ng-maxlength="100" required>
           <span ng-show="naacForm.conferenceTitle.$error.minlength || naacForm.conferenceTitle.$error.maxlength" class="error">Conference title length should be between 3 and 100.</span>
           <span ng-show="naacForm.conferenceTitle.$touched && naacForm.conferenceTitle.$error.required" class="error">Field cannot be empty</span>
         </div>
@@ -27,7 +28,7 @@
           Name & Publisher
         </div>
         <div class="input-field col s6">
-          <input placeholder="Enter publisher name." id="conferencePublisher" type="text" class="validate" ng-model="conferencePublisher" name="conferencePublisher" ng-minlength="3" ng-maxlength="100" required>
+          <input placeholder="Enter publisher name." id="conferencePublisher" type="text" class="validate" ng-model="data.name_and_publisher" name="conferencePublisher" ng-minlength="3" ng-maxlength="100" required>
           <span ng-show="naacForm.conferencePublisher.$error.minlength || naacForm.conferencePublisher.$error.maxlength" class="error">Publisher name should be  3 to 100 character long. </span>
           <span ng-show="naacForm.conferencePublisher.$touched && naacForm.conferencePublisher.$error.required" class="error">Field cannot be empty</span>
 
@@ -47,7 +48,7 @@
           Volume No.
         </div>
         <div class="input-field col s6">
-          <input placeholder="Enter publication volume no." id="conferenceVolumeNo" type="text" class="validate" ng-model="conferenceVolumeNo" name="conferenceVolumeNo" ng-minlength="3" ng-maxlength="100" required>
+          <input placeholder="Enter publication volume no." id="conferenceVolumeNo" type="text" class="validate" ng-model="data.volume_no" name="conferenceVolumeNo" ng-minlength="3" ng-maxlength="100" required>
           <span ng-show="naacForm.conferenceVolumeNo.$error.minlength || naacForm.conferenceVolumeNo.$error.maxlength" class="error">Volume no. should be  3 to 100 character long. </span>
           <span ng-show="naacForm.conferenceVolumeNo.$touched && naacForm.conferenceVolumeNo.$error.required" class="error">Field cannot be empty</span>
 
@@ -66,7 +67,7 @@
           ISBN No.
         </div>
         <div class="input-field col s6">
-          <input placeholder="Enter publication ISBN no." id="conferenceISBN" type="number" class="validate" ng-model="conferenceISBN" name="conferenceISBN" ng-minlength="10" ng-maxlength="13" required>
+          <input placeholder="Enter publication ISBN no." id="conferenceISBN" type="number" class="validate" ng-model="data.issn_isbn" name="conferenceISBN" ng-minlength="10" ng-maxlength="13" required>
           <span ng-show="naacForm.conferenceISBN.$error.minlength || naacForm.conferenceISBN.$error.maxlength" class="error">ISBN should be of 10 or 13 digits long. </span>
           <span ng-show="naacForm.conferenceISBN.$touched && naacForm.conferenceISBN.$error.required" class="error">Field cannot be empty</span>
 
@@ -85,7 +86,7 @@
           Indexing
         </div>
         <div class="input-field col s6">
-          <input placeholder="Indexing" id="conferenceIndexing" type="text" class="validate" ng-model="conferenceIndexing" name="conferenceIndexing" ng-minlength="3" ng-maxlength="100" required>
+          <input placeholder="Indexing" id="conferenceIndexing" type="text" class="validate" ng-model="data.indexing" name="conferenceIndexing" ng-minlength="3" ng-maxlength="100" required>
           <span ng-show="naacForm.conferenceIndexing.$error.minlength || naacForm.conferenceIndexing.$error.maxlength" class="error">Indexing should be  3 to 100 character long. </span>
           <span ng-show="naacForm.conferenceIndexing.$touched && naacForm.conferenceIndexing.$error.required" class="error">Field cannot be empty</span>
 
@@ -106,7 +107,7 @@
       Conference Year
     </div>
     <div class="input-field col s6">
-      <select name="conferenceYear" ng-model="conferenceYear" required>
+      <select name="conferenceYear" ng-model="data.year" required>
         <option value="" disabled selected>Choose your option</option>
         <option value="2012">2012</option>
         <option value="2013">2013</option>
@@ -130,7 +131,7 @@
       Conference Month
     </div>
     <div class="input-field col s6">
-      <select name="conferenceMonth" ng-model="conferenceMonth" required>
+      <select name="conferenceMonth" ng-model="data.month" required>
         <option value="" disabled selected>Choose your option</option>
         <option value="jan">January</option>
         <option value="feb">February</option>
@@ -160,7 +161,7 @@
       National/International
     </div>
     <div class="input-field col s6">
-      <select name="conferenceNation" ng-model="conferenceNation" required>
+      <select name="conferenceNation" ng-model="data.international_national" required>
         <option value="" disabled selected>Choose your option</option>
         <option value="national">National</option>
         <option value="international">International</option>
@@ -173,6 +174,41 @@
 
     <!-- Book Co-Author -->
 <!-- implementation of co author -->
+<!-- Book Co-Author -->
+<tr>
+<td>
+<div  class="{{sections[selected]}}{{selectedResult}}">
+  <br><br>
+  <div class="row" ng-repeat="(k, v) in coauthors[attributes[selected].key][selectedResult]">
+
+    <div class="col m2" style="color: #9e9e9e;font-size: 14px;padding-top: 10px; ">
+      <span>Priority</span>
+      {{ $index + 1}}
+    </div>
+    <div class="col m4">
+      <input type="text" name="" ng-model="v.name" placeholder="Name">
+    </div>
+    <div class="col m4">
+      <input type="text" name="" ng-model="v.email" placeholder="Email">
+    </div>
+    <div class="col m2">
+      <div class="tooltip">?
+        <span class="tooltiptext">Waiting For Confirmation...</span>
+      </div>
+    </div>
+
+  </div>
+  <div class="right">
+    <button ng-click="add_coauthor(key)" background-color="#1a237e" class="btn waves-effect waves-light no-borders">
+      <i style="font-size:1.2em; line-height:1.2em;" class="fa fa-plus-circle" aria-hidden="true"></i> ADD CO AUTHOR
+    </button>
+  </div>
+
+
+</td>
+</tr>
+
+
 
 
     </tbody>

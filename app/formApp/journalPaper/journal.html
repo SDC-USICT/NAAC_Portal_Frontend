@@ -1,3 +1,4 @@
+<section ng-include="'./app/views/partials/save.html'"></section>
 <table>
   <tbody>
     <!-- Book Title -->
@@ -9,7 +10,7 @@
           Journal Title
         </div>
         <div class="input-field col s6">
-          <input placeholder="Enter a journal title." id="journalTitle" type="text" class="validate" ng-model="journalTitle" name="journalTitle" ng-minlength="3" ng-maxlength="100" required>
+          <input placeholder="Enter a journal title." id="journalTitle" type="text" class="validate" ng-model="data.title" name="journalTitle" ng-minlength="3" ng-maxlength="100" required>
           <span ng-show="naacForm.journalTitle.$error.minlength || naacForm.journalTitle.$error.maxlength" class="error">Journal title length should be between 3 and 100.</span>
           <span ng-show="naacForm.journalTitle.$touched && naacForm.journalTitle.$error.required" class="error">Field cannot be empty</span>
         </div>
@@ -27,7 +28,7 @@
           Journal Name with Publisher
         </div>
         <div class="input-field col s6">
-          <input placeholder="Enter journal and publisher name." id="journalPublisher" type="text" class="validate" ng-model="journalPublisher" name="journalPublisher" ng-minlength="10" ng-maxlength="13" required>
+          <input placeholder="Enter journal and publisher name." id="journalPublisher" type="text" class="validate" ng-model="data.name_and_publisher" name="journalPublisher" ng-minlength="10" ng-maxlength="13" required>
           <span ng-show="naacForm.journalPublisher.$error.minlength || naacForm.journalPublisher.$error.maxlength" class="error">Length should be between 10 or 13.</span>
           <span ng-show="naacForm.journalPublisher.$touched && naacForm.journalPublisher.$error.required" class="error">Field cannot be empty</span>
 
@@ -46,7 +47,7 @@
           Volume No.
         </div>
         <div class="input-field col s6">
-          <input placeholder="Enter journal volume no." id="journalVolumeNo" type="text" class="validate" ng-model="journalVolumeNo" name="journalVolumeNo" ng-minlength="3" ng-maxlength="100" required>
+          <input placeholder="Enter journal volume no." id="journalVolumeNo" type="text" class="validate" ng-model="data.volume_no" name="journalVolumeNo" ng-minlength="3" ng-maxlength="100" required>
           <span ng-show="naacForm.journalVolumeNo.$error.minlength || naacForm.journalVolumeNo.$error.maxlength" class="error">Volume no. should be  3 to 100 character long. </span>
           <span ng-show="naacForm.journalVolumeNo.$touched && naacForm.journalVolumeNo.$error.required" class="error">Field cannot be empty</span>
 
@@ -66,7 +67,7 @@
           ISSN No.
         </div>
         <div class="input-field col s6">
-          <input placeholder="Enter ISSN no." id="journalIssn" type="number" class="validate" ng-model="journalIssn" name="journalIssn" ng-minlength="10" ng-maxlength="13" required>
+          <input placeholder="Enter ISSN no." id="journalIssn" type="number" class="validate" ng-model="data.issn_isbn" name="journalIssn" ng-minlength="10" ng-maxlength="13" required>
           <span ng-show="naacForm.journalIssn.$error.minlength || naacForm.journalIssn.$error.maxlength" class="error">ISSN no. should be  10 or 13 character long. </span>
           <span ng-show="naacForm.journalIssn.$touched && naacForm.journalIssn.$error.required" class="error">Field cannot be empty</span>
 
@@ -85,7 +86,7 @@
           Indexing
         </div>
         <div class="input-field col s6">
-          <input placeholder="Indexing" id="journalIndexing" type="text" class="validate" ng-model="journalIndexing" name="journalIndexing" ng-minlength="3" ng-maxlength="100" required>
+          <input placeholder="Indexing" id="journalIndexing" type="text" class="validate" ng-model="data.indexing" name="journalIndexing" ng-minlength="3" ng-maxlength="100" required>
           <span ng-show="naacForm.journalIndexing.$error.minlength || naacForm.journalIndexing.$error.maxlength" class="error">Indexing should be  3 to 100 character long. </span>
           <span ng-show="naacForm.journalIndexing.$touched && naacForm.journalIndexing.$error.required" class="error">Field cannot be empty</span>
 
@@ -104,7 +105,7 @@
           Year
         </div>
         <div class="input-field col s6">
-          <select name="journalYear" ng-model="journalYear" required>
+          <select name="journalYear" ng-model="data.year" required>
             <option value="" disabled selected>Choose your option</option>
             <option value="2012">2012</option>
             <option value="2013">2013</option>
@@ -130,7 +131,7 @@
           Conference Month
         </div>
         <div class="input-field col s6">
-          <select name="journalMonth" ng-model="journalMonth" required>
+          <select name="journalMonth" ng-model="data.month" required>
             <option value="" disabled selected>Choose your option</option>
             <option value="jan">January</option>
             <option value="feb">February</option>
@@ -161,7 +162,7 @@
           H-Index of Journal using Scimago (if Scopus, SCI-Ex or SCI)
         </div>
         <div class="input-field col s6">
-          <input placeholder="H-Index of Journal using Scimago" id="journalHIndex" type="text" class="validate" ng-model="journalHIndex" name="journalHIndex" ng-minlength="3" ng-maxlength="100" required>
+          <input placeholder="H-Index of Journal using Scimago" id="journalHIndex" type="text" class="validate" ng-model="data.hindex" name="journalHIndex" ng-minlength="3" ng-maxlength="100" required>
           <span ng-show="naacForm.journalHIndex.$error.minlength || naacForm.journalHIndex.$error.maxlength" class="error">H-Index should be  3 to 100 character long. </span>
           <span ng-show="naacForm.journalHIndex.$touched && naacForm.journalHIndex.$error.required" class="error">Field cannot be empty</span>
 
@@ -179,7 +180,7 @@
         Impact Factor if SCI-Ex or SCI
         </div>
         <div class="input-field col s6">
-          <input placeholder="Impact Factor if SCI-Ex or SCI" id="journalImpact" type="text" class="validate" ng-model="journalImpact" name="journalImpact" ng-minlength="3" ng-maxlength="100" required>
+          <input placeholder="Impact Factor if SCI-Ex or SCI" id="journalImpact" type="text" class="validate" ng-model="data.impact_factor" name="journalImpact" ng-minlength="3" ng-maxlength="100" required>
           <span ng-show="naacForm.journalImpact.$error.minlength || naacForm.journalImpact.$error.maxlength" class="error">Impact Factor should be  3 to 100 character long. </span>
           <span ng-show="naacForm.journalImpact.$touched && naacForm.journalImpact.$error.required" class="error">Field cannot be empty</span>
 
@@ -190,6 +191,42 @@
 
 
 <!-- Co Author -->
+
+<!-- Book Co-Author -->
+<tr>
+<td>
+<div  class="{{sections[selected]}}{{selectedResult}}">
+  <br><br>
+  <div class="row" ng-repeat="(k, v) in coauthors[attributes[selected].key][selectedResult]">
+
+    <div class="col m2" style="color: #9e9e9e;font-size: 14px;padding-top: 10px; ">
+      <span>Priority</span>
+      {{ $index + 1}}
+    </div>
+    <div class="col m4">
+      <input type="text" name="" ng-model="v.name" placeholder="Name">
+    </div>
+    <div class="col m4">
+      <input type="text" name="" ng-model="v.email" placeholder="Email">
+    </div>
+    <div class="col m2">
+      <div class="tooltip">?
+        <span class="tooltiptext">Waiting For Confirmation...</span>
+      </div>
+    </div>
+
+  </div>
+  <div class="right">
+    <button ng-click="add_coauthor(key)" background-color="#1a237e" class="btn waves-effect waves-light no-borders">
+      <i style="font-size:1.2em; line-height:1.2em;" class="fa fa-plus-circle" aria-hidden="true"></i> ADD CO AUTHOR
+    </button>
+  </div>
+
+
+</td>
+</tr>
+
+
 
   </tbody>
 </table>
