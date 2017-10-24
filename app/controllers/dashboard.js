@@ -41,6 +41,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
 
 
 
+
     $sessionStorage.loginid = $rootScope.loginid;
 
     $scope.empImg = BACKEND + '/static/images/' + $rootScope.loginid + '.jpg?' + new Date().getTime();
@@ -52,16 +53,16 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                 isArray: true
               }
             });
-            // Sending login data to backend.
+            // Fetching teacher data from BACKEND.
             data_emp.query({
               empid: $rootScope.loginid
-
             }).$promise.then(function(data){
               console.log("I am surender kumar");
               console.log(data);
               $scope.employee = data[0]['fields'];
               $scope.employee.pk = data[0]['pk']
             });
+
 
 
             // Getting coulmns from BACKEND.
@@ -120,7 +121,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
               $("input").attr("readonly", false);
               $('#date_join').addClass('datepicker');
 
-            })
+            });
              $scope.$evalAsync();
              $scope.editing = 1;
            }
@@ -143,14 +144,22 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
               })
             }
 
+
+
+
+
             // Returns if some tab is selected or not. boolean return.
             $scope.isSelected = function(value) {
               return value.val == $scope.selected;
             }
+
+
             // Set selected tab.
             $scope.setSelected = function(value) {
               $scope.selected = value;
               $scope.selectedResult = 0;
+              $scope.naacForm.$setPristine();
+              $scope.naacForm.$setUntouched();
               console.log($scope.form_details[$scope.sections[$scope.selected]])
 
 
@@ -161,7 +170,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                     isArray: true
                   }
                 });
-
+                //It will fetch all existing data of teacher for respective columns
                 data_get.query({
                   empid: $rootScope.loginid,
                   kls: $scope.attributes[value].key
@@ -172,15 +181,14 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                          //$scope.model_type = data[0].model;
                          //$scope.saved_columns = data[0].fields;
                          // TODO: Rethink
-
-                         $scope.results[$scope.attributes[$scope.selected].key] =
-                         data.map(function(a) {
+                         //If any existing data is present in respective column then push it into results varibale.
+                         $scope.results[$scope.attributes[$scope.selected].key] = data.map(function(a) {
                           console.log('map')
                           console.log(a)
                           a.employee = $rootScope.loginid;
                           return a;
                         });
-
+                        //If any coauthors is present in teacher  data then push it into coauthors array.
                          $scope.coauthors[$scope.attributes[$scope.selected].key] = data.map(function (a) {
                           console.log(a)
                           console.log('DEko')
@@ -196,9 +204,6 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                             return tmp;
                           }
                         })
-
-
-
                          console.log($scope.results)
                          console.log($scope.coauthors);
                          $(document).ready(function() {
@@ -207,7 +212,8 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                          $scope.$evalAsync()
                          $scope.selectedResult =  $scope.results[$scope.attributes[$scope.selected].key].length -1;
 
-                       } else {
+                       }
+                       else {
                         console.log('Here!')
                         $scope.results[$scope.attributes[$scope.selected].key] = []
                         console.log($scope.results)
@@ -217,13 +223,18 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                       console.log($scope.results)
                     });
 
-              }
+              }//setSelected Ends here
+
+
+
+
               $scope.splitAtCaps = function(s) {
                 if (s){
                   return s.split(/(?=[A-Z])/).join(' ')
                 }
                 return s;
               }
+
               $scope.setSelectedResult = function(val=null){
 
                if(val != null) {
@@ -231,6 +242,10 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
               }
 
             };
+
+
+
+
             function skeleton(source, isArray) {
              var o = Array.isArray(source) ? [] : {};
              for (var key in source) {
@@ -241,6 +256,10 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
              }
              return o;
            }
+
+
+
+
            function orderKeys(obj, expected) {
             var keys = Object.keys(obj).sort(function keyOrder(k1, k2) {
               if (k1 < k2) return -1;
@@ -259,6 +278,12 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
             }
             return obj;
           }
+
+
+
+
+
+
           $scope.addNewObject = function () {
             console.log('me')
             sample = $scope.results[$scope.attributes[$scope.selected].key][0];
@@ -270,9 +295,17 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
 
           }
 
+
+
+
+
           $scope.getSelectedResult = function () {
             return $scope.selectedResult;
           }
+
+
+
+
           $scope.save = function () {
             coauthor_classes = [
             'Book',
@@ -338,8 +371,11 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
 
 
             })
-          }
+          }//Save method endds here
 
+
+
+          //Modal for each data input in rightmost side
           $scope.openTheatre = function (index) {
             console.log('Hello')
             $scope.selectedResultTheatre = index;
@@ -351,6 +387,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
             $scope.$evalAsync();
 
           }
+          //Delete some documents
 
           $scope.delete = function (val) {
             rq = {
@@ -391,7 +428,12 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
 
                   })
           }
+          //delete ends here
 
+
+
+
+          //logout here
           $scope.logout = function(){
             sessionStorage.clear();
             localStorage.clear();
@@ -432,9 +474,13 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
             })
           }
 
+
+
+          //Add coauthor
           $scope.add_coauthor = function () {
 
             console.log($scope.coauthors)
+            console.log($scope.coauthors[$scope.attributes[$scope.selected]]);
             if ($scope.coauthors[$scope.attributes[$scope.selected].key] == undefined) {
              $scope.coauthors[$scope.attributes[$scope.selected].key] = [];
            }
