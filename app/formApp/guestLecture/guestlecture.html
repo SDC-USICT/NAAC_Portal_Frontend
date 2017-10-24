@@ -1,3 +1,4 @@
+<section ng-include="'./app/views/partials/save.html'"></section>
 <table>
   <tbody>
     <!-- Publication Title -->
@@ -9,7 +10,7 @@
           Nature
         </div>
         <div class="input-field col s6">
-          <input placeholder="Nature" id="guestlectureNature" type="text" class="validate" ng-model="guestlectureNature" name="guestlectureNature" ng-minlength="3" ng-maxlength="100" required>
+          <input placeholder="Nature" id="guestlectureNature" type="text" class="validate" ng-model="data.nature" name="guestlectureNature" ng-minlength="3" ng-maxlength="100" required>
           <span ng-show="naacForm.guestlectureNature.$error.minlength || naacForm.guestlectureNature.$error.maxlength" class="error">Length should be between 3 and 100.</span>
           <span ng-show="naacForm.guestlectureNature.$touched && naacForm.guestlectureNature.$error.required" class="error">Field cannot be empty</span>
         </div>
@@ -26,7 +27,7 @@
           Institute Name
         </div>
         <div class="input-field col s6">
-          <input placeholder="Institute Name" id="guestlectureInstitute" type="text" class="validate" ng-model="guestlectureInstitute" name="guestlectureInstitute" ng-minlength="3" ng-maxlength="100" required>
+          <input placeholder="Institute Name" id="guestlectureInstitute" type="text" class="validate" ng-model="data.institute" name="guestlectureInstitute" ng-minlength="3" ng-maxlength="100" required>
           <span ng-show="naacForm.guestlectureInstitute.$error.minlength || naacForm.guestlectureInstitute.$error.maxlength" class="error">Institute name should be  3 to 100 character long. </span>
           <span ng-show="naacForm.guestlectureInstitute.$touched && naacForm.guestlectureInstitute.$error.required" class="error">Field cannot be empty</span>
 
@@ -45,7 +46,7 @@
           Date
         </div>
         <div class="input-field col s6">
-          <input placeholder="Select Date" id="guestlectureDate" type="text" class="datepicker" ng-model="guestlectureDate" name="guestlectureDate" required>
+          <input placeholder="Select Date" id="guestlectureDate" type="text" class="datepicker" ng-model="data.date" name="guestlectureDate" required>
           <span ng-show="naacForm.guestlectureDate.$touched && naacForm.guestlectureDate.$error.required" class="error">Field cannot be empty</span>
 
         </div>
@@ -62,7 +63,7 @@
         Topic
         </div>
         <div class="input-field col s6">
-          <input placeholder="Enter topic of lecture" id="guestlectureTopic" type="text" class="validate" ng-model="guestlectureTopic" name="guestlectureTopic" ng-minlength="3" ng-maxlength="100" required>
+          <input placeholder="Enter topic of lecture" id="guestlectureTopic" type="text" class="validate" ng-model="data.title" name="guestlectureTopic" ng-minlength="3" ng-maxlength="100" required>
           <span ng-show="naacForm.guestlectureTopic.$error.minlength || naacForm.guestlectureTopic.$error.maxlength" class="error">Length should be 3 to 100 character long. </span>
           <span ng-show="naacForm.guestlectureTopic.$touched && naacForm.guestlectureTopic.$error.required" class="error">Field cannot be empty</span>
 
@@ -81,7 +82,7 @@
           Year
         </div>
         <div class="input-field col s6">
-          <select name="guestlectureYear" ng-model="guestlectureYear" required>
+          <select name="guestlectureYear" ng-model="data.year" required>
             <option value="" disabled selected>Choose your option</option>
             <option value="2012">2012</option>
             <option value="2013">2013</option>
@@ -98,10 +99,11 @@
 
 
 
-
-    <!-- Book Co-Author -->
-<!-- implementation of co author -->
-
-
     </tbody>
 </table>
+
+<script>
+$(document).ready(function() {
+ $('select').material_select();
+});
+</script>

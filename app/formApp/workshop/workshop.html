@@ -1,3 +1,4 @@
+<section ng-include="'./app/views/partials/save.html'"></section>
 <table>
   <tbody>
     <tr >
@@ -8,7 +9,7 @@
           Name
         </div>
         <div class="input-field col s6">
-          <input placeholder="Name" id="nameWork" type="text" class="validate" ng-model="nameWork" name="nameWork" required>
+          <input placeholder="Name" id="nameWork" type="text" class="validate" ng-model="data.title" name="nameWork" required>
           <span ng-show="naacForm.nameWork.$touched && naacForm.nameWork.$error.required" class="error">Field cannot be empty</span>
         </div>
       </td>
@@ -24,7 +25,7 @@
           Date
         </div>
         <div class="input-field col s6">
-          <input placeholder="Date" id="dateWork" type="text" class="datepicker" ng-model="dateWork" name="dateWork" required>
+          <input placeholder="Date" id="dateWork" type="text" class="datepicker" ng-model="data.date" name="dateWork" required>
         </div>
       </td>
 
@@ -39,7 +40,7 @@
           Duration
         </div>
         <div class="input-field col s6">
-          <input placeholder="Duration in Days" id="durinday" type="number" class="validate" ng-model="durinday" name="durinday" required>
+          <input placeholder="Duration in Days" id="durinday" type="number" class="validate" ng-model="data.duration" name="durinday" required>
           <span ng-show="naacForm.durinday.$touched && naacForm.durinday.$error.required" class="error">Field cannot be empty</span>
         </div>
       </td>
@@ -54,7 +55,7 @@
           Organisation
         </div>
         <div class="input-field col s6">
-          <input placeholder="Organisation" id="orgWork" type="text" class="validate" ng-model="orgWork" name="orgWork" required>
+          <input placeholder="Organisation" id="orgWork" type="text" class="validate" ng-model="data.organization" name="orgWork" required>
           <span ng-show="naacForm.orgWork.$touched && naacForm.orgWork.$error.required" class="error">Field cannot be empty</span>
         </div>
       </td>

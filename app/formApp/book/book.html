@@ -1,3 +1,4 @@
+<section ng-include="'./app/views/partials/save.html'"></section>
 <table>
   <tbody>
     <!-- Book Title -->
@@ -9,7 +10,7 @@
           Book Title
         </div>
         <div class="input-field col s6">
-          <input placeholder="Enter a book title." id="bookTitle" type="text" class="validate" ng-model="bookTitle" name="bookTitle" ng-minlength="3" ng-maxlength="100" required>
+          <input placeholder="Enter a book title." id="bookTitle" type="text" class="validate" ng-model="data.title" name="bookTitle" ng-minlength="3" ng-maxlength="100" required>
           <span ng-show="naacForm.bookTitle.$error.minlength || naacForm.bookTitle.$error.maxlength" class="error">Book title length should be between 3 and 100.</span>
           <span ng-show="naacForm.bookTitle.$touched && naacForm.bookTitle.$error.required" class="error">Field cannot be empty</span>
         </div>
@@ -27,7 +28,7 @@
           Book ISBN
         </div>
         <div class="input-field col s6">
-          <input placeholder="Enter book isbn number." id="bookISBN" type="number" class="validate" ng-model="bookISBN" name="bookISBN" ng-minlength="10" ng-maxlength="13" required>
+          <input placeholder="Enter book isbn number." id="bookISBN" type="number" class="validate" ng-model="data.isbn" name="bookISBN" ng-minlength="10" ng-maxlength="13" required>
           <span ng-show="naacForm.bookISBN.$error.minlength || naacForm.bookISBN.$error.maxlength" class="error">Book ISBN length should be between 10 or 13.</span>
           <span ng-show="naacForm.bookISBN.$touched && naacForm.bookISBN.$error.required" class="error">Field cannot be empty</span>
 
@@ -47,7 +48,7 @@
           Year
         </div>
         <div class="input-field col s6">
-          <select name="bookYear" ng-model="bookYear" required>
+          <select name="bookYear" ng-model="data.year" required>
             <option value="" disabled selected>Choose your option</option>
             <option value="2012">2012</option>
             <option value="2013">2013</option>
@@ -65,6 +66,39 @@
 
 
     <!-- Book Co-Author -->
+<tr>
+  <td>
+    <div  class="{{sections[selected]}}{{selectedResult}}">
+      <br><br>
+      <div class="row" ng-repeat="(k, v) in coauthors[attributes[selected].key][selectedResult]">
+
+        <div class="col m2" style="color: #9e9e9e;font-size: 14px;padding-top: 10px; ">
+          <span>Priority</span>
+          {{ $index + 1}}
+        </div>
+        <div class="col m4">
+          <input type="text" name="" ng-model="v.name" placeholder="Name">
+        </div>
+        <div class="col m4">
+          <input type="text" name="" ng-model="v.email" placeholder="Email">
+        </div>
+        <div class="col m2">
+          <div class="tooltip">?
+            <span class="tooltiptext">Waiting For Confirmation...</span>
+          </div>
+        </div>
+
+      </div>
+      <div class="right">
+        <button ng-click="add_coauthor(key)" background-color="#1a237e" class="btn waves-effect waves-light no-borders">
+          <i style="font-size:1.2em; line-height:1.2em;" class="fa fa-plus-circle" aria-hidden="true"></i> ADD CO AUTHOR
+        </button>
+      </div>
+
+
+  </td>
+</tr>
+
 
   </tbody>
 </table>

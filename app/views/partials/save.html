@@ -1,5 +1,10 @@
 <div class="right">
-  <button ng-click="save()" style="margin-top: 1em; background-color: #1a237e" class="btn waves-effect waves-light no-borders" >
+  <button ng-click="saveForm()" style="margin-top: 1em; background-color: #1a237e" class="btn waves-effect waves-light no-borders" ng-disabled="naacForm.$invalid">
     <i style="font-size:1.2em; line-height:1.2em;" class="fa fa-paper-plane" aria-hidden="true"></i> SAVE
   </button>
 </div>
+<script>
+$(document).ready(function() {
+ $('select').material_select();
+});
+</script>
