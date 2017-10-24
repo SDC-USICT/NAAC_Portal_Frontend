@@ -18,18 +18,21 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
       }
     }
 //This is used to send data to backend
+
     $scope.data={
-      employee:$sessionStorage.loginid
+
     }
 //This is save method
     $scope.saveForm = function(){
+      $scope.data.employee=$sessionStorage.loginid;
+      console.log($scope.data);
       var req = {
         'kls' : $scope.attributes[$scope.selected].key,
         'data' :  [$scope.data]
       }
       $scope.data={
-        employee:$sessionStorage.loginid
-      }
+
+      };
       $scope.naacForm.$setPristine();
       $scope.naacForm.$setUntouched();
       console.log(req);
@@ -158,8 +161,11 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
             $scope.setSelected = function(value) {
               $scope.selected = value;
               $scope.selectedResult = 0;
+              $scope.data={};
+              console.log($scope.data);
               $scope.naacForm.$setPristine();
               $scope.naacForm.$setUntouched();
+              console.log($scope.naacForm);
               console.log($scope.form_details[$scope.sections[$scope.selected]])
 
 
@@ -206,9 +212,6 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                         })
                          console.log($scope.results)
                          console.log($scope.coauthors);
-                         $(document).ready(function() {
-                          $('select').material_select();
-                        });
                          $scope.$evalAsync()
                          $scope.selectedResult =  $scope.results[$scope.attributes[$scope.selected].key].length -1;
 
