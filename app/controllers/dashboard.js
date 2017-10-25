@@ -46,13 +46,45 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
     }
 
     console.log($scope.data);
-      var req = {
+     
+
+       if ($scope.attributes[$scope.selected].key == 'SubjectsTaken') {
+            var fd = new FormData();
+            fd.append('image', $scope.data.image[0]);
+              fd.append("name", $rootScope.loginid);
+            fd.append("filename", $scope.data.year + '_' + $scope.data.course + '_' + $scope.data.subject);
+             $http({
+              method: 'POST',
+              url: BACKEND + '/api/subjectupload',
+              headers: {
+                'Content-Type': undefined
+              },
+              data: fd,
+              transformRequest: angular.identity
+            })
+            .then(function (response) {
+              console.log(response.data)
+              Materialize.toast('Time Table Image Uploaded Successfully!', 4000)
+
+
+            })
+
+
+            $scope.data.image = $rootScope.year + '_' + $scope.data.course + '_' + $scope.data.subject;
+
+          }
+
+
+       var req = {
         'kls' : $scope.attributes[$scope.selected].key,
         'data' :  [$scope.data]
-      }
-      
-      //$scope.results.push($scope.data);
-      $scope.data={
+      }    
+     
+      console.log(req);
+      formService.post(req);
+
+
+       $scope.data={
 
       };
       $(document).ready(function () {
@@ -60,8 +92,6 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
      })
       $scope.naacForm.$setPristine();
       $scope.naacForm.$setUntouched();
-      console.log(req);
-      formService.post(req);
 
       //$scope.selectedResult =  $scope.results[$scope.attributes[$scope.selected].key].length-1;
     }
@@ -223,7 +253,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                   kls: $scope.attributes[value].key
                 }).$promise.then(function(data) {
                   console.log(data)
-                  $scope.mySelectedData=data;
+                  $scope.mySelectedData=data;;
                   console.log($scope.results)
                   if (data[0] != undefined) {
                          //$scope.model_type = data[0].model;
@@ -458,7 +488,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
               raw = res.data.data;
               console.log('DELETE DELETE')
               console.log(res);
-              $scope.mySelectedData =
+              $scope.results[$scope.attributes[$scope.selected].key] =
               raw.map(function(a) {
                 return a;
               });
@@ -476,7 +506,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                   return tmp;
                 }
               })
-              $scope.selectedResult =  $scope.mySelectedData.length-1;
+              $scope.selectedResult =  $scope.results[$scope.attributes[$scope.selected].key].length-1;
 
 
                   })

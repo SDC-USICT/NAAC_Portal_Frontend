@@ -51,8 +51,30 @@
 
         </tr>
 
+<!-- TODO: FETCH FROM SERVER -->
+<tr >
+
+          <td>
+
+            <div class="input-field col s6 fields">
+              Choose Course
+            </div>
+            <div class="input-field col s6">
+              <select name="subjectCourse" ng-model="data.course" required>
+                <option value="" disabled selected>Choose your option</option>
+                <option value="btech_cse">BTECH CSE</option>
+                <option value="btech_it">BTECH IT</option>
+                <option value="mtech">MTECH </option>
+                
+
+              </select>
+            </div>
+          </td>
+
+        </tr>
 
 
+<!-- TODO: FETCH FROM SERVER -->
 
         <tr >
 
@@ -102,7 +124,7 @@
         <div class="file-field input-field col s6">
       <div class="btn">
         <span>File</span>
-        <input type="file"  ng-model="data.file">
+        <input type="file" files-input  ng-model="data.image">
       </div>
       <div class="file-path-wrapper">
         <input class="file-path validate" type="text">
