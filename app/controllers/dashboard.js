@@ -50,6 +50,8 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
         'kls' : $scope.attributes[$scope.selected].key,
         'data' :  [$scope.data]
       }
+      
+      //$scope.results.push($scope.data);
       $scope.data={
 
       };
@@ -221,7 +223,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                   kls: $scope.attributes[value].key
                 }).$promise.then(function(data) {
                   console.log(data)
-                  $scope.mySelectedData=data;;
+                  $scope.mySelectedData=data;
                   console.log($scope.results)
                   if (data[0] != undefined) {
                          //$scope.model_type = data[0].model;
@@ -456,7 +458,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
               raw = res.data.data;
               console.log('DELETE DELETE')
               console.log(res);
-              $scope.results[$scope.attributes[$scope.selected].key] =
+              $scope.mySelectedData =
               raw.map(function(a) {
                 return a;
               });
@@ -474,7 +476,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                   return tmp;
                 }
               })
-              $scope.selectedResult =  $scope.results[$scope.attributes[$scope.selected].key].length-1;
+              $scope.selectedResult =  $scope.mySelectedData.length-1;
 
 
                   })

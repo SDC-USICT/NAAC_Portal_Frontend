@@ -27,7 +27,7 @@
           Sponsoring Agency
         </div>
         <div class="input-field col s6">
-          <input placeholder="Sponsoring Agency" id="projectSponsor" type="text" class="validate" ng-model="data.sponsers" name="projectSponsor" ng-minlength="3" ng-maxlength="100" required>
+          <input placeholder="Sponsoring Agency" id="projectSponsor" type="text" class="validate" ng-model="data.sponsors" name="projectSponsor" ng-minlength="3" ng-maxlength="100" required>
           <span ng-show="naacForm.projectSponsor.$error.minlength || naacForm.projectSponsor.$error.maxlength" class="error">Sponsor name should be  3 to 100 character long. </span>
           <span ng-show="naacForm.projectSponsor.$touched && naacForm.projectSponsor.$error.required" class="error">Field cannot be empty</span>
 
@@ -62,7 +62,7 @@
           Date of Completion
         </div>
         <div class="input-field col s6">
-          <input placeholder="Date of Completion" id="projectDateCompleted" type="text" class="datepicker" ng-model="data.date_of_completed" name="projectDateCompleted" required>
+          <input placeholder="Date of Completion" id="projectDateCompleted" type="text" class="datepicker" ng-model="data.date_completed" name="projectDateCompleted" required>
 
         </div>
       </td>
@@ -155,3 +155,13 @@
 
     </tbody>
 </table>
+<script>
+$('.datepicker').pickadate({
+ selectMonths: true, // Creates a dropdown to control month
+ selectYears: 15, // Creates a dropdown of 15 years to control year,
+ today: 'Today',
+ clear: 'Clear',
+ close: 'Ok',
+ closeOnSelect: false // Close upon selecting a date,
+});
+</script>
