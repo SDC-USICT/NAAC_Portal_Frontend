@@ -63,6 +63,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
 
       //$scope.selectedResult =  $scope.results[$scope.attributes[$scope.selected].key].length-1;
     }
+    //Saveform ends here
 
 
     $scope.hello = function () {
@@ -218,6 +219,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                   kls: $scope.attributes[value].key
                 }).$promise.then(function(data) {
                   console.log(data)
+                  $scope.mySelectedData=data;;
                   console.log($scope.results)
                   if (data[0] != undefined) {
                          //$scope.model_type = data[0].model;
@@ -230,6 +232,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                           a.employee = $rootScope.loginid;
                           return a;
                         });
+                        console.log($scope.results.Book);
                         //If any coauthors is present in teacher  data then push it into coauthors array.
                          $scope.coauthors[$scope.attributes[$scope.selected].key] = data.map(function (a) {
                           console.log(a)
@@ -274,10 +277,12 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                 return s;
               }
 
-              $scope.setSelectedResult = function(val=null){
-
+              $scope.setSelectedResult = function(val){
+                console.log(val);
                if(val != null) {
-                $scope.selectedResult = val;
+                console.log($scope.mySelectedData[val]);
+                //This will set data model to editable 
+                $scope.data = $scope.mySelectedData[val];
               }
 
             };
