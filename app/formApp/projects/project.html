@@ -77,7 +77,10 @@
         <div class="input-field col s6 fields">
         Project Amount Sanctioned
         </div>
-        <div class="input-field col s6">
+        <div class="col s1" style="position: relative;top: 20px;font-size: 20px;font-weight: 400;">
+          <span>&#8377;</span>
+        </div>
+        <div class="input-field col s5">
           <input placeholder="Project Amount Sanctioned" id="projectAmount" type="number" class="validate" ng-model="data.amnt_sanctioned" name="projectAmount" ng-minlength="3" ng-maxlength="10" required>
           <span ng-show="naacForm.projectAmount.$error.minlength || naacForm.projectAmount.$error.maxlength" class="error">Amount should be  3 to 10 character long. </span>
           <span ng-show="naacForm.projectAmount.$touched && naacForm.projectAmount.$error.required" class="error">Field cannot be empty</span>
