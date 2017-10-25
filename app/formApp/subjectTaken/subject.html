@@ -99,9 +99,15 @@
         <div class="input-field col s6 fields">
           Upload Time Table
         </div>
-        <div class="input-field col s6">
-          <input  id="bookTitle" type="file" class="validate" ng-model="data.file" name="bookTitle" ng-minlength="3" ng-maxlength="100" required>
-        </div>
+        <div class="file-field input-field col s6">
+      <div class="btn">
+        <span>File</span>
+        <input type="file">
+      </div>
+      <div class="file-path-wrapper">
+        <input class="file-path validate" type="text">
+      </div>
+    </div>
       </td>
 
     </tr>

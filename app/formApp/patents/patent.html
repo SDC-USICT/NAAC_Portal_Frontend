@@ -86,5 +86,40 @@
     </tr>
 
 
+
+    <tr >
+
+      <td>
+
+        <div class="input-field col s6 fields">
+          Patent Type
+        </div>
+        <div class="input-field col s6">
+          <input placeholder="Patent Type" id="patentStatus" type="text" class="validate" ng-model="data.type" name="patentType" ng-minlength="3" ng-maxlength="100" required>
+          <span ng-show="naacForm.patentType.$error.minlength || naacForm.patentType.$error.maxlength" class="error">Length should be between 3 and 100.</span>
+          <span ng-show="naacForm.patentType.$touched && naacForm.patentType.$error.required" class="error">Field cannot be empty</span>
+        </div>
+      </td>
+
+    </tr>
+
+    <tr >
+
+      <td>
+
+        <div class="input-field col s6 fields">
+          Patent Status
+        </div>
+        <div class="input-field col s6">
+          <input placeholder="Patent Name" id="patentStatus" type="text" class="validate" ng-model="data.status" name="patentStatus" ng-minlength="3" ng-maxlength="100" required>
+          <span ng-show="naacForm.patentStatus.$error.minlength || naacForm.patentStatus.$error.maxlength" class="error">Length should be between 3 and 100.</span>
+          <span ng-show="naacForm.patentStatus.$touched && naacForm.patentStatus.$error.required" class="error">Field cannot be empty</span>
+        </div>
+      </td>
+
+    </tr>
+
+
+
     </tbody>
 </table>
