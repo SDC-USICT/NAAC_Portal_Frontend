@@ -121,8 +121,10 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                 }
                 if (value == 'Awards') {
                   tmp['priority'] = 10;
+                  tmp['help'] = ["Award 1", "Award 2"];
                 } else if(value == 'Book'){
                   tmp['priority'] = 4;
+                  tmp['help'] = ["book 1", "book 2"];
                 }if (value == 'BookChapters') {
                   tmp['priority'] = 3;
                 } else if(value == 'Conference'){
