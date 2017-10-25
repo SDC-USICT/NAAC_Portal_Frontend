@@ -28,8 +28,8 @@
           Journal Name with Publisher
         </div>
         <div class="input-field col s6">
-          <input placeholder="Enter journal and publisher name." id="journalPublisher" type="text" class="validate" ng-model="data.name_and_publisher" name="journalPublisher" ng-minlength="10" ng-maxlength="13" required>
-          <span ng-show="naacForm.journalPublisher.$error.minlength || naacForm.journalPublisher.$error.maxlength" class="error">Length should be between 10 or 13.</span>
+          <input placeholder="Enter journal and publisher name." id="journalPublisher" type="text" class="validate" ng-model="data.name_and_publisher" name="journalPublisher" ng-minlength="3" ng-maxlength="100" required>
+          <span ng-show="naacForm.journalPublisher.$error.minlength || naacForm.journalPublisher.$error.maxlength" class="error">Length should be between 3 to 100.</span>
           <span ng-show="naacForm.journalPublisher.$touched && naacForm.journalPublisher.$error.required" class="error">Field cannot be empty</span>
 
         </div>
@@ -193,7 +193,7 @@
 <!-- Co Author -->
 
 <tr>
-  
+
   <td>
     <div class="input-field col s2 fields">
           Co Authors
