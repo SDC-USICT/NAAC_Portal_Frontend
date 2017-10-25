@@ -28,7 +28,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
       $scope.data.employee=$sessionStorage.loginid;
       console.log($scope.data);
 
-     
+
       coauthor_classes = [
       'Book',
       'BookChapters',
@@ -42,7 +42,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
 
           tt.push(vv.name+ ":" + vv.email + ":" + vv.approved) ;
         });
-       $scope.data.coauthor = tt.join(';');      
+       $scope.data.coauthor = tt.join(';');
     }
 
     console.log($scope.data);
@@ -53,6 +53,9 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
       $scope.data={
 
       };
+      $(document).ready(function () {
+       $('select').material_select();
+     })
       $scope.naacForm.$setPristine();
       $scope.naacForm.$setUntouched();
       console.log(req);
