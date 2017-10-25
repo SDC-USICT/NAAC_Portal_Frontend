@@ -24,8 +24,28 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
     }
 //This is save method
     $scope.saveForm = function(){
+      console.log('Inside saveform')
       $scope.data.employee=$sessionStorage.loginid;
       console.log($scope.data);
+
+     
+      coauthor_classes = [
+      'Book',
+      'BookChapters',
+      'JournalPapers',
+      'Conference']
+
+
+    if (coauthor_classes.indexOf($scope.attributes[$scope.selected].key) >= 0 ) {
+      tt = []
+      angular.forEach($scope.data.coauthor, function(vv, kk){
+
+          tt.push(vv.name+ ":" + vv.email + ":" + vv.approved) ;
+        });
+       $scope.data.coauthor = tt.join(';');      
+    }
+
+    console.log($scope.data);
       var req = {
         'kls' : $scope.attributes[$scope.selected].key,
         'data' :  [$scope.data]
@@ -38,12 +58,25 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
       console.log(req);
       formService.post(req);
 
-      $scope.selectedResult =  $scope.results[$scope.attributes[$scope.selected].key].length-1;
+      //$scope.selectedResult =  $scope.results[$scope.attributes[$scope.selected].key].length-1;
     }
 
 
+    $scope.hello = function () {
+      if ($scope.data.coauthor == undefined) $scope.data.coauthor = [];
+      $scope.data.coauthor.push(
+        {
+          'name' :'',
+          'email':'',
+          'approved':'0'
+        }
+      )
+      console.log($scope.data)
+    }
 
-
+    $scope.removecoauthor = function (val) {
+      $scope.data.coauthor.pop(val)
+    }
 
     $sessionStorage.loginid = $rootScope.loginid;
 
@@ -491,7 +524,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
             $scope.coauthors[$scope.attributes[$scope.selected].key][$scope.selectedResult] = [];
           $scope.coauthors[$scope.attributes[$scope.selected].key][$scope.selectedResult].push({
             'name' : '',
-            'value' : '',
+            'email' : '',
             'approved': '0'
           })
         }

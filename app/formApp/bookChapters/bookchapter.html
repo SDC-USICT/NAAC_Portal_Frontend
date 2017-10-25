@@ -153,39 +153,44 @@
 
 
     <!-- Book Co-Author -->
-<!-- implementation of co author -->
-<!-- Book Co-Author -->
 <tr>
-<td>
-<div  class="{{sections[selected]}}{{selectedResult}}">
-  <br><br>
-  <div class="row" ng-repeat="(k, v) in coauthors[attributes[selected].key][selectedResult]">
+  
+  <td>
+    <div class="input-field col s2 fields">
+          Co Authors
+    </div>
+    <div class="col s10">
+      <br><br>
+      <div class="row" ng-repeat="(k, v) in data.coauthor">
+        <div class="col m2" style="color: #9e9e9e;font-size: 14px;padding-top: 10px; ">
+          <span>Priority</span>
+          {{ $index + 1}}
+        </div>
+        <div class="col m4">
+          <input type="text" name="" ng-model="v.name" placeholder="Name">
+        </div>
+        <div class="col m4">
+          <input type="text" name="" ng-model="v.email" placeholder="Email">
+        </div>
+        <div class="col m1" ng-if="v.approved == '0'">
+          <div class="tooltip">?
+            <span class="tooltiptext">Waiting For Confirmation...</span>
+          </div>
+        </div>
+        <div class="col m1">
+          <div ng-click="removecoauthor($index)" class="tooltip red">X
+            <span class="tooltiptext">Remove</span>
+          </div>
 
-    <div class="col m2" style="color: #9e9e9e;font-size: 14px;padding-top: 10px; ">
-      <span>Priority</span>
-      {{ $index + 1}}
-    </div>
-    <div class="col m4">
-      <input type="text" name="" ng-model="v.name" placeholder="Name">
-    </div>
-    <div class="col m4">
-      <input type="text" name="" ng-model="v.email" placeholder="Email">
-    </div>
-    <div class="col m2">
-      <div class="tooltip">?
-        <span class="tooltiptext">Waiting For Confirmation...</span>
+        </div>
+
       </div>
-    </div>
-
-  </div>
-  <div class="right">
-    <button ng-click="add_coauthor(key)" background-color="#1a237e" class="btn waves-effect waves-light no-borders">
-      <i style="font-size:1.2em; line-height:1.2em;" class="fa fa-plus-circle" aria-hidden="true"></i> ADD CO AUTHOR
-    </button>
-  </div>
-
-
-</td>
+      <div class="right">
+        <button ng-click="hello()" background-color="#1a237e" class="btn waves-effect waves-light no-borders">
+          <i style="font-size:1.2em; line-height:1.2em;" class="fa fa-plus-circle" aria-hidden="true"></i> ADD CO AUTHOR
+        </button>
+      </div>
+  </td>
 </tr>
 
 
