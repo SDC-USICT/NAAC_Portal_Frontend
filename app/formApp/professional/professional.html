@@ -6,7 +6,7 @@
       <td>
 
         <div class="input-field col s6 fields">
-          Academic Experience
+          Academic Experience (Years)
         </div>
         <div class="input-field col s6">
           {{professional.title}}
@@ -17,14 +17,12 @@
 
     </tr>
 
-
-
-    <tr >
+    <tr>
 
       <td>
 
         <div class="input-field col s6 fields">
-          Industrial Experience
+          Industrial Experience (Years)
         </div>
         <div class="input-field col s6">
           <input placeholder="Industrial Experience" id="indExp" type="number" class="validate" ng-model="data.industrial_exp" name="indExp" required>
@@ -39,7 +37,7 @@
       <td>
 
         <div class="input-field col s6 fields">
-          Highest Qualification
+          Highest Qualification (Years)
         </div>
         <div class="input-field col s6">
           <input placeholder="Highest Qualification" id="highQual" type="text" class="validate" ng-model="data.qualification_before" name="highQual" required>
@@ -54,7 +52,7 @@
       <td>
 
         <div class="input-field col s6 fields">
-          Qualification Added
+          Qualifications
         </div>
         <div class="input-field col s6">
           <input placeholder="Qualification Added" id="qualAdd" type="text" class="validate" ng-model="data.qualification_after" name="qualAdd" required>
@@ -69,7 +67,7 @@
       <td>
 
         <div class="input-field col s6 fields">
-          Total Student
+          Total Students
         </div>
         <div class="input-field col s6">
           <input placeholder="Total Student" id="totStu" type="number" class="validate" ng-model="data.phds" name="totStu" ng-minlength="1" ng-maxlength="10" required>
@@ -99,12 +97,12 @@
     <tr >
 
       <td>
-
+        <!-- CONFIRM THESE FIELDS -->
         <div class="input-field col s6 fields">
           Phd Submitted
         </div>
         <div class="input-field col s6">
-          <input placeholder="Phd Submitted" id="phds" type="number" class="validate" ng-model="data.submitted" name="phds" required>
+          <input placeholder="Phd Submitted" id="phds" type="text" class="validate" ng-model="data.submitted" name="phds" required>
           <span ng-show="naacForm.phds.$touched && naacForm.phds.$error.required" class="error">Field cannot be empty</span>
         </div>
       </td>

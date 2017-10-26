@@ -183,14 +183,7 @@ nav {
 .view.ng-leave { transition:0.5s ease-out all; opacity:1; }
 .view.ng-leave.ng-leave-active { opacity:0; }
 
+.remove {
+  display: none;
+}
 
-/*input.ng-pristine {
-            background-color:yellow;
-      }
-input.ng-touched.ng-valid.ng-empty {
-              border-bottom: 1.5px solid red;
-        }
-
-input.ng-touched.ng-valid.ng-not-empty {
-              border-bottom: 1.5px solid limegreen;
-}*/
