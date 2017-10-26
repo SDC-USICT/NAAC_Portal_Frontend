@@ -46,7 +46,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
     }
 
     console.log($scope.data);
-     
+
 
        if ($scope.attributes[$scope.selected].key == 'SubjectsTaken') {
             var fd = new FormData();
@@ -78,8 +78,8 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
        var req = {
         'kls' : $scope.attributes[$scope.selected].key,
         'data' :  [$scope.data]
-      }    
-     
+      }
+
       console.log(req);
       formService.post(req);
 
@@ -87,6 +87,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
        $scope.data={
 
       };
+      console.log($scope.coauthors);
       $(document).ready(function () {
        $('select').material_select();
      })
@@ -317,6 +318,19 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                 console.log($scope.mySelectedData[val]);
                 //This will set data model to editable
                 $scope.data = $scope.mySelectedData[val];
+                  if($scope.data.coauthor ){
+                    var tmp = [];
+                    angular.forEach($scope.data.coauthor.split(';'), function(v, k){
+                      tmp.push({
+                        'name' : v.split(':')[0],
+                        'email' : v.split(':')[1],
+                        'approved' : v.split(':')[2]
+                      })
+                    });
+                    $scope.data.coauthor = tmp;
+                    console.log($scope.data);
+                  }
+
                 $(document).ready(function () {
                 console.log($('select'));
                  $('select').material_select();
