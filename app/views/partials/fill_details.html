@@ -100,7 +100,7 @@
                     <td ng-if="value.name!='coauthor'">{{results[attributes[selected].key][selectedResultTheatre][value.name]}}</td>
                     <td ng-if="value.name=='coauthor'">
                         <br>
-                        <div class="row" ng-repeat="(k, v) in coauthors[attributes[selected].key][selectedResultTheatre]">
+                        <div class="row" ng-repeat="(k, v) in coauthors[attributes[selected].key][selectedResultTheatre] track by $index">
                             <div class="col m6">
                                 <span>{{v.name}}</span>
                             </div>
