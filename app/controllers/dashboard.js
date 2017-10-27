@@ -3,8 +3,8 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
         $scope.selected = 0;
         $scope.results = {};
         $scope.coauthors = {};
-        $scope.selectedResult = 0;
         $scope.attributes = [];
+        $scope.selectedResult = null;
         $scope.editing = 0;
         $scope.marked_authors = {};
         $scope.employeeMeta = {};
@@ -75,7 +75,6 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
 
                 } catch (err) {
                     alert('Please upload Time Table Image!');
-                    break;
                 }
 
                 $scope.data.image = $scope.data.year + '_' + $scope.data.course + '_' + $scope.data.title;
@@ -101,7 +100,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
             })
             $scope.naacForm.$setPristine();
             $scope.naacForm.$setUntouched();
-
+            $scope.selectedResult = null;
             //$scope.selectedResult =  $scope.results[$scope.attributes[$scope.selected].key].length-1;
         }
         //Saveform ends here
@@ -272,7 +271,6 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
         // Set selected tab.
         $scope.setSelected = function(value) {
             $scope.selected = value;
-            $scope.selectedResult = 0;
             $scope.data = {};
             console.log($scope.data);
             $scope.naacForm.$setPristine();
@@ -327,7 +325,6 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                     console.log($scope.results)
                     console.log($scope.coauthors);
                     $scope.$evalAsync()
-                    $scope.selectedResult = $scope.results[$scope.attributes[$scope.selected].key].length - 1;
 
                 } else {
                     console.log('Here!')
@@ -529,6 +526,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
         //Modal for each data input in rightmost side
         $scope.openTheatre = function(index) {
             console.log('Hello')
+            $scope.selectedResult = index;
             $scope.selectedResultTheatre = index;
             $scope.$evalAsync()
             $(document).ready(function() {
