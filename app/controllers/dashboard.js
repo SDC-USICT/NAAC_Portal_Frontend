@@ -16,6 +16,14 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
             } else {
                 $location.url('/')
             }
+            $http.get('./app/controllers/subjects.json').
+            then(function onSuccess(response) {
+              console.log(response.data);
+              $scope.SubjectsTakenField= response.data;
+            }).
+            catch(function onError(response) {
+              console.log(response);
+            });
         }
         //This is used to send data to backend
 
