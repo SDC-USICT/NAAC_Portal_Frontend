@@ -1,5 +1,5 @@
 # NAAC_Portal_Frontend
-Frontend for the GGSIPU NAAC Portal
+Frontend for the GGSIPU Student Data Acquisition Portal Portal
 
 ```
 git clone <clone-link>
