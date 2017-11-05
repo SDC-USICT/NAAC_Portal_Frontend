@@ -21,14 +21,20 @@
           Membership Type
         </div>
         <div class="input-field col s6">
-          <select name="membershipType" ng-model="data.title" required>
+          <!-- <select name="membershipType" ng-model="data.title" required>
             <option value="" disabled selected>Choose your option</option>
             <option value="ieee">IEEE</option>
             <option value="acm">ACM</option>
             <option value="iste">ISTE</option>
             <option value="iaeng">IAENG</option>
             <option value="other">Any Other</option>
-          </select>
+          </select> -->
+
+
+          <input name="membershipType" ng-model="data.title" type="text" id="autocomplete-input" class="autocomplete" placeholder="Membership Type" required>
+
+
+
         </div>
       </td>
     </tr>
@@ -116,3 +122,25 @@
 
     </tbody>
 </table>
+
+<script type="text/javascript">
+  $('input.autocomplete').autocomplete({
+    data: {
+      "IEEE": null,
+      "ACM": null,
+      "ISTE": null,
+      "IAENG": null,
+      "Any Other, Please Specify": null
+    },
+    limit: 20, // The max amount of results that can be shown at once. Default: Infinity.
+    onAutocomplete: function(val) {
+      // Callback function when value is autcompleted.
+      console.log("val = ");
+      console.log(val);
+      if(val == "Any Other, Please Specify"){
+        $(".autocomplete").val("");
+      }
+    },
+    minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.
+  });
+</script>
