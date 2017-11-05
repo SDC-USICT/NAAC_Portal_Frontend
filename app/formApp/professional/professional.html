@@ -37,109 +37,14 @@
       <td>
 
         <div class="input-field col s6 fields">
-          Highest Qualification (Years)
+          Highest Qualification
         </div>
         <div class="input-field col s6">
-          <input placeholder="Highest Qualification" id="highQual" type="text" class="validate" ng-model="data.qualification_before" name="highQual" required>
-          <span ng-show="naacForm.highQual.$touched && naacForm.highQual.$error.required" class="error">Field cannot be empty</span>
-        </div>
-      </td>
-
-    </tr>
-
-    <tr >
-
-      <td>
-
-        <div class="input-field col s6 fields">
-          Qualifications
-        </div>
-        <div class="input-field col s6">
-          <input placeholder="Qualification Added" id="qualAdd" type="text" class="validate" ng-model="data.qualification_after" name="qualAdd" required>
-          <span ng-show="naacForm.qualAdd.$touched && naacForm.qualAdd.$error.required" class="error">Field cannot be empty</span>
-        </div>
-      </td>
-
-    </tr>
-
-    <tr >
-
-      <td>
-
-        <div class="input-field col s6 fields">
-          Total Students
-        </div>
-        <div class="input-field col s6">
-          <input placeholder="Total Student" id="totStu" type="number" class="validate" ng-model="data.phds" name="totStu" ng-minlength="1" ng-maxlength="10" required>
-          <span ng-show="naacForm.totStu.$touched && naacForm.totStu.$error.required" class="error">Field cannot be empty</span>
-          <span ng-show="naacForm.totStu.$error.minlength || naacForm.totStu.$error.maxlength" class="error">Minimum length is 1 and Maximum is 10</span>
-
-        </div>
-      </td>
-
-    </tr>
-
-    <tr >
-
-      <td>
-
-        <div class="input-field col s6 fields">
-          Phd Pursuing
-        </div>
-        <div class="input-field col s6">
-          <input placeholder="Phd Pursuing" id="phdp" type="text" class="validate" ng-model="data.pursuing" name="phdp" required>
-          <span ng-show="naacForm.phdp.$touched && naacForm.phdp.$error.required" class="error">Field cannot be empty</span>
-        </div>
-      </td>
-
-    </tr>
-
-    <tr >
-
-      <td>
-        <!-- CONFIRM THESE FIELDS -->
-        <div class="input-field col s6 fields">
-          Phd Submitted
-        </div>
-        <div class="input-field col s6">
-          <input placeholder="Phd Submitted" id="phds" type="text" class="validate" ng-model="data.submitted" name="phds" required>
-          <span ng-show="naacForm.phds.$touched && naacForm.phds.$error.required" class="error">Field cannot be empty</span>
-        </div>
-      </td>
-
-    </tr>
-
-    <tr >
-
-      <td>
-
-        <div class="input-field col s6 fields">
-          Phd Awarded
-        </div>
-        <div class="input-field col s6">
-          <input placeholder="Phd Awarded" id="phda" type="text" class="validate" ng-model="data.awarded" name="phda" required>
-          <span ng-show="naacForm.phda.$touched && naacForm.phda.$error.required" class="error">Field cannot be empty</span>
-        </div>
-      </td>
-
-    </tr>
-
-    <tr >
-
-      <td>
-
-        <div class="input-field col s6 fields">
-          Year
-        </div>
-        <div class="input-field col s6">
-          <select name="yearProf" ng-model="data.year" required>
+          <select name="highestQual" ng-model="data.qualification_highest" required>
             <option value="" disabled selected>Choose your option</option>
-            <option value="2012">2012</option>
-            <option value="2013">2013</option>
-            <option value="2014">2014</option>
-            <option value="2015">2015</option>
-            <option value="2016">2016</option>
-            <option value="2017">2017</option>
+            <option value="2012">Masters</option>
+            <option value="2013">PhD</option>
+            
 
           </select>
         </div>
@@ -147,6 +52,76 @@
 
     </tr>
 
+    <tr >
+
+      <td>
+
+        <div class="input-field col s6 fields">
+          Year of Completion of Highest Qualification
+        </div>
+        <div class="input-field col s6">
+          <input placeholder="Year of Completion of Highest Qualification" id="qualAdd" type="text" class="validate" ng-model="data.qualification_year_completion" name="qualAdd"  required>
+          <span ng-show="naacForm.qualAdd.$touched && naacForm.qualAdd.$error.required" class="error">Field cannot be empty</span>
+        </div>
+      </td>
+
+    </tr>
+
+    
 
   </tbody>
+</table>
+<br><br>
+<table>
+  <tbody>
+
+    <div class="small-title">DETAILS ABOUT PhD STUDENTS</div>
+    {{data.phds = data.pursuing + data.submitted + data.awarded;""}}
+    <tr class="phdtr">
+
+      <td>
+
+        <div class="input-field col s6 fields">
+          Phd Pursuing
+        </div>
+        <div class="input-field col s6">
+          <input placeholder="Phd Pursuing" id="phdp" type="number" class="validate" ng-model="data.pursuing" name="phdp" required>
+          <span ng-show="naacForm.phdp.$touched && naacForm.phdp.$error.required" class="error">Field cannot be empty</span>
+        </div>
+      </td>
+
+    </tr>
+
+    <tr class="phdtr">
+
+      <td>
+        <!-- CONFIRM THESE FIELDS -->
+        <div class="input-field col s6 fields">
+          Phd Submitted
+        </div>
+        <div class="input-field col s6">
+          <input placeholder="Phd Submitted" id="phds" type="number" class="validate" ng-model="data.submitted" name="phds" required>
+          <span ng-show="naacForm.phds.$touched && naacForm.phds.$error.required" class="error">Field cannot be empty</span>
+        </div>
+      </td>
+
+    </tr>
+
+    <tr class="phdtr">
+
+      <td>
+
+        <div class="input-field col s6 fields">
+          Phd Awarded
+        </div>
+        <div class="input-field col s6">
+          <input placeholder="Phd Awarded" id="phda" type="number" class="validate" ng-model="data.awarded" name="phda" required>
+          <span ng-show="naacForm.phda.$touched && naacForm.phda.$error.required" class="error">Field cannot be empty</span>
+        </div>
+      </td>
+
+    </tr>
+
+
+</tbody>
 </table>
