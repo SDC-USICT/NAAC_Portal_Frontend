@@ -8,8 +8,9 @@
       <td>
 
         <p style="padding-left: 12px;">
-          <input type="checkbox" id="awardtb" ng-model="noaward" />
-          <label for="awardtb">No Awards</label>
+          <input type="checkbox" id="awardtb" ng-model="noaward" ng-checked="awardChecked" ng-click="noAwrd()"  ng-disabled="disabledAward"  />
+          <label for="awardtb">No Awards
+          </label>
         </p>
       </td>
 

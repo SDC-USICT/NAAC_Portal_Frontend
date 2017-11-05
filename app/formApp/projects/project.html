@@ -2,7 +2,21 @@
 <table>
   <tbody>
 
+
     <tr >
+
+      <td>
+
+        <p style="padding-left: 12px;">
+          <input type="checkbox" id="projtb" ng-model="noproj" ng-checked="projChecked" ng-click="noPrj()" />
+          <label for="projtb">No Projects
+          </label>
+        </p>
+      </td>
+
+    </tr>
+
+    <tr ng-show="!noproj">
 
       <td>
 
@@ -19,7 +33,7 @@
     </tr>
 
 
-    <tr >
+    <tr ng-show="!noproj">
 
       <td>
 
@@ -38,7 +52,7 @@
 
 
 
-    <tr >
+    <tr ng-show="!noproj">
 
       <td>
 
@@ -54,7 +68,7 @@
     </tr>
 
 
-    <tr >
+    <tr ng-show="!noproj">
 
       <td>
 
@@ -70,7 +84,7 @@
     </tr>
 
 
-    <tr >
+    <tr ng-show="!noproj">
 
       <td>
 
@@ -93,7 +107,7 @@
 
 
 
-<tr >
+<tr ng-show="!noproj">
 
   <td>
 
@@ -113,7 +127,7 @@
 
 </tr>
 
- <tr >
+ <tr ng-show="!noproj">
 
       <td>
 
@@ -129,7 +143,7 @@
 
     </tr>
     <!-- Project Co-Author -->
-<tr>
+<tr ng-show="!noproj">
   
   <td>
     <div class="input-field col s2 fields">

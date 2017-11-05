@@ -2,9 +2,20 @@
 <table>
   <tbody>
 
+<tr >
 
+      <td>
 
-    <tr >
+        <p style="padding-left: 12px;">
+          <input type="checkbox" id="pattb" ng-model="nopat" ng-checked="patChecked" ng-click="noPt()"/>
+          <label for="pattb">No Patents
+          </label>
+        </p>
+      </td>
+
+    </tr>
+
+    <tr ng-show="!nopat">
 
       <td>
 
@@ -21,7 +32,7 @@
     </tr>
 
 
-    <tr >
+    <tr ng-show="!nopat">
 
       <td>
 
@@ -38,7 +49,7 @@
     </tr>
 
 
-    <tr >
+    <tr ng-show="!nopat">
 
       <td>
 
@@ -62,7 +73,7 @@
     </tr>
 
 
-    <tr >
+    <tr ng-show="!nopat">
 
       <td>
 
@@ -87,7 +98,7 @@
 
 
 
-    <tr >
+    <tr ng-show="!nopat">
 
       <td>
 
@@ -103,7 +114,7 @@
 
     </tr>
 
-    <tr >
+    <tr ng-show="!nopat">
 
       <td>
 

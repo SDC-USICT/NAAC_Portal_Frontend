@@ -1,8 +1,22 @@
 <section ng-include="'./app/views/partials/save.html'"></section>
 <table>
   <tbody>
+
+<tr >
+
+      <td>
+
+        <p style="padding-left: 12px;">
+          <input type="checkbox" id="noconf" ng-model="noconf" ng-checked="confChecked" ng-click="noCnf()"  />
+          <label for="noconf">No Conference Attended
+          </label>
+        </p>
+      </td>
+
+    </tr>
+
     <!-- Publication Title -->
-    <tr >
+    <tr ng-if="!noconf">
 
       <td>
 
@@ -20,7 +34,7 @@
 
     <!-- Name of Publisher-->
 
-    <tr >
+    <tr ng-if="!noconf">
 
       <td>
 
@@ -41,7 +55,7 @@
     <!-- Publication Volume Number -->
 
   
-    <tr >
+    <tr ng-if="!noconf">
 
       <td>
 
@@ -60,7 +74,7 @@
 
 
 <!-- Publication ISBN Number -->
-    <tr >
+    <tr ng-if="!noconf">
 
       <td>
 
@@ -79,7 +93,7 @@
 
 
     <!-- Publication Indexing -->
-    <tr >
+    <tr ng-if="!noconf">
 
       <td>
 
@@ -99,7 +113,7 @@
 
 
  <!-- Publication Indexing -->
-    <tr >
+    <tr ng-if="!noconf">
 
       <td>
 
@@ -130,7 +144,7 @@
 
 <!-- Publication Year -->
 
-<tr >
+<tr ng-if="!noconf">
 
   <td>
 
@@ -156,7 +170,7 @@
 
 
 <!-- Conference National or International -->
-<tr  >
+<tr ng-if="!noconf">
 
   <td>
 
@@ -177,7 +191,7 @@
 
     <!-- Book Co-Author -->
 <!-- implementation of co author -->
-<tr>
+<tr ng-if="!noconf">
   
   <td>
     <div class="input-field col s2 fields">

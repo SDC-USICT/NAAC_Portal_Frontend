@@ -1,8 +1,22 @@
 <section ng-include="'./app/views/partials/save.html'"></section>
 <table>
   <tbody>
+
+<tr >
+
+      <td>
+
+        <p style="padding-left: 12px;">
+          <input type="checkbox" id="glectb" ng-model="noglec" ng-checked="glecChecked" ng-click="noGL()"/>
+          <label for="glectb">No Guest Lecture
+          </label>
+        </p>
+      </td>
+
+    </tr>
+    
     <!-- Publication Title -->
-    <tr >
+    <tr ng-show="!noglec">
 
       <td>
 
@@ -19,7 +33,7 @@
     </tr>
 
 
-    <tr >
+    <tr ng-show="!noglec">
 
       <td>
 
@@ -38,7 +52,7 @@
 
 
 
-    <tr >
+    <tr ng-show="!noglec">
 
       <td>
 
@@ -55,7 +69,7 @@
     </tr>
 
 
-    <tr >
+    <tr ng-show="!noglec">
 
       <td>
 
@@ -74,7 +88,7 @@
 
 
     <!-- Publication Indexing -->
-    <tr >
+    <tr ng-show="!noglec">
 
       <td>
 

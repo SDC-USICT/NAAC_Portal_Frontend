@@ -2,7 +2,21 @@
 <table>
   <tbody>
     <!-- Book Title -->
-    <tr >
+
+<tr >
+
+      <td>
+
+        <p style="padding-left: 12px;">
+          <input type="checkbox" id="booktb" ng-model="nobook" ng-checked="bookChecked" ng-click="noBok()" />
+          <label for="booktb">No Books
+          </label>
+        </p>
+      </td>
+
+    </tr>
+
+    <tr ng-show="!nobook">
 
       <td>
 
@@ -20,7 +34,7 @@
 
     <!-- Book ISBN -->
 
-    <tr >
+    <tr ng-show="!nobook">
 
       <td>
 
@@ -40,7 +54,7 @@
 
     <!-- Book Year -->
 
-    <tr >
+    <tr ng-show="!nobook">
 
       <td>
 
@@ -63,7 +77,7 @@
 
     </tr>
 
-<tr >
+<tr ng-show="!nobook">
 
       <td>
 
@@ -96,7 +110,7 @@
 
 
     <!-- Book Co-Author -->
-<tr>
+<tr ng-show="!nobook">
   
   <td>
     <div class="input-field col s2 fields">

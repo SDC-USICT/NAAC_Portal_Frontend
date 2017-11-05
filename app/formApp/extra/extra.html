@@ -2,9 +2,20 @@
 <table>
   <tbody>
 
+<tr >
 
+      <td>
 
-    <tr >
+        <p style="padding-left: 12px;">
+          <input type="checkbox" id="exttb" ng-model="noext" ng-checked="extChecked" ng-click="noEX()"/>
+          <label for="exttb">No Extra Activities
+          </label>
+        </p>
+      </td>
+
+    </tr>
+
+    <tr ng-show="!noext">
 
       <td>
 
@@ -22,7 +33,7 @@
     </tr>
 
 
-    <tr >
+    <tr ng-show="!noext">
 
       <td>
 
@@ -39,7 +50,7 @@
     </tr>
 
 
-    <tr >
+    <tr ng-show="!noext">
 
       <td>
 
@@ -57,7 +68,7 @@
     </tr>
 
 
-    <tr >
+    <tr ng-show="!noext">
 
       <td>
 
