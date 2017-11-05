@@ -9,9 +9,40 @@
           Academic Experience (Years)
         </div>
         <div class="input-field col s6">
-          {{professional.title}}
+          <!-- {{professional.title}}
           <input placeholder="Academic Experience" id="acadExp" type="number" class="validate" ng-model="data.title" name="acadExp" required>
-          <span ng-show="naacForm.acadExp.$touched && naacForm.acadExp.$error.required" class="error">Field cannot be empty</span>
+          <span ng-show="naacForm.acadExp.$touched && naacForm.acadExp.$error.required" class="error">Field cannot be empty</span> -->
+
+<select name="acadExp" ng-model="data.title" required>
+            <option value="" disabled selected>Choose your option</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>
+            <option value="15">15</option>
+            <option value="16">16</option>
+            <option value="17">17</option>
+            <option value="18">18</option>
+            <option value="19">19</option>
+            <option value="20">20</option>
+            <option value="21">21</option>
+            <option value="22">22</option>
+            <option value="23">23</option>
+            <option value="24">24</option>
+            <option value="25">25</option>
+          </select>
+
+
         </div>
       </td>
 
@@ -25,8 +56,39 @@
           Industrial Experience (Years)
         </div>
         <div class="input-field col s6">
-          <input placeholder="Industrial Experience" id="indExp" type="number" class="validate" ng-model="data.industrial_exp" name="indExp" required>
-          <span ng-show="naacForm.indExp.$touched && naacForm.indExp.$error.required" class="error">Field cannot be empty</span>
+          <!-- <input placeholder="Industrial Experience" id="indExp" type="number" class="validate" ng-model="data.industrial_exp" name="indExp" required>
+          <span ng-show="naacForm.indExp.$touched && naacForm.indExp.$error.required" class="error">Field cannot be empty</span> -->
+
+<select name="indExp" ng-model="data.industrial_exp" required>
+            <option value="" disabled selected>Choose your option</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>
+            <option value="15">15</option>
+            <option value="16">16</option>
+            <option value="17">17</option>
+            <option value="18">18</option>
+            <option value="19">19</option>
+            <option value="20">20</option>
+            <option value="21">21</option>
+            <option value="22">22</option>
+            <option value="23">23</option>
+            <option value="24">24</option>
+            <option value="25">25</option>
+          </select>
+
+          
         </div>
       </td>
 
@@ -75,7 +137,7 @@
 <table>
   <tbody>
 
-    <div class="small-title">DETAILS ABOUT PhD STUDENTS</div>
+    <div class="small-title" style="padding-left:13px;">DETAILS ABOUT PhD STUDENTS</div>
     {{data.phds = data.pursuing + data.submitted + data.awarded;""}}
     <tr class="phdtr">
 

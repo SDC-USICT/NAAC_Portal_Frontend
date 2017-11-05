@@ -51,6 +51,27 @@
     </tr>
 
 
+<tr ng-show="!noproj">
+
+  <td>
+
+    <div class="input-field col s6 fields">
+      Status of Project
+    </div>
+    <div class="input-field col s6">
+      <select name="conferenceYear" ng-model="data.status" required>
+        <option value="" disabled selected>Choose your option</option>
+        <option value="completed">Completed</option>
+        <option value="inprogress">In-Progress</option>
+        <option value="abandoned">Work Abandoned</option>
+
+      </select>
+    </div>
+  </td>
+
+</tr>
+
+
 
     <tr ng-show="!noproj">
 
@@ -103,29 +124,6 @@
       </td>
 
     </tr>
-
-
-
-
-<tr ng-show="!noproj">
-
-  <td>
-
-    <div class="input-field col s6 fields">
-      Status of Project
-    </div>
-    <div class="input-field col s6">
-      <select name="conferenceYear" ng-model="data.status" required>
-        <option value="" disabled selected>Choose your option</option>
-        <option value="completed">Completed</option>
-        <option value="inprogress">In-Progress</option>
-        <option value="abandoned">Work Abandoned</option>
-
-      </select>
-    </div>
-  </td>
-
-</tr>
 
  <tr ng-show="!noproj">
 

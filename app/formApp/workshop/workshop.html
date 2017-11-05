@@ -54,8 +54,38 @@
           Duration
         </div>
         <div class="input-field col s6">
-          <input placeholder="Duration in Days" id="durinday" type="number" class="validate" ng-model="data.duration" name="durinday" required>
-          <span ng-show="naacForm.durinday.$touched && naacForm.durinday.$error.required" class="error">Field cannot be empty</span>
+          <!-- <input placeholder="Duration in Days" id="durinday" type="number" class="validate" ng-model="data.duration" name="durinday" required>
+          <span ng-show="naacForm.durinday.$touched && naacForm.durinday.$error.required" class="error">Field cannot be empty</span> -->
+
+<select name="durinday" ng-model="data.duration" required>
+            <option value="" disabled selected>Choose your option</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>
+            <option value="15">15</option>
+            <option value="16">16</option>
+            <option value="17">17</option>
+            <option value="18">18</option>
+            <option value="19">19</option>
+            <option value="20">20</option>
+            <option value="21">21</option>
+            <option value="22">22</option>
+            <option value="23">23</option>
+            <option value="24">24</option>
+            <option value="25">25</option>
+          </select>
+
         </div>
       </td>
 
@@ -66,10 +96,10 @@
       <td>
 
         <div class="input-field col s6 fields">
-          Organisation
+          Host Institute
         </div>
         <div class="input-field col s6">
-          <input placeholder="Organisation" id="orgWork" type="text" class="validate" ng-model="data.organization" name="orgWork" required>
+          <input placeholder="Host Institute" id="orgWork" type="text" class="validate" ng-model="data.organization" name="orgWork" required>
           <span ng-show="naacForm.orgWork.$touched && naacForm.orgWork.$error.required" class="error">Field cannot be empty</span>
         </div>
       </td>
