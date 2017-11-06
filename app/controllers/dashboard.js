@@ -398,12 +398,15 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                 if (value == 'Awards') {
                     tmp['priority'] = 10;
                     tmp['help'] = ["Award 1", "Award 2"];
+                    tmp['icon'] = "";
                 } else if (value == 'Book') {
                     tmp['priority'] = 4;
                     tmp['help'] = ["book 1", "book 2"];
+                    tmp['icon'] = "book";
                 }
                 if (value == 'BookChapters') {
                     tmp['priority'] = 3;
+                    tmp['icon'] = "import_contacts";
                 } else if (value == 'Conference') {
                     tmp['priority'] = 2;
                 }
@@ -416,11 +419,13 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                     tmp['priority'] = 1;
                 } else if (value == 'Membership') {
                     tmp['priority'] = 8;
+                    tmp['icon'] = "card_membership";
                 }
                 if (value == 'Patents') {
                     tmp['priority'] = 9;
                 } else if (value == 'Professional') {
                     tmp['priority'] = 0;
+                    tmp['icon'] = "account_box";
                 }
                 if (value == 'Projects') {
                     tmp['priority'] = 6;

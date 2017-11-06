@@ -74,9 +74,10 @@
     background: #c0392b;
 }
 .info ul.flexed li{
-    margin-left:4em;
+    margin-left:3em;
     margin-bottom: 2em;
     flex: 1;
+    display: inherit;
 }
 .info ul.flexed .time:before{
     content: "";
