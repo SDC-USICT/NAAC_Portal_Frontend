@@ -102,7 +102,7 @@
           Highest Qualification
         </div>
         <div class="input-field col s6">
-          <select name="highestQual" ng-model="data.qualification_before" required>
+          <select name="highestQual" ng-model="data.qualification_highest" required>
             <option value="" disabled selected>Choose your option</option>
             <option value="2012">Masters</option>
             <option value="2013">PhD</option>
@@ -122,7 +122,7 @@
           Year of Completion of Highest Qualification
         </div>
         <div class="input-field col s6">
-          <input placeholder="Year of Completion of Highest Qualification" id="qualAdd" type="text" class="validate" ng-model="data.year" name="qualAdd"  required>
+          <input placeholder="Year of Completion of Highest Qualification" id="qualAdd" type="text" class="validate" ng-model="data.qualification_year_completion" name="qualAdd"  required>
           <span ng-show="naacForm.qualAdd.$touched && naacForm.qualAdd.$error.required" class="error">Field cannot be empty</span>
         </div>
       </td>

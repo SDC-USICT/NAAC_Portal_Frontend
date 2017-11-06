@@ -74,7 +74,7 @@
                     <label>Saved {{splitAtCaps(attributes[selected].key)}} </label>
                     <BR>
                     <div ng-if="result!=null && result.pk" ng-repeat="result in mySelectedData track by $index">
-                        <div style="cursor: pointer;border-bottom: 1px solid lightgray;" ng-class="{'active':($index==selectedResult)}" ng-click="openTheatre($index)" class="listelements no-margins">
+                        <div style="cursor: pointer;border-bottom: 1px solid lightgray;" ng-click="openTheatre($index)" class="listelements no-margins">
                             <div  style="padding:12px !important" class="card-content result-title">{{result.title }}</div>
                             <div ng-hide="result.title " style="padding:12px !important" class="card-content result-title">{{result.course }}</div>
                         </div>

@@ -84,9 +84,9 @@
         <div class="input-field col s12">
           <div class="row">
             <div class="col m6" style="display: flex">
-              From Page Number 
+              From Page Number
 
-              <input id="bookPageNoStart" type="number" class="validate" ng-model="data.page_no_start" name="bookPageNoStart" ng-minlength="3" ng-maxlength="100" required>
+              <input id="bookPageNoStart" type="number" class="validate" ng-model="data.page_no_start" name="bookPageNoStart" ng-minlength="1" ng-maxlength="10" required>
               <span ng-show="naacForm.bookPageNoStart.$touched && naacForm.bookPageNoStart.$error.required" class="error">Field cannot be empty</span>
 
 
@@ -95,7 +95,7 @@
             <div class="col m6" style="display: flex">
               To Page Number
 
-                <input id="bookPageNoEnd" type="number" class="validate" ng-model="data.page_no_end" name="bookPageNoEnd" ng-minlength="3" ng-maxlength="100" required>
+                <input id="bookPageNoEnd" type="number" class="validate" ng-model="data.page_no_end" name="bookPageNoEnd" ng-minlength="1" ng-maxlength="10" required>
               <span ng-show="naacForm.bookPageNoEnd.$touched && naacForm.bookPageNoEnd.$error.required" class="error">Field cannot be empty</span>
 
 
@@ -110,7 +110,7 @@
 
     <!-- Book Co-Author -->
 <tr ng-show="!nobook">
-  
+
   <td>
     <div class="input-field col s2 fields">
           Co Authors

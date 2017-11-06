@@ -31,7 +31,7 @@
           </select> -->
 
 
-          <input name="membershipType" ng-model="data.title" type="text" id="autocomplete-input" class="autocomplete" placeholder="Membership Type" required>
+          <input  name="membershipType" ng-model="data.title" type="text" id="autocomplete-input" class="autocomplete" placeholder="Membership Type" required>
 
 
 
@@ -114,6 +114,7 @@
             <option value="2017">2017</option>
 
           </select>
+          <span ng-show="data.end_year <= data.start_year" class="error">End year should be later than start year.</span>
         </div>
       </td>
 
