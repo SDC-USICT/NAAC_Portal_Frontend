@@ -240,8 +240,10 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                 $scope.data.coauthor = tt.join(';');
             }
 
-            console.log($scope.data);
-
+            if ($scope.attributes[$scope.selected].key == 'SubjectsTaken'){
+                $scope.data.subjects = $scope.data.subjects.join(';');
+                $scope.data.mode = $scope.data.mode.join(';')
+            }
 
             if ($scope.attributes[$scope.selected].key == 'SubjectsTaken') {
                 var fd = new FormData();
@@ -311,6 +313,19 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
 
         $scope.removecoauthor = function(val) {
             $scope.data.coauthor.pop(val)
+        }
+
+        $scope.addsubs = function() {
+            if ($scope.data.subjects == undefined) $scope.data.subjects = [];
+            $scope.data.subjects.push('');
+            if ($scope.data.mode == undefined) $scope.data.mode = [];
+            $scope.data.mode.push('');
+            console.log($scope.data)
+        }
+
+        $scope.removesubs = function(val) {
+            $scope.data.subjects.pop(val);
+            $scope.data.mode.pop(val)
         }
 
         $sessionStorage.loginid = $rootScope.loginid;
@@ -493,12 +508,10 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                     // TODO: Rethink
                     //If any existing data is present in respective column then push it into results varibale.
                     $scope.results[$scope.attributes[$scope.selected].key] = data.map(function(a) {
-                        console.log('map')
-                        console.log(a)
                         a.employee = $rootScope.loginid;
                         return a;
                     });
-                    console.log($scope.results.Book);
+
                     //If any coauthors is present in teacher  data then push it into coauthors array.
                     $scope.coauthors[$scope.attributes[$scope.selected].key] = data.map(function(a) {
                         console.log(a)
@@ -514,7 +527,8 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                             });
                             return tmp;
                         }
-                    })
+                    })  ;
+
                     console.log($scope.results)
                     console.log($scope.coauthors);
                     $scope.$evalAsync()
@@ -573,10 +587,20 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                     console.log($scope.data);
                 }
 
+                if ($scope.data.subjects) {
+                    var tmp = $scope.data.subjects.split(';')
+                    $scope.data.subjects = tmp;
+                }
+
+                if($scope.data.mode) {
+                    var tmp = $scope.data.mode.split(';')
+                    $scope.data.mode = tmp;
+                }
+
                 $(document).ready(function() {
                     console.log($('select'));
                     $('select').material_select();
-                })
+                });
 
             }
 
@@ -660,7 +684,6 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
             angular.forEach(d, function(value, key) {
                 if (value) {
                     value.employee = $rootScope.loginid;
-                    console.log($scope.coauthors[$scope.attributes[$scope.selected].key])
                     if (coauthor_classes.indexOf($scope.attributes[$scope.selected].key) >= 0) {
 
 
@@ -672,18 +695,14 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                                 tt.push(vv.name + ":" + vv.email + ":" + vv.approved);
                             });
                             t[k] = tt.join(';');
-                            console.log('out for each')
-
-                            console.log(t)
+                        
                         });
-                        console.log('assign to coauthor')
-                        console.log(t[key]);
+                        
                         value.coauthor = t[key];
                     } else {
                         console.log('NO!')
                     }
-                    console.log('value')
-                    console.log(value)
+                  
                     tmp.push(value);
                 }
             });

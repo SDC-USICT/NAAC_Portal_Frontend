@@ -1,0 +1,25 @@
+<div>
+  <button class="btn waves-effect indigo waves-light no-borders modal-trigger" href="#modal1" style="margin-top: 12px;
+">
+ <i style="font-size:1.2em; line-height:1.2em;" class="fa fa-plus-circle" aria-hidden="true"></i> &nbsp;Trouble Filling The Form 
+    </button>
+</div>
+
+<div id="modal1" class="modal bottom-sheet">
+    <div class="modal-content">
+      <h4>{{attributes[selected].key}}</h4>
+      <p ng-repeat="x in attributes[selected].help">
+      		{{x}}
+      </p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+    </div>
+  </div>
+
+<script>
+$(document).ready(function() {
+ $('select').material_select();
+ $('.modal').modal();
+});
+</script>

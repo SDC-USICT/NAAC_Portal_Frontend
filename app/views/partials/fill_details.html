@@ -65,6 +65,9 @@
                 </form>
             </div>
             <div  class="col m2" style="background: lavender;">
+                <div>
+                <section ng-include="'./app/views/partials/help.html'"></section>
+                </div>
                 <br>
                 <div ng-if="mySelectedData.length > 0">
                     <br>
@@ -72,7 +75,8 @@
                     <BR>
                     <div ng-if="result!=null && result.pk" ng-repeat="result in mySelectedData track by $index">
                         <div style="cursor: pointer;border-bottom: 1px solid lightgray;" ng-class="{'active':($index==selectedResult)}" ng-click="openTheatre($index)" class="listelements no-margins">
-                            <div style="padding:12px !important" class="card-content result-title">{{result.title}}</div>
+                            <div  style="padding:12px !important" class="card-content result-title">{{result.title }}</div>
+                            <div ng-hide="result.title " style="padding:12px !important" class="card-content result-title">{{result.course }}</div>
                         </div>
                     </div>
                 </div>
