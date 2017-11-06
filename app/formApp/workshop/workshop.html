@@ -110,12 +110,16 @@
   </tbody>
 </table>
 <script>
-$('.datepicker').pickadate({
- selectMonths: true, // Creates a dropdown to control month
- selectYears: 15, // Creates a dropdown of 15 years to control year,
- today: 'Today',
- clear: 'Clear',
- close: 'Ok',
- closeOnSelect: false // Close upon selecting a date,
+  $(document).ready(function(){
+  $('.datepicker').pickadate({
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: 6, // Creates a dropdown of 15 years to control year,
+    min: [2012, 1, 01],//controls the  start year and month
+    max: [2017, 9, 31],// controls the end year and month
+    today: 'Today',
+    clear: 'Clear',
+    close: 'Ok',
+    closeOnSelect: false // Close upon selecting a date,
+  });
 });
 </script>

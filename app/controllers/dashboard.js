@@ -203,7 +203,6 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
 
 
 
-
             $http.get('./app/controllers/subjects.json').
             then(function onSuccess(response) {
               console.log(response.data);
@@ -223,8 +222,6 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
             console.log('Inside saveform')
             $scope.data.employee = $sessionStorage.loginid;
             console.log($scope.data);
-
-
             coauthor_classes = [
                 'Book',
                 'BookChapters',
