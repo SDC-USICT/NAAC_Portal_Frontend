@@ -281,9 +281,11 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                 'kls': $scope.attributes[$scope.selected].key,
                 'data': [$scope.data]
             }
-
-            console.log(req);
-            formService.post(req);
+            formService.post(req).then(function(response){
+              $scope.setSelected($scope.selected);
+              console.log(response);
+              //$scope.mySelectedData=response;
+            });
 
 
             $scope.data = {
@@ -785,13 +787,14 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                         }
                     })
                     $scope.selectedResult = $scope.results[$scope.attributes[$scope.selected].key].length - 1;
-
+                    $scope.setSelected($scope.selected);
 
                 })
 
             $scope.data = {
 
             };
+
             console.log($scope.coauthors);
             $(document).ready(function() {
                 $('select').material_select();
