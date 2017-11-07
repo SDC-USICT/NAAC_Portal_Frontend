@@ -108,9 +108,12 @@
           Patent Type
         </div>
         <div class="input-field col s6">
-          <input placeholder="Patent Type" id="patentStatus" type="text" class="validate" ng-model="data.type" name="patentType" ng-minlength="3" ng-maxlength="100" required>
-          <span ng-show="naacForm.patentType.$error.minlength || naacForm.patentType.$error.maxlength" class="error">Length should be between 3 and 100.</span>
-          <span ng-show="naacForm.patentType.$touched && naacForm.patentType.$error.required" class="error">Field cannot be empty</span>
+          <select name="patentType" ng-model="data.type" required>
+            <option value="" disabled selected>Choose your option</option>
+            <option value="national">National</option>
+            <option value="international">International</option>
+
+          </select>
         </div>
       </td>
 
@@ -124,9 +127,13 @@
           Patent Status
         </div>
         <div class="input-field col s6">
-          <input placeholder="Patent Name" id="patentStatus" type="text" class="validate" ng-model="data.status" name="patentStatus" ng-minlength="3" ng-maxlength="100" required>
-          <span ng-show="naacForm.patentStatus.$error.minlength || naacForm.patentStatus.$error.maxlength" class="error">Length should be between 3 and 100.</span>
-          <span ng-show="naacForm.patentStatus.$touched && naacForm.patentStatus.$error.required" class="error">Field cannot be empty</span>
+          <select name="patentStatus" ng-model="data.status" required>
+            <option value="" disabled selected>Choose your option</option>
+            <option value="applied">Applied</option>
+            <option value="published">Published</option>
+            <option value="awarded">Awarded</option>
+
+          </select>
         </div>
       </td>
 
