@@ -20,7 +20,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
 
             if(localStorage.getItem("noAwards") == "true"){
                     $scope.noaward = 1;
-                    $scope.awardChecked = 1;                  
+                    $scope.awardChecked = 1;
       }
 
        // for yes/no section
@@ -37,7 +37,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
 
       if(localStorage.getItem("noJp") == "true"){
                     $scope.nojp = 1;
-                    $scope.jpChecked = 1;                  
+                    $scope.jpChecked = 1;
       }
 
       // for yes/no section
@@ -54,7 +54,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
 
       if(localStorage.getItem('noConf') == "true"){
                     $scope.noconf = 1;
-                    $scope.confChecked = 1;                  
+                    $scope.confChecked = 1;
       }
       // for yes/no section
             $scope.noCnf = function(){
@@ -70,7 +70,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
 
       if(localStorage.getItem('noBChap') == "true"){
                     $scope.nobchap = 1;
-                    $scope.bchapChecked = 1;                  
+                    $scope.bchapChecked = 1;
       }
 
 // for yes/no section
@@ -86,7 +86,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
 
       if(localStorage.getItem('noBook') == "true"){
                     $scope.nobook = 1;
-                    $scope.bookChecked = 1;                  
+                    $scope.bookChecked = 1;
       }
 
 // for yes/no section
@@ -103,7 +103,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
 
       if(localStorage.getItem('noWork') == "true"){
                     $scope.nowork = 1;
-                    $scope.workChecked = 1;                  
+                    $scope.workChecked = 1;
       }
 
 // for yes/no section
@@ -119,7 +119,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
 
       if(localStorage.getItem('noProj') == "true"){
                     $scope.noproj = 1;
-                    $scope.projChecked = 1;                  
+                    $scope.projChecked = 1;
       }
 
 // for yes/no section
@@ -135,7 +135,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
 
       if(localStorage.getItem('noMem') == "true"){
                     $scope.nomem = 1;
-                    $scope.memChecked = 1;                  
+                    $scope.memChecked = 1;
       }
 // for yes/no section
             $scope.noMemb = function(){
@@ -151,7 +151,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
 
       if(localStorage.getItem('noPat') == "true"){
                     $scope.nopat = 1;
-                    $scope.patChecked = 1;                  
+                    $scope.patChecked = 1;
       }
 
 // for yes/no section
@@ -168,7 +168,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
 
       if(localStorage.getItem('noExt') == "true"){
                     $scope.noext = 1;
-                    $scope.extChecked = 1;                  
+                    $scope.extChecked = 1;
       }
 
 
@@ -186,7 +186,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
 
       if(localStorage.getItem('noGLec') == "true"){
                     $scope.noglec = 1;
-                    $scope.glecChecked = 1;                  
+                    $scope.glecChecked = 1;
       }
 
 // for yes/no section
@@ -201,16 +201,6 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
            }
 
 
-
-
-            $http.get('./app/controllers/subjects.json').
-            then(function onSuccess(response) {
-              console.log(response.data);
-              $scope.SubjectsTakenField= response.data;
-            }).
-            catch(function onError(response) {
-              console.log(response);
-            });
         }
         //This is used to send data to backend
 
@@ -339,7 +329,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                 $scope.subjectlist = {}
                 console.log(data.data)
                 angular.forEach(data, function(value, key) {
-                    console.log(value)
+
                     $scope.subjectlist[(value.fields.name + ' ' + value.fields.code).toString()] = null;
 
                 });
@@ -400,41 +390,56 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                 if (value == 'Awards') {
                     tmp['priority'] = 10;
                     tmp['help'] = ["Award 1", "Award 2"];
-                    tmp['icon'] = "";
-                } else if (value == 'Book') {
+                    tmp['icon'] = "album";
+                }
+                else if (value == 'Book') {
                     tmp['priority'] = 4;
                     tmp['help'] = ["book 1", "book 2"];
                     tmp['icon'] = "book";
                 }
-                if (value == 'BookChapters') {
+                else if (value == 'BookChapters') {
                     tmp['priority'] = 3;
                     tmp['icon'] = "import_contacts";
-                } else if (value == 'Conference') {
+                }
+                else if (value == 'Conference') {
                     tmp['priority'] = 2;
+                    tmp['icon'] = "ondemand_video";
                 }
-                if (value == 'Extra') {
+                else if (value == 'Extra') {
                     tmp['priority'] = 12;
-                } else if (value == 'GuestLecturer') {
-                    tmp['priority'] = 7;
+                    tmp['icon'] = "menu";
                 }
-                if (value == 'JournalPapers') {
+                else if (value == 'GuestLecture') {
+                    tmp['priority'] = 7;
+                    tmp['icon'] = "work";
+                }
+                else if (value == 'JournalPapers') {
                     tmp['priority'] = 1;
-                } else if (value == 'Membership') {
+                    tmp['icon'] = "library_books";
+                }
+                else if (value == 'Membership') {
                     tmp['priority'] = 8;
                     tmp['icon'] = "card_membership";
                 }
-                if (value == 'Patents') {
+                else if (value == 'Patents') {
                     tmp['priority'] = 9;
-                } else if (value == 'Professional') {
-                    tmp['priority'] = 0;
-                    tmp['icon'] = "account_box";
+                    tmp['icon'] = "receipt";
                 }
-                if (value == 'Projects') {
+                else if (value == 'Professional') {
+                    tmp['priority'] = 0;
+                    tmp['icon'] =  "account_box";
+                }
+                else if (value == 'Projects') {
                     tmp['priority'] = 6;
-                } else if (value == 'Subjects Taken') {
+                    tmp['icon'] ="pie_chart";
+                }
+                else if (value == 'SubjectsTaken') {
                     tmp['priority'] = 11;
-                } else if (value == 'Workshop') {
+                    tmp['icon'] = "work";
+                }
+                else if (value == 'Workshop') {
                     tmp['priority'] = 5;
+                    tmp['icon'] = "work";
                 }
 
                 $scope.attributes.push(tmp)
@@ -702,14 +707,14 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                                 tt.push(vv.name + ":" + vv.email + ":" + vv.approved);
                             });
                             t[k] = tt.join(';');
-                        
+
                         });
-                        
+
                         value.coauthor = t[key];
                     } else {
                         console.log('NO!')
                     }
-                  
+
                     tmp.push(value);
                 }
             });
