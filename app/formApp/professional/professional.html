@@ -15,6 +15,7 @@
 
 <select name="acadExp" ng-model="data.title" required>
             <option value="" disabled selected>Choose your option</option>
+            <option value="0">0</option>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -61,6 +62,7 @@
 
 <select name="indExp" ng-model="data.industrial_exp" required>
             <option value="" disabled selected>Choose your option</option>
+            <option value="0">0</option>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -104,11 +106,16 @@
         <div class="input-field col s6">
           <select name="highestQual" ng-model="data.qualification_highest" required>
             <option value="" disabled selected>Choose your option</option>
-            <option value="Masters">Masters</option>
-            <option value="PhD">PhD</option>
+            <option value="phd">PhD</option>
+            <option value="mtech">M.Tech</option>
+            <option value="msc">M.Sc</option>
+            <option value="mca">MCA</option>
+            <option value="ma">M.A</option>
+            <option value="other">other</option>
 
 
           </select>
+          
         </div>
       </td>
 
@@ -119,7 +126,7 @@
       <td>
 
         <div class="input-field col s6 fields">
-          Year of Completion of Highest Qualification
+          Year of Acquiring of Highest Qualification
         </div>
         <div class="input-field col s6">
           <input placeholder="Year of Completion of Highest Qualification" id="qualAdd" type="text" class="validate" ng-model="data.qualification_year_completion" name="qualAdd" maxlength="4" minlength="4"  required>
