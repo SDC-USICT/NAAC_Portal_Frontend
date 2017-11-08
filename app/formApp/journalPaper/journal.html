@@ -7,7 +7,7 @@
       <td>
 
         <p style="padding-left: 12px;">
-          <input type="checkbox" id="jourtb" ng-model="nojp" ng-checked="jpChecked" ng-click="noJoP()"  />
+          <input type="checkbox" id="jourtb" ng-model="nojp" ng-checked="jpChecked"  ng-click="noJoP()" />
           <label for="jourtb">No Journal Papers
           </label>
         </p>
@@ -26,7 +26,7 @@
     </tr>
 
 
-    <tr ng-if="!nojp">
+    <tr ng-show="!nojp">
 
       <td>
 
@@ -44,7 +44,7 @@
 
     <!-- Book ISBN -->
 
-    <tr ng-if="!nojp">
+    <tr ng-show="!nojp">
 
       <td>
 
@@ -62,7 +62,7 @@
     </tr>
 
 
-    <tr ng-if="!nojp">
+    <tr ng-show="!nojp">
 
       <td>
 
@@ -81,7 +81,7 @@
 
 
 
-    <tr ng-if="!nojp">
+    <tr ng-show="!nojp">
 
       <td>
 
@@ -152,7 +152,7 @@
 
 
 
-    <tr ng-if="!nojp">
+    <tr ng-show="!nojp">
 
       <td>
 
@@ -171,7 +171,7 @@
 
 
 
-    <tr ng-if="!nojp">
+    <tr ng-show="!nojp">
 
       <td>
 
@@ -188,7 +188,7 @@
 
     </tr>
 
-    <tr ng-if="!nojp">
+    <tr ng-show="!nojp">
 
       <td>
 
@@ -219,7 +219,7 @@
 
 
 
-    <tr ng-if="!nojp">
+    <tr ng-show="!nojp">
 
       <td>
 
@@ -237,7 +237,7 @@
     </tr>
 
 
-    <tr ng-if="!nojp">
+    <tr ng-show="!nojp">
 
       <td>
 
@@ -257,7 +257,7 @@
 
 <!-- Co Author -->
 
-<tr ng-if="!nojp">
+<tr ng-show="!nojp">
 
   <td>
     <div class="input-field col s2 fields">

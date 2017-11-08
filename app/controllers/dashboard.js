@@ -8,6 +8,18 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
         $scope.editing = 0;
         $scope.marked_authors = {};
         $scope.employeeMeta = {};
+        $scope.resetForm = function(){
+          $scope.data = {
+
+          };
+          $(document).ready(function() {
+              $('select').material_select();
+          })
+          Materialize.toast('Form Reset Successfully!', 3000,'red lighten-1 rounded')
+          $scope.naacForm.$setPristine();
+          $scope.naacForm.$setUntouched();
+          $scope.selectedResult = null;
+        }
         if ($rootScope.loginid == undefined) {
             if ($sessionStorage.loginid != undefined) {
                 $rootScope.loginid = $sessionStorage.loginid;
@@ -588,7 +600,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                 $scope.data = $scope.mySelectedData[val];
                 if ($scope.data.coauthor) {
                     var tmp = [];
-                    angular.forEach($scope.data.coauthor.split(';'), function(v, k) {
+                    angular.forEach(($scope.data.coauthor).split(';'), function(v, k) {
                         tmp.push({
                             'name': v.split(':')[0],
                             'email': v.split(':')[1],
