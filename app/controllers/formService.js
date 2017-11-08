@@ -24,12 +24,13 @@
             return $http.post(BACKEND+'/api/post', JSON.stringify(element))
             .then(function (res) {
               if(res.data.error) {
-                Materialize.toast('Oops! Error', 4000)
+                Materialize.toast('Oops! Error', 4000,'red')
                 return;
               }
               //console.log(res.data.data);
+              Materialize.toast('Data Saved Successfully!', 4000,'rounded')
               return res.data.data;
-              Materialize.toast('Data Saved Successfully!', 4000)
+
 
 
         });

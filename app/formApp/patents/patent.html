@@ -100,7 +100,7 @@
             <option value="2017">2017</option>
 
           </select>
-          <span ng-show="data.year_grant <= data.year_application" class="error">Year of Grant should be later than Year of Application.</span>
+          <span ng-show="data.year_grant < data.year_application" class="error">Year of Grant should be later than Year of Application.</span>
 
         </div>
       </td>
