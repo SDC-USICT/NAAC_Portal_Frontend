@@ -1,37 +1,16 @@
 <section ng-include="'./app/views/partials/save.html'"></section>
 <table>
   <tbody>
-<tr >
-
-      <td>
-
-        <p style="padding-left: 12px;">
-          <input type="checkbox" id="memtb" ng-model="nomem" ng-checked="memChecked" ng-click="noMemb()" />
-          <label for="memtb">No Membership
-          </label>
-        </p>
-      </td>
-      <td>
-
-        <div class="right" ng-show="nomem">
-          <button ng-click="setSelected(8)" style="margin-top: 1em; background-color: #1a237e" class="btn waves-effect waves-light no-borders">
-            <i style="font-size:1.2em; line-height:1.2em;" class="fa fa-paper-plane" aria-hidden="true"></i> GoTo Next Section
-          </button>
-        </div>
-
-      </td>
-
-    </tr>
 
 
-    <tr ng-show="!nomem">
+    <tr>
       <td>
         <div class="input-field col s6 fields">
           Membership No.
         </div>
         <div class="input-field col s6">
 
-          <input placeholder="Membership No." id="membershipNo" type="number" class="validate" ng-model="data.title" name="membershipNo" ng-minlength="3" ng-maxlength="100" required>
+          <input placeholder="Membership No." id="membershipNo" type="number" class="validate" ng-model="data.membership_no" name="membershipNo" ng-minlength="3" ng-maxlength="100" required>
           <span ng-show="naacForm.membershipNo.$error.minlength || naacForm.membershipNo.$error.maxlength" class="error">Length should be between 3 and 100.</span>
           <span ng-show="naacForm.membershipNo.$touched && naacForm.membershipNo.$error.required" class="error">Field cannot be empty</span>
 
@@ -42,7 +21,7 @@
     </tr>
 
 
-    <tr ng-show="!nomem">
+    <tr>
       <td>
         <div class="input-field col s6 fields">
           Membership Type
@@ -59,7 +38,7 @@
       </td>
     </tr>
 
-    <tr ng-show="!nomem">
+    <tr>
 
       <td>
 
@@ -68,7 +47,7 @@
         </div>
         <div class="input-field col s6">
 
-            <input  name="membershipType" ng-model="data.academic_body" type="text" id="autocomplete-input" class="autocomplete" placeholder="Academic Body" required>
+            <input  name="membershipType" ng-model="data.title" type="text" id="autocomplete-input" class="autocomplete" placeholder="Academic Body" required>
 
           </div>
       </td>
@@ -77,7 +56,7 @@
 
 
 
-    <tr ng-show="!nomem">
+    <tr >
 
       <td>
 
@@ -101,7 +80,7 @@
     </tr>
 
 
-    <tr ng-show="!nomem">
+    <tr ng-if="data.type=='anually'">
 
       <td>
 
@@ -119,9 +98,17 @@
             <option value="2017">2017</option>
 
           </select>
-          <span ng-show="data.end_year <= data.start_year" class="error">End year should be later than start year.</span>
+          <span ng-show="data.end_year <= data.start_year " class="error">End year should be later than start year.</span>
         </div>
       </td>
+      <script type="text/javascript">
+        $(document).ready(function () {
+           $(document).ready(function() {
+                      console.log($('select'));
+                      $('select').material_select();
+                  })
+        })
+      </script>
 
     </tr>
 

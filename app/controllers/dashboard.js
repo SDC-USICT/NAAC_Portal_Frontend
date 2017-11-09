@@ -8,6 +8,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
         $scope.editing = 0;
         $scope.marked_authors = {};
         $scope.employeeMeta = {};
+     
         if ($rootScope.loginid == undefined) {
             if ($sessionStorage.loginid != undefined) {
                 $rootScope.loginid = $sessionStorage.loginid;
@@ -16,197 +17,11 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
             } else {
                 $location.url('/')
             }
-
-
-            if(localStorage.getItem("noAwards") == "true"){
-                    $scope.noaward = 1;
-                    $scope.awardChecked = 1;
-      }
-
-       // for yes/no section
-            $scope.noAwrd = function(){
-                  if(localStorage.getItem('noAwards') == undefined){
-                    localStorage.setItem('noAwards', "true");
-                    $scope.awardChecked = 1;
-                  }else if($scope.awardChecked){
-                      localStorage.removeItem('noAwards');
-                      $scope.noaward = 1;
-                  }
-           }
-
-
-      if(localStorage.getItem("noJp") == "true"){
-                    $scope.nojp = 1;
-                    $scope.jpChecked = 1;
-      }
-
-      // for yes/no section
-            $scope.noJoP = function(){
-                  if(localStorage.getItem('noJp') == undefined){
-                    localStorage.setItem('noJp', "true");
-                    $scope.jpChecked = 1;
-                  }else if($scope.jpChecked){
-                      localStorage.removeItem('noJp');
-                      $scope.nojp = 1;
-                  }
-           }
-
-
-      if(localStorage.getItem('noConf') == "true"){
-                    $scope.noconf = 1;
-                    $scope.confChecked = 1;
-      }
-      // for yes/no section
-            $scope.noCnf = function(){
-                  if(localStorage.getItem('noConf') == undefined){
-                    localStorage.setItem('noConf', "true");
-                    $scope.confChecked = 1;
-                  }else if($scope.confChecked){
-                      localStorage.removeItem('noConf');
-                      $scope.noconf = 1;
-                  }
-           }
-
-
-      if(localStorage.getItem('noBChap') == "true"){
-                    $scope.nobchap = 1;
-                    $scope.bchapChecked = 1;
-      }
-
-// for yes/no section
-            $scope.noBChp = function(){
-                  if(localStorage.getItem('noBChap') == undefined){
-                    localStorage.setItem('noBChap', "true");
-                    $scope.bchapChecked = 1;
-                  }else if($scope.bchapChecked){
-                      localStorage.removeItem('noBChap');
-                      $scope.nobchap = 1;
-                  }
-           }
-
-      if(localStorage.getItem('noBook') == "true"){
-                    $scope.nobook = 1;
-                    $scope.bookChecked = 1;
-      }
-
-// for yes/no section
-            $scope.noBok = function(){
-                  if(localStorage.getItem('noBook') == undefined){
-                    localStorage.setItem('noBook', "true");
-                    $scope.bookChecked = 1;
-                  }else if($scope.bookChecked){
-                      localStorage.removeItem('noBook');
-                      $scope.nobook = 1;
-                  }
-           }
-
-
-      if(localStorage.getItem('noWork') == "true"){
-                    $scope.nowork = 1;
-                    $scope.workChecked = 1;
-      }
-
-// for yes/no section
-            $scope.noWrk = function(){
-                  if(localStorage.getItem('noWork') == undefined){
-                    localStorage.setItem('noWork', "true");
-                    $scope.workChecked = 1;
-                  }else if($scope.workChecked){
-                      localStorage.removeItem('noWork');
-                      $scope.nowork = 1;
-                  }
-           }
-
-      if(localStorage.getItem('noProj') == "true"){
-                    $scope.noproj = 1;
-                    $scope.projChecked = 1;
-      }
-
-// for yes/no section
-            $scope.noPrj = function(){
-                  if(localStorage.getItem('noProj') == undefined){
-                    localStorage.setItem('noProj', "true");
-                    $scope.projChecked = 1;
-                  }else if($scope.projChecked){
-                      localStorage.removeItem('noProj');
-                      $scope.noproj= 1;
-                  }
-           }
-
-      if(localStorage.getItem('noMem') == "true"){
-                    $scope.nomem = 1;
-                    $scope.memChecked = 1;
-      }
-// for yes/no section
-            $scope.noMemb = function(){
-                  if(localStorage.getItem('noMem') == undefined){
-                    localStorage.setItem('noMem', "true");
-                    $scope.memChecked = 1;
-                  }else if($scope.memChecked){
-                      localStorage.removeItem('noMem');
-                      $scope.nomem = 1;
-                  }
-           }
-
-
-      if(localStorage.getItem('noPat') == "true"){
-                    $scope.nopat = 1;
-                    $scope.patChecked = 1;
-      }
-
-// for yes/no section
-            $scope.noPt = function(){
-                  if(localStorage.getItem('noPat') == undefined){
-                    localStorage.setItem('noPat', "true");
-                    $scope.patChecked = 1;
-                  }else if($scope.patChecked){
-                      localStorage.removeItem('noPat');
-                      $scope.nopat = 1;
-                  }
-           }
-
-
-      if(localStorage.getItem('noExt') == "true"){
-                    $scope.noext = 1;
-                    $scope.extChecked = 1;
-      }
-
-
-           // for yes/no section
-            $scope.noEX = function(){
-                  if(localStorage.getItem('noExt') == undefined){
-                    localStorage.setItem('noExt', "true");
-                    $scope.extChecked = 1;
-                  }else if($scope.extChecked){
-                      localStorage.removeItem('noExt');
-                      $scope.noext = 1;
-                  }
-           }
-
-
-      if(localStorage.getItem('noGLec') == "true"){
-                    $scope.noglec = 1;
-                    $scope.glecChecked = 1;
-      }
-
-// for yes/no section
-            $scope.noGL = function(){
-                  if(localStorage.getItem('noGLec') == undefined){
-                    localStorage.setItem('noGLec', "true");
-                    $scope.glecChecked = 1;
-                  }else if($scope.glecChecked){
-                      localStorage.removeItem('noGLec');
-                      $scope.noglec = 1;
-                  }
-           }
-
-
         }
         //This is used to send data to backend
 
-        $scope.data = {
+        $scope.data = {}
 
-        }
         //This is save method
         $scope.saveForm = function() {
             console.log('Inside saveform')
@@ -273,8 +88,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
             }
             formService.post(req).then(function(response){
               $scope.setSelected($scope.selected);
-              console.log(response);
-              //$scope.mySelectedData=response;
+              Materialize.toast('Data Saved Successfully!', 4000)
             });
 
 
@@ -588,7 +402,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                 $scope.data = $scope.mySelectedData[val];
                 if ($scope.data.coauthor) {
                     var tmp = [];
-                    angular.forEach($scope.data.coauthor.split(';'), function(v, k) {
+                    angular.forEach(($scope.data.coauthor).split(';'), function(v, k) {
                         tmp.push({
                             'name': v.split(':')[0],
                             'email': v.split(':')[1],
@@ -902,10 +716,15 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
             })
         }
 
-        $scope.validator - function() {
-            if (kls == 'Author') {
-
-            }
+        $scope.resetForm = function(){
+          $scope.data = {};
+            $(document).ready(function() {
+                $('select').material_select();
+            })
+            Materialize.toast('Form Reset Successfully!', 3000,'red lighten-1 white-text')
+            $scope.naacForm.$setPristine();
+            $scope.naacForm.$setUntouched();
+            $scope.selectedResult = null;
         }
 
 

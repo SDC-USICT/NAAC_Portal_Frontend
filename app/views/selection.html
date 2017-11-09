@@ -12,7 +12,7 @@
 <div class="container select" ng-controller="SelCtrl as sel" style="display: none;">
     <div class="input-field col s12 school">
 
-    <input type="text" name="search" ng-model="search" placeholder="Search..." style="border: 3px solid #283593;padding-left: 10px;width: 30%;margin-left: 69%;">
+    <input type="text" name="search" ng-model="search" placeholder="Search..." style="border: 0 !important;text-align: center;background: aliceblue;box-shadow: 0 1px 1px 0 rgba(0,0,0,0.1), 0 0px 0px 0 rgba(0,0,0,0.1), 0 0px 0px 0px rgba(0,0,0,0); -webkit-box-shadow:0 1px 1px 0 rgba(0,0,0,0.1), 0 0px 0px 0 rgba(0,0,0,0.1), 0 0px 0px 0px rgba(0,0,0,0);">
 
         <div class="card">
             <div class="card-content">
@@ -29,7 +29,8 @@
                     </thead>
              <tbody>
                   <tr ng-click="setEmployee(x)" ng-repeat="x in empData | filter : search | filter : validateEmp" id="{{ x.pk }}">
-                  <td class="empDetails"><img ng-src="{{BACKEND}}/static/images/{{x.pk}}.jpg" class="empImage"></td>
+                  <td  class="empDetails">
+                    <img fallback-src="http://via.placeholder.com/350x150" ng-src="{{BACKEND}}/static/images/{{x.pk}}.jpg" class="empImage"></td>
                     <td>&nbsp;&nbsp;{{ x.fields.name }}</td>
                     <td>&nbsp;&nbsp;{{ x.pk }}</td>
                    
@@ -76,4 +77,21 @@ var i = 1;
       border-radius: 100%;
       border: 5px solid white;
     }
+  ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:   darkslategrey;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    darkslategrey;
+   opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    darkslategrey;
+   opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:    darkslategrey;
+}
+::-ms-input-placeholder { /* Microsoft Edge */
+   color:    darkslategrey;
+}
 </style>

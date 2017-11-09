@@ -2,31 +2,7 @@
 <table>
   <tbody>
     <!-- Book Title -->
-<tr >
-
-      <td>
-
-        <p style="padding-left: 12px;">
-          <input type="checkbox" id="jourtb" ng-model="nojp" ng-checked="jpChecked" ng-click="noJoP()"  />
-          <label for="jourtb">No Journal Papers
-          </label>
-        </p>
-      </td>
-      <td>
-
-        <div class="right" ng-show="nojp">
-          <button ng-click="setSelected(3)" style="margin-top: 1em; background-color: #1a237e" class="btn waves-effect waves-light no-borders">
-            <i style="font-size:1.2em; line-height:1.2em;" class="fa fa-paper-plane" aria-hidden="true"></i> GoTo Next Section
-          </button>
-        </div>
-
-      </td>
-
-
-    </tr>
-
-
-    <tr ng-if="!nojp">
+    <tr>
 
       <td>
 
@@ -44,7 +20,7 @@
 
     <!-- Book ISBN -->
 
-    <tr ng-if="!nojp">
+    <tr>
 
       <td>
 
@@ -62,7 +38,7 @@
     </tr>
 
 
-    <tr ng-if="!nojp">
+    <tr>
 
       <td>
 
@@ -81,7 +57,7 @@
 
 
 
-    <tr ng-if="!nojp">
+    <tr>
 
       <td>
 
@@ -152,7 +128,7 @@
 
 
 
-    <tr ng-if="!nojp">
+    <tr>
 
       <td>
 
@@ -171,7 +147,7 @@
 
 
 
-    <tr ng-if="!nojp">
+    <tr>
 
       <td>
 
@@ -188,7 +164,7 @@
 
     </tr>
 
-    <tr ng-if="!nojp">
+    <tr>
 
       <td>
 
@@ -219,7 +195,7 @@
 
 
 
-    <tr ng-if="!nojp">
+    <tr>
 
       <td>
 
@@ -237,7 +213,7 @@
     </tr>
 
 
-    <tr ng-if="!nojp">
+    <tr>
 
       <td>
 
@@ -255,50 +231,47 @@
     </tr>
 
 
-<!-- Co Author -->
+    <!-- Co Author -->
 
-<tr ng-if="!nojp">
+    <tr>
 
-  <td>
-    <div class="input-field col s2 fields">
-          Co Authors
-    </div>
-    <div class="col s10">
-      <br><br>
-      <div class="row" ng-repeat="(k, v) in data.coauthor">
-        <div class="col m2" style="color: #9e9e9e;font-size: 14px;padding-top: 10px; ">
-          <span>#</span>
-          {{ $index + 1}}
+      <td>
+        <div class="input-field col s2 fields">
+              Co Authors
         </div>
-        <div class="col m4">
-          <input type="text" name="" ng-model="v.name" placeholder="Name">
-        </div>
-        <div class="col m4">
-          <input type="text" name="" ng-model="v.email" placeholder="Email">
-        </div>
-        <div class="col m1" ng-if="v.approved == '0'">
-          <div class="tooltip">?
-            <span class="tooltiptext">Waiting For Confirmation...</span>
+        <div class="col s10">
+          <br><br>
+          <div class="row" ng-repeat="(k, v) in data.coauthor">
+            <div class="col m2" style="color: #9e9e9e;font-size: 14px;padding-top: 10px; ">
+              <span>#</span>
+              {{ $index + 1}}
+            </div>
+            <div class="col m4">
+              <input type="text" name="" ng-model="v.name" placeholder="Name">
+            </div>
+            <div class="col m4">
+              <input type="text" name="" ng-model="v.email" placeholder="Email">
+            </div>
+            <div class="col m1" ng-if="v.approved == '0'">
+              <div class="tooltip">?
+                <span class="tooltiptext">Waiting For Confirmation...</span>
+              </div>
+            </div>
+            <div class="col m1">
+              <div ng-click="removecoauthor($index)" class="tooltip red">X
+                <span class="tooltiptext">Remove</span>
+              </div>
+
+            </div>
+
           </div>
-        </div>
-        <div class="col m1">
-          <div ng-click="removecoauthor($index)" class="tooltip red">X
-            <span class="tooltiptext">Remove</span>
+          <div class="right">
+            <button ng-click="hello()" background-color="#1a237e" class="btn waves-effect waves-light no-borders">
+              <i style="font-size:1.2em; line-height:1.2em;" class="fa fa-plus-circle" aria-hidden="true"></i> ADD CO AUTHOR
+            </button>
           </div>
-
-        </div>
-
-      </div>
-      <div class="right">
-        <button ng-click="hello()" background-color="#1a237e" class="btn waves-effect waves-light no-borders">
-          <i style="font-size:1.2em; line-height:1.2em;" class="fa fa-plus-circle" aria-hidden="true"></i> ADD CO AUTHOR
-        </button>
-      </div>
-  </td>
-</tr>
-
-
-
+      </td>
+    </tr>
   </tbody>
 </table>
 <script type="text/javascript">
