@@ -2,10 +2,8 @@
 <br>
  <div ng-controller="LoginCtrl" id="login-page" class="row">
      <div class="col s4 push-s4 z-depth-6 card-panel">
-      <center> <img src="./app/resources/images/logomain.png" class="circle center-align responsive-img " id="login-logo" height="50%" width="50%" style="margin-top:20px;" alt="logo"></center>
+      <center> <img src="./app/resources/images/logomain.png" class="circle center-align responsive-img " id="login-logo" height="20%" width="20%" style="margin-top:20px;" alt="logo"></center>
        <form class="login-form">
-         <div class="row">
-         </div>
          <div class="row">
            <div class="input-field col s12">
              <i class="material-icons prefix">mail_outline</i>
@@ -20,15 +18,12 @@
              <label for="password">Password</label>
            </div>
          </div>
-         <div class="row">
-           <div class="input-field col s12">
-             <a ng-click="submit()" class="btn waves-effect waves-light col s12" style="background: #1a237d">Login</a>
-           </div>
+         <div class="row center">
+          <a ng-click="submit()" class="btn waves-effect waves-light" style="background: #1a237d">LOGIN</a>
          </div>
-         <div class="row">
-           <div class="input-field col s6 m6 l6">
-               <p class="margin right-align medium-small"><span class="forgot" style="color: #1a237d;font-weight: bold;" ng-click="forgot()">Forgot password?</span></p>
-           </div>
+         <div class="row center">
+            <br>
+            <a class="waves-effect waves-yellow btn" ng-click="forgot()">FORGOT PASSWORD?</a>
          </div>
 
        </form>
@@ -46,3 +41,10 @@
   });
 
 </script>
+
+<style type="text/css">
+ .btn:not(.waves-light), .btn-large:not(.waves-light) {
+    background-color: #fff;
+    color: #212121;
+}
+</style>
