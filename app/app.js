@@ -42,6 +42,10 @@ angular.module('employee', ['ngRoute', 'ngStorage', 'ngResource','ngAnimate'])
     }).
     when('/fill_details',{
       templateUrl: './app/views/partials/fill_details.html'
+    }).
+    when('/changepassword', {
+      templateUrl: './app/views/changepassword.html',
+      controller: 'DashboardCtrl'
     });
    $locationProvider.html5Mode(false).hashPrefix('');
 

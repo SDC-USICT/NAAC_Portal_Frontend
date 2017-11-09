@@ -861,6 +861,29 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
         }
 
 
+        $scope.changePassword = function(){
+          $location.path('/changepassword');
+        }
+        $scope.chanPass = function(){
+          $scope.passwords = {
+            "curpass" : $scope.curpass,
+            "newpass" : $scope.newpass,
+            "confpass" : $scope.confpass,
+            "loginid":sessionStorage.loginid
+          }
+            $http.post(BACKEND +'/api/changePassword', JSON.stringify($scope.passwords))
+        .then(function (res) {
+          console.log(res);
+          if(res.data.error != undefined){
+            Materialize.toast('Please Enter Correct Password', 4000);
+          }else if (res.data.mod != undefined) {
+              Materialize.toast('New Passwords do not matched', 4000);
+          }else if (res.data.success != undefined) {
+              Materialize.toast('Password Changed Successfully', 4000);
+          }
+        });
+        }
+
 
         //Add coauthor
         $scope.add_coauthor = function() {
