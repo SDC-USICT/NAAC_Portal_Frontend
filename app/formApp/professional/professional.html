@@ -1,202 +1,158 @@
 <section ng-include="'./app/views/partials/save.html'"></section>
 <table >
-  <tbody >
-
-    <tr >
-      <td>
-
-        <div class="input-field col s6 fields">
-          Academic Experience (Years)
-        </div>
-        <div class="input-field col s6">
-          <!-- {{professional.title}}
-          <input placeholder="Academic Experience" id="acadExp" type="number" class="validate" ng-model="data.title" name="acadExp" required>
-          <span ng-show="naacForm.acadExp.$touched && naacForm.acadExp.$error.required" class="error">Field cannot be empty</span> -->
-
-<select name="acadExp" ng-model="data.title" required>
-            <option value="" disabled selected>Choose your option</option>
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-            <option value="11">11</option>
-            <option value="12">12</option>
-            <option value="13">13</option>
-            <option value="14">14</option>
-            <option value="15">15</option>
-            <option value="16">16</option>
-            <option value="17">17</option>
-            <option value="18">18</option>
-            <option value="19">19</option>
-            <option value="20">20</option>
-            <option value="21">21</option>
-            <option value="22">22</option>
-            <option value="23">23</option>
-            <option value="24">24</option>
-            <option value="25">25</option>
-          </select>
-
-
-        </div>
-      </td>
-
-    </tr>
-
-    <tr>
-
-      <td>
-
-        <div class="input-field col s6 fields">
-          Industrial Experience (Years)
-        </div>
-        <div class="input-field col s6">
-          <!-- <input placeholder="Industrial Experience" id="indExp" type="number" class="validate" ng-model="data.industrial_exp" name="indExp" required>
-          <span ng-show="naacForm.indExp.$touched && naacForm.indExp.$error.required" class="error">Field cannot be empty</span> -->
-
-<select name="indExp" ng-model="data.industrial_exp" required>
-            <option value="" disabled selected>Choose your option</option>
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-            <option value="11">11</option>
-            <option value="12">12</option>
-            <option value="13">13</option>
-            <option value="14">14</option>
-            <option value="15">15</option>
-            <option value="16">16</option>
-            <option value="17">17</option>
-            <option value="18">18</option>
-            <option value="19">19</option>
-            <option value="20">20</option>
-            <option value="21">21</option>
-            <option value="22">22</option>
-            <option value="23">23</option>
-            <option value="24">24</option>
-            <option value="25">25</option>
-          </select>
-
-
-        </div>
-      </td>
-
-    </tr>
-
-    <tr >
-
-      <td>
-
-        <div class="input-field col s6 fields">
-          Highest Qualification 
-        </div>
-        <div class="input-field col s6">
-          <select name="highestQual" ng-model="data.qualification_highest" required>
-            <option value="" disabled selected>Choose your option</option>
-            <option value="PhD">PhD</option>
-            <option value="M.Tech">M.Tech</option>
-            <option value="M.Sc">M.Sc</option>
-            <option value="MCA">MCA</option>
-            <option value="M.A">M.A</option>
-            <option value="Other">Other</option>
-          </select>
-
-        </div>
-      </td>
-
-    </tr>
-
-    <tr >
-
-      <td>
-
-        <div class="input-field col s6 fields">
-          Year of Acquiring of Highest Qualification
-        </div>
-        <div class="input-field col s6">
-          <input placeholder="Year of Completion of Highest Qualification" id="qualAdd" type="text" class="validate" ng-model="data.qualification_year_completion" name="qualAdd" maxlength="4" minlength="4"  required>
-          <span ng-show="naacForm.qualAdd.$error.minlength || naacForm.qualAdd.$error.maxlength" class="error">Length should be of 4.</span>
-          <span ng-show="naacForm.qualAdd.$touched && naacForm.qualAdd.$error.required" class="error">Field cannot be empty</span>
-        </div>
-      </td>
-
-    </tr>
-
-
-
-  </tbody>
+   <tbody >
+      <tr >
+         <td>
+            <div class="input-field col s6 fields">
+               Academic Experience (Years)
+            </div>
+            <div class="input-field col s6">
+               <select name="acadExp" ng-model="data.title" required>
+                  <option value="" disabled selected>Choose your option</option>
+                  <option value="0">0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option value="12">12</option>
+                  <option value="13">13</option>
+                  <option value="14">14</option>
+                  <option value="15">15</option>
+                  <option value="16">16</option>
+                  <option value="17">17</option>
+                  <option value="18">18</option>
+                  <option value="19">19</option>
+                  <option value="20">20</option>
+                  <option value="21">21</option>
+                  <option value="22">22</option>
+                  <option value="23">23</option>
+                  <option value="24">24</option>
+                  <option value="25">25</option>
+               </select>
+            </div>
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <div class="input-field col s6 fields">
+               Industrial Experience (Years)
+            </div>
+            <div class="input-field col s6">
+               <select name="indExp" ng-model="data.industrial_exp" required>
+                  <option value="" disabled selected>Choose your option</option>
+                  <option value="0">0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option value="12">12</option>
+                  <option value="13">13</option>
+                  <option value="14">14</option>
+                  <option value="15">15</option>
+                  <option value="16">16</option>
+                  <option value="17">17</option>
+                  <option value="18">18</option>
+                  <option value="19">19</option>
+                  <option value="20">20</option>
+                  <option value="21">21</option>
+                  <option value="22">22</option>
+                  <option value="23">23</option>
+                  <option value="24">24</option>
+                  <option value="25">25</option>
+               </select>
+            </div>
+         </td>
+      </tr>
+      <tr >
+         <td>
+            <div class="input-field col s6 fields">
+               Highest Qualification 
+            </div>
+            <div class="input-field col s6">
+               <select name="highestQual" ng-model="data.qualification_highest" required>
+                  <option value="" disabled selected>Choose your option</option>
+                  <option value="PhD">PhD</option>
+                  <option value="M.Tech">M.Tech</option>
+                  <option value="M.Sc">M.Sc</option>
+                  <option value="MCA">MCA</option>
+                  <option value="M.A">M.A</option>
+                  <option value="Other">Other</option>
+               </select>
+            </div>
+         </td>
+      </tr>
+      <tr >
+         <td>
+            <div class="input-field col s6 fields">
+               Year of Acquiring of Highest Qualification
+            </div>
+            <div class="input-field col s6">
+               <input placeholder="Year of Completion of Highest Qualification" id="qualAdd" type="text" class="validate" ng-model="data.qualification_year_completion" name="qualAdd" maxlength="4" minlength="4"  required>
+               <span ng-show="naacForm.qualAdd.$error.minlength || naacForm.qualAdd.$error.maxlength" class="error">Length should be of 4.</span>
+               <span ng-show="naacForm.qualAdd.$touched && naacForm.qualAdd.$error.required" class="error">Field cannot be empty</span>
+            </div>
+         </td>
+      </tr>
+   </tbody>
 </table>
 <br><br>
 <table>
-  <tbody>
-
-    <div class="small-title" style="padding-left:13px;">DETAILS ABOUT PhD STUDENTS</div>
-    {{data.phds = data.pursuing + data.submitted + data.awarded;""}}
-    <tr class="phdtr">
-
-      <td>
-
-        <div class="input-field col s6 fields">
-          Phd Pursuing
-        </div>
-        <div class="input-field col s6">
-          <input placeholder="Phd Pursuing" id="phdp" type="number" class="validate" ng-model="data.pursuing" name="phdp" required>
-          <span ng-show="naacForm.phdp.$touched && naacForm.phdp.$error.required" class="error">Field cannot be empty</span>
-        </div>
-      </td>
-
-    </tr>
-
-    <tr class="phdtr">
-
-      <td>
-        <!-- CONFIRM THESE FIELDS -->
-        <div class="input-field col s6 fields">
-          Phd Submitted
-        </div>
-        <div class="input-field col s6">
-          <input placeholder="Phd Submitted" id="phds" type="number" class="validate" ng-model="data.submitted" name="phds" required>
-          <span ng-show="naacForm.phds.$touched && naacForm.phds.$error.required" class="error">Field cannot be empty</span>
-        </div>
-      </td>
-
-    </tr>
-
-    <tr class="phdtr">
-
-      <td>
-
-        <div class="input-field col s6 fields">
-          Phd Awarded
-        </div>
-        <div class="input-field col s6">
-          <input placeholder="Phd Awarded" id="phda" type="number" class="validate" ng-model="data.awarded" name="phda" required>
-          <span ng-show="naacForm.phda.$touched && naacForm.phda.$error.required" class="error">Field cannot be empty</span>
-        </div>
-      </td>
-
-    </tr>
-
-
-</tbody>
+   <tbody>
+      <div class="small-title" style="padding-left:13px;">DETAILS ABOUT PhD STUDENTS</div>
+      {{data.phds = data.pursuing + data.submitted + data.awarded;""}}
+      <tr class="phdtr">
+         <td>
+            <div class="input-field col s6 fields">
+               Phd Pursuing
+            </div>
+            <div class="input-field col s6">
+               <input placeholder="Phd Pursuing" id="phdp" type="number" class="validate" ng-model="data.pursuing" name="phdp" required>
+               <span ng-show="naacForm.phdp.$touched && naacForm.phdp.$error.required" class="error">Field cannot be empty</span>
+            </div>
+         </td>
+      </tr>
+      <tr class="phdtr">
+         <td>
+            <!-- CONFIRM THESE FIELDS -->
+            <div class="input-field col s6 fields">
+               Phd Submitted
+            </div>
+            <div class="input-field col s6">
+               <input placeholder="Phd Submitted" id="phds" type="number" class="validate" ng-model="data.submitted" name="phds" required>
+               <span ng-show="naacForm.phds.$touched && naacForm.phds.$error.required" class="error">Field cannot be empty</span>
+            </div>
+         </td>
+      </tr>
+      <tr class="phdtr">
+         <td>
+            <div class="input-field col s6 fields">
+               Phd Awarded
+            </div>
+            <div class="input-field col s6">
+               <input placeholder="Phd Awarded" id="phda" type="number" class="validate" ng-model="data.awarded" name="phda" required>
+               <span ng-show="naacForm.phda.$touched && naacForm.phda.$error.required" class="error">Field cannot be empty</span>
+            </div>
+         </td>
+      </tr>
+   </tbody>
 </table>
-
 <script>
-$(document).ready(function() {
-    console.log($('select'));
-    $('select').material_select();
-});
+   $(document).ready(function() {
+       console.log($('select'));
+       $('select').material_select();
+   });
 </script>
