@@ -22,6 +22,8 @@ angular.module('employee')
 					if (res.data.success != undefined) {
 
 						$location.url('/dashboard');
+						console.log("login data");
+						console.log(res.data);
 
 					}
 					else {
