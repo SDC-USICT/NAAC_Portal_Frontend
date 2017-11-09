@@ -48,10 +48,18 @@
                 </ul>
             </div>
             <div class="col m7">
-              {{info}}
+                <div class="center" style="display: flex; margin-top: 1.5em; margin-bottom: 1em;">
+                    <br>
+                    <div style="flex: 0.8; color: lightslategrey;">
+                    Check this box if you don't wish to add any {{ splitAtCaps(attributes[selected].key) }} details
+                    </div>
+                    &nbsp; &nbsp;
+                    <div style="flex: 0.2">
+                      <input type="checkbox" id="test5" />
+                      <label for="test5"></label>
+                    </div>
+                </div>
                 <form name="naacForm" novalidate>
-                    <br>
-                    <br>
                     <section ng-if="selected == '0'" data-ng-include src="'./app/formApp/awards/award.html'"></section>
                     <section ng-if="selected == '1'" data-ng-include src="'./app/formApp/book/book.html'"></section>
                     <section ng-if="selected == '2'" data-ng-include src="'./app/formApp/bookChapters/bookchapter.html'"></section>
