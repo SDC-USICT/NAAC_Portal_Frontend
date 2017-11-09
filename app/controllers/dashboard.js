@@ -15,7 +15,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
           $(document).ready(function() {
               $('select').material_select();
           })
-          Materialize.toast('Form Reset Successfully!', 3000,'red lighten-1 rounded')
+          Materialize.toast('Form Reset Successfully!', 3000,'red lighten-1')
           $scope.naacForm.$setPristine();
           $scope.naacForm.$setUntouched();
           $scope.selectedResult = null;
@@ -285,8 +285,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
             }
             formService.post(req).then(function(response){
               $scope.setSelected($scope.selected);
-              console.log(response);
-              //$scope.mySelectedData=response;
+              Materialize.toast('Data Saved Successfully!', 4000)
             });
 
 
