@@ -1,114 +1,97 @@
 <section ng-include="'./app/views/partials/save.html'"></section>
-
 <div class="row">
-  <div class="col m4">
-    <div class="input-field col s12">
-      <select name="subjectYear" ng-model="data.year" required>
-        <option value="" disabled selected>Choose</option>
-        <option value="2012">2012 - 13</option>
-        <option value="2013">2013 - 14</option>
-        <option value="2014">2014 - 15</option>
-        <option value="2015">2015 - 16</option>
-        <option value="2016">2016 - 17</option>
-        <option value="2017">2017 - 18</option>
-
-      </select>
-      <label>Academic Year</label>
-    </div>
-  </div>
-  <div class="col m4">
-    <div class="input-field col s12">
-      <select name="subjectSem" ng-model="data.sem" required>
-        <option value="" disabled selected>Choose</option>
-        <option value="1">First</option>
-        <option value="2">Second</option>
-        <option value="3">Third</option>
-        <option value="4">Fourth</option>
-        <option value="5">Fifth</option>
-        <option value="6">Sixth</option>
-        <option value="7">Seventh</option>
-        <option value="8">Eight</option>
-        <option value="9">Ninth</option>
-        <option value="10">Tenth</option>
-        <option value="11">Eleventh</option>
-        <option value="12">Twelfth</option>
-
-      </select>
-      <label>Semester</label>
-    </div>
-
-  </div>
-  <div class="col m4">
-   <div class="input-field col s12">
-    <select name="subjectCourse" ng-model="data.course" required>
-      <option value="" disabled selected>Choose</option>
-      <option value="btech_cse">BTECH CSE</option>
-      <option value="btech_it">BTECH IT</option>
-      <option value="mtech">MTECH </option>
-
-
-    </select>
-    <label>Course</label>
-  </div>
+   <div class="col m4">
+      <div class="input-field col s12">
+         <select name="subjectYear" ng-model="data.year" required>
+            <option value="" disabled selected>Choose</option>
+            <option value="2012">2012 - 13</option>
+            <option value="2013">2013 - 14</option>
+            <option value="2014">2014 - 15</option>
+            <option value="2015">2015 - 16</option>
+            <option value="2016">2016 - 17</option>
+            <option value="2017">2017 - 18</option>
+         </select>
+         <label>Academic Year</label>
+      </div>
+   </div>
+   <div class="col m4">
+      <div class="input-field col s12">
+         <select name="subjectSem" ng-model="data.sem" required>
+            <option value="" disabled selected>Choose</option>
+            <option value="1">First</option>
+            <option value="2">Second</option>
+            <option value="3">Third</option>
+            <option value="4">Fourth</option>
+            <option value="5">Fifth</option>
+            <option value="6">Sixth</option>
+            <option value="7">Seventh</option>
+            <option value="8">Eight</option>
+            <option value="9">Ninth</option>
+            <option value="10">Tenth</option>
+            <option value="11">Eleventh</option>
+            <option value="12">Twelfth</option>
+         </select>
+         <label>Semester</label>
+      </div>
+   </div>
+   <div class="col m4">
+      <div class="input-field col s12">
+         <select name="subjectCourse" ng-model="data.course" required>
+            <option value="" disabled selected>Choose</option>
+            <option value="btech_cse">BTECH CSE</option>
+            <option value="btech_it">BTECH IT</option>
+            <option value="mtech">MTECH </option>
+         </select>
+         <label>Course</label>
+      </div>
+   </div>
 </div>
-</div>
-
 <div class="row">
-  <div class="col m8" >
-   <div class="input-field col s12" ng-repeat="(key, value) in data.subjects track by $index">
-    <input name="subjectSubject"  type="text" id="autocomplete-input" class="autocomplete" ng-model="data.subjects[key]"  required>
-    <label for="autocomplete-input">Subject</label>
-
-    <ng-include src="'./app/controllers/utilities/dropdown.html'" scope="" onload=""></ng-include>
-    </script>
-  </div>
-</div>
-
-<div class="col m4" >
-  <div ng-repeat="(key, value) in data.mode track by $index" >
-    <div class="col m10">
-    <select name="subjectMode" ng-model="data.mode[key]" required>
-      <option value="" disabled selected>Choose</option>
-      <option value="theory">Theory</option>
-      <option value="practical">Practical</option>
-      <option value="theory">Theory</option>
-      <option value="minor">Minor Project</option>
-      <option value="major">Major Project</option>
-
-    </select>
-    <label>Type</label>
-    <script type="text/javascript">
-      $(document).ready(function () {
-         $(document).ready(function() {
-                    console.log($('select'));
-                    $('select').material_select();
-                })
-      })
-    </script>
-
-  </div>
-    <div  ng-click="removesubs($index)" class="tooltip red col m1">X
-      <span class="tooltiptext">Remove</span>
-    </div>
-  </div>
-
-
-</div>
-
-
+   <div class="col m8" >
+      <div class="input-field col s12" ng-repeat="(key, value) in data.subjects track by $index">
+         <input name="subjectSubject"  type="text" id="autocomplete-input" class="autocomplete" ng-model="data.subjects[key]"  required>
+         <label for="autocomplete-input">Subject</label>
+         <ng-include src="'./app/controllers/utilities/dropdown.html'" scope="" onload=""></ng-include>
+         </script>
+      </div>
+   </div>
+   <div class="col m4" >
+      <div ng-repeat="(key, value) in data.mode track by $index" >
+         <div class="col m10">
+            <select name="subjectMode" ng-model="data.mode[key]" required>
+               <option value="" disabled selected>Choose</option>
+               <option value="theory">Theory</option>
+               <option value="practical">Practical</option>
+               <option value="theory">Theory</option>
+               <option value="minor">Minor Project</option>
+               <option value="major">Major Project</option>
+            </select>
+            <label>Type</label>
+            <script type="text/javascript">
+               $(document).ready(function () {
+                  $(document).ready(function() {
+                             console.log($('select'));
+                             $('select').material_select();
+                         })
+               })
+            </script>
+         </div>
+         <div  ng-click="removesubs($index)" class="tooltip red col m1">X
+            <span class="tooltiptext">Remove</span>
+         </div>
+      </div>
+   </div>
 </div>
 <button ng-click="addsubs()" background-color="#1a237e" class="right btn waves-effect waves-light no-borders">
-  <i style="font-size:1.2em; line-height:1.2em;" class="fa fa-plus-circle" aria-hidden="true"></i> ADD SUBJECT
+<i style="font-size:1.2em; line-height:1.2em;" class="fa fa-plus-circle" aria-hidden="true"></i> ADD SUBJECT
 </button>
-
 <br><br>
-
 <div class="file-field input-field col s12">
-  <div class="btn">
-    <span>UPLOAD TIME TABLE</span>
-    <input type="file" files-input  ng-model="data.image">
-  </div>
-  <div class="file-path-wrapper remove">
-    <input class="file-path validate" type="text">
-  </div>
+   <div class="btn">
+      <span>UPLOAD TIME TABLE</span>
+      <input type="file" files-input  ng-model="data.image">
+   </div>
+   <div class="file-path-wrapper remove">
+      <input class="file-path validate" type="text">
+   </div>
 </div>
