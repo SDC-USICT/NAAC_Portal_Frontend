@@ -8,7 +8,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
         $scope.editing = 0;
         $scope.marked_authors = {};
         $scope.employeeMeta = {};
-     
+
         if ($rootScope.loginid == undefined) {
             if ($sessionStorage.loginid != undefined) {
                 $rootScope.loginid = $sessionStorage.loginid;
@@ -262,7 +262,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
 
 
             $scope.setSelected(9);
-            console.log($scope.attributes);
+            console.log($scope.attributes[$scope.selected].key);
         });
         //  Set all input editable.
         $scope.setEditing = function() {
@@ -305,6 +305,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
         // Set selected tab.
         $scope.setSelected = function(value) {
             $scope.selected = value;
+
             $scope.data = {};
             console.log($scope.data);
             $scope.naacForm.$setPristine();
@@ -328,6 +329,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                 console.log(data)
                 $scope.mySelectedData = data;;
                 console.log($scope.results)
+                $scope.dontfill();
                 if (data[0] != undefined) {
                     //$scope.model_type = data[0].model;
                     //$scope.saved_columns = data[0].fields;
@@ -726,6 +728,69 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
             $scope.naacForm.$setUntouched();
             $scope.selectedResult = null;
         }
+
+        $scope.dontfill = function(){
+          var data_emp = $resource(BACKEND + '/api/dontfill', null, {
+              'query': {
+                  method: 'POST',
+                  isArray: false
+              }
+          });
+          // Fetching teacher data from BACKEND.
+          data_emp.query({
+              empid: $rootScope.loginid
+          }).$promise.then(function(data) {
+            console.log(JSON.stringify(data));
+            $scope.dontfilldata=data.toJSON();
+            $scope.dontfillColumn=$scope.attributes[$scope.selected].key;
+            console.log($scope.dontfillColumn);
+            $scope.dontfillColumn=$scope.dontfillColumn.replace(/(?:^|\.?)([A-Z])/g, function (x,y){return "_" + y.toLowerCase()}).replace(/^_/, "");
+            console.log($scope.dontfillColumn);
+
+          });
+
+
+
+        }
+
+        $scope.setfill = function(){
+          // var data_emp = $resource(BACKEND + '/api/set_dontfill', null, {
+          //     'query': {
+          //         method: 'POST',
+          //         isArray: false
+          //     }
+          // });
+          data=$scope.dontfilldata;
+          // data.pk=$rootScope.loginid;
+          console.log(data);
+          data=JSON.stringify(data);
+          // Fetching teacher data from BACKEND.
+          // data_emp.query({
+          //     data: data
+          // }).$promise.then(function(data) {
+          //     console.log("I am surender kumar");
+          //     console.log(data);
+          //
+          // });
+
+
+
+
+          $http({
+                  method: 'POST',
+                  url: BACKEND + '/api/set_dontfill',
+
+                  data: data,
+                  transformRequest: angular.identity
+              })
+              .then(function(response) {
+                  console.log(response.data)
+                  Materialize.toast('All Data Saved for this Column.', 4000)
+
+
+              });
+
+      }
 
 
     }
