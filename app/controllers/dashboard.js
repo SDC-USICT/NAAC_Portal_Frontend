@@ -755,40 +755,22 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
         }
 
         $scope.setfill = function(){
-          // var data_emp = $resource(BACKEND + '/api/set_dontfill', null, {
-          //     'query': {
-          //         method: 'POST',
-          //         isArray: false
-          //     }
-          // });
+
           data=$scope.dontfilldata;
-          // data.pk=$rootScope.loginid;
+          data.pk=$rootScope.loginid;
           console.log(data);
           data=JSON.stringify(data);
-          // Fetching teacher data from BACKEND.
-          // data_emp.query({
-          //     data: data
-          // }).$promise.then(function(data) {
-          //     console.log("I am surender kumar");
-          //     console.log(data);
-          //
-          // });
-
-
 
 
           $http({
-                  method: 'POST',
-                  url: BACKEND + '/api/set_dontfill',
-
-                  data: data,
-                  transformRequest: angular.identity
-              })
-              .then(function(response) {
-                  console.log(response.data)
-                  Materialize.toast('All Data Saved for this Column.', 4000)
-
-
+                method: 'POST',
+                url: BACKEND + '/api/set_dontfill',
+                data: data,
+                transformRequest: angular.identity
+            })
+            .then(function(response) {
+                console.log(response.data)
+                Materialize.toast('All changes saved for this column.', 4000)
               });
 
       }
