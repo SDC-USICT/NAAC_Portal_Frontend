@@ -203,7 +203,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                 }
                 if (value == 'Awards') {
                     tmp['priority'] = 10;
-                    tmp['help'] = ["Award 1", "Award 2"];
+                    tmp['help'] = ["Enter the title of Award", "Organisation : The name of the organisation you received award from."];
                     tmp['icon'] = "album";
                 }
                 else if (value == 'Book') {
@@ -242,6 +242,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                 else if (value == 'Professional') {
                     tmp['priority'] = 0;
                     tmp['icon'] =  "account_box";
+                    tmp['help'] = ["Year of Acquiring of Highest Qualification : Enter the year you received your highest qualification. Example : 2000", "Ph.D Pursuing : Number of student pursuing Ph.D ","Ph.D Submitted : Number of student submitted Ph.D ","Ph.D Awarded : Number of student Awarded Ph.D "];
                 }
                 else if (value == 'Projects') {
                     tmp['priority'] = 6;
