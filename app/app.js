@@ -47,7 +47,8 @@ angular.module('employee', ['ngRoute', 'ngStorage', 'ngResource','ngAnimate'])
       templateUrl: './app/views/changepassword.html',
       controller: 'DashboardCtrl'
     });
-   $locationProvider.html5Mode(false).hashPrefix('');
+	 $locationProvider.html5Mode(true);
+   $locationProvider.hashPrefix('!');
 
 }]).directive('fallbackSrc', function () {
     return{
@@ -58,4 +59,3 @@ angular.module('employee', ['ngRoute', 'ngStorage', 'ngResource','ngAnimate'])
         }
     }
 });
-
