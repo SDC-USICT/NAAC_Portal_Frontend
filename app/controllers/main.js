@@ -2,11 +2,11 @@ angular.module('employee')
 	.controller('MainCtrl', ["$scope", "$http" , "$rootScope", "$window", "$resource","$location", "$sessionStorage",
 		function ($scope, $http, $rootScope, $window, $resource, $location, $sessionStorage, getDept) {
 
-		if($sessionStorage.declaration == undefined){
+		if(sessionStorage.declaration == undefined){
 			console.log('undefined!')
 		   sessionStorage.clear();
 			$location.path('/');
-		}else if(sessionStorage.getItem('status') != undefined && sessionStorage.getItem('school') != undefined && sessionStorage.getItem('loginid') != undefined){
+		}else if(sessionStorage.status != undefined && sessionStorage.school != undefined && sessionStorage.loginid != undefined){
 		    $location.path('/dashboard');
         }
 			$scope.schools = [

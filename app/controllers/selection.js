@@ -2,9 +2,9 @@ angular.module('employee')
     .controller('SelCtrl', ["$scope", "$http" , "$rootScope", "$location", "$resource","$window",
         function ($scope, $http, $rootScope, $location, $resource,$window) {
             $scope.BACKEND = BACKEND;
-            if(sessionStorage.getItem('school') == undefined){
+            if(sessionStorage.school == undefined){
                 $location.path('/index');
-            }else if(sessionStorage.getItem('status') != undefined) {
+            }else if(sessionStorage.status != undefined) {
                 $location.path('/dashboard');
             }else {
                  var data_emp = $resource(BACKEND + '/api/school', null, {
@@ -14,7 +14,7 @@ angular.module('employee')
                 }
                 });
              data_emp.query({
-                school: sessionStorage.getItem('school')
+                school: sessionStorage.school
             }).$promise.then(function(data){
                 $scope.empData = data;
                 var prefix = ["Dr","Ms","Mr"];
