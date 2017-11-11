@@ -159,9 +159,10 @@ nav {
       cursor: default;
   }
   .toast{
-    background: #ffffff;
-    color: black;
+    background: #299922;
+    color: #ffffff;
     font-weight: 500;
+    font-size: 18px;
     }
     .forgot:hover{
       cursor: pointer;

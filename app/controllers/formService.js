@@ -24,7 +24,7 @@
             return $http.post(BACKEND+'/api/post', JSON.stringify(element))
             .then(function (res) {
               if(res.data.error) {
-                Materialize.toast('Oops! Error', 4000,'red')
+                Materialize.toast('Oops! Error', 4000,'red darken-4')
                 return;
               }
         });

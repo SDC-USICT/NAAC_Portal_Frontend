@@ -544,7 +544,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
             $http.post(BACKEND + '/api/post', JSON.stringify(rq))
                 .then(function(res) {
                     if (res.data.error) {
-                        Materialize.toast('Oops! Error', 4000)
+                        Materialize.toast('Oops! Error', 4000,'red darken-4')
                         return;
                     }
                     Materialize.toast('Data Saved Successfully!', 4000)
@@ -588,7 +588,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
             $http.post(BACKEND + '/api/delete', JSON.stringify(rq))
                 .then(function(res) {
                     if (res.data.error) {
-                        Materialize.toast('Oops! Error', 4000)
+                        Materialize.toast('Oops! Error', 4000,'red darken-4')
                         return;
                     }
                     Materialize.toast('Record Deleted Successfully!', 4000)
@@ -692,9 +692,9 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
         .then(function (res) {
           console.log(res);
           if(res.data.error != undefined){
-            Materialize.toast('Please Enter Correct Password', 4000);
+            Materialize.toast('Please Enter Correct Password', 4000,'red darken-4');
           }else if (res.data.mod != undefined) {
-              Materialize.toast('New Passwords do not matched', 4000);
+              Materialize.toast('New Passwords do not matched', 4000,'red darken-4');
           }else if (res.data.success != undefined) {
               Materialize.toast('Password Changed Successfully', 4000);
               $location.path('/dashboard');
@@ -725,7 +725,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
             $(document).ready(function() {
                 $('select').material_select();
             })
-            Materialize.toast('Form Reset Successfully!', 3000,'red lighten-1 white-text')
+            Materialize.toast('Form Reset Successfully!', 3000)
             $scope.naacForm.$setPristine();
             $scope.naacForm.$setUntouched();
             $scope.selectedResult = null;

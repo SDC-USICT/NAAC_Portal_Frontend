@@ -12,7 +12,7 @@ angular.module('employee')
 				.then(function (res) {
 					console.log(res);
 					if(res.data.error != undefined){
-						Materialize.toast('Please Enter Correct Email ID', 4000);
+						Materialize.toast('Please Enter Correct Email ID', 4000,'red darken-4');
 					}else if (res.data.success != undefined) {
 						$location.path('/login');
 					    Materialize.toast('Check Your Email : ' + $scope.email + ' For Password', 6000);
