@@ -697,6 +697,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
               Materialize.toast('New Passwords do not matched', 4000);
           }else if (res.data.success != undefined) {
               Materialize.toast('Password Changed Successfully', 4000);
+              $location.path('/dashboard');
           }
         });
         }
