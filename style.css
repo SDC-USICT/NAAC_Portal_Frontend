@@ -159,8 +159,9 @@ nav {
       cursor: default;
   }
   .toast{
-    background: #299922;
-    color: #ffffff;
+    background: #fff;
+    color: #000;
+    border-radius: 0;
     font-weight: 500;
     font-size: 18px;
     }
