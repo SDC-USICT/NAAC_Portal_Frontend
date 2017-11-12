@@ -3,16 +3,16 @@ angular.module('employee')
 		function ($scope, $http, $rootScope,$sessionStorage, $location, $window) {
             console.log($location.absUrl())
             $scope.baseUrl = $location.url();
-	        if($sessionStorage.declaration){
-                if($sessionStorage.declaration == "checked"){
+	        if(sessionStorage.declaration){
+                if(sessionStorage.declaration == "checked"){
                     $location.path('/index');
                 }
             }
                 
             $scope.index = function(){
                 
-                if($sessionStorage.declaration == undefined){
-                    $sessionStorage.declaration = "checked";
+                if(sessionStorage.declaration == undefined){
+                    sessionStorage.declaration = "checked";
                 }else{
                     $location.path('/index');
                 }
