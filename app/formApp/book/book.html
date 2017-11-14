@@ -3,30 +3,8 @@
   <tbody>
     <!-- Book Title -->
 
-<tr >
 
-      <td>
-
-        <p style="padding-left: 12px;">
-          <input type="checkbox" id="booktb" ng-model="nobook" ng-checked="bookChecked" ng-click="noBok()" />
-          <label for="booktb">No Books
-          </label>
-        </p>
-      </td>
-
-      <td>
-
-        <div class="right" ng-show="nobook">
-          <button ng-click="setSelected(12)" style="margin-top: 1em; background-color: #1a237e" class="btn waves-effect waves-light no-borders">
-            <i style="font-size:1.2em; line-height:1.2em;" class="fa fa-paper-plane" aria-hidden="true"></i> GoTo Next Section
-          </button>
-        </div>
-
-      </td>
-
-    </tr>
-
-    <tr ng-show="!nobook">
+    <tr >
 
       <td>
 
@@ -44,7 +22,7 @@
 
     <!-- Book ISBN -->
 
-    <tr ng-show="!nobook">
+    <tr >
 
       <td>
 
@@ -64,7 +42,7 @@
 
     <!-- Book Year -->
 
-    <tr ng-show="!nobook">
+    <tr >
 
       <td>
 
@@ -87,7 +65,7 @@
 
     </tr>
 
-<tr ng-show="!nobook">
+<tr >
 
       <td>
 
@@ -119,7 +97,7 @@
 
 
     <!-- Book Co-Author -->
-<tr ng-show="!nobook">
+<tr >
 
   <td>
     <div class="input-field col s2 fields">
