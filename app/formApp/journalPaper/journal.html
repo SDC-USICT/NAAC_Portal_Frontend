@@ -118,6 +118,7 @@
                       <option value="48">48</option>
                       <option value="49">49</option>
                       <option value="50">50</option>
+                      <option value="other">Any Other</option>
                     </select>
 
         </div>
@@ -198,6 +199,38 @@
       </td>
 
     </tr>
+
+
+
+    <tr>
+          <td>
+            <div class="input-field col s12">
+              <div class="row">
+                <div class="col m6" style="display: flex">
+                  From Page Number
+                  <input id="conferencePageNoStart" placeholder="From Page Number" type="number" class="validate" ng-model="data.page_no_start" name="conferencePageNoStart" ng-minlength="1" ng-maxlength="100" required>
+                  <span ng-show="naacForm.conferencePageNoStart.$touched && naacForm.conferencePageNoStart.$error.required" class="error">Field cannot be empty</span>
+
+
+
+                </div>
+                <div class="col m6" style="display: flex">
+                  To Page Number
+
+                  <input id="conferencePageNoEnd" placeholder="To Page Number" type="number" class="validate" ng-model="data.page_no_end" name="conferencePageNoEnd" ng-minlength="1" ng-maxlength="100" required>
+                  <span ng-show="naacForm.conferencePageNoEnd.$touched && naacForm.conferencePageNoEnd.$error.required" class="error">Field cannot be empty</span>
+
+
+                </div>
+              </div>
+            </div>
+          </td>
+
+        </tr>
+
+
+
+
 
     <tr>
 

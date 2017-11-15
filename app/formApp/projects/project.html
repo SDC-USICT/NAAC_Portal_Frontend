@@ -35,7 +35,7 @@
                   <option value="" disabled selected>Choose your option</option>
                   <option value="completed">Completed</option>
                   <option value="inprogress">In-Progress</option>
-                  <option value="abandoned">Work Abandoned</option>
+                  
                </select>
             </div>
          </td>
@@ -50,7 +50,7 @@
             </div>
          </td>
       </tr>
-      <tr>
+      <tr ng-if="data.status=='completed'">
          <td>
             <div class="input-field col s6 fields">
                End Date of Project
