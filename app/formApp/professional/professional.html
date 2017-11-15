@@ -2,42 +2,681 @@
 <table >
   <tbody >
 
+
+  <tr>  <td>
+
+<fieldset>
+
+
+
+    <legend><div class="small-title" style="padding-left:6px;">Details About Graduation</div></legend>
+
+       <table class="responsive-table center" id="undergraduation">
+              <thead>
+                <tr>
+                    <th class="center">Course Name</th>
+                    <th class="center">Stream</th>
+                    <th class="center">Year</th>
+                    <th class="center">University/College</th>
+                </tr>
+              </thead>
+
+              <tbody style="font-size:12px;">
+                <tr>
+                  <td>
+                    <div class="input-field">
+                      <select name="highestQual"  ng-model="data.qualification_highest" required>
+                        <option value="" disabled selected>Choose your option</option>
+                        <option value="B.Arch">Bachelor of Architecture - B.Arch</option>
+                        <option value="B.A">Bachelor of Arts - B.A.&nbsp;&nbsp; &nbsp;</option>
+                        <option value="B.A.M.S">Bachelor of Ayurvedic Medicine &amp; Surgery - B.A.M.S.&nbsp;&nbsp; &nbsp;</option>
+                        <option value="B.B.A">Bachelor of Business Administration - B.B.A.</option>
+                        <option value="B.COM">Bachelor of Commerce - B.Com.</option>
+                        <option value="B.C.A">Bachelor of Computer Applications - B.C.A.</option>
+                        <option value="B.D.S">Bachelor of Dental Surgery - B.D.S.</option>
+                        <option value="B.Des">Bachelor of Design - B.Des. / B.D.</option>
+                        <option value="B.Ed">Bachelor of Education - B.Ed.</option>
+                        <option value="B.E/B.TECH">Bachelor of Engineering / Bachelor of Technology - B.E./B.Tech.</option>
+                        <option value="BFA/BVA">Bachelor of Fine Arts - BFA / BVA</option>
+                        <option value="B.F.Sc/B.Sc(FISH)">Bachelor of Fisheries Science - B.F.Sc./ B.Sc. (Fisheries).</option>
+                        <option value="B.H.M.S">Bachelor of Homoeopathic Medicine and Surgery - B.H.M.S.</option>
+                        <option value="L.L.B">Bachelor of Laws - L.L.B.</option>
+                        <option value="B.Lib/B.Lib.Sc">Bachelor of Library Science - B.Lib. / B.Lib.Sc.</option>
+                        <option value="B.M.C/B.M.M">Bachelor of Mass Communications - B.M.C. / B.M.M.</option>
+                        <option value="M.B.B.S">Bachelor of Medicine and Bachelor of Surgery - M.B.B.S.</option>
+                        <option value="B.Nursing">Bachelor of Nursing </option>
+                        <option value="B.Phram/B.Pharma">Bachelor of Pharmacy - B.Pharm / B.Pharma.</option>
+                        <option value="B.P.Ed">Bachelor of Physical Education - B.P.Ed.</option>
+                        <option value="B.P.T">Bachelor of Physiotherapy - B.P.T.</option>
+                        <option value="B.Sc">Bachelor of Science - B.Sc.</option>
+                        <option value="B.S.W/B.A(SW)">Bachelor of Social Work - BSW / B.A. (SW)</option>
+                        <option value="B.V.Sc">Bachelor of Veterinary Science &amp; Animal Husbandry - B.V.Sc. &amp; A.H. / B.V.Sc</option>
+                        <option value="Other">Other</option>
+
+                      </select>
+
+                    </div>
+                  </td>
+
+                  <td>
+                    <div class="input-field">
+                      <input placeholder="Stream" id="qualAdd" type="text" class="validate" ng-model="data.qualification_year_completion" name="qualAdd" maxlength="100" minlength="2"  required>
+                      <span ng-show="naacForm.qualAdd.$error.minlength || naacForm.qualAdd.$error.maxlength" class="error">Length should be of 4.</span>
+                      <span ng-show="naacForm.qualAdd.$touched && naacForm.qualAdd.$error.required" class="error">Field cannot be empty</span>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="input-field">
+                      <select name="start_yearUniversityAgency" ng-model="data.start_year" required>
+                        <option value="" disabled selected>Choose your option</option>
+                        <option value="2012">1980</option>
+                        <option value="2013">1981</option>
+                        <option value="2014">2014</option>
+                        <option value="2015">2015</option>
+                        <option value="2016">2016</option>
+                        <option value="2017">2017</option>
+                        <option value="2012">2012</option>
+                        <option value="2013">2013</option>
+                        <option value="2014">2014</option>
+                        <option value="2015">2015</option>
+                        <option value="2016">2016</option>
+                        <option value="2017">2017</option>
+                        <option value="2012">2012</option>
+                        <option value="2013">2013</option>
+                        <option value="2014">2014</option>
+                        <option value="2015">2015</option>
+                        <option value="2016">2016</option>
+                        <option value="2017">2017</option>
+                        <option value="2012">2012</option>
+                        <option value="2013">2013</option>
+                        <option value="2014">2014</option>
+                        <option value="2015">2015</option>
+                        <option value="2016">2016</option>
+                        <option value="2017">2017</option>
+
+                      </select>
+                    </div>
+                  </td>
+
+                  <!-- <td>
+                    <div class="input-field">
+                      <input placeholder="University" id="qualAdd" type="text" class="validate" ng-model="data.qualification_year_completion" name="qualAdd" maxlength="100" minlength="2"  required>
+                      <span ng-show="naacForm.qualAdd.$error.minlength || naacForm.qualAdd.$error.maxlength" class="error">Length should be of 4.</span>
+                      <span ng-show="naacForm.qualAdd.$touched && naacForm.qualAdd.$error.required" class="error">Field cannot be empty</span>
+                    </div>
+                  </td> -->
+                  <td>
+                    <div class="input-field">
+                      <input placeholder="College" id="qualAdd" type="text" class="validate" ng-model="data.qualification_year_completion" name="qualAdd" maxlength="100" minlength="2"  required>
+                      <span ng-show="naacForm.qualAdd.$error.minlength || naacForm.qualAdd.$error.maxlength" class="error">Length should be of 4.</span>
+                      <span ng-show="naacForm.qualAdd.$touched && naacForm.qualAdd.$error.required" class="error">Field cannot be empty</span>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+
+
+
+</fieldset>
+
+    </td>
+
+</tr>
+
+
+
+<tr>
+<td>
+  <fieldset>
+    <legend><div class="small-title" style="padding-left:6px;">Details About Post-Graduation</div></legend>
+    <table class="responsive-table center" id="postgraduation">
+           <thead>
+
+             <tr>
+                 <th class="center">Course Name</th>
+                 <th class="center">Stream</th>
+                 <th class="center">Year</th>
+                 <th class="center">University</th>
+             </tr>
+           </thead>
+
+           <tbody style="font-size:12px;">
+             <tr>
+               <td>
+                 <div class="input-field">
+                   <select name="highestQual"  data-constrainwidth="false" ng-model="data.qualification_highest" required>
+                     <option value="" disabled selected>Choose your option</option>
+                     <option value="M.D">Doctor of Medicine - M.D.</option>
+                     <option value="M.D.(Homoeopathy)">Doctor of Medicine in Homoeopathy - M.D. (Homoeopathy)</option>
+                     <option value="PHARMA.D">Doctor of Pharmacy - Pharm.D&nbsp;&nbsp; &nbsp;</option>
+                     <option value="Ph.D">Doctor of Philosophy - Ph.D. </option>
+                     <option value="D.M">Doctorate of Medicine - D.M.</option>
+                     <option value="M.ARCH">Master of Architecture - M.Arch.</option>
+                     <option value="M.A">Master of Arts - M.A.</option>
+                     <option value="M.B.A">Master of Business Administration - M.B.A.</option>
+                     <option value="M.CH">Master of Chirurgiae - M.Ch.</option>
+                     <option value="M.COM">Master of Commerce - M.Com.&nbsp;&nbsp; &nbsp;</option>
+                     <option value="M.C.A">Master of Computer Applications - M.C.A.</option>
+                     <option value="M.D.S">Master of Dental Surgery - M.D.S.</option>
+                     <option value="M.DESIGN">Master of Design - M.Des./ M.Design.</option>
+                     <option value="M.ED">Master of Education - M.Ed.</option>
+                     <option value="M.E/M.TECH">Master of Engineering / Master of Technology - M.E./ M.Tech.</option>
+                     <option value="MFA">Master of Fine Arts - MFA / MVA</option>
+                     <option value="L.L.M">Master of Laws - L.L.M.</option>
+                     <option value="M.LIB">Master of Library Science - M.Lib./ M.Lib.Sc.</option>
+                     <option value="M.M.C/M.M.M">Master of Mass Communications / Mass Media - M.M.C / M.M.M.</option>
+                     <option value="M.PHARMA">Master of Pharmacy - M.Pharm&nbsp;&nbsp; &nbsp;</option>
+                     <option value="M.PHIL">Master of Philosophy - M.Phil.&nbsp;&nbsp; &nbsp;</option>
+                     <option value="M.P.ED/M.P.E">Master of Physical Education M.P.Ed. / M.P.E.</option>
+                     <option value="M.P.T">Master of Physiotherapy - M.P.T.</option>
+                     <option value="M.SC">Master of Science - M.Sc.</option>
+                     <option value="M.S.W/M.A(SW)">Master of Social Work / Master of Arts in Social Work - M.S.W. / M.A. (SW)</option>
+                     <option value="M.SC(AGRI)">Master of Science in Agriculture - M.Sc. (Agriculture)</option>
+                     <option value="M.S">Master of Surgery - M.S.</option>
+                     <option value="M.V.SC">Master of Veterinary Science - M.V.Sc.</option>
+                     <option value="Other">Other</option>
+
+                   </select>
+
+                 </div>
+               </td>
+
+               <td>
+                 <div class="input-field">
+                   <input placeholder="Stream" id="qualAdd" type="text" class="validate" ng-model="data.qualification_year_completion" name="qualAdd" maxlength="100" minlength="2"  required>
+                   <span ng-show="naacForm.qualAdd.$error.minlength || naacForm.qualAdd.$error.maxlength" class="error">Length should be of 4.</span>
+                   <span ng-show="naacForm.qualAdd.$touched && naacForm.qualAdd.$error.required" class="error">Field cannot be empty</span>
+                 </div>
+               </td>
+               <td>
+                 <div class="input-field">
+                   <select name="start_yearUniversityAgency" ng-model="data.start_year" required>
+                     <option value="" disabled selected>Choose your option</option>
+                     <option value="2012">1980</option>
+                     <option value="2013">1981</option>
+                     <option value="2014">2014</option>
+                     <option value="2015">2015</option>
+                     <option value="2016">2016</option>
+                     <option value="2017">2017</option>
+                     <option value="2012">2012</option>
+                     <option value="2013">2013</option>
+                     <option value="2014">2014</option>
+                     <option value="2015">2015</option>
+                     <option value="2016">2016</option>
+                     <option value="2017">2017</option>
+                     <option value="2012">2012</option>
+                     <option value="2013">2013</option>
+                     <option value="2014">2014</option>
+                     <option value="2015">2015</option>
+                     <option value="2016">2016</option>
+                     <option value="2017">2017</option>
+                     <option value="2012">2012</option>
+                     <option value="2013">2013</option>
+                     <option value="2014">2014</option>
+                     <option value="2015">2015</option>
+                     <option value="2016">2016</option>
+                     <option value="2017">2017</option>
+
+                   </select>
+                 </div>
+               </td>
+
+               <!-- <td>
+                 <div class="input-field">
+                   <input placeholder="University" id="qualAdd" type="text" class="validate" ng-model="data.qualification_year_completion" name="qualAdd" maxlength="100" minlength="2"  required>
+                   <span ng-show="naacForm.qualAdd.$error.minlength || naacForm.qualAdd.$error.maxlength" class="error">Length should be of 4.</span>
+                   <span ng-show="naacForm.qualAdd.$touched && naacForm.qualAdd.$error.required" class="error">Field cannot be empty</span>
+                 </div>
+               </td> -->
+               <td>
+                 <div class="input-field">
+                   <input placeholder="College" id="qualAdd" type="text" class="validate" ng-model="data.qualification_year_completion" name="qualAdd" maxlength="100" minlength="2"  required>
+                   <span ng-show="naacForm.qualAdd.$error.minlength || naacForm.qualAdd.$error.maxlength" class="error">Length should be of 4.</span>
+                   <span ng-show="naacForm.qualAdd.$touched && naacForm.qualAdd.$error.required" class="error">Field cannot be empty</span>
+                 </div>
+               </td>
+             </tr>
+           </tbody>
+         </table>
+
+  </fieldset>
+</td>
+
+</tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<tr>
+  <td>
+
+<fieldset>
+  <legend> <div class="small-title left" style="padding-left:6px;">Details About PhD</div></legend>
+       <div class="right" style="display: flex; margin-bottom: 1em;">
+           <br>
+           <div style="flex: 0.8; color: lightslategrey;">
+           No PhD Acquired
+           </div>
+           &nbsp; &nbsp;
+           <div style="flex: 0.2">
+             <input type="checkbox" id="nophd" ng-model="nophd" />
+             <label for="nophd"></label>
+           </div>
+       </div>
+
+  <table class="center" ng-if="!nophd">
+         <thead>
+
+           <tr>
+             <td colspan="4">
+               <div >
+
+                 <div  class="small-title" style="padding-left:6px; color:black;font-size:14.5;">Title of Paper</div>
+                 <div  class="input-field">
+                     <input placeholder="Title of Paper" id="qualAdd" type="text" class="validate" ng-model="data.qualification_year_completion" name="qualAdd" maxlength="100" minlength="2"  required>
+                     <span ng-show="naacForm.qualAdd.$error.minlength || naacForm.qualAdd.$error.maxlength" class="error">Length should be of 4.</span>
+                     <span ng-show="naacForm.qualAdd.$touched && naacForm.qualAdd.$error.required" class="error">Field cannot be empty</span>
+                 </div>
+               </div>
+             </td>
+           </tr>
+
+
+           <tr>
+               <th class="center">Area of Specialization</th>
+               <th class="center">Year of Application</th>
+               <th class="center">Year of Acquiring</th>
+               <th class="center">University/College</th>
+           </tr>
+         </thead>
+
+         <tbody style="font-size:12px;">
+
+
+
+
+           <tr>
+
+
+             <td>
+               <div class="input-field">
+                 <input placeholder="Area of Specialization" id="qualAdd" type="text" class="validate" ng-model="data.qualification_year_completion" name="qualAdd" maxlength="100" minlength="2"  required>
+                 <span ng-show="naacForm.qualAdd.$error.minlength || naacForm.qualAdd.$error.maxlength" class="error">Length should be of 4.</span>
+                 <span ng-show="naacForm.qualAdd.$touched && naacForm.qualAdd.$error.required" class="error">Field cannot be empty</span>
+               </div>
+             </td>
+             <td>
+               <div class="input-field">
+                 <select name="start_yearUniversityAgency" ng-model="data.start_year" required>
+                   <option value="" disabled selected>Choose your option</option>
+                   <option value="2012">1980</option>
+                   <option value="2013">1981</option>
+                   <option value="2014">2014</option>
+                   <option value="2015">2015</option>
+                   <option value="2016">2016</option>
+                   <option value="2017">2017</option>
+                   <option value="2012">2012</option>
+                   <option value="2013">2013</option>
+                   <option value="2014">2014</option>
+                   <option value="2015">2015</option>
+                   <option value="2016">2016</option>
+                   <option value="2017">2017</option>
+                   <option value="2012">2012</option>
+                   <option value="2013">2013</option>
+                   <option value="2014">2014</option>
+                   <option value="2015">2015</option>
+                   <option value="2016">2016</option>
+                   <option value="2017">2017</option>
+                   <option value="2012">2012</option>
+                   <option value="2013">2013</option>
+                   <option value="2014">2014</option>
+                   <option value="2015">2015</option>
+                   <option value="2016">2016</option>
+                   <option value="2017">2017</option>
+
+                 </select>
+               </div>
+             </td>
+
+
+
+             <td>
+               <div class="input-field">
+                 <select name="start_yearUniversityAgency" ng-model="data.start_year" required>
+                   <option value="" disabled selected>Choose your option</option>
+                   <option value="2012">1980</option>
+                   <option value="2013">1981</option>
+                   <option value="2014">2014</option>
+                   <option value="2015">2015</option>
+                   <option value="2016">2016</option>
+                   <option value="2017">2017</option>
+                   <option value="2012">2012</option>
+                   <option value="2013">2013</option>
+                   <option value="2014">2014</option>
+                   <option value="2015">2015</option>
+                   <option value="2016">2016</option>
+                   <option value="2017">2017</option>
+                   <option value="2012">2012</option>
+                   <option value="2013">2013</option>
+                   <option value="2014">2014</option>
+                   <option value="2015">2015</option>
+                   <option value="2016">2016</option>
+                   <option value="2017">2017</option>
+                   <option value="2012">2012</option>
+                   <option value="2013">2013</option>
+                   <option value="2014">2014</option>
+                   <option value="2015">2015</option>
+                   <option value="2016">2016</option>
+                   <option value="2017">2017</option>
+
+                 </select>
+               </div>
+             </td>
+
+             <!-- <td>
+               <div class="input-field">
+                 <input placeholder="University" id="qualAdd" type="text" class="validate" ng-model="data.qualification_year_completion" name="qualAdd" maxlength="100" minlength="2"  required>
+                 <span ng-show="naacForm.qualAdd.$error.minlength || naacForm.qualAdd.$error.maxlength" class="error">Length should be of 4.</span>
+                 <span ng-show="naacForm.qualAdd.$touched && naacForm.qualAdd.$error.required" class="error">Field cannot be empty</span>
+               </div>
+             </td> -->
+             <td>
+               <div class="input-field">
+                 <input placeholder="University/College" id="qualAdd" type="text" class="validate" ng-model="data.qualification_year_completion" name="qualAdd" maxlength="100" minlength="2"  required>
+                 <span ng-show="naacForm.qualAdd.$error.minlength || naacForm.qualAdd.$error.maxlength" class="error">Length should be of 4.</span>
+                 <span ng-show="naacForm.qualAdd.$touched && naacForm.qualAdd.$error.required" class="error">Field cannot be empty</span>
+               </div>
+             </td>
+           </tr>
+         </tbody>
+       </table>
+</fieldset>
+
+
+
+
+
+  </td>
+</tr>
+
+
+
+
+
+
+
+
+
+
+
+<!-- Impelmentaion of PDF -->
+
+
+
+
+
+
+<tr>
+  <td>
+
+<fieldset>
+  <legend> <div class="small-title left" style="padding-left:6px;">Details About PDF</div></legend>
+       <div class="right" style="display: flex; margin-bottom: 1em;">
+           <br>
+           <div style="flex: 0.8; color: lightslategrey;">
+           No PDF Acquired
+           </div>
+           &nbsp; &nbsp;
+           <div style="flex: 0.2">
+             <input type="checkbox" id="nopdf" ng-model="nopdf" />
+             <label for="nopdf"></label>
+           </div>
+       </div>
+
+  <table class="center" ng-if="!nopdf">
+         <thead>
+
+           <tr>
+             <td colspan="4">
+               <div >
+
+                 <div  class="small-title" style="padding-left:6px; color:black;font-size:14.5;">Title of Paper</div>
+                 <div  class="input-field">
+                     <input placeholder="Title of Paper" id="qualAdd" type="text" class="validate" ng-model="data.qualification_year_completion" name="qualAdd" maxlength="100" minlength="2"  required>
+                     <span ng-show="naacForm.qualAdd.$error.minlength || naacForm.qualAdd.$error.maxlength" class="error">Length should be of 4.</span>
+                     <span ng-show="naacForm.qualAdd.$touched && naacForm.qualAdd.$error.required" class="error">Field cannot be empty</span>
+                 </div>
+               </div>
+             </td>
+           </tr>
+
+
+           <tr>
+               <th class="center">Area of Specialization</th>
+               <th class="center">Year of Application</th>
+               <th class="center">Year of Acquiring</th>
+               <th class="center">University/College</th>
+           </tr>
+         </thead>
+
+         <tbody style="font-size:12px;">
+
+
+
+
+           <tr>
+
+
+             <td>
+               <div class="input-field">
+                 <input placeholder="Area of Specialization" id="qualAdd" type="text" class="validate" ng-model="data.qualification_year_completion" name="qualAdd" maxlength="100" minlength="2"  required>
+                 <span ng-show="naacForm.qualAdd.$error.minlength || naacForm.qualAdd.$error.maxlength" class="error">Length should be of 4.</span>
+                 <span ng-show="naacForm.qualAdd.$touched && naacForm.qualAdd.$error.required" class="error">Field cannot be empty</span>
+               </div>
+             </td>
+             <td>
+               <div class="input-field">
+                 <select name="start_yearUniversityAgency" ng-model="data.start_year" required>
+                   <option value="" disabled selected>Choose your option</option>
+                   <option value="2012">1980</option>
+                   <option value="2013">1981</option>
+                   <option value="2014">2014</option>
+                   <option value="2015">2015</option>
+                   <option value="2016">2016</option>
+                   <option value="2017">2017</option>
+                   <option value="2012">2012</option>
+                   <option value="2013">2013</option>
+                   <option value="2014">2014</option>
+                   <option value="2015">2015</option>
+                   <option value="2016">2016</option>
+                   <option value="2017">2017</option>
+                   <option value="2012">2012</option>
+                   <option value="2013">2013</option>
+                   <option value="2014">2014</option>
+                   <option value="2015">2015</option>
+                   <option value="2016">2016</option>
+                   <option value="2017">2017</option>
+                   <option value="2012">2012</option>
+                   <option value="2013">2013</option>
+                   <option value="2014">2014</option>
+                   <option value="2015">2015</option>
+                   <option value="2016">2016</option>
+                   <option value="2017">2017</option>
+
+                 </select>
+               </div>
+             </td>
+
+
+
+             <td>
+               <div class="input-field">
+                 <select name="start_yearUniversityAgency" ng-model="data.start_year" required>
+                   <option value="" disabled selected>Choose your option</option>
+                   <option value="2012">1980</option>
+                   <option value="2013">1981</option>
+                   <option value="2014">2014</option>
+                   <option value="2015">2015</option>
+                   <option value="2016">2016</option>
+                   <option value="2017">2017</option>
+                   <option value="2012">2012</option>
+                   <option value="2013">2013</option>
+                   <option value="2014">2014</option>
+                   <option value="2015">2015</option>
+                   <option value="2016">2016</option>
+                   <option value="2017">2017</option>
+                   <option value="2012">2012</option>
+                   <option value="2013">2013</option>
+                   <option value="2014">2014</option>
+                   <option value="2015">2015</option>
+                   <option value="2016">2016</option>
+                   <option value="2017">2017</option>
+                   <option value="2012">2012</option>
+                   <option value="2013">2013</option>
+                   <option value="2014">2014</option>
+                   <option value="2015">2015</option>
+                   <option value="2016">2016</option>
+                   <option value="2017">2017</option>
+
+                 </select>
+               </div>
+             </td>
+
+             <!-- <td>
+               <div class="input-field">
+                 <input placeholder="University" id="qualAdd" type="text" class="validate" ng-model="data.qualification_year_completion" name="qualAdd" maxlength="100" minlength="2"  required>
+                 <span ng-show="naacForm.qualAdd.$error.minlength || naacForm.qualAdd.$error.maxlength" class="error">Length should be of 4.</span>
+                 <span ng-show="naacForm.qualAdd.$touched && naacForm.qualAdd.$error.required" class="error">Field cannot be empty</span>
+               </div>
+             </td> -->
+             <td>
+               <div class="input-field">
+                 <input placeholder="University/College" id="qualAdd" type="text" class="validate" ng-model="data.qualification_year_completion" name="qualAdd" maxlength="100" minlength="2"  required>
+                 <span ng-show="naacForm.qualAdd.$error.minlength || naacForm.qualAdd.$error.maxlength" class="error">Length should be of 4.</span>
+                 <span ng-show="naacForm.qualAdd.$touched && naacForm.qualAdd.$error.required" class="error">Field cannot be empty</span>
+               </div>
+             </td>
+           </tr>
+         </tbody>
+       </table>
+</fieldset>
+
+
+
+
+
+  </td>
+</tr>
+
+
+
+
+
+
+
+<!--
+ <br><br>
+ <table>
+    <tbody>
+       <div class="small-title" style="padding-left:13px;">Details About Under Graduation</div>
+       <tr >
+
+         <td>
+
+           <div class="input-field col s6 fields">
+             Course Name
+           </div>
+           <div class="input-field col s6">
+             <select name="highestQual" ng-model="data.qualification_highest" required>
+               <option value="" disabled selected>Choose your option</option>
+               <option value="B.Arch">Bachelor of Architecture - B.Arch</option>
+               <option value="B.A">Bachelor of Arts - B.A.&nbsp;&nbsp; &nbsp;</option>
+               <option value="B.A.M.S">Bachelor of Ayurvedic Medicine &amp; Surgery - B.A.M.S.&nbsp;&nbsp; &nbsp;</option>
+               <option value="B.B.A">Bachelor of Business Administration - B.B.A.</option>
+               <option value="B.COM">Bachelor of Commerce - B.Com.</option>
+               <option value="B.C.A">Bachelor of Computer Applications - B.C.A.</option>
+               <option value="B.D.S">Bachelor of Dental Surgery - B.D.S.</option>
+               <option value="B.Des">Bachelor of Design - B.Des. / B.D.</option>
+               <option value="B.Ed">Bachelor of Education - B.Ed.</option>
+               <option value="B.E/B.TECH">Bachelor of Engineering / Bachelor of Technology - B.E./B.Tech.</option>
+               <option value="BFA/BVA">Bachelor of Fine Arts - BFA / BVA</option>
+               <option value="B.F.Sc/B.Sc(FISH)">Bachelor of Fisheries Science - B.F.Sc./ B.Sc. (Fisheries).</option>
+               <option value="B.H.M.S">Bachelor of Homoeopathic Medicine and Surgery - B.H.M.S.</option>
+               <option value="L.L.B">Bachelor of Laws - L.L.B.</option>
+               <option value="B.Lib/B.Lib.Sc">Bachelor of Library Science - B.Lib. / B.Lib.Sc.</option>
+               <option value="B.M.C/B.M.M">Bachelor of Mass Communications - B.M.C. / B.M.M.</option>
+               <option value="M.B.B.S">Bachelor of Medicine and Bachelor of Surgery - M.B.B.S.</option>
+               <option value="B.Nursing">Bachelor of Nursing </option>
+               <option value="B.Phram/B.Pharma">Bachelor of Pharmacy - B.Pharm / B.Pharma.</option>
+               <option value="B.P.Ed">Bachelor of Physical Education - B.P.Ed.</option>
+               <option value="B.P.T">Bachelor of Physiotherapy - B.P.T.</option>
+               <option value="B.Sc">Bachelor of Science - B.Sc.</option>
+               <option value="B.S.W/B.A(SW)">Bachelor of Social Work - BSW / B.A. (SW)</option>
+               <option value="B.V.Sc">Bachelor of Veterinary Science &amp; Animal Husbandry - B.V.Sc. &amp; A.H. / B.V.Sc</option>
+               <option value="other">Other</option>
+
+             </select>
+
+
+           </div>
+         </td>
+
+       </tr>
+
+    </tbody>
+ </table>
+
+
+ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <tr >
       <td>
 
         <div class="input-field col s6 fields">
-          Academic Experience (Years)
+          Highest Qualification
         </div>
         <div class="input-field col s6">
 
          <select name="acadExp" ng-model="data.title" required>
             <option value="" disabled selected>Choose your option</option>
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-            <option value="11">11</option>
-            <option value="12">12</option>
-            <option value="13">13</option>
-            <option value="14">14</option>
-            <option value="15">15</option>
-            <option value="16">16</option>
-            <option value="17">17</option>
-            <option value="18">18</option>
-            <option value="19">19</option>
-            <option value="20">20</option>
-            <option value="21">21</option>
-            <option value="22">22</option>
-            <option value="23">23</option>
-            <option value="24">24</option>
-            <option value="25">25</option>
+            <option value="UG">Undergraduate</option>
+            <option value="PG">Postgraduate</option>
+            <option value="PHD">PhD</option>
+            <option value="PDF">PDF</option>
+
           </select>
 
 
@@ -46,54 +685,11 @@
 
     </tr>
 
-    <tr>
-
-      <td>
-
-        <div class="input-field col s6 fields">
-          Industrial Experience (Years)
-        </div>
-        <div class="input-field col s6">
-          <!-- <input placeholder="Industrial Experience" id="indExp" type="number" class="validate" ng-model="data.industrial_exp" name="indExp" required>
-          <span ng-show="naacForm.indExp.$touched && naacForm.indExp.$error.required" class="error">Field cannot be empty</span> -->
-
-<select name="indExp" ng-model="data.industrial_exp" required>
-            <option value="" disabled selected>Choose your option</option>
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-            <option value="11">11</option>
-            <option value="12">12</option>
-            <option value="13">13</option>
-            <option value="14">14</option>
-            <option value="15">15</option>
-            <option value="16">16</option>
-            <option value="17">17</option>
-            <option value="18">18</option>
-            <option value="19">19</option>
-            <option value="20">20</option>
-            <option value="21">21</option>
-            <option value="22">22</option>
-            <option value="23">23</option>
-            <option value="24">24</option>
-            <option value="25">25</option>
-          </select>
 
 
-        </div>
-      </td>
 
-    </tr>
 
-    <tr >
+    <!-- <tr >
 
       <td>
 
@@ -163,6 +759,117 @@
       </td>
 
     </tr>
+ -->
+
+    <!-- <tr >
+
+      <td>
+
+        <div class="input-field col s6 fields">
+          Area Of Specialization
+        </div>
+        <div class="input-field col s6">
+          <input placeholder="Area of Specialization" id="qualAdd" type="text" class="validate" ng-model="data.qualification_year_completion" name="qualAdd" maxlength="4" minlength="4"  required>
+          <span ng-show="naacForm.qualAdd.$error.minlength || naacForm.qualAdd.$error.maxlength" class="error">Length should be of 4.</span>
+          <span ng-show="naacForm.qualAdd.$touched && naacForm.qualAdd.$error.required" class="error">Field cannot be empty</span>
+        </div>
+      </td>
+
+    </tr> -->
+
+
+
+    <tr >
+      <td>
+
+        <div class="input-field col s6 fields">
+          Academic Experience (Years)
+        </div>
+        <div class="input-field col s6">
+
+         <select name="acadExp" ng-model="data.title" required>
+            <option value="" disabled selected>Choose your option</option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>
+            <option value="15">15</option>
+            <option value="16">16</option>
+            <option value="17">17</option>
+            <option value="18">18</option>
+            <option value="19">19</option>
+            <option value="20">20</option>
+            <option value="21">21</option>
+            <option value="22">22</option>
+            <option value="23">23</option>
+            <option value="24">24</option>
+            <option value="25">25</option>
+          </select>
+
+
+        </div>
+      </td>
+
+    </tr>
+
+    <tr>
+
+      <td>
+
+        <div class="input-field col s6 fields">
+          Industrial Experience (Years)
+        </div>
+        <div class="input-field col s6">
+          <!-- <input placeholder="Industrial Experience" id="indExp" type="number" class="validate" ng-model="data.industrial_exp" name="indExp" required>
+          <span ng-show="naacForm.indExp.$touched && naacForm.indExp.$error.required" class="error">Field cannot be empty</span> -->
+
+        <select name="indExp" ng-model="data.industrial_exp" required>
+            <option value="" disabled selected>Choose your option</option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>
+            <option value="15">15</option>
+            <option value="16">16</option>
+            <option value="17">17</option>
+            <option value="18">18</option>
+            <option value="19">19</option>
+            <option value="20">20</option>
+            <option value="21">21</option>
+            <option value="22">22</option>
+            <option value="23">23</option>
+            <option value="24">24</option>
+            <option value="25">25</option>
+          </select>
+
+
+        </div>
+      </td>
+
+    </tr>
+
 
     <tr >
 
