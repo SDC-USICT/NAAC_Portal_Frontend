@@ -2,10 +2,10 @@ angular.module('employee')
 	.controller('LoginCtrl', ["$scope", "$http" , "$rootScope", "$window", "$location",
 		function ($scope, $http, $rootScope, $window, $location) {
 
-		if(sessionStorage.school == undefined || sessionStorage.loginid == undefined){
-			$location.path('/index');
+		if(sessionStorage.loginid == undefined){
+			$location.path('/selection');
 		}
-		if(sessionStorage.status != undefined && sessionStorage.school != undefined && sessionStorage.loginid != undefined){
+		if(sessionStorage.status != undefined && sessionStorage.loginid != undefined){
 		    $location.path('/dashboard');
         }
 		$rootScope.loginid = sessionStorage.loginid;

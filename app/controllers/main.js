@@ -60,13 +60,13 @@ angular.module('employee')
 				'selected' : $scope.schools[0]
 			};
 			$scope.setSelectedSchool = function () {
-			    sessionStorage.setItem('school',$scope.ss.selected);
+			 sessionStorage.setItem('school',$scope.ss.selected);
 				$rootScope.school = $scope.ss.selected;
 				$location.path('/selection');
 			};
-            $scope.school = "";
-            $scope.updateDept = function(department){
-                $scope.school = department;
-                $rootScope.school = department;
-            }
+   $scope.school = "";
+   $scope.updateDept = function(department){
+    $scope.school = department;
+    $rootScope.school = department;
+   }
 		}]);
