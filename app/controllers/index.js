@@ -5,7 +5,7 @@ angular.module('employee')
             $scope.baseUrl = $location.url();
 	        if(sessionStorage.declaration){
                 if(sessionStorage.declaration == "checked"){
-                    $location.path('/index');
+                    $location.path('/selection');
                 }
             }
                 
@@ -14,10 +14,10 @@ angular.module('employee')
                 if(sessionStorage.declaration == undefined){
                     sessionStorage.declaration = "checked";
                 }else{
-                    $location.path('/index');
+                    $location.path('/selection');
                 }
             
-                $location.path('/index');
+                $location.path('/selection');
             };
             $scope.redirect = function(){
             	$('.index').keydown(function(e){
