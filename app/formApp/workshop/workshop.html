@@ -1,134 +1,103 @@
 <section ng-include="'./app/views/partials/save.html'"></section>
 <table>
-  <tbody>
+   <tbody>
+      <tr>
+         <td>
+            <div class="input-field col s6 fields">
+               Name
+            </div>
+            <div class="input-field col s6">
+               <input placeholder="Name" id="nameWork" type="text" class="validate" ng-model="data.title" name="nameWork" required>
+               <span ng-show="naacForm.nameWork.$touched && naacForm.nameWork.$error.required" class="error">Field cannot be empty</span>
+            </div>
+         </td>
+      </tr>
 
-<tr >
-
-      <td>
-
-        <p style="padding-left: 12px;">
-          <input type="checkbox" id="worktb" ng-model="nowork" ng-checked="workChecked" ng-click="noWrk()" />
-          <label for="worktb">No Workshop
-          </label>
-        </p>
-      </td>
-      <td>
-
-        <div class="right" ng-show="nowork">
-          <button ng-click="setSelected(10)" style="margin-top: 1em; background-color: #1a237e" class="btn waves-effect waves-light no-borders">
-            <i style="font-size:1.2em; line-height:1.2em;" class="fa fa-paper-plane" aria-hidden="true"></i> GoTo Next Section
-          </button>
-        </div>
-
-      </td>
-
-    </tr>
-
-    <tr ng-show="!nowork">
-
-      <td>
-
-        <div class="input-field col s6 fields">
-          Name
-        </div>
-        <div class="input-field col s6">
-          <input placeholder="Name" id="nameWork" type="text" class="validate" ng-model="data.title" name="nameWork" required>
-          <span ng-show="naacForm.nameWork.$touched && naacForm.nameWork.$error.required" class="error">Field cannot be empty</span>
-        </div>
-      </td>
-
-    </tr>
-
-
-    <tr ng-show="!nowork">
-
-      <td>
-
-        <div class="input-field col s6 fields">
-          Date
-        </div>
-        <div class="input-field col s6">
-          <input placeholder="Date" id="dateWork" type="text" class="datepicker" ng-model="data.date" name="dateWork" required>
-        </div>
-      </td>
-
-    </tr>
-
-
-    <tr ng-show="!nowork">
-
-      <td>
-
-        <div class="input-field col s6 fields">
-          Duration
-        </div>
-        <div class="input-field col s6">
-          <!-- <input placeholder="Duration in Days" id="durinday" type="number" class="validate" ng-model="data.duration" name="durinday" required>
-          <span ng-show="naacForm.durinday.$touched && naacForm.durinday.$error.required" class="error">Field cannot be empty</span> -->
-
-<select name="durinday" ng-model="data.duration" required>
-            <option value="" disabled selected>Choose your option</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-            <option value="11">11</option>
-            <option value="12">12</option>
-            <option value="13">13</option>
-            <option value="14">14</option>
-            <option value="15">15</option>
-            <option value="16">16</option>
-            <option value="17">17</option>
-            <option value="18">18</option>
-            <option value="19">19</option>
-            <option value="20">20</option>
-            <option value="21">21</option>
-            <option value="22">22</option>
-            <option value="23">23</option>
-            <option value="24">24</option>
-            <option value="25">25</option>
-          </select>
-
-        </div>
-      </td>
-
-    </tr>
-
-    <tr ng-show="!nowork">
-
-      <td>
-
-        <div class="input-field col s6 fields">
-          Host Institute
-        </div>
-        <div class="input-field col s6">
-          <input placeholder="Host Institute" id="orgWork" type="text" class="validate" ng-model="data.organization" name="orgWork" required>
-          <span ng-show="naacForm.orgWork.$touched && naacForm.orgWork.$error.required" class="error">Field cannot be empty</span>
-        </div>
-      </td>
-
-    </tr>
-
-
-  </tbody>
+      <tr>
+         <td>
+            <div class="input-field col s6 fields">
+               Role
+            </div>
+            <div class="input-field col s6">
+              <select name="durinday" ng-model="data.role" required>
+                 <option value="" disabled selected>Choose your option</option>
+                 <option value="participated">Participated</option>
+                 <option value="organized">Organized</option>
+              </select>
+            </div>
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <div class="input-field col s6 fields">
+               Date
+            </div>
+            <div class="input-field col s6">
+               <input placeholder="Date" id="dateWork" type="text" class="datepicker" ng-model="data.date" name="dateWork" required>
+            </div>
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <div class="input-field col s6 fields">
+               Duration( In Days)
+            </div>
+            <div class="input-field col s6">
+               <select name="durinday" ng-model="data.duration" required>
+                  <option value="" disabled selected>Choose your option</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option value="12">12</option>
+                  <option value="13">13</option>
+                  <option value="14">14</option>
+                  <option value="15">15</option>
+                  <option value="16">16</option>
+                  <option value="17">17</option>
+                  <option value="18">18</option>
+                  <option value="19">19</option>
+                  <option value="20">20</option>
+                  <option value="21">21</option>
+                  <option value="22">22</option>
+                  <option value="23">23</option>
+                  <option value="24">24</option>
+                  <option value="25">25</option>
+               </select>
+            </div>
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <div class="input-field col s6 fields">
+               Host Institute
+            </div>
+            <div class="input-field col s6">
+               <input placeholder="Host Institute" id="orgWork" type="text" class="validate" ng-model="data.organization" name="orgWork" required>
+               <span ng-show="naacForm.orgWork.$touched && naacForm.orgWork.$error.required" class="error">Field cannot be empty</span>
+            </div>
+         </td>
+      </tr>
+   </tbody>
 </table>
 <script>
-  $(document).ready(function(){
-  $('.datepicker').pickadate({
-    selectMonths: true, // Creates a dropdown to control month
-    selectYears: 6, // Creates a dropdown of 15 years to control year,
-    min: [2010, 1, 01],//controls the  start year and month
-    max: [2017, 9, 31],// controls the end year and month
-    today: 'Today',
-    clear: 'Clear',
-    close: 'Ok',
-    closeOnSelect: false // Close upon selecting a date,
-  });
-});
+   $(document).ready(function(){
+   $('.datepicker').pickadate({
+     selectMonths: true, // Creates a dropdown to control month
+     selectYears: 6, // Creates a dropdown of 15 years to control year,
+     min: [2010, 1, 01],//controls the  start year and month
+     max: [2017, 9, 31],// controls the end year and month
+     today: 'Today',
+     clear: 'Clear',
+     close: 'Ok',
+     closeOnSelect: false // Close upon selecting a date,
+   });
+   });
 </script>

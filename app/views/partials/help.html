@@ -1,19 +1,22 @@
 <div>
-  <button class="btn waves-effect indigo waves-light no-borders modal-trigger" href="#modal1" style="margin-top: 12px;
+  <button class="btn waves-effect waves-light no-borders modal-trigger" href="#modal_help" style="margin-top: 12px;
 ">
- <i style="font-size:1.2em; line-height:1.2em;" aria-hidden="true"></i> &nbsp;HELP 
+<i class="material-icons left" >info</i>
+ &nbsp;HELP 
     </button>
 </div>
 
-<div id="modal1" class="modal bottom-sheet">
+<div id="modal_help" class="modal bottom-sheet">
     <div class="modal-content">
       <h4>{{attributes[selected].key}}</h4>
-      <p ng-repeat="x in attributes[selected].help">
+      <ul>
+      <li ng-repeat="x in attributes[selected].help" style="display: flex;">
       		{{x}}
-      </p>
+      </li>
+    </ul>
     </div>
     <div class="modal-footer">
-      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+      <span class="modal-action modal-close waves-effect waves-green btn-flat">Close</span>
     </div>
   </div>
 

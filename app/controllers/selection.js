@@ -2,30 +2,28 @@ angular.module('employee')
     .controller('SelCtrl', ["$scope", "$http" , "$rootScope", "$location", "$resource","$window",
         function ($scope, $http, $rootScope, $location, $resource,$window) {
             $scope.BACKEND = BACKEND;
-            if(sessionStorage.getItem('school') == undefined){
-                $location.path('/index');
-            }else if(sessionStorage.getItem('status') != undefined) {
+            if(sessionStorage.status != undefined) {
                 $location.path('/dashboard');
             }else {
-                 var data_emp = $resource(BACKEND + '/api/school', null, {
+            var data_emp = $resource(BACKEND + '/api/school', null, {
                 'query': {
                     method: 'POST',
                     isArray: true
                 }
-                });
-             data_emp.query({
-                school: sessionStorage.getItem('school')
+            });
+            data_emp.query({
+                school: sessionStorage.school
             }).$promise.then(function(data){
                 $scope.empData = data;
                 var prefix = ["Dr","Ms","Mr"];
                 var len = $scope.empData.length;
                 for(var j = 0;j < len;j++){
-                        if($scope.empData[j].fields.name.slice(0,2).match(/(Dr.|Dr|Mr|Ms|Mr.|Ms.|Dr .| Ms .|Mr . )/i)){
-                            var slice = $scope.empData[j].fields.name.slice(2);
-                            $scope.empData[j].fields.name="Prof. " + slice;
-                        }else if(!$scope.empData[j].fields.name.slice(0,6).match(/(Prof.|Prof|Prof .)/i)){
-                            $scope.empData[j].fields.name="Prof. " + $scope.empData[j].fields.name;
-                        }
+                    if($scope.empData[j].fields.name.slice(0,2).match(/(Dr.|Dr|Mr|Ms|Mr.|Ms.|Dr .| Ms .|Mr . )/i)){
+                        var slice = $scope.empData[j].fields.name.slice(2);
+                        $scope.empData[j].fields.name="Prof. " + slice;
+                    }else if(!$scope.empData[j].fields.name.slice(0,6).match(/(Prof.|Prof|Prof .)/i)){
+                        $scope.empData[j].fields.name="Prof. " + $scope.empData[j].fields.name;
+                    }
                 }
                  $(document).ready(function(){
                     $('.progress').css('display','none');

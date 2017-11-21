@@ -2,11 +2,11 @@ angular.module('employee')
 	.controller('MainCtrl', ["$scope", "$http" , "$rootScope", "$window", "$resource","$location", "$sessionStorage",
 		function ($scope, $http, $rootScope, $window, $resource, $location, $sessionStorage, getDept) {
 
-		if($sessionStorage.declaration == undefined){
+		if(sessionStorage.declaration == undefined){
 			console.log('undefined!')
 		   sessionStorage.clear();
 			$location.path('/');
-		}else if(sessionStorage.getItem('status') != undefined && sessionStorage.getItem('school') != undefined && sessionStorage.getItem('loginid') != undefined){
+		}else if(sessionStorage.status != undefined && sessionStorage.school != undefined && sessionStorage.loginid != undefined){
 		    $location.path('/dashboard');
         }
 			$scope.schools = [
@@ -60,13 +60,13 @@ angular.module('employee')
 				'selected' : $scope.schools[0]
 			};
 			$scope.setSelectedSchool = function () {
-			    sessionStorage.setItem('school',$scope.ss.selected);
+			 sessionStorage.setItem('school',$scope.ss.selected);
 				$rootScope.school = $scope.ss.selected;
 				$location.path('/selection');
 			};
-            $scope.school = "";
-            $scope.updateDept = function(department){
-                $scope.school = department;
-                $rootScope.school = department;
-            }
+   $scope.school = "";
+   $scope.updateDept = function(department){
+    $scope.school = department;
+    $rootScope.school = department;
+   }
 		}]);

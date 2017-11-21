@@ -15,7 +15,7 @@
                 <div class="teacher-id">{{employee.pk}}</div>
             </div>
             <div class="col m3 no-borders" style="background: white;">
-                <button href="#" class="btn waves-effect waves-light indigo darken-4 tooltipped right" data-position="bottom" data-delay="50" data-tooltip="Trouble Filling the Form" type="button" >Watch Video
+                <button href="#" class="btn waves-effect waves-light indigo darken-4 tooltipped right" data-position="bottom" data-delay="50" data-tooltip="Trouble Filling the Form?" type="button" >Watch Video
                 <i class="material-icons left">switch_video</i>
                 </button>
             </div>
@@ -48,27 +48,35 @@
                 </ul>
             </div>
             <div class="col m7">
-              {{info}}
+                <div class="center" style="display: flex; margin-top: 1.5em; margin-bottom: 1em;">
+                    <br>
+                    <div style="flex: 0.8; color: lightslategrey;">
+                    Check this box if you don't wish to add any {{ splitAtCaps(attributes[selected].key) }} details
+                    </div>
+                    &nbsp; &nbsp;
+                    <div style="flex: 0.2">
+                      <input ng-click="setfill()" type="checkbox" id="test5"  ng-model="dontfilldata[dontfillColumn]"/>
+                      <label for="test5"></label>
+                    </div>
+                </div>
                 <form name="naacForm" novalidate>
-                    <br>
-                    <br>
-                    <section ng-if="selected == '0'" data-ng-include src="'./app/formApp/awards/award.html'"></section>
-                    <section ng-if="selected == '1'" data-ng-include src="'./app/formApp/book/book.html'"></section>
-                    <section ng-if="selected == '2'" data-ng-include src="'./app/formApp/bookChapters/bookchapter.html'"></section>
-                    <section ng-if="selected == '3'" data-ng-include src="'./app/formApp/conference/conference.html'"></section>
-                    <section ng-if="selected == '4'" data-ng-include src="'./app/formApp/extra/extra.html'"></section>
-                    <section ng-if="selected == '5'" data-ng-include src="'./app/formApp/guestLecture/guestlecture.html'"></section>
-                    <section ng-if="selected == '6'" data-ng-include src="'./app/formApp/journalPaper/journal.html'"></section>
-                    <section ng-if="selected == '7'" data-ng-include src="'./app/formApp/membership/membership.html'"></section>
-                    <section ng-if="selected == '8'" data-ng-include src="'./app/formApp/patents/patent.html'"></section>
-                    <section ng-if="selected == '9'" data-ng-include src="'./app/formApp/professional/professional.html'"></section>
-                    <section ng-if="selected == '10'" data-ng-include src="'./app/formApp/projects/project.html'"></section>
-                    <section ng-if="selected == '11'" data-ng-include src="'./app/formApp/subjectTaken/subject.html'"></section>
-                    <section ng-if="selected == '12'" data-ng-include src="'./app/formApp/workshop/workshop.html'"></section>
+                    <section ng-if="selected == '0' && !dontfilldata[dontfillColumn]" data-ng-include src="'./app/formApp/awards/award.html'"></section>
+                    <section ng-if="selected == '1' && !dontfilldata[dontfillColumn]" data-ng-include src="'./app/formApp/book/book.html'"></section>
+                    <section ng-if="selected == '2' && !dontfilldata[dontfillColumn]" data-ng-include src="'./app/formApp/bookChapters/bookchapter.html'"></section>
+                    <section ng-if="selected == '3' && !dontfilldata[dontfillColumn]" data-ng-include src="'./app/formApp/conference/conference.html'"></section>
+                    <section ng-if="selected == '4' && !dontfilldata[dontfillColumn]" data-ng-include src="'./app/formApp/extra/extra.html'"></section>
+                    <section ng-if="selected == '5'&& !dontfilldata[dontfillColumn]" data-ng-include src="'./app/formApp/guestLecture/guestlecture.html'"></section>
+                    <section ng-if="selected == '6'&& !dontfilldata[dontfillColumn]" data-ng-include src="'./app/formApp/journalPaper/journal.html'"></section>
+                    <section ng-if="selected == '7'&& !dontfilldata[dontfillColumn]" data-ng-include src="'./app/formApp/membership/membership.html'"></section>
+                    <section ng-if="selected == '8'&& !dontfilldata[dontfillColumn]" data-ng-include src="'./app/formApp/patents/patent.html'"></section>
+                    <section ng-if="selected == '9'&& !dontfilldata[dontfillColumn]" data-ng-include src="'./app/formApp/professional/professional.html'"></section>
+                    <section ng-if="selected == '10'&& !dontfilldata[dontfillColumn]" data-ng-include src="'./app/formApp/projects/project.html'"></section>
+                    <section ng-if="selected == '11'&& !dontfilldata[dontfillColumn]" data-ng-include src="'./app/formApp/subjectTaken/subject.html'"></section>
+                    <section ng-if="selected == '12'&& !dontfilldata[dontfillColumn]" data-ng-include src="'./app/formApp/workshop/workshop.html'"></section>
                 </form>
             </div>
             <div  class="col m2" style="background: lavender;">
-                <div>
+                <div class="center">
                 <section ng-include="'./app/views/partials/help.html'"></section>
                 </div>
                 <br>
@@ -125,6 +133,36 @@
         <a ng-click="delete(selectedResultTheatre)" class="red modal-close btn waves-effect white-text ">DELETE</a>
     </div>
 </div>
+
+
+ <!-- modal trigger -->
+<div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Upload Your Photo</h4>
+      <p>
+        <form ng-submit="uploadImage()" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col md10" style="width: 75%;">
+                <div class="file-field input-field">
+                <div class="btn indigo darken-4">
+                    <span>Choose File</span>
+                    <input type="file" files-input ng-model="employeeMeta.image" id="fileUploadForm" class="image" placeholder="Click to Upload File">
+                </div>
+                <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text" style="border-bottom: 1px solid green;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <button type="submit" class="btn waves-effect indigo darken-4">UPLOAD
+        <i class="material-icons left">file_upload</i></button>
+      </form>
+      </p>
+    </div>
+
+  </div>
+
 <script type="text/javascript">
     $(document).ready(function(){
       $('.tooltipped').tooltip({delay: 50});
@@ -207,6 +245,26 @@
     color: red;
     font-weight: 400;
     }
+    .select-wrapper input.select-dropdown {
+    position: relative;
+    cursor: pointer;
+    background-color: aliceblue;
+    border: none;
+    border-bottom: 0 !important;
+    outline: none;
+    height: 3rem;
+    line-height: 3rem;
+    width: 100%;
+    font-size: 1rem;
+    margin: 0 0 20px 0;
+    padding: 0;
+    display: block;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    text-indent: 1em;
+}
 </style>
 <script>
     $(document).ready(function() {

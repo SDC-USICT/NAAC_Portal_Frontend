@@ -8,18 +8,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
         $scope.editing = 0;
         $scope.marked_authors = {};
         $scope.employeeMeta = {};
-        $scope.resetForm = function(){
-          $scope.data = {
 
-          };
-          $(document).ready(function() {
-              $('select').material_select();
-          })
-          Materialize.toast('Form Reset Successfully!', 3000,'red lighten-1')
-          $scope.naacForm.$setPristine();
-          $scope.naacForm.$setUntouched();
-          $scope.selectedResult = null;
-        }
         if ($rootScope.loginid == undefined) {
             if ($sessionStorage.loginid != undefined) {
                 $rootScope.loginid = $sessionStorage.loginid;
@@ -28,197 +17,11 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
             } else {
                 $location.url('/')
             }
-
-
-            if(localStorage.getItem("noAwards") == "true"){
-                    $scope.noaward = 1;
-                    $scope.awardChecked = 1;
-      }
-
-       // for yes/no section
-            $scope.noAwrd = function(){
-                  if(localStorage.getItem('noAwards') == undefined){
-                    localStorage.setItem('noAwards', "true");
-                    $scope.awardChecked = 1;
-                  }else if($scope.awardChecked){
-                      localStorage.removeItem('noAwards');
-                      $scope.noaward = 1;
-                  }
-           }
-
-
-      if(localStorage.getItem("noJp") == "true"){
-                    $scope.nojp = 1;
-                    $scope.jpChecked = 1;
-      }
-
-      // for yes/no section
-            $scope.noJoP = function(){
-                  if(localStorage.getItem('noJp') == undefined){
-                    localStorage.setItem('noJp', "true");
-                    $scope.jpChecked = 1;
-                  }else if($scope.jpChecked){
-                      localStorage.removeItem('noJp');
-                      $scope.nojp = 1;
-                  }
-           }
-
-
-      if(localStorage.getItem('noConf') == "true"){
-                    $scope.noconf = 1;
-                    $scope.confChecked = 1;
-      }
-      // for yes/no section
-            $scope.noCnf = function(){
-                  if(localStorage.getItem('noConf') == undefined){
-                    localStorage.setItem('noConf', "true");
-                    $scope.confChecked = 1;
-                  }else if($scope.confChecked){
-                      localStorage.removeItem('noConf');
-                      $scope.noconf = 1;
-                  }
-           }
-
-
-      if(localStorage.getItem('noBChap') == "true"){
-                    $scope.nobchap = 1;
-                    $scope.bchapChecked = 1;
-      }
-
-// for yes/no section
-            $scope.noBChp = function(){
-                  if(localStorage.getItem('noBChap') == undefined){
-                    localStorage.setItem('noBChap', "true");
-                    $scope.bchapChecked = 1;
-                  }else if($scope.bchapChecked){
-                      localStorage.removeItem('noBChap');
-                      $scope.nobchap = 1;
-                  }
-           }
-
-      if(localStorage.getItem('noBook') == "true"){
-                    $scope.nobook = 1;
-                    $scope.bookChecked = 1;
-      }
-
-// for yes/no section
-            $scope.noBok = function(){
-                  if(localStorage.getItem('noBook') == undefined){
-                    localStorage.setItem('noBook', "true");
-                    $scope.bookChecked = 1;
-                  }else if($scope.bookChecked){
-                      localStorage.removeItem('noBook');
-                      $scope.nobook = 1;
-                  }
-           }
-
-
-      if(localStorage.getItem('noWork') == "true"){
-                    $scope.nowork = 1;
-                    $scope.workChecked = 1;
-      }
-
-// for yes/no section
-            $scope.noWrk = function(){
-                  if(localStorage.getItem('noWork') == undefined){
-                    localStorage.setItem('noWork', "true");
-                    $scope.workChecked = 1;
-                  }else if($scope.workChecked){
-                      localStorage.removeItem('noWork');
-                      $scope.nowork = 1;
-                  }
-           }
-
-      if(localStorage.getItem('noProj') == "true"){
-                    $scope.noproj = 1;
-                    $scope.projChecked = 1;
-      }
-
-// for yes/no section
-            $scope.noPrj = function(){
-                  if(localStorage.getItem('noProj') == undefined){
-                    localStorage.setItem('noProj', "true");
-                    $scope.projChecked = 1;
-                  }else if($scope.projChecked){
-                      localStorage.removeItem('noProj');
-                      $scope.noproj= 1;
-                  }
-           }
-
-      if(localStorage.getItem('noMem') == "true"){
-                    $scope.nomem = 1;
-                    $scope.memChecked = 1;
-      }
-// for yes/no section
-            $scope.noMemb = function(){
-                  if(localStorage.getItem('noMem') == undefined){
-                    localStorage.setItem('noMem', "true");
-                    $scope.memChecked = 1;
-                  }else if($scope.memChecked){
-                      localStorage.removeItem('noMem');
-                      $scope.nomem = 1;
-                  }
-           }
-
-
-      if(localStorage.getItem('noPat') == "true"){
-                    $scope.nopat = 1;
-                    $scope.patChecked = 1;
-      }
-
-// for yes/no section
-            $scope.noPt = function(){
-                  if(localStorage.getItem('noPat') == undefined){
-                    localStorage.setItem('noPat', "true");
-                    $scope.patChecked = 1;
-                  }else if($scope.patChecked){
-                      localStorage.removeItem('noPat');
-                      $scope.nopat = 1;
-                  }
-           }
-
-
-      if(localStorage.getItem('noExt') == "true"){
-                    $scope.noext = 1;
-                    $scope.extChecked = 1;
-      }
-
-
-           // for yes/no section
-            $scope.noEX = function(){
-                  if(localStorage.getItem('noExt') == undefined){
-                    localStorage.setItem('noExt', "true");
-                    $scope.extChecked = 1;
-                  }else if($scope.extChecked){
-                      localStorage.removeItem('noExt');
-                      $scope.noext = 1;
-                  }
-           }
-
-
-      if(localStorage.getItem('noGLec') == "true"){
-                    $scope.noglec = 1;
-                    $scope.glecChecked = 1;
-      }
-
-// for yes/no section
-            $scope.noGL = function(){
-                  if(localStorage.getItem('noGLec') == undefined){
-                    localStorage.setItem('noGLec', "true");
-                    $scope.glecChecked = 1;
-                  }else if($scope.glecChecked){
-                      localStorage.removeItem('noGLec');
-                      $scope.noglec = 1;
-                  }
-           }
-
-
         }
         //This is used to send data to backend
 
-        $scope.data = {
+        $scope.data = {}
 
-        }
         //This is save method
         $scope.saveForm = function() {
             console.log('Inside saveform')
@@ -400,7 +203,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                 }
                 if (value == 'Awards') {
                     tmp['priority'] = 10;
-                    tmp['help'] = ["Award 1", "Award 2"];
+                    tmp['help'] = ["Enter the title of Award", "Organisation : The name of the organisation you received award from."];
                     tmp['icon'] = "album";
                 }
                 else if (value == 'Book') {
@@ -439,6 +242,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                 else if (value == 'Professional') {
                     tmp['priority'] = 0;
                     tmp['icon'] =  "account_box";
+                    tmp['help'] = ["Year of Acquiring of Highest Qualification : Enter the year you received your highest qualification. Example : 2000", "Ph.D Pursuing : Number of student pursuing Ph.D ","Ph.D Submitted : Number of student submitted Ph.D ","Ph.D Awarded : Number of student Awarded Ph.D "];
                 }
                 else if (value == 'Projects') {
                     tmp['priority'] = 6;
@@ -459,7 +263,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
 
 
             $scope.setSelected(9);
-            console.log($scope.attributes);
+            console.log($scope.attributes[$scope.selected].key);
         });
         //  Set all input editable.
         $scope.setEditing = function() {
@@ -502,6 +306,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
         // Set selected tab.
         $scope.setSelected = function(value) {
             $scope.selected = value;
+
             $scope.data = {};
             console.log($scope.data);
             $scope.naacForm.$setPristine();
@@ -525,6 +330,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                 console.log(data)
                 $scope.mySelectedData = data;;
                 console.log($scope.results)
+                $scope.dontfill();
                 if (data[0] != undefined) {
                     //$scope.model_type = data[0].model;
                     //$scope.saved_columns = data[0].fields;
@@ -738,7 +544,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
             $http.post(BACKEND + '/api/post', JSON.stringify(rq))
                 .then(function(res) {
                     if (res.data.error) {
-                        Materialize.toast('Oops! Error', 4000)
+                        Materialize.toast('Oops! Error', 4000,'red darken-4')
                         return;
                     }
                     Materialize.toast('Data Saved Successfully!', 4000)
@@ -782,7 +588,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
             $http.post(BACKEND + '/api/delete', JSON.stringify(rq))
                 .then(function(res) {
                     if (res.data.error) {
-                        Materialize.toast('Oops! Error', 4000)
+                        Materialize.toast('Oops! Error', 4000,'red darken-4')
                         return;
                     }
                     Materialize.toast('Record Deleted Successfully!', 4000)
@@ -872,6 +678,30 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
         }
 
 
+        $scope.changePassword = function(){
+          $location.path('/changepassword');
+        }
+        $scope.chanPass = function(){
+          $scope.passwords = {
+            "curpass" : $scope.curpass,
+            "newpass" : $scope.newpass,
+            "confpass" : $scope.confpass,
+            "loginid":sessionStorage.loginid
+          }
+            $http.post(BACKEND +'/api/changePassword', JSON.stringify($scope.passwords))
+        .then(function (res) {
+          console.log(res);
+          if(res.data.error != undefined){
+            Materialize.toast('Please Enter Correct Password', 4000,'red darken-4');
+          }else if (res.data.mod != undefined) {
+              Materialize.toast('New Passwords do not matched', 4000,'red darken-4');
+          }else if (res.data.success != undefined) {
+              Materialize.toast('Password Changed Successfully', 4000);
+              $location.path('/dashboard');
+          }
+        });
+        }
+
 
         //Add coauthor
         $scope.add_coauthor = function() {
@@ -890,11 +720,61 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
             })
         }
 
-        $scope.validator - function() {
-            if (kls == 'Author') {
-
-            }
+        $scope.resetForm = function(){
+          $scope.data = {};
+            $(document).ready(function() {
+                $('select').material_select();
+            })
+            Materialize.toast('Form Reset Successfully!', 3000)
+            $scope.naacForm.$setPristine();
+            $scope.naacForm.$setUntouched();
+            $scope.selectedResult = null;
         }
+
+        $scope.dontfill = function(){
+          var data_emp = $resource(BACKEND + '/api/dontfill', null, {
+              'query': {
+                  method: 'POST',
+                  isArray: false
+              }
+          });
+          // Fetching teacher data from BACKEND.
+          data_emp.query({
+              empid: $rootScope.loginid
+          }).$promise.then(function(data) {
+            console.log(JSON.stringify(data));
+            $scope.dontfilldata=data.toJSON();
+            $scope.dontfillColumn=$scope.attributes[$scope.selected].key;
+            console.log($scope.dontfillColumn);
+            $scope.dontfillColumn=$scope.dontfillColumn.replace(/(?:^|\.?)([A-Z])/g, function (x,y){return "_" + y.toLowerCase()}).replace(/^_/, "");
+            console.log($scope.dontfillColumn);
+
+          });
+
+
+
+        }
+
+        $scope.setfill = function(){
+
+          data=$scope.dontfilldata;
+          data.pk=$rootScope.loginid;
+          console.log(data);
+          data=JSON.stringify(data);
+
+
+          $http({
+                method: 'POST',
+                url: BACKEND + '/api/set_dontfill',
+                data: data,
+                transformRequest: angular.identity
+            })
+            .then(function(response) {
+                console.log(response.data)
+                Materialize.toast('All changes saved for this column.', 4000)
+              });
+
+      }
 
 
     }

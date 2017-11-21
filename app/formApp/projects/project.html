@@ -1,208 +1,144 @@
 <section ng-include="'./app/views/partials/save.html'"></section>
 <table>
-  <tbody>
-
-
-    <tr >
-
-      <td>
-
-        <p style="padding-left: 12px;">
-          <input type="checkbox" id="projtb" ng-model="noproj" ng-checked="projChecked" ng-click="noPrj()" />
-          <label for="projtb">No Projects
-          </label>
-        </p>
-      </td>
-      <td>
-
-        <div class="right" ng-show="noproj">
-          <button ng-click="setSelected(5)" style="margin-top: 1em; background-color: #1a237e" class="btn waves-effect waves-light no-borders">
-            <i style="font-size:1.2em; line-height:1.2em;" class="fa fa-paper-plane" aria-hidden="true"></i> GoTo Next Section
-          </button>
-        </div>
-
-      </td>
-
-    </tr>
-
-    <tr ng-show="!noproj">
-
-      <td>
-
-        <div class="input-field col s6 fields">
-          Project Title
-        </div>
-        <div class="input-field col s6">
-          <input placeholder="Project Title" id="projectTitle" type="text" class="validate" ng-model="data.title" name="projectTitle" ng-minlength="3" ng-maxlength="100" required>
-          <span ng-show="naacForm.projectTitle.$error.minlength || naacForm.projectTitle.$error.maxlength" class="error">Project title length should be between 3 and 100.</span>
-          <span ng-show="naacForm.projectTitle.$touched && naacForm.projectTitle.$error.required" class="error">Field cannot be empty</span>
-        </div>
-      </td>
-
-    </tr>
-
-
-    <tr ng-show="!noproj">
-
-      <td>
-
-        <div class="input-field col s6 fields">
-          Sponsoring Agency
-        </div>
-        <div class="input-field col s6">
-          <input placeholder="Sponsoring Agency" id="projectSponsor" type="text" class="validate" ng-model="data.sponsors" name="projectSponsor" ng-minlength="3" ng-maxlength="100" required>
-          <span ng-show="naacForm.projectSponsor.$error.minlength || naacForm.projectSponsor.$error.maxlength" class="error">Sponsor name should be  3 to 100 character long. </span>
-          <span ng-show="naacForm.projectSponsor.$touched && naacForm.projectSponsor.$error.required" class="error">Field cannot be empty</span>
-
-        </div>
-      </td>
-
-    </tr>
-
-
-<tr ng-show="!noproj">
-
-  <td>
-
-    <div class="input-field col s6 fields">
-      Status of Project
-    </div>
-    <div class="input-field col s6">
-      <select name="conferenceYear" ng-model="data.status" required>
-        <option value="" disabled selected>Choose your option</option>
-        <option value="completed">Completed</option>
-        <option value="inprogress">In-Progress</option>
-        <option value="abandoned">Work Abandoned</option>
-
-      </select>
-    </div>
-  </td>
-
-</tr>
-
-
-
-    <tr ng-show="!noproj">
-
-      <td>
-
-        <div class="input-field col s6 fields">
-          Start Date of Project
-        </div>
-        <div class="input-field col s6">
-          <input placeholder="Start Date of Project" id="projectDateAward" type="text" class="datepicker" ng-model="data.date_of_award" name="projectDateAward" required>
-
-        </div>
-      </td>
-
-    </tr>
-
-
-    <tr ng-show="!noproj">
-
-      <td>
-
-        <div class="input-field col s6 fields">
-          End Date of Project
-        </div>
-        <div class="input-field col s6">
-          <input placeholder="End Date of Project" id="projectDateCompleted" type="text" class="datepicker" ng-model="data.date_completed" name="projectDateCompleted" required>
-
-        </div>
-      </td>
-
-    </tr>
-
-
-    <tr ng-show="!noproj">
-
-      <td>
-
-        <div class="input-field col s6 fields">
-        Project Amount Sanctioned
-        </div>
-        <div class="col s1" style="position: relative;top: 20px;font-size: 20px;font-weight: 400;">
-          <span>&#8377;</span>
-        </div>
-        <div class="input-field col s5">
-          <input placeholder="Project Amount Sanctioned" id="projectAmount" type="number" class="validate" ng-model="data.amnt_sanctioned" name="projectAmount" ng-minlength="3" ng-maxlength="10" required>
-          <span ng-show="naacForm.projectAmount.$error.minlength || naacForm.projectAmount.$error.maxlength" class="error">Amount should be  3 to 10 character long. </span>
-          <span ng-show="naacForm.projectAmount.$touched && naacForm.projectAmount.$error.required" class="error">Field cannot be empty</span>
-
-        </div>
-      </td>
-
-    </tr>
-
- <tr ng-show="!noproj">
-
-      <td>
-
-        <div class="input-field col s6 fields">
-          Principle Investigator
-        </div>
-        <div class="input-field col s6">
-          <input placeholder="Project Principle Investigator" id="projectPI" type="text" class="validate" ng-model="data.author" name="projectPI" ng-minlength="3" ng-maxlength="100" required>
-          <span ng-show="naacForm.projectPI.$error.minlength || naacForm.projectPI.$error.maxlength" class="error">Text length should be between 3 and 100.</span>
-          <span ng-show="naacForm.projectPI.$touched && naacForm.projectPI.$error.required" class="error">Field cannot be empty</span>
-        </div>
-      </td>
-
-    </tr>
-    <!-- Project Co-Author -->
-<tr ng-show="!noproj">
-
-  <td>
-    <div class="input-field col s2 fields">
-          Co Principle Investigators
-    </div>
-    <div class="col s10">
-      <br><br>
-      <div class="row" ng-repeat="(k, v) in data.coauthor">
-        <div class="col m2" style="color: #9e9e9e;font-size: 14px;padding-top: 10px; ">
-          <span>#</span>
-          {{ $index + 1}}
-        </div>
-        <div class="col m4">
-          <input type="text" name="" ng-model="v.name" placeholder="Name">
-        </div>
-        <div class="col m4">
-          <input type="text" name="" ng-model="v.email" placeholder="Email">
-        </div>
-        <div class="col m1" ng-if="v.approved == '0'">
-          <div class="tooltip">?
-            <span class="tooltiptext">Waiting For Confirmation...</span>
-          </div>
-        </div>
-        <div class="col m1">
-          <div ng-click="removecoauthor($index)" class="tooltip red">X
-            <span class="tooltiptext">Remove</span>
-          </div>
-
-        </div>
-
-      </div>
-      <div class="right">
-        <button ng-click="hello()" background-color="#1a237e" class="btn waves-effect waves-light no-borders">
-          <i style="font-size:1.2em; line-height:1.2em;" class="fa fa-plus-circle" aria-hidden="true"></i> ADD CO Principle Investigator
-        </button>
-      </div>
-  </td>
-</tr>
-
-
-
-
-
-    </tbody>
+   <tbody>
+      <tr>
+         <td>
+            <div class="input-field col s6 fields">
+               Project Title
+            </div>
+            <div class="input-field col s6">
+               <input placeholder="Project Title" id="projectTitle" type="text" class="validate" ng-model="data.title" name="projectTitle" ng-minlength="3" ng-maxlength="100" required>
+               <span ng-show="naacForm.projectTitle.$error.minlength || naacForm.projectTitle.$error.maxlength" class="error">Project title length should be between 3 and 100.</span>
+               <span ng-show="naacForm.projectTitle.$touched && naacForm.projectTitle.$error.required" class="error">Field cannot be empty</span>
+            </div>
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <div class="input-field col s6 fields">
+               Sponsoring Agency
+            </div>
+            <div class="input-field col s6">
+               <input placeholder="Sponsoring Agency" id="projectSponsor" type="text" class="validate" ng-model="data.sponsors" name="projectSponsor" ng-minlength="3" ng-maxlength="100" required>
+               <span ng-show="naacForm.projectSponsor.$error.minlength || naacForm.projectSponsor.$error.maxlength" class="error">Sponsor name should be  3 to 100 character long. </span>
+               <span ng-show="naacForm.projectSponsor.$touched && naacForm.projectSponsor.$error.required" class="error">Field cannot be empty</span>
+            </div>
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <div class="input-field col s6 fields">
+               Status of Project
+            </div>
+            <div class="input-field col s6">
+               <select name="conferenceYear" ng-model="data.status" required>
+                  <option value="" disabled selected>Choose your option</option>
+                  <option value="completed">Completed</option>
+                  <option value="inprogress">In-Progress</option>
+                  
+               </select>
+            </div>
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <div class="input-field col s6 fields">
+               Start Date of Project
+            </div>
+            <div class="input-field col s6">
+               <input placeholder="Start Date of Project" id="projectDateAward" type="text" class="datepicker" ng-model="data.date_of_award" name="projectDateAward" required>
+            </div>
+         </td>
+      </tr>
+      <tr ng-if="data.status=='completed'">
+         <td>
+            <div class="input-field col s6 fields">
+               End Date of Project
+            </div>
+            <div class="input-field col s6">
+               <input placeholder="End Date of Project" id="projectDateCompleted" type="text" class="datepicker" ng-model="data.date_completed" name="projectDateCompleted" required>
+            </div>
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <div class="input-field col s6 fields">
+               Project Amount Sanctioned
+            </div>
+            <div class="col s1" style="position: relative;top: 20px;font-size: 20px;font-weight: 400;">
+               <span>&#8377;</span>
+            </div>
+            <div class="input-field col s5">
+               <input placeholder="Project Amount Sanctioned" id="projectAmount" type="number" class="validate" ng-model="data.amnt_sanctioned" name="projectAmount" ng-minlength="3" ng-maxlength="10" required>
+               <span ng-show="naacForm.projectAmount.$error.minlength || naacForm.projectAmount.$error.maxlength" class="error">Amount should be  3 to 10 character long. </span>
+               <span ng-show="naacForm.projectAmount.$touched && naacForm.projectAmount.$error.required" class="error">Field cannot be empty</span>
+            </div>
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <div class="input-field col s6 fields">
+               Principle Investigator
+            </div>
+            <div class="input-field col s6">
+               <input placeholder="Project Principle Investigator" id="projectPI" type="text" class="validate" ng-model="data.author" name="projectPI" ng-minlength="3" ng-maxlength="100" required>
+               <span ng-show="naacForm.projectPI.$error.minlength || naacForm.projectPI.$error.maxlength" class="error">Text length should be between 3 and 100.</span>
+               <span ng-show="naacForm.projectPI.$touched && naacForm.projectPI.$error.required" class="error">Field cannot be empty</span>
+            </div>
+         </td>
+      </tr>
+      <!-- Project Co-Author -->
+      <tr>
+         <td>
+            <div class="input-field col s2 fields">
+               Co Principle Investigators
+            </div>
+            <div class="col s10">
+            <br><br>
+            <div class="row" ng-repeat="(k, v) in data.coauthor">
+               <div class="col m2" style="color: #9e9e9e;font-size: 14px;padding-top: 10px; ">
+                  <span>#</span>
+                  {{ $index + 1}}
+               </div>
+               <div class="col m4">
+                  <input type="text" name="" ng-model="v.name" placeholder="Name">
+               </div>
+               <div class="col m4">
+                  <input type="text" name="" ng-model="v.email" placeholder="Email">
+               </div>
+               <div class="col m1" ng-if="v.approved == '0'">
+                  <div class="tooltip">?
+                     <span class="tooltiptext">Waiting For Confirmation...</span>
+                  </div>
+               </div>
+               <div class="col m1">
+                  <div ng-click="removecoauthor($index)" class="tooltip red">X
+                     <span class="tooltiptext">Remove</span>
+                  </div>
+               </div>
+            </div>
+            <div class="right">
+               <button ng-click="hello()" background-color="#1a237e" class="btn waves-effect waves-light no-borders">
+               <i style="font-size:1.2em; line-height:1.2em;" class="fa fa-plus-circle" aria-hidden="true"></i> ADD CO Principle Investigator
+               </button>
+            </div>
+         </td>
+      </tr>
+   </tbody>
 </table>
 <script>
 
   $(document).ready(function(){
-    var from_$input = $('#projectDateAward').pickadate(),
+    var from_$input = $('#projectDateAward').pickadate({
+      selectMonths: true, // Creates a dropdown to control month
+      selectYears: 6
+    }),
     from_picker = from_$input.pickadate('picker')
 
-var to_$input = $('#projectDateCompleted').pickadate(),
+var to_$input = $('#projectDateCompleted').pickadate({
+  selectMonths: true, // Creates a dropdown to control month
+  selectYears: 6
+}),
     to_picker = to_$input.pickadate('picker')
 
 

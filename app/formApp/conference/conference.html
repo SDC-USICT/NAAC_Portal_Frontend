@@ -1,31 +1,8 @@
 <section ng-include="'./app/views/partials/save.html'"></section>
-<table>
+<table >
   <tbody>
-
-<tr >
-
-      <td>
-
-        <p style="padding-left: 12px;">
-          <input type="checkbox" id="noconf" ng-model="noconf" ng-checked="confChecked" ng-click="noCnf()"  />
-          <label for="noconf">No Conference Attended
-          </label>
-        </p>
-      </td>
-      <td>
-
-        <div class="right" ng-show="noconf">
-          <button ng-click="setSelected(2)" style="margin-top: 1em; background-color: #1a237e" class="btn waves-effect waves-light no-borders">
-            <i style="font-size:1.2em; line-height:1.2em;" class="fa fa-paper-plane" aria-hidden="true"></i> GoTo Next Section
-          </button>
-        </div>
-
-      </td>
-
-    </tr>
-
     <!-- Publication Title -->
-    <tr ng-if="!noconf">
+    <tr>
 
       <td>
 
@@ -40,10 +17,24 @@
       </td>
 
     </tr>
+    <tr>
+         <td>
+            <div class="input-field col s6 fields">
+               Role
+            </div>
+            <div class="input-field col s6">
+              <select name="durinday" ng-model="data.role" required>
+                 <option value="" disabled selected>Choose your option</option>
+                 <option value="participated">Participated</option>
+                 <option value="organized">Organized</option>
+              </select>
+            </div>
+         </td>
+      </tr>
 
     <!-- Name of Publisher-->
 
-    <tr ng-if="!noconf">
+    <tr>
 
       <td>
 
@@ -64,7 +55,7 @@
     <!-- Publication Volume Number -->
 
 
-    <tr ng-if="!noconf">
+    <tr>
 
       <td>
 
@@ -83,12 +74,12 @@
 
 
 <!-- Publication ISBN Number -->
-    <tr ng-if="!noconf">
+    <tr>
 
       <td>
 
         <div class="input-field col s6 fields">
-          ISBN No.
+          ISBN/ISSN No.
         </div>
         <div class="input-field col s6">
           <input placeholder="Enter publication ISBN no." id="conferenceISBN" type="number" class="validate" ng-model="data.issn_isbn" name="conferenceISBN" ng-minlength="10" ng-maxlength="13" required>
@@ -102,7 +93,7 @@
 
 
     <!-- Publication Indexing -->
-    <tr ng-if="!noconf">
+    <tr>
 
       <td>
 
@@ -119,46 +110,8 @@
 
     </tr>
 
-
-
- <!-- Publication Indexing -->
-    <!-- <tr ng-if="!noconf">
-
-      <td>
-
-
-        <div class="input-field col s12">
-          <div class="row">
-            <div class="col m6" style="display: flex">
-              From Page Number
-
-              <input id="conferencePageNoStart" type="number" class="validate" ng-model="data.page_no_start" name="conferencePageNoStart" ng-minlength="3" ng-maxlength="100" required>
-              <span ng-show="naacForm.conferencePageNoStart.$touched && naacForm.conferencePageNoStart.$error.required" class="error">Field cannot be empty</span>
-
-
-
-            </div>
-            <div class="col m6" style="display: flex">
-              To Page Number
-
-                <input id="conferencePageNoEnd" type="number" class="validate" ng-model="data.page_no_end" name="conferencePageNoEnd" ng-minlength="3" ng-maxlength="100" required>
-              <span ng-show="naacForm.conferencePageNoEnd.$touched && naacForm.conferencePageNoEnd.$error.required" class="error">Field cannot be empty</span>
-
-            </div>
-          </div>
-        </div>
-      </td>
-
-    </tr>
- -->
-
-
-
-
-    <tr ng-show="!noconf">
-
+    <tr>
           <td>
-
             <div class="input-field col s12">
               <div class="row">
                 <div class="col m6" style="display: flex">
@@ -184,17 +137,17 @@
         </tr>
 <!-- Publication Year -->
 
-<tr ng-if="!noconf">
+<tr>
 
   <td>
 
     <div class="input-field col s6 fields">
-      Conference Year
+      Year and Month
     </div>
-    <div class="input-field col s6">
-      <select name="conferenceYear" ng-model="data.year" required>
-        <option value="" disabled selected>Choose your option</option>
-        <option value="2012">2012</option>
+    <div class="input-field col s3">
+      <select name="extraYear" ng-model="data.year" >
+        <option value="" disabled>Choose Year</option>
+        <option value="2012" selected>2012</option>
         <option value="2013">2013</option>
         <option value="2014">2014</option>
         <option value="2015">2015</option>
@@ -203,76 +156,87 @@
 
       </select>
     </div>
-  </td>
-
-</tr>
-
-
-
-<!-- Conference National or International -->
-<tr ng-if="!noconf">
-
-  <td>
-
-    <div class="input-field col s6 fields">
-      National/International
-    </div>
-    <div class="input-field col s6">
-      <select name="conferenceNation" ng-model="data.international_national" required>
-        <option value="" disabled selected>Choose your option</option>
-        <option value="national">National</option>
-        <option value="international">International</option>
+    <div class="input-field col s3">
+      <select name="monthAward" ng-model="data.month" required>
+        <option value="" disabled selected>Choose Month</option>
+        <option value="jan">January</option>
+        <option value="feb">February</option>
+        <option value="mar">March</option>
+        <option value="apr">April</option>
+        <option value="may">May</option>
+        <option value="june">June</option>
+        <option value="july">July</option>
+        <option value="aug">August</option>
+        <option value="sep">September</option>
+        <option value="oct">October</option>
+        <option value="nov">November</option>
+        <option value="dec">December</option>
       </select>
     </div>
   </td>
 
 </tr>
 
+    <!-- Book National or International -->
+    <tr>
 
-    <!-- Book Co-Author -->
-<!-- implementation of co author -->
-<tr ng-if="!noconf">
+      <td>
 
-  <td>
-    <div class="input-field col s2 fields">
-          Co Authors
-    </div>
-    <div class="col s10">
-      <br><br>
-      <div class="row" ng-repeat="(k, v) in data.coauthor">
-        <div class="col m2" style="color: #9e9e9e;font-size: 14px;padding-top: 10px; ">
-          <span>#</span>
-          {{ $index + 1}}
+        <div class="input-field col s6 fields">
+          National/International
         </div>
-        <div class="col m4">
-          <input type="text" name="" ng-model="v.name" placeholder="Name">
+        <div class="input-field col s6">
+          <select name="conferenceNation" ng-model="data.international_national" required>
+            <option value="" disabled selected>Choose your option</option>
+            <option value="national">National</option>
+            <option value="international">International</option>
+          </select>
         </div>
-        <div class="col m4">
-          <input type="text" name="" ng-model="v.email" placeholder="Email">
+      </td>
+
+    </tr>
+
+
+     <!-- Book Co-Author -->
+    <!-- implementation of co author -->
+    <tr>
+
+      <td>
+        <div class="input-field col s2 fields">
+              Co Authors
         </div>
-        <div class="col m1" ng-if="v.approved == '0'">
-          <div class="tooltip">?
-            <span class="tooltiptext">Waiting For Confirmation...</span>
+        <div class="col s10">
+          <br><br>
+          <div class="row" ng-repeat="(k, v) in data.coauthor">
+            <div class="col m2" style="color: #9e9e9e;font-size: 14px;padding-top: 10px; ">
+              <span>#</span>
+              {{ $index + 1}}
+            </div>
+            <div class="col m4">
+              <input type="text" name="" ng-model="v.name" placeholder="Name">
+            </div>
+            <div class="col m4">
+              <input type="text" name="" ng-model="v.email" placeholder="Email">
+            </div>
+            <div class="col m1" ng-if="v.approved == '0'">
+              <div class="tooltip">?
+                <span class="tooltiptext">Waiting For Confirmation...</span>
+              </div>
+            </div>
+            <div class="col m1">
+              <div ng-click="removecoauthor($index)" class="tooltip red">X
+                <span class="tooltiptext">Remove</span>
+              </div>
+
+            </div>
+
           </div>
-        </div>
-        <div class="col m1">
-          <div ng-click="removecoauthor($index)" class="tooltip red">X
-            <span class="tooltiptext">Remove</span>
+          <div class="right">
+            <button ng-click="hello()" background-color="#1a237e" class="btn waves-effect waves-light no-borders">
+              <i style="font-size:1.2em; line-height:1.2em;" class="fa fa-plus-circle" aria-hidden="true"></i> ADD CO AUTHOR
+            </button>
           </div>
-
-        </div>
-
-      </div>
-      <div class="right">
-        <button ng-click="hello()" background-color="#1a237e" class="btn waves-effect waves-light no-borders">
-          <i style="font-size:1.2em; line-height:1.2em;" class="fa fa-plus-circle" aria-hidden="true"></i> ADD CO AUTHOR
-        </button>
-      </div>
-  </td>
-</tr>
-
-
-
-
-    </tbody>
+      </td>
+    </tr>
+  </tbody>
 </table>
