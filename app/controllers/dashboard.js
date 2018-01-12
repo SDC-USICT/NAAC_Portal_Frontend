@@ -671,8 +671,15 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                     transformRequest: angular.identity
                 })
                 .then(function(response) {
-                    console.log(response.data)
-                    window.location.reload();
+                    if(response.data.success=='true'){
+                      Materialize.toast('Image Uploaded', 4000,'green');
+                      window.location.reload();
+                    }
+                    else {
+                      Materialize.toast('Please Upload a Image file Less 1MB in Size.', 4000,'red darken-4');
+
+                    }
+
 
                 })
         }
