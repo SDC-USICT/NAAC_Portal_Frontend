@@ -26,7 +26,7 @@
             <a ng-if="editing==1" ng-click="unsetEditing()" class="saveBtn btn waves-effect indigo darken-4">
                  SAVE DETAILS
                 </a>
-            <a class="logout btn waves-effect waves-light right indigo darken-4" ng-click="logout()">LOG OUT 
+            <a class="logout btn waves-effect waves-light right indigo darken-4" ng-click="logout()">LOG OUT
             <i class="fa fa-sign-out left " aria-hidden="true"></i>
             </a>
 
@@ -90,7 +90,7 @@
             <a class="btn waves-effect waves-light  indigo darken-4 right disabled" ng-click="fillDetails()" style="margin-right: 10px;">FAQ
                 <i class="material-icons left">question_answer</i>
             </a>
-            
+
         </div>
 
     </div>
@@ -108,7 +108,7 @@
                 <div class="file-field input-field">
                 <div class="btn indigo darken-4">
                     <span>Choose File</span>
-                    <input type="file" files-input ng-model="employeeMeta.image" id="fileUploadForm" class="image" placeholder="Click to Upload File">
+                    <input type="file" files-input ng-model="employeeMeta.image" id="fileUploadForm" class="image" placeholder="Click to Upload File" accept="image/x-png,image/jpeg">
                 </div>
                 <div class="file-path-wrapper">
                     <input class="file-path validate" type="text" style="border-bottom: 1px solid green;">
@@ -122,7 +122,7 @@
       </form>
       </p>
     </div>
- 
+
   </div>
 
 
@@ -135,7 +135,7 @@ $(document).ready(function () {
         $("#grad input").attr("readonly", true);
         $('.modal').modal();
 });
-   
+
 </script>
 <style type="text/css">
     input[type=text]:not(.browser-default)[readonly="readonly"] {
