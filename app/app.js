@@ -1,6 +1,10 @@
-angular.module('employee', ['ngRoute', 'ngStorage', 'ngResource','ngAnimate'])
-.config(['$routeProvider', '$locationProvider',
-	function ($routeProvider, $locationProvider) {
+angular.module('employee', ['ngRoute', 'ngStorage', 'ngResource','ngAnimate', 'noCAPTCHA'])
+.config(['$routeProvider', '$locationProvider', 'noCAPTCHAProvider',
+	function ($routeProvider, $locationProvider, noCaptchaProvider) {
+
+
+    noCaptchaProvider.setSiteKey('6LchXkIUAAAAAM6ENPgDi4vwP2lsnbU9F2E9zmDc');
+    noCaptchaProvider.setTheme('dark');
 	$routeProvider.
    when('/', {
     templateUrl: './app/views/index.html',

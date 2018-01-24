@@ -7,7 +7,7 @@ angular.module('employee')
 		}
 		if(sessionStorage.status != undefined && sessionStorage.loginid != undefined){
 		    $location.path('/dashboard');
-        }
+      		}
 		$rootScope.loginid = sessionStorage.loginid;
 		console.log("log " + $rootScope.loginid);
 			$scope.submit = function () {
@@ -38,4 +38,20 @@ angular.module('employee')
 					$location.url('/forgot');
 			};
 		
+			$scope.loginValid = false;
+			$scope.gRecaptchaResponse = '';
+			$scope.$watch('gRecaptchaResponse', function (){
+				console.log($scope.gRecaptchaResponse);
+
+				if ($scope.gRecaptchaResponse.length > 0) {
+					$http.post(BACKEND + '/api/captcha', {'captcha': $scope.gRecaptchaResponse})
+					.then(function(res) {
+						console.log(res);
+						if (res.status ==200) {
+							$scope.loginValid = true;
+						}
+					})
+				}
+				
+			});
 		}]);
