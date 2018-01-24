@@ -18,8 +18,16 @@
              <label for="password">Password</label>
            </div>
          </div>
+
+         <no-captcha
+         g-recaptcha-response="gRecaptchaResponse"
+         theme='light'
+         control="noCaptchaControl"
+         site-key="6LchXkIUAAAAAM6ENPgDi4vwP2lsnbU9F2E9zmDc">
+     </no-captcha>
+     <br>
          <div class="row center">
-          <a ng-click="submit()" class="btn waves-effect waves-light" style="background: #1a237d">LOGIN
+          <a ng-click="submit()" class="btn waves-effect waves-light" ng-class="{'disabled':!loginValid}" style="background: #1a237d">LOGIN
             <i class="material-icons left">forward</i>
           </a>
          </div>
@@ -29,6 +37,9 @@
               <i class="material-icons left">live_help</i>
             </a>
          </div>
+
+     
+
 
        </form>
      </div>
