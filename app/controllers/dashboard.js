@@ -8,7 +8,8 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
         $scope.editing = 0;
         $scope.marked_authors = {};
         $scope.employeeMeta = {};
-
+        console.log($http.defaults.headers.common.Authorization)
+        console.log(sessionStorage.token)
         if ($rootScope.loginid == undefined) {
             if ($sessionStorage.loginid != undefined) {
                 $rootScope.loginid = $sessionStorage.loginid;
@@ -24,7 +25,6 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
 
         //This is save method
         $scope.saveForm = function() {
-            console.log('Inside saveform')
             $scope.data.employee = $sessionStorage.loginid;
             console.log($scope.data);
             coauthor_classes = [
@@ -102,8 +102,8 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
             $scope.naacForm.$setPristine();
             $scope.naacForm.$setUntouched();
             $scope.selectedResult = null;
-            //$scope.selectedResult =  $scope.results[$scope.attributes[$scope.selected].key].length-1;
         }
+       
         //Saveform ends here
 
 
@@ -114,7 +114,6 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                 'email': '',
                 'approved': '0'
             })
-            console.log($scope.data)
         }
 
         $scope.removecoauthor = function(val) {
@@ -151,11 +150,11 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
 
                     $('input.autocomplete').autocomplete({
                         data: $scope.subjectlist,
-                        limit: 20, // The max amount of results that can be shown at once. Default: Infinity.
+                        limit: 20, 
                         onAutocomplete: function(val) {
-                            // Callback function when value is autcompleted.
+                      
                         },
-                        minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.
+                        minLength: 1,
                     });
 
 
@@ -168,26 +167,23 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
 
         $scope.empImg = BACKEND + '/static/images/' + $rootScope.loginid + '.jpg?' + new Date().getTime();
 
-        //Declaring a resource for post method. It accept Arrays in post method.
+        // Fetching teacher data from BACKEND.
+
         var data_emp = $resource(BACKEND + '/api/employee', null, {
             'query': {
                 method: 'POST',
                 isArray: true
             }
         });
-        // Fetching teacher data from BACKEND.
+
         data_emp.query({
             empid: $rootScope.loginid
         }).$promise.then(function(data) {
-            console.log("I am surender kumar");
-            console.log(data);
             $scope.employee = data[0]['fields'];
             $scope.employee.pk = data[0]['pk']
         });
 
-
-
-        // Getting coulmns from BACKEND.
+        // Getting columns from BACKEND.
         var Columns = $resource(BACKEND + '/api/columns');
         Columns.get().$promise.then(function(data) {
             data = data.toJSON();
@@ -641,6 +637,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
             sessionStorage.clear();
             localStorage.clear();
             console.log("logout");
+            $http.defaults.headers.common.Authorization = '';
             $location.path('/logout');
         };
 
@@ -747,7 +744,8 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
           });
           // Fetching teacher data from BACKEND.
           data_emp.query({
-              empid: $rootScope.loginid
+              empid: $rootScope.loginid,
+              token : sessionStorage.token
           }).$promise.then(function(data) {
             console.log(JSON.stringify(data));
             $scope.dontfilldata=data.toJSON();

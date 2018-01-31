@@ -9,8 +9,8 @@ angular.module('employee')
 		    $location.path('/dashboard');
       		}
 		$rootScope.loginid = sessionStorage.loginid;
-		console.log("log " + $rootScope.loginid);
-			$scope.submit = function () {
+
+		$scope.submit = function () {
   				req = {
 				'empid' : $rootScope.loginid,
 				'password' : $scope.password
@@ -18,18 +18,17 @@ angular.module('employee')
 			console.log(req);
 				$http.post(BACKEND+'/api/login', JSON.stringify(req))
 				.then(function (res) {
-				   
-					if (res.data.success != undefined) {
-
+					
+					console.log(res);
+					if (res.status == 201 || res.status == 200) {
+						$http.defaults.headers.common.Authorization = 'JWT ' + res.data.token;
+						sessionStorage.setItem('token', res.token);
 						$location.url('/dashboard');
-						console.log("login data");
-						console.log(res.data);
-
+						
 					}
 					else {
-                        alert('Login incorrect');
-                        $location.path('/login');
-                    }
+						$location.path('/login');
+					}
 				});
 			};
 
