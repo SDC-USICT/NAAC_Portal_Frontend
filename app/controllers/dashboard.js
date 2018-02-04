@@ -103,7 +103,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
             $scope.naacForm.$setUntouched();
             $scope.selectedResult = null;
         }
-       
+
         //Saveform ends here
 
 
@@ -150,9 +150,9 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
 
                     $('input.autocomplete').autocomplete({
                         data: $scope.subjectlist,
-                        limit: 20, 
+                        limit: 20,
                         onAutocomplete: function(val) {
-                      
+
                         },
                         minLength: 1,
                     });
@@ -745,7 +745,6 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
           // Fetching teacher data from BACKEND.
           data_emp.query({
               empid: $rootScope.loginid,
-              token : sessionStorage.token
           }).$promise.then(function(data) {
             console.log(JSON.stringify(data));
             $scope.dontfilldata=data.toJSON();
@@ -761,7 +760,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
         }
 
         $scope.setfill = function(){
-
+          console.log($scope.dontfilldata)
           data=$scope.dontfilldata;
           data.pk=$rootScope.loginid;
           console.log(data);

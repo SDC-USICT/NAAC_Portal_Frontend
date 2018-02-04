@@ -11,9 +11,12 @@ angular.module('employee')
                     isArray: true
                 }
             });
+
+      
             data_emp.query({
                 school: sessionStorage.school
             }).$promise.then(function(data){
+                console.log(data)
                 $scope.empData = data;
                 var prefix = ["Dr","Ms","Mr"];
                 var len = $scope.empData.length;
@@ -35,7 +38,7 @@ angular.module('employee')
                 $rootScope.school_teachers = data;
                 $scope.empImg = "''";
             });
-            }   
+            }
 
             $scope.setEmployee = function (val) {
                 sessionStorage.setItem('loginid', val.pk);
@@ -49,5 +52,5 @@ angular.module('employee')
                     return true;
                 }
             }
-          
+
         }]);
