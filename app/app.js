@@ -1,4 +1,4 @@
-angular.module('employee', ['ngRoute', 'ngStorage', 'ngResource','ngAnimate', 'noCAPTCHA'])
+angular.module('employee', ['ngRoute', 'ngStorage', 'ngResource','ngAnimate','noCAPTCHA','angular-md5'])
 .config(['$routeProvider', '$locationProvider', 'noCAPTCHAProvider',
 	function ($routeProvider, $locationProvider, noCaptchaProvider) {
 

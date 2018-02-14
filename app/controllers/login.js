@@ -1,6 +1,6 @@
 angular.module('employee')
-	.controller('LoginCtrl', ["$scope", "$http" , "$rootScope", "$window", "$location",
-		function ($scope, $http, $rootScope, $window, $location) {
+	.controller('LoginCtrl', ["$scope", "$http" , "$rootScope", "$window", "$location", 'md5',
+		function ($scope, $http, $rootScope, $window, $location, md5) {
 
 		if(sessionStorage.loginid == undefined){
 			$location.path('/selection');
@@ -13,22 +13,34 @@ angular.module('employee')
 		$scope.submit = function () {
   				req = {
 				'empid' : $rootScope.loginid,
-				'password' : $scope.password
+				'password' : md5.createHash($scope.password || '')
 			};
+
+
 			console.log(req);
 				$http.post(BACKEND+'/api/login', JSON.stringify(req))
 				.then(function (res) {
-					
+
 					console.log(res);
-					if (res.status == 201 || res.status == 200) {
+					if (res.data.error) {
+						alert(res.data.error);
+						$location.path('/login');
+					}
+					else if (res.status == 201 || res.status == 200) {
 						$http.defaults.headers.common.Authorization = 'JWT ' + res.data.token;
 						sessionStorage.setItem('token', res.token);
 						$location.url('/dashboard');
-						
+
 					}
 					else {
+						if (res.data.error) {
+							alert(res.data.error);
+						}
 						$location.path('/login');
 					}
+				}, function(err) {
+					alert('Credentials are not correct!');
+					$location.path('/login');
 				});
 			};
 
@@ -36,7 +48,7 @@ angular.module('employee')
 				console.log("Reidrecting");
 					$location.url('/forgot');
 			};
-		
+
 			$scope.loginValid = false;
 			$scope.gRecaptchaResponse = '';
 			$scope.$watch('gRecaptchaResponse', function (){
@@ -51,6 +63,6 @@ angular.module('employee')
 						}
 					})
 				}
-				
+
 			});
 		}]);

@@ -1,5 +1,5 @@
-angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$rootScope", "$sessionStorage", "$localStorage", "$resource", "$location", "formService",
-    function($scope, $http, $rootScope, $sessionStorage, $localStorage, $resource, $location, formService) {
+angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$rootScope", "$sessionStorage", "$localStorage", "$resource", "$location", "formService", "md5",
+    function($scope, $http, $rootScope, $sessionStorage, $localStorage, $resource, $location, formService, md5) {
         $scope.selected = 0;
         $scope.results = {};
         $scope.coauthors = {};
@@ -169,18 +169,12 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
 
         // Fetching teacher data from BACKEND.
 
-        var data_emp = $resource(BACKEND + '/api/employee', null, {
-            'query': {
-                method: 'POST',
-                isArray: true
-            }
-        });
-
-        data_emp.query({
+        $http.post(BACKEND + '/api/employee', {
             empid: $rootScope.loginid
-        }).$promise.then(function(data) {
-            $scope.employee = data[0]['fields'];
-            $scope.employee.pk = data[0]['pk']
+        }).then(function(data) {
+          console.log(data)
+            $scope.employee = data.data;
+            $scope.employee.pk = $rootScope.loginid;
         });
 
         // Getting columns from BACKEND.
@@ -282,11 +276,13 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
             req = {
                 'data': $scope.employee
             }
+            console.log(req);
             $http.post(BACKEND + '/api/emppost', req)
                 .then(function(data) {
+                  console.log(data);
                     data = data.data;
-                    $scope.employee = data[0]['fields'];
-                    $scope.employee.pk = data[0]['pk']
+                    $scope.employee = data;
+                    $scope.employee.pk = $rootScope.loginid
                 })
         }
 
@@ -304,43 +300,27 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
             $scope.selected = value;
 
             $scope.data = {};
-            console.log($scope.data);
             $scope.naacForm.$setPristine();
             $scope.naacForm.$setUntouched();
-            console.log($scope.naacForm);
-            console.log($scope.form_details[$scope.sections[$scope.selected]])
-
-
-            // Experiment
-            var data_get = $resource(BACKEND + '/api/get/', null, {
-                'query': {
-                    method: 'POST',
-                    isArray: true
-                }
-            });
             //It will fetch all existing data of teacher for respective columns
-            data_get.query({
+
+            $http.post(BACKEND + '/api/get/', {
                 empid: $rootScope.loginid,
                 kls: $scope.attributes[value].key
-            }).$promise.then(function(data) {
-                console.log(data)
+            })
+              .then(function(d){
+                data = d.data;
                 $scope.mySelectedData = data;;
-                console.log($scope.results)
                 $scope.dontfill();
                 if (data[0] != undefined) {
-                    //$scope.model_type = data[0].model;
-                    //$scope.saved_columns = data[0].fields;
-                    // TODO: Rethink
-                    //If any existing data is present in respective column then push it into results varibale.
-                    $scope.results[$scope.attributes[$scope.selected].key] = data.map(function(a) {
+                      $scope.results[$scope.attributes[$scope.selected].key] = data.map(function(a) {
                         a.employee = $rootScope.loginid;
                         return a;
                     });
 
                     //If any coauthors is present in teacher  data then push it into coauthors array.
                     $scope.coauthors[$scope.attributes[$scope.selected].key] = data.map(function(a) {
-                        console.log(a)
-                        console.log('DEko')
+
                         if (a.coauthor) {
                             var tmp = [];
                             angular.forEach(a.coauthor.split(';'), function(v, k) {
@@ -354,19 +334,19 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                         }
                     })  ;
 
-                    console.log($scope.results)
-                    console.log($scope.coauthors);
                     $scope.$evalAsync()
-
                 } else {
-                    console.log('Here!')
                     $scope.results[$scope.attributes[$scope.selected].key] = []
-                    console.log($scope.results)
-                    console.log($scope.attributes[$scope.selected])
-
                 }
-                console.log($scope.results)
-            });
+              },
+              function(data) {
+                if (data.status == 401) {
+                  alert('Unauthorized to view this page!');
+                  $location.path('/login')
+                }
+              })
+            // Experiment
+
 
 
 
@@ -670,10 +650,17 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                 .then(function(response) {
                     if(response.data.success=='true'){
                       Materialize.toast('Image Uploaded', 4000,'green');
-                      window.location.reload();
-                    }
+                      $scope.empImg = BACKEND + '/static/images/' + $rootScope.loginid + '.jpg?' + new Date().getTime();
+
+                      $(document).ready(function() {
+                          $('#modal1').modal('close');
+                      })
+                      $scope.$evalAsync();
+
+
+                     }
                     else {
-                      Materialize.toast('Please Upload a Image file Less 1MB in Size.', 4000,'red darken-4');
+                      Materialize.toast('Please upload a .jpg image file less than 1MB in Size.', 4000,'red darken-4');
 
                     }
 
@@ -687,10 +674,10 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
         }
         $scope.chanPass = function(){
           $scope.passwords = {
-            "curpass" : $scope.curpass,
-            "newpass" : $scope.newpass,
-            "confpass" : $scope.confpass,
-            "loginid":sessionStorage.loginid
+            "curpass" : md5.createHash($scope.curpass || ''),
+            "newpass" : btoa($scope.newpass),
+            "confpass" :btoa($scope.confpass),
+            "loginid": sessionStorage.loginid
           }
             $http.post(BACKEND +'/api/changePassword', JSON.stringify($scope.passwords))
         .then(function (res) {
