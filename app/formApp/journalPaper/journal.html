@@ -57,10 +57,7 @@
           Journal Publisher Name
         </div>
         <div class="input-field col s6">
-          <input placeholder="Enter publisher name." id="journalPublisher" type="text" class="validate" ng-model="data.publisher" name="journalPublisher" ng-minlength="3" ng-maxlength="100" required>
-          <span ng-show="naacForm.journalPublisher.$error.minlength || naacForm.journalPublisher.$error.maxlength" class="error">Length should be between 3 to 100.</span>
-          <span ng-show="naacForm.journalPublisher.$touched && naacForm.journalPublisher.$error.required" class="error">Field cannot be empty</span>
-
+          <input placeholder="Enter publisher name." id="journalPublisher" type="text" class="autocomplete" ng-model="data.publisher" required>
         </div>
       </td>
 
@@ -398,6 +395,31 @@
      $(document).ready(function() {
                 console.log($('select'));
                 $('select').material_select();
-            })
+            });
+     $('input.autocomplete').autocomplete({
+    data: {
+      "IEEE": null,
+      "ACM": null,
+      "Springer": null,
+      "Taylor And Francis": null,
+        "CSI": null,
+        "IETE": null,
+        "CRC Press": null,
+        "IOS Press": null,
+        "Wiley": null,
+        "John Wiley": null,
+      "Any Other, Please Specify": null
+    },
+    limit: 20, // The max amount of results that can be shown at once. Default: Infinity.
+    onAutocomplete: function(val) {
+      // Callback function when value is autcompleted.
+      console.log("val = ");
+      console.log(val);
+      if(val == "Any Other, Please Specify"){
+        $(".autocomplete").val("");
+      }
+    },
+    minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.
+  });
   })
 </script>

@@ -4,7 +4,7 @@
       <tr>
          <td>
             <div class="input-field col s6 fields">
-               Name
+               Workshop Name
             </div>
             <div class="input-field col s6">
                <input placeholder="Name" id="nameWork" type="text" class="validate" ng-model="data.title" name="nameWork" required>
@@ -85,6 +85,21 @@
             </div>
          </td>
       </tr>
+
+
+   <tr>
+         <td>
+            <div class="input-field col s6 fields">
+               WorkShop Details
+            </div>
+            <div class="input-field col s6">
+               <input placeholder="Name" id="detailsworkshop" type="text" class="validate" ng-model="data.detailsworkshop" name="detailsworkshop" required>
+               <span ng-show="naacForm.detailsworkshop.$touched && naacForm.detailsworkshop.$error.required" class="error">Field cannot be empty</span>
+            </div>
+         </td>
+      </tr>
+
+
    </tbody>
 </table>
 <script>
@@ -92,8 +107,8 @@
    $('.datepicker').pickadate({
      selectMonths: true, // Creates a dropdown to control month
      selectYears: 6, // Creates a dropdown of 15 years to control year,
-     min: [2010, 1, 01],//controls the  start year and month
-     max: [2018, 3, 01],// controls the end year and month
+     min: [2012, 0, 01],//controls the  start year and month
+     max: [2018, 2, 01],// controls the end year and month
      today: 'Today',
      clear: 'Clear',
      close: 'Ok',

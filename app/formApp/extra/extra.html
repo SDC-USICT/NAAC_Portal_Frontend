@@ -19,6 +19,23 @@
     </tr>
 
 
+
+    <tr>
+
+      <td>
+
+        <div class="input-field col s6 fields">
+          Role
+        </div>
+        <div class="input-field col s6">
+          <input placeholder="Role" id="role" type="text" class="autocomplete" ng-model="data.role" required>
+        </div>
+      </td>
+
+    </tr>
+
+
+
     <tr>
 
       <td>
@@ -44,7 +61,7 @@
       <td>
 
         <div class="input-field col s6 fields">
-          Department
+        School Name
         </div>
         <div class="input-field col s6">
           <input placeholder="Department" id="extraDepartment" type="text" class="validate" ng-model="data.department" name="extraDepartment" ng-minlength="3" ng-maxlength="100" required>
@@ -103,3 +120,30 @@
     </tr>
     </tbody>
 </table>
+<script>
+  $(document).ready(function() {
+      $('input.autocomplete').autocomplete({
+          data: {
+              "Co-Ordinator": null,
+              "Committe Member": null,
+              "Covenor": null,
+              "Center Superitendent": null,
+              "Deputy Center Superitendent": null,
+              "Chairman": null,
+              "Training and Placement Officer": null,
+              "TPO Member": null,
+              "Any Other, Please Specify": null
+          },
+          limit: 20, // The max amount of results that can be shown at once. Default: Infinity.
+          onAutocomplete: function (val) {
+              // Callback function when value is autcompleted.
+              console.log("val = ");
+              console.log(val);
+              if (val == "Any Other, Please Specify") {
+                  $(".autocomplete").val("");
+              }
+          },
+          minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.
+      });
+  });
+</script>
