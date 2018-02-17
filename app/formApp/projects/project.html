@@ -160,6 +160,17 @@
   minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.
 });
 
+      $('.datepicker').pickadate({
+  selectMonths: true, // Creates a dropdown to control month
+  selectYears: 6, // Creates a dropdown of 15 years to control year,
+  min: [2012, 0, 01],//controls the  start year and month
+  max: [2018, 2, 01],// controls the end year and month
+  today: 'Today',
+  clear: 'Clear',
+  close: 'Ok',
+  closeOnSelect: false // Close upon selecting a date,
+});
+
 
     var from_$input = $('#projectDateAward').pickadate({
       selectMonths: true, // Creates a dropdown to control month
@@ -198,17 +209,6 @@ to_picker.on('set', function(event) {
   else if ( 'clear' in event ) {
     from_picker.set('max', false)
   }
-});
-
-$('.datepicker').pickadate({
-  selectMonths: true, // Creates a dropdown to control month
-  selectYears: 6, // Creates a dropdown of 15 years to control year,
-  min: [2012, 1, 01],//controls the  start year and month
-  max: [2018, 3, 01],// controls the end year and month
-  today: 'Today',
-  clear: 'Clear',
-  close: 'Ok',
-  closeOnSelect: false // Close upon selecting a date,
 });
 
 });
