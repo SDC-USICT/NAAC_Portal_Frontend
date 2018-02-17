@@ -1,6 +1,7 @@
 <section ng-include="'./app/views/partials/save.html'"></section>
 <table>
   <tbody>
+
     <!-- Book Title -->
     <tr>
 
@@ -35,6 +36,16 @@
         </div>
       </td>
 
+    </tr>
+
+
+    <tr>
+      <td>
+        <div>
+        <input type="checkbox" id="ugcCheck" ng-model="data.ugcCheck" />
+        <label for="ugcCheck" style="margin-left: 12px;">Is Journal Name notified on UGC Website (Check this box If yes)</label>
+      </div>
+      </td>
     </tr>
 
 
@@ -127,6 +138,35 @@
     </tr>
 
 
+<!-- citation index -->
+
+<tr>
+  <td>
+    <div class="input-field col s6 fields">
+      Citation Index
+    </div>
+    <div class="input-field col s6">
+      <input placeholder="Citation Index" id="citation" type="number" class="validate" ng-model="data.citation" name="citation" ng-minlength="1" ng-maxlength="3" required>
+      <span ng-show="naacForm.citation.$error.minlength || naacForm.citation.$error.maxlength" class="error">Citation Index should be  between 0 and 999. </span>
+      <span ng-show="naacForm.citation.$touched && naacForm.citation.$error.required" class="error">Field cannot be empty</span>
+    </div>
+  </td>
+</tr>
+<tr>
+  <td>
+    <div class="input-field col s6 fields">
+      Number of Citations Excluding Self Citations
+    </div>
+    <div class="input-field col s6">
+      <input placeholder="Number of Citations Excluding Self Citations" id="numcitations" type="number" class="validate" ng-model="data.numcitations" name="numcitations" ng-minlength="1" ng-maxlength="3" required>
+      <span ng-show="naacForm.numcitations.$error.minlength || naacForm.numcitations.$error.maxlength" class="error">Number of Citations should be  between 0 and 999. </span>
+      <span ng-show="naacForm.numcitations.$touched && naacForm.numcitations.$error.required" class="error">Field cannot be empty</span>
+    </div>
+  </td>
+</tr>
+
+
+<!-- index end -->
 
 
     <tr>
@@ -183,15 +223,13 @@
 <option value="EBSCO Vocational Studies">EBSCO Vocational Studies</option>
 <option value="I-Compendex">I-Compendex</option>
 <option value="Expanded Academic">Expanded Academic</option>
-
 <option value="OCLC">OCLC</option>
-
 <option value="PASCAL">PASCAL</option>
-
 <option value="SCImago">SCImago</option>
-
 <option value="Summon by ProQuest">Summon by ProQuest</option>
-
+<option value="Web of Science">Web of Science</option>
+<option value="PubMed">PubMed</option>
+<option value="Indian Citation Index">Indian Citation Index</option>
 
           </select>
 
@@ -237,11 +275,11 @@
       <td>
 
         <div class="input-field col s6 fields">
-          Publication Month
+          Publication Month And Year
         </div>
-        <div class="input-field col s6">
+        <div class="input-field col s3">
           <select name="journalMonth" ng-model="data.month" required>
-            <option value="" disabled selected>Choose your option</option>
+            <option value="" disabled selected>Choose Month</option>
             <option value="jan">January</option>
             <option value="feb">February</option>
             <option value="mar">March</option>
@@ -254,6 +292,19 @@
             <option value="oct">October</option>
             <option value="nov">November</option>
             <option value="dec">December</option>
+          </select>
+        </div>
+        <div class="input-field col s3">
+          <select name="journalYear" ng-model="data.year" >
+            <option value="" disabled>Choose Year</option>
+            <option value="2012" selected>2012</option>
+            <option value="2013">2013</option>
+            <option value="2014">2014</option>
+            <option value="2015">2015</option>
+            <option value="2016">2016</option>
+            <option value="2017">2017</option>
+            <option value="2018">2018</option>
+
           </select>
         </div>
       </td>
@@ -350,16 +401,3 @@
             })
   })
 </script>
-
-<style type="text/css">
-  .input-field.col .dropdown-content [type="checkbox"]+label {
-    top: -12px;
-    left: 0;
-    height: 18px;
-}
-
-
-
-
-
-</style>

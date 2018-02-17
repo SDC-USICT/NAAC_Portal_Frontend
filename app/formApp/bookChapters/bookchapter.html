@@ -82,13 +82,45 @@
 
       <td>
 
-        <div class="input-field col s6 fields">
+        <div class="input-field col s4 fields">
           Indexing
         </div>
-        <div class="input-field col s6">
-          <input placeholder="Indexing" id="bookchapterIndexing" type="text" class="validate" ng-model="data.indexing" name="bookchapterIndexing" ng-minlength="3" ng-maxlength="100" required>
+        <div class="input-field col s8">
+          <select name="bookchapterIndexing" required ng-model="data.indexing" id="bookchapterIndexing" multiple>
+                      <option value="" disabled selected>Choose your option</option>
+<option value="Science Citation Index Expanded (SciSearch)">Science Citation Index Expanded (SciSearch)</option>
+<option value="Journal Citation Reports/Science Edition">Journal Citation Reports/Science Edition</option>
+<option value="SCOPUS">SCOPUS</option>
+<option value="INSPEC">INSPEC</option>
+<option value="Google Scholar">Google Scholar</option>
+<option value="Academic OneFile">Academic OneFile</option>
+<option value="ACM Digital Library">ACM Digital Library</option>
+<option value="Current Abstracts">Current Abstracts</option>
+<option value="Current Contents Collections / Electronics & Telecommunications Collection">Current Contents Collections / Electronics & Telecommunications Collection</option>
+<option value="EBSCO Applied Science & Technology Source">EBSCO Applied Science & Technology Source</option>
+<option value="EBSCO Associates Programs Source">EBSCO Associates Programs Source</option>
+<option value="EBSCO Computer Science Index">EBSCO Computer Science Index</option>
+<option value="EBSCO Computers & Applied Sciences Complete">EBSCO Computers & Applied Sciences Complete</option>
+<option value="EBSCO Engineering Source">EBSCO Engineering Source</option>
+<option value="EBSCO Military Transition Support Center">EBSCO Military Transition Support Center</option>
+<option value="EBSCO Science & Technology Collection">EBSCO Science & Technology Collection</option>
+<option value="EBSCO STM Source">EBSCO STM Source</option>
+<option value="EBSCO TOC Premier">EBSCO TOC Premier</option>
+<option value="EBSCO Vocational Studies">EBSCO Vocational Studies</option>
+<option value="I-Compendex">I-Compendex</option>
+<option value="Expanded Academic">Expanded Academic</option>
+<option value="OCLC">OCLC</option>
+<option value="PASCAL">PASCAL</option>
+<option value="SCImago">SCImago</option>
+<option value="Summon by ProQuest">Summon by ProQuest</option>
+<option value="Web of Science">Web of Science</option>
+<option value="PubMed">PubMed</option>
+<option value="Indian Citation Index">Indian Citation Index</option>
+
+          </select>
+          <!-- <input placeholder="Indexing" id="bookchapterIndexing" type="text" class="validate" ng-model="data.indexing" name="bookchapterIndexing" ng-minlength="3" ng-maxlength="100" required>
           <span ng-show="naacForm.bookchapterIndexing.$error.minlength || naacForm.bookchapterIndexing.$error.maxlength" class="error">Indexing should be  3 to 100 character long. </span>
-          <span ng-show="naacForm.bookchapterIndexing.$touched && naacForm.bookchapterIndexing.$error.required" class="error">Field cannot be empty</span>
+          <span ng-show="naacForm.bookchapterIndexing.$touched && naacForm.bookchapterIndexing.$error.required" class="error">Field cannot be empty</span> -->
 
         </div>
       </td>
@@ -104,35 +136,11 @@
   <td>
 
     <div class="input-field col s6 fields">
-      Year
+      Month And Year
     </div>
-    <div class="input-field col s6">
-      <select name="bookChapter.year" ng-model="data.year" required>
-        <option value="" disabled selected>Choose your option</option>
-        <option value="2012">2012</option>
-        <option value="2013">2013</option>
-        <option value="2014">2014</option>
-        <option value="2015">2015</option>
-        <option value="2016">2016</option>
-        <option value="2017">2017</option>
-
-      </select>
-    </div>
-  </td>
-
-</tr>
-
-<!-- Conference Month -->
-<tr >
-
-  <td>
-
-    <div class="input-field col s6 fields">
-      Month
-    </div>
-    <div class="input-field col s6">
+    <div class="input-field col s3">
       <select name="bookchapterMonth" ng-model="data.month" required>
-        <option value="" disabled selected>Choose your option</option>
+        <option value="" disabled selected>Choose Month</option>
         <option value="jan">January</option>
         <option value="feb">February</option>
         <option value="mar">March</option>
@@ -147,9 +155,24 @@
         <option value="dec">December</option>
       </select>
     </div>
+    <div class="input-field col s3">
+      <select name="bookChapteryear" ng-model="data.year" required>
+        <option value="" disabled selected>Choose Year</option>
+        <option value="2012">2012</option>
+        <option value="2013">2013</option>
+        <option value="2014">2014</option>
+        <option value="2015">2015</option>
+        <option value="2016">2016</option>
+        <option value="2017">2017</option>
+        <option value="2018">2018</option>
+
+      </select>
+    </div>
   </td>
 
 </tr>
+
+<!-- Conference Month -->
 
 
 

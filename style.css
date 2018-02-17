@@ -193,3 +193,8 @@ nav {
   padding-left: 6px;
   padding-right: 6px;
 }
+.input-field.col .dropdown-content [type="checkbox"]+label {
+  top: -12px;
+  left: 0;
+  height: 18px;
+}

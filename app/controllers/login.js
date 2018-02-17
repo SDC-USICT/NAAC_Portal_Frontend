@@ -11,6 +11,9 @@ angular.module('employee')
 		$rootScope.loginid = sessionStorage.loginid;
 
 		$scope.submit = function () {
+			console.log("password");
+			console.log($scope.password);
+			console.log(md5.createHash($scope.password || ''));
   				req = {
 				'empid' : $rootScope.loginid,
 				'password' : md5.createHash($scope.password || '')
@@ -27,8 +30,10 @@ angular.module('employee')
 						$location.path('/login');
 					}
 					else if (res.status == 201 || res.status == 200) {
+						console.log("Result of login");
+						console.log(res);
 						$http.defaults.headers.common.Authorization = 'JWT ' + res.data.token;
-						sessionStorage.setItem('token', res.token);
+						sessionStorage.setItem('token', res.data.token);
 						$location.url('/dashboard');
 
 					}

@@ -1,5 +1,5 @@
 <section ng-include="'./app/views/partials/save.html'"></section>
-<div class="row">
+<div class="row" style="float: left;margin-top: 20px;">
    <div class="col m4">
       <div class="input-field col s12">
          <select name="subjectYear" ng-model="data.year" required>
@@ -17,7 +17,7 @@
    <div class="col m4">
       <div class="input-field col s12">
          <select name="subjectSem" ng-model="data.sem" required>
-            <option value="" disabled selected>Choose</option>
+            <option value="" disabled selected>Choose Semester</option>
             <option value="1">First</option>
             <option value="2">Second</option>
             <option value="3">Third</option>
@@ -37,7 +37,7 @@
    <div class="col m4">
       <div class="input-field col s12">
          <select name="subjectCourse" ng-model="data.course" required>
-            <option value="" disabled selected>Choose</option>
+            <option value="" disabled selected>Choose Course</option>
             <option value="btech_cse">BTECH CSE</option>
             <option value="btech_it">BTECH IT</option>
             <option value="mtech">MTECH </option>
@@ -46,7 +46,7 @@
       </div>
    </div>
 </div>
-<div class="row">
+<div class="row" style=" width:100%;float: left;margin-top: 20px;">
    <div class="col m8" >
       <div class="input-field col s12" ng-repeat="(key, value) in data.subjects track by $index">
          <input name="subjectSubject"  type="text" id="autocomplete-input" class="autocomplete" ng-model="data.subjects[key]"  required>
@@ -59,7 +59,7 @@
       <div ng-repeat="(key, value) in data.mode track by $index" >
          <div class="col m10">
             <select name="subjectMode" ng-model="data.mode[key]" required>
-               <option value="" disabled selected>Choose</option>
+               <option value="" disabled selected>Choose Type</option>
                <option value="theory">Theory</option>
                <option value="practical">Practical</option>
                <option value="theory">Theory</option>
@@ -76,18 +76,20 @@
                })
             </script>
          </div>
-         <div  ng-click="removesubs($index)" class="tooltip red col m1">X
+         <div  ng-click="removesubs($index)" class="tooltip red col m1" style="text-indent: -4px;margin-top: 25px;
+">X
             <span class="tooltiptext">Remove</span>
          </div>
       </div>
    </div>
 </div>
-<button ng-click="addsubs()" background-color="#1a237e" class="right btn waves-effect waves-light no-borders">
+<button ng-click="addsubs()" background-color="#1a237e" class="right btn indigo waves-effect waves-light no-borders">
 <i style="font-size:1.2em; line-height:1.2em;" class="fa fa-plus-circle" aria-hidden="true"></i> ADD SUBJECT
 </button>
+
 <br><br>
-<div class="file-field input-field col s12">
-   <div class="btn">
+<div class="file-field input-field col s12" style="margin-left: -10px;">
+   <div class="btn indigo waves-effect waves-light no-borders">
       <span>UPLOAD TIME TABLE</span>
       <input type="file" files-input  ng-model="data.image">
    </div>

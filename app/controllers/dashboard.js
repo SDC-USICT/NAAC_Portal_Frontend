@@ -137,6 +137,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
         $http.post(BACKEND + '/api/subs')
             .then(function(res) {
                 // body...
+                console.log("result empl data");
                 console.log(res)
                 data = res.data;
                 $scope.subjectlist = {}
@@ -160,7 +161,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
 
                 })
 
-
+                console.log("Subject list");
                 console.log($scope.subjectlist)
             })
 
@@ -172,6 +173,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
         $http.post(BACKEND + '/api/employee', {
             empid: $rootScope.loginid
         }).then(function(data) {
+          console.log("Employee data");
           console.log(data)
             $scope.employee = data.data;
             $scope.employee.pk = $rootScope.loginid;

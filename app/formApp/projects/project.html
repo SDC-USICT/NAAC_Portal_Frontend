@@ -35,7 +35,7 @@
                   <option value="" disabled selected>Choose your option</option>
                   <option value="completed">Completed</option>
                   <option value="inprogress">In-Progress</option>
-                  
+
                </select>
             </div>
          </td>
@@ -167,6 +167,18 @@ to_picker.on('set', function(event) {
     from_picker.set('max', false)
   }
 });
+
+$('.datepicker').pickadate({
+  selectMonths: true, // Creates a dropdown to control month
+  selectYears: 6, // Creates a dropdown of 15 years to control year,
+  min: [2012, 1, 01],//controls the  start year and month
+  max: [2018, 3, 01],// controls the end year and month
+  today: 'Today',
+  clear: 'Clear',
+  close: 'Ok',
+  closeOnSelect: false // Close upon selecting a date,
+});
+
 });
 
 </script>
