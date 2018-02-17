@@ -620,7 +620,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
             localStorage.clear();
             console.log("logout");
             $http.defaults.headers.common.Authorization = '';
-            $location.path('/logout');
+            $location.path('/');
         };
 
 
