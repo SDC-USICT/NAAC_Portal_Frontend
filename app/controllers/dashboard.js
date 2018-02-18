@@ -8,8 +8,6 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
         $scope.editing = 0;
         $scope.marked_authors = {};
         $scope.employeeMeta = {};
-        console.log($http.defaults.headers.common.Authorization)
-        console.log(sessionStorage.token)
         if ($rootScope.loginid == undefined) {
             if ($sessionStorage.loginid != undefined) {
                 $rootScope.loginid = $sessionStorage.loginid;
