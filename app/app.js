@@ -1,4 +1,19 @@
 angular.module('employee', ['ngRoute', 'ngStorage', 'ngResource','ngAnimate','noCAPTCHA','angular-md5'])
+.run(function($rootScope, $route, $location, $http){
+   //Bind the `$locationChangeSuccess` event on the rootScope, so that we dont need to
+   //bind in induvidual controllers.
+
+   $rootScope.$on('$locationChangeSuccess', function() {
+        $rootScope.actualLocation = $location.path();
+    });
+
+   $rootScope.$watch(function () {return $location.path()}, function (newLocation, oldLocation) {
+        if($rootScope.actualLocation === newLocation) {
+					console.log('Back!')
+            $http.defaults.headers.common.Authorization = '';
+        }
+    });
+})
 .config(['$routeProvider', '$locationProvider', 'noCAPTCHAProvider',
 	function ($routeProvider, $locationProvider, noCaptchaProvider) {
 
@@ -61,4 +76,4 @@ angular.module('employee', ['ngRoute', 'ngStorage', 'ngResource','ngAnimate','no
             });
         }
     }
-});
+})
