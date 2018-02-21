@@ -9,10 +9,16 @@ angular.module('employee', ['ngRoute', 'ngStorage', 'ngResource','ngAnimate','no
 
    $rootScope.$watch(function () {return $location.path()}, function (newLocation, oldLocation) {
         if($rootScope.actualLocation === newLocation) {
-					console.log('Back!')
+            var token = $http.defaults.headers.common.Authorization
+            if (token.length > 0) {
+              alert("You've been logged out!");
+            }
             $http.defaults.headers.common.Authorization = '';
+            $rootScope.actualLocation = $location.path('/login');
         }
     });
+
+
 })
 .config(['$routeProvider', '$locationProvider', 'noCAPTCHAProvider',
 	function ($routeProvider, $locationProvider, noCaptchaProvider) {
