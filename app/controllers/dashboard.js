@@ -660,7 +660,7 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
 
                      }
                     else {
-                      Materialize.toast('Please upload a .jpg image file less than 1MB in Size.', 4000,'red darken-4');
+                      Materialize.toast('Please upload a valid .jpg image file less than 1MB in Size.', 4000,'red darken-4');
 
                     }
 

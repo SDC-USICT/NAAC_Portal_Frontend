@@ -28,9 +28,16 @@
                     </div>
                   </div>
               </p>
+              <no-captcha
+              g-recaptcha-response="gRecaptchaResponse"
+              theme='light'
+              control="noCaptchaControl"
+              site-key="6LchXkIUAAAAAM6ENPgDi4vwP2lsnbU9F2E9zmDc">
+          </no-captcha>
             </div>
+
             <div class="card-action right-align">
-              <button ng-class="{'disabled':(!email)}" class="btn waves-effect waves-light indigo darken-4" type="submit" ng-click="submit()" name="action">Submit
+              <button ng-class="{'disabled':(!loginValid  && !email )}" class="btn waves-effect waves-light indigo darken-4" type="submit" ng-click="submit()" name="action">Submit
                 <i class="material-icons right">send</i>
               </button>
             </div>

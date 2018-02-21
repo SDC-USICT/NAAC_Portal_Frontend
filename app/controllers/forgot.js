@@ -7,7 +7,22 @@ angular.module('employee')
 				"email" : $scope.email,
 				"loginid" : $scope.id
 			};
-			console.log($scope.mail);
+			$scope.loginValid = false;
+			$scope.gRecaptchaResponse = '';
+			$scope.$watch('gRecaptchaResponse', function (){
+
+				if ($scope.gRecaptchaResponse.length > 0) {
+					$http.post(BACKEND + '/api/captcha', {'captcha': $scope.gRecaptchaResponse})
+					.then(function(res) {
+						if (res.status ==200) {
+							$scope.loginValid = true;
+						}
+					})
+				}
+
+			});
+
+
 				$http.post(BACKEND +'/api/forgot', JSON.stringify($scope.mail))
 				.then(function (res) {
 					console.log(res);
