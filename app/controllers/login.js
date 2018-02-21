@@ -12,11 +12,11 @@ angular.module('employee')
 
 		$scope.submit = function () {
 			$scope.client_secret = 6;
-			var dhreq = {'empid' : $rootScope.loginid, 'dh' :
-			(5 ** ($scope.client_secret) ) % Number($rootScope.loginid) }
+			var dhreq = {'empid' : $rootScope.loginid }
 			$http.post(BACKEND + '/api/dhkey/', JSON.stringify(dhreq))
 			.then(function(res) {
-				client_key = ( Number(res.data.dh_key) ** $scope.client_secret) % Number($rootScope.loginid)
+				$scope.sk = res.data.dh_key;
+				client_key = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5)
 				$scope.ck = client_key;
 
 
@@ -31,7 +31,8 @@ angular.module('employee')
 
 				req = {
 					'empid' : $rootScope.loginid,
-					'password' : md5.createHash ( ($scope.password + $scope.ck  ) || '')
+					'password' : md5.createHash ( ($scope.sk + $scope.password + $scope.ck  ) || ''),
+					'ck' : $scope.ck
 				};
 				$http.post(BACKEND+'/api/login', JSON.stringify(req))
 				.then(function (res) {
@@ -57,6 +58,7 @@ angular.module('employee')
 			}
 
 			$scope.forgot = function(){
+				console.log('called')
 					$location.url('/forgot');
 			};
 
