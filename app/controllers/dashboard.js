@@ -82,11 +82,15 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
 
             var req = {
                 'kls': $scope.attributes[$scope.selected].key,
-                'data': [$scope.data]
+                'data': [$scope.data],
+                'csrf': $rootScope.csrf
             }
             formService.post(req).then(function(response){
               $scope.setSelected($scope.selected);
-              Materialize.toast('Data Saved Successfully!', 4000)
+              if(response != 0){
+                     Materialize.toast('Data Saved Successfully!', 4000)
+
+                    }
             });
 
 
@@ -266,27 +270,51 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
             $scope.editing = 1;
         }
         // Set all inputs uneditable.
-        $scope.unsetEditing = function() {
+        // $scope.unsetEditing = function() {
+        //     $(document).ready(function() {
+        //         $("input").attr("readonly", true);
+        //     })
+        //     $scope.$evalAsync();
+        //
+        //     $scope.editing = 0;
+        //     req = {
+        //         'data': $scope.employee
+        //     }
+        //     console.log(req);
+        //     $http.post(BACKEND + '/api/emppost', req)
+        //         .then(function(data) {
+        //           console.log(data);
+        //             data = data.data;
+        //             $scope.employee = data;
+        //             $scope.employee.pk = $rootScope.loginid
+        //         })
+        // }
+
+$scope.unsetEditing = function() {
             $(document).ready(function() {
                 $("input").attr("readonly", true);
-            })
+            });
             $scope.$evalAsync();
 
             $scope.editing = 0;
             req = {
-                'data': $scope.employee
+                'data': $scope.employee,
+                'csrf': $rootScope.csrf,
             }
             console.log(req);
             $http.post(BACKEND + '/api/emppost', req)
                 .then(function(data) {
                   console.log(data);
-                    data = data.data;
+                    if(data.data.error || data.status == 401){
+                        alert("Tokens Do not Match !!!");
+                        $scope.logout();
+                    }else{
+                        data = data.data;
                     $scope.employee = data;
-                    $scope.employee.pk = $rootScope.loginid
+                    $scope.employee.pk = $rootScope.loginid;
+                    }
                 })
         }
-
-
 
 
         // Returns if some tab is selected or not. boolean return.
