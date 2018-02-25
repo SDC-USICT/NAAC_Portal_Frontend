@@ -73,7 +73,11 @@ angular.module('employee', ['ngRoute', 'ngStorage', 'ngResource','ngAnimate','no
     when('/changepassword', {
       templateUrl: './app/views/changepassword.html',
       controller: 'DashboardCtrl'
-    });
+    }).
+    when('/generate', {
+    templateUrl: './app/views/partials/generate.html',
+    controller: 'GenerateCtrl'
+   });
 	 $locationProvider.html5Mode(false).hashPrefix('');
 
 }]).directive('fallbackSrc', function () {

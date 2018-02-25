@@ -89,7 +89,6 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
               $scope.setSelected($scope.selected);
               if(response != 0){
                      Materialize.toast('Data Saved Successfully!', 4000)
-
                     }
             });
 

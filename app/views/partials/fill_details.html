@@ -74,6 +74,12 @@
                     <section ng-if="selected == '11'&& !dontfilldata[dontfillColumn]" data-ng-include src="'./app/formApp/subjectTaken/subject.html'"></section>
                     <section ng-if="selected == '12'&& !dontfilldata[dontfillColumn]" data-ng-include src="'./app/formApp/workshop/workshop.html'"></section>
                 </form>
+
+                <div style="margin: 25px auto;">
+                <section ng-include="'./app/views/partials/savebutton.html'"></section>
+                </div>
+
+
             </div>
             <div  class="col m2" style="background: lavender;">
                 <div class="center">

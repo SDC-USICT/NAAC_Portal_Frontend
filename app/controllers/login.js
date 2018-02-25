@@ -36,11 +36,14 @@ angular.module('employee')
 				};
 				$http.post(BACKEND+'/api/login', JSON.stringify(req))
 				.then(function (res) {
+				    console.log("res Login")
+                    console.log(res)
 					if (res.data.error) {
 						alert(res.data.error);
 						$location.path('/login');
 					}
 					else if (res.status == 201 || res.status == 200) {
+				        $rootScope.csrf = res.data.csrf.csrf;
 						$http.defaults.headers.common.Authorization = 'JWT ' + res.data.token;
 						$location.url('/dashboard');
 
