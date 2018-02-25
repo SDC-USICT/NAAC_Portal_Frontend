@@ -87,9 +87,12 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
             }
             formService.post(req).then(function(response){
               $scope.setSelected($scope.selected);
-              if(response != 0){
-                     Materialize.toast('Data Saved Successfully!', 4000)
-                    }
+              if(response == 0){
+                  alert("Error : Token Do Not Match");
+                  $scope.logout();
+              }else{
+                  Materialize.toast('Data Saved Successfully!', 4000)
+              }
             });
 
 
@@ -641,11 +644,19 @@ $scope.unsetEditing = function() {
 
         //logout here
         $scope.logout = function() {
-            sessionStorage.clear();
-            localStorage.clear();
             console.log("logout");
+            request = {
+                'empid':$rootScope.loginid,
+            }
+            console.log(request);
             $http.defaults.headers.common.Authorization = '';
-            $location.path('/');
+            $http.post(BACKEND + '/api/logout',request)
+                .then(function (data) {
+                    console.log("dddfffd");
+                    console.log(data);
+                    localStorage.clear();
+                    $location.path('/login');
+                });
         };
 
 
@@ -724,7 +735,7 @@ $scope.unsetEditing = function() {
         //Add coauthor
         $scope.add_coauthor = function() {
 
-            console.log($scope.coauthors)
+            console.log($scope.coauthors);
             console.log($scope.coauthors[$scope.attributes[$scope.selected]]);
             if ($scope.coauthors[$scope.attributes[$scope.selected].key] == undefined) {
                 $scope.coauthors[$scope.attributes[$scope.selected].key] = [];
