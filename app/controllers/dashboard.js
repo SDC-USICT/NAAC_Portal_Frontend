@@ -85,13 +85,16 @@ angular.module('employee').controller('DashboardCtrl', ["$scope", "$http", "$roo
                 'data': [$scope.data],
                 'csrf': $rootScope.csrf
             }
+            console.log(req);
             formService.post(req).then(function(response){
+                console.log(response);
               $scope.setSelected($scope.selected);
               if(response == 0){
                   alert("Error : Token Do Not Match");
                   $scope.logout();
               }else{
                   Materialize.toast('Data Saved Successfully!', 4000)
+                  $rootScope.csrf = response;
               }
             });
 
@@ -311,6 +314,7 @@ $scope.unsetEditing = function() {
                         alert("Tokens Do not Match !!!");
                         $scope.logout();
                     }else{
+                        $rootScope.csrf = data.data.csrf_token;
                         data = data.data;
                     $scope.employee = data;
                     $scope.employee.pk = $rootScope.loginid;
