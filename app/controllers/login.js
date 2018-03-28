@@ -18,22 +18,18 @@ angular.module('employee')
 				$scope.sk = res.data.dh_key;
 				client_key = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5)
 				$scope.ck = client_key;
-
-
-				$scope.login();
+			$scope.login();
 			})
-
-
-
 			};
 
 			$scope.login = function() {
 
 				req = {
 					'empid' : $rootScope.loginid,
-					'password' : md5.createHash ( ($scope.sk + $scope.password + $scope.ck  ) || ''),
+					'password' : md5.createHash ( ($scope.password) || ''),
 					'ck' : $scope.ck
 				};
+				console.log(req);
 				$http.post(BACKEND+'/api/login', JSON.stringify(req))
 				.then(function (res) {
 				    console.log("res Login")

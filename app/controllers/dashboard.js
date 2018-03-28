@@ -715,12 +715,24 @@ $scope.unsetEditing = function() {
           $location.path('/changepassword');
         }
         $scope.chanPass = function(){
+
+            $scope.client_secret = 6;
+			var dhreq = {'empid' : $rootScope.loginid };
+			$http.post(BACKEND + '/api/dhkey/', JSON.stringify(dhreq))
+			.then(function(res) {
+                $scope.sk = res.data.dh_key;
+                client_key = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5);
+                $scope.ck = client_key;
+                $scope.ck = res.data.dh_key;
+
           $scope.passwords = {
-            "curpass" : md5.createHash($scope.curpass || ''),
-            "newpass" : btoa($scope.newpass),
-            "confpass" :btoa($scope.confpass),
-            "loginid": sessionStorage.loginid
-          }
+            "curpass" : md5.createHash(($scope.curpass) || ''),
+            "newpass" : md5.createHash(($scope.newpass) || ''),
+            "confpass" : md5.createHash(($scope.confpass) || ''),
+            "loginid": sessionStorage.loginid,
+            "ck" : $scope.ck
+          };
+          console.log($scope.passwords);
             $http.post(BACKEND +'/api/changePassword', JSON.stringify($scope.passwords))
         .then(function (res) {
           console.log(res);
@@ -733,8 +745,8 @@ $scope.unsetEditing = function() {
               $location.path('/dashboard');
           }
         });
+        });
         }
-
 
         //Add coauthor
         $scope.add_coauthor = function() {
