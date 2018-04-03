@@ -21,12 +21,12 @@ angular.module('employee')
 			$scope.login();
 			})
 			};
-
 			$scope.login = function() {
-
+			$scope.pass = md5.createHash(($scope.password) || '');
+			$scope.pass = md5.createHash(($scope.pass + $scope.ck) || '');
 				req = {
 					'empid' : $rootScope.loginid,
-					'password' : md5.createHash ( ($scope.password) || ''),
+					'password' : $scope.pass,
 					'ck' : $scope.ck
 				};
 				console.log(req);

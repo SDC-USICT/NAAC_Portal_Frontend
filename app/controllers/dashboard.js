@@ -723,28 +723,30 @@ $scope.unsetEditing = function() {
                 $scope.sk = res.data.dh_key;
                 client_key = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5);
                 $scope.ck = client_key;
-                $scope.ck = res.data.dh_key;
-
-          $scope.passwords = {
-            "curpass" : md5.createHash(($scope.curpass) || ''),
-            "newpass" : md5.createHash(($scope.newpass) || ''),
-            "confpass" : md5.createHash(($scope.confpass) || ''),
-            "loginid": sessionStorage.loginid,
-            "ck" : $scope.ck
-          };
-          console.log($scope.passwords);
-            $http.post(BACKEND +'/api/changePassword', JSON.stringify($scope.passwords))
-        .then(function (res) {
-          console.log(res);
-          if(res.data.error != undefined){
-            Materialize.toast('Please Enter Correct Password', 4000,'red darken-4');
-          }else if (res.data.mod != undefined) {
-              Materialize.toast('New Passwords do not matched', 4000,'red darken-4');
-          }else if (res.data.success != undefined) {
-              Materialize.toast('Password Changed Successfully', 4000);
-              $location.path('/dashboard');
-          }
-        });
+            $scope.currentPass = md5.createHash(($scope.curpass) || '');
+            $scope.currentPass = md5.createHash(($scope.currentPass + $scope.ck) || '');
+        if($scope.newpass && $scope.confpass) {
+            $scope.passwords = {
+                "curpass": $scope.currentPass,
+                "newpass": md5.createHash(($scope.newpass) || ''),
+                "confpass": md5.createHash(($scope.confpass) || ''),
+                "loginid": sessionStorage.loginid,
+                "ck": $scope.ck
+            };
+            console.log($scope.passwords);
+            $http.post(BACKEND + '/api/changePassword', JSON.stringify($scope.passwords))
+                .then(function (res) {
+                    console.log(res);
+                    if (res.data.error != undefined) {
+                        Materialize.toast('Please Enter Correct Password', 4000, 'red darken-4');
+                    } else if (res.data.mod != undefined) {
+                        Materialize.toast('New Passwords do not matched', 4000, 'red darken-4');
+                    } else if (res.data.success != undefined) {
+                        Materialize.toast('Password Changed Successfully', 4000);
+                        $location.path('/dashboard');
+                    }
+                });
+        }
         });
         }
 
