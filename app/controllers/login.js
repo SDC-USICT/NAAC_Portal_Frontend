@@ -23,7 +23,7 @@ angular.module('employee')
 			};
 			$scope.login = function() {
 			$scope.pass = md5.createHash(($scope.password) || '');
-			$scope.pass = md5.createHash(($scope.pass + $scope.ck) || '');
+			$scope.pass = md5.createHash(( $scope.sk + $scope.pass + $scope.ck) || '');
 				req = {
 					'empid' : $rootScope.loginid,
 					'password' : $scope.pass,
